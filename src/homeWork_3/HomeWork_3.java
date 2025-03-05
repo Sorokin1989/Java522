@@ -6,18 +6,13 @@ public class HomeWork_3 {
         //Задание_1
 
         int a = 5;
-        a++;
-        a++;
-        a++;
+        a += 3;
         System.out.println(a);
 
         //Задание_2
 
         int b = 10;
-        b--;
-        b--;
-        b--;
-        b--;
+        b -= 4;
         System.out.println(b);
 
         //Задание_3
@@ -31,10 +26,8 @@ public class HomeWork_3 {
 
         int m = 8;
         int n = 5;
-        --m;
-        --m;
-        --n;
-        --n;
+        m -= 2;
+        n -= 2;
 //
         int result = m - n;
         System.out.println(result);
@@ -55,8 +48,7 @@ public class HomeWork_3 {
         // Задание_7
 
         int r = 9;
-        ++r;
-        ++r;
+        r += 2;
 
         int z = r % 5; // увеличиваем r на 1, потом еще на 1; r=11,  11/5=2 и остаток 1, поэтому z=1
         System.out.println(z);
@@ -64,9 +56,7 @@ public class HomeWork_3 {
         // Задание_8
 
         int s = 15;
-        --s;
-        --s;
-        --s;
+        s -= 3;
         int z1 = s % 4; // уменьшаем s на 3, s становится равным 12, затем 12/4=3, остаток 0, поэтому z1=0
         System.out.println(z1);
 
