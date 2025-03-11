@@ -256,9 +256,78 @@ public class homeWork_5 {
 /* 9) Напишите программу, которая по введенному числу месяца (от 1 до 12) выводит сезон года:
  "Зима", "Весна", "Лето", "Осень". */
 
+        System.out.println("Введите число месяца от 1 до 12: ");
+        Scanner scanner7 = new Scanner(System.in);
+        int s = scanner7.nextInt();
 
-        /* 10) Напишите программу, которая по введенному коду валюты (USD, EUR, GBP) выводит название валюты на русском языке: "Доллар США", "Евро", "Британский фунт".
-         */
+        switch (s) {
+            default:
+                System.out.println("Некорректный ввод");
+                break;
+            case 1:
+                System.out.println("Зима");
+                break;
+            case 2:
+                System.out.println("Зима");
+                break;
+            case 3:
+                System.out.println("Весна");
+                break;
+            case 4:
+                System.out.println("Весна");
+                break;
+            case 5:
+                System.out.println("Весна");
+                break;
+            case 6:
+                System.out.println("Лето");
+                break;
+            case 7:
+                System.out.println("Лето");
+                break;
+            case 8:
+                System.out.println("Лето");
+                break;
+            case 9:
+                System.out.println("Осень");
+                break;
+            case 10:
+                System.out.println("Осень");
+                break;
+            case 11:
+                System.out.println("Осень");
+                break;
+            case 12:
+                System.out.println("Зима");
+                break;
+
+        }
+
+
+        /* 10) Напишите программу, которая по введенному коду валюты (USD, EUR, GBP) выводит название валюты на русском языке:
+         "Доллар США", "Евро", "Британский фунт". */
+
+        System.out.println("Введите код валюты (USD, EUR, GBP)");
+        Scanner scanner8 = new Scanner(System.in);
+        String id = scanner8.next();
+
+        switch (id) {
+            case "USD":
+                System.out.println("Доллар США");
+                break;
+            case "EUR":
+                System.out.println("Евро");
+                break;
+            case "GBP":
+                System.out.println("Британский фунт");
+                break;
+            default:
+                System.out.println("Некорректное значение");
+
+
+        }
+
+
     }
 
 }
