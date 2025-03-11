@@ -127,15 +127,28 @@ public class homeWork_5 {
 
         System.out.println("Введите оценку от 1 до 5: ");
 
-        Scanner scanner2=new Scanner(System.in);
-        int num=scanner2.nextInt();
+        Scanner scanner2 = new Scanner(System.in);
+        int num = scanner2.nextInt();
 
         switch (num) {
             case 1:
                 System.out.println("Кол");
                 break;
             case 2:
-                System.out.println("");
+                System.out.println("Неудовлетворительно");
+                break;
+            case 3:
+                System.out.println("Удовлетворительно");
+                break;
+            case 4:
+                System.out.println("Хорошо");
+                break;
+            case 5:
+                System.out.println("Отлично");
+                break;
+            default:
+                System.out.println("Некорректный ввод");
+
         }
 
 
@@ -143,16 +156,101 @@ public class homeWork_5 {
 /* 5) Напишите программу, которая проверяет введенную букву (A-Z) и выводит сообщение о том,
 является ли она гласной (A, E, I, O, U, Y) или согласной.*/
 
+        System.out.println("Введите заглавную букву латинского алфавита: ");
+        Scanner scanner3 = new Scanner(System.in);
+        String letter = scanner3.next();
+        char character = letter.charAt(0);
+
+        switch (character) {
+            case 'A', 'E', 'I', 'U':
+                System.out.println("Гласная");
+                break;
+
+            case 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z':
+                System.out.println("Согласная");
+            case 'Y':
+                System.out.println("Является и гласной и согласной");
+                break;
+            default:
+                System.out.println("Некорректный ввод");
+
+
+        }
+
 
 //6) Напишите программу, которая по введенному символу определяет его тип: цифра, буква или специальный символ.
+
+        System.out.println("Введите символ с клавиатуры: ");
+
+        Scanner scanner4 = new Scanner(System.in);
+        String symbol = scanner4.next();
+        char character2 = symbol.charAt(0);
+
+        switch (character2) {
+            case 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z',
+                 'A', 'E', 'I', 'U', 'Y':
+                System.out.println("Заглавная буква");
+                break;
+
+            case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+                System.out.println("Цифра");
+                break;
+            case 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z',
+                 'a', 'e', 'i', 'u', 'y':
+                System.out.println("Строчная буква");
+                break;
+            case '-', '+', '*', '/', '?', '!', ',', '.', '"', ':', ';', ' ', '#', '@', '~', '`', ')', '(', '}',
+                 '{', '[', ']', '=', '|', '\\', '&', '^', '%', '$':
+
+                System.out.println("Специальный символ");
+                break;
+            default:
+                System.out.println("Некорректный ввод");
+        }
 
 
 /* 7) Напишите программу, которая выводит название операционной системы в зависимости от введенного кода:
 1 — Windows, 2 — Linux, 3 — macOS.*/
 
+        System.out.println("Введите цифровой код : 1,2 или 3: ");
+        Scanner scanner5 = new Scanner(System.in);
+        int code = scanner5.nextInt();
+
+        switch (code) {
+            case 1:
+                System.out.println("Windows");
+                break;
+            case 2:
+                System.out.println("Linux");
+                break;
+            case 3:
+                System.out.println("macOS");
+                break;
+            default:
+                System.out.println("Некорректный ввод");
+
+        }
+
 
 /* 8) Напишите программу, которая по введенному возрасту (в годах) выводит категорию человека:
 "Ребенок", "Подросток", "Взрослый", "Пожилой".*/
+
+        System.out.println("Введите возраст человека: ");
+        Scanner scanner6 = new Scanner(System.in);
+        int age = scanner6.nextInt();
+
+        if (age < 12) {
+            System.out.println("Это ребенок");
+        } else if (age >= 12 && age < 18) {
+            System.out.println("Это подросток");
+        } else if (age >= 18 && age < 60) {
+            System.out.println("Это взрослый");
+        } else if (age > 60 && age < 100) {
+            System.out.println("Пожилой");
+        } else {
+            System.out.println("Некорректный ввод");
+        }
+
 
 
 /* 9) Напишите программу, которая по введенному числу месяца (от 1 до 12) выводит сезон года:
