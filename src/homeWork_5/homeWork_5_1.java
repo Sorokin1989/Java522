@@ -1,5 +1,6 @@
 package homeWork_5;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class homeWork_5_1 {
@@ -73,26 +74,18 @@ public class homeWork_5_1 {
         Scanner scanner1 = new Scanner(System.in);
         int number = scanner1.nextInt();
 
-        switch (number) {
-            case 1:
-                System.out.println("Выбран первый счет");
-                break;
-            case 2:
-                System.out.println("Выбран второй счет");
-                break;
-            case 3:
-                System.out.println("Выбран третий счет");
-                break;
-            case 4:
-                System.out.println("Выбран четвертый счет");
-                break;
-            case 5:
-                System.out.println("Выбран пятый счет");
-                break;
-            default:
-                System.out.println("Введен некорректный номер ");
-
-        }
+        if (number == 1)
+            System.out.println("Выбран первый счет");
+        else if (number == 2)
+            System.out.println("Выбран второй счет");
+        else if (number == 3)
+            System.out.println("Выбран третий счет");
+        else if (number == 4)
+            System.out.println("Выбран четвертый счет");
+        else if (number == 5)
+            System.out.println("Выбран пятый счет");
+        else
+            System.out.println("Введено некорректное значение");
 
 
 /* 4) Напишите программу, которая принимает на вход оценку (целое число от 1 до 5)
@@ -104,26 +97,18 @@ public class homeWork_5_1 {
         Scanner scanner2 = new Scanner(System.in);
         int num = scanner2.nextInt();
 
-        switch (num) {
-            case 1:
-                System.out.println("Кол");
-                break;
-            case 2:
-                System.out.println("Неудовлетворительно");
-                break;
-            case 3:
-                System.out.println("Удовлетворительно");
-                break;
-            case 4:
-                System.out.println("Хорошо");
-                break;
-            case 5:
-                System.out.println("Отлично");
-                break;
-            default:
-                System.out.println("Некорректный ввод");
-
-        }
+        if (num == 1)
+            System.out.println("Кол");
+        else if (num == 2)
+            System.out.println("Неудовлетворительно");
+        else if (num == 3)
+            System.out.println("Удовлетворительно");
+        else if (num == 4)
+            System.out.println("Хорошо");
+        else if (num == 5)
+            System.out.println("Отлично");
+        else
+            System.out.println("Некорректный ввод");
 
 
 
@@ -190,20 +175,16 @@ public class homeWork_5_1 {
         Scanner scanner5 = new Scanner(System.in);
         int code = scanner5.nextInt();
 
-        switch (code) {
-            case 1:
-                System.out.println("Windows");
-                break;
-            case 2:
-                System.out.println("Linux");
-                break;
-            case 3:
-                System.out.println("macOS");
-                break;
-            default:
-                System.out.println("Некорректный ввод");
+        if (code == 1)
+            System.out.println("Windows");
+        else if (code == 2)
+            System.out.println("Linux");
+        else if (code == 3)
+            System.out.println("macOS");
+        else
 
-        }
+            System.out.println("Некорректный ввод");
+
 
 
 /* 8) Напишите программу, которая по введенному возрасту (в годах) выводит категорию человека:
@@ -234,33 +215,17 @@ public class homeWork_5_1 {
         Scanner scanner7 = new Scanner(System.in);
         int s = scanner7.nextInt();
 
-        switch (s) {
-            default:
-                System.out.println("Некорректный ввод");
-                break;
-            case 1:
-            case 2:
-            case 12:
-                System.out.println("Зима");
-                break;
-            case 3:
-            case 4:
-            case 5:
-                System.out.println("Весна");
-                break;
-            case 6:
-            case 7:
-            case 8:
-                System.out.println("Лето");
-                break;
-            case 9:
-            case 10:
-            case 11:
-                System.out.println("Осень");
-                break;
+        if (s == 1 || s == 2 || s == 12)
+            System.out.println("Зима");
+        else if (s == 3 || s == 4 || s == 5)
+            System.out.println("Весна");
+        else if (s == 6 || s == 7 || s == 8)
+            System.out.println("Лето");
+        else if (s == 9 || s == 10 || s == 11)
+            System.out.println("Осень");
+        else
+            System.out.println("Некорректный ввод");
 
-
-        }
 
 
         /* 10) Напишите программу, которая по введенному коду валюты (USD, EUR, GBP) выводит название валюты на русском языке:
@@ -268,27 +233,24 @@ public class homeWork_5_1 {
 
         System.out.println("Введите код валюты (USD, EUR, GBP)");
         Scanner scanner8 = new Scanner(System.in);
-        String id = scanner8.next();
+        String id = scanner8.nextLine();
 
-        switch (id) {
-            case "USD":
-                System.out.println("Доллар США");
-                break;
-            case "EUR":
-                System.out.println("Евро");
-                break;
-            case "GBP":
-                System.out.println("Британский фунт");
-                break;
-            default:
-                System.out.println("Некорректное значение");
+        if (Objects.equals(id, "USD"))
+            System.out.println("Доллар США");
+        else if (Objects.equals(id, "EUR"))
+            System.out.println("Евро");
+        else if (Objects.equals(id, "GBP"))
+            System.out.println("Британский фунт");
+        else
+            System.out.println("Некорректное значение");
 
-
-        }
 
 
     }
 
+
 }
+
+
 
 
