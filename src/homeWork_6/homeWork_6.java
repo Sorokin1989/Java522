@@ -129,11 +129,29 @@ public class homeWork_6 {
         int number1 = scanner.nextInt();
         for (int i = 1; i < number1; i++)
             System.out.print(i + " ");
-
-
+        System.out.println();
 //10. Вывести произведение чисел от 1 до N.
+        System.out.println("Введите число: ");
+        int result = 1;
+        int number2 = scanner.nextInt();
+        for (int i = 1; i <= number2; i++)
+            result = result * i;
+        System.out.println("Произведение чисел равно: " + result);
+
+
 //11. Найти количество чисел от 1 до N, которые делятся на 2 или 5.
+        System.out.println("введите число: ");
+        int l = 0;
+        int number3 = scanner.nextInt();
+        System.out.println("Всего чисел, которые делятся на 2 или на 5: ");
+        for (int i = 1; i <= number3; i++)
+            if (i % 2 == 0 || i % 5 == 0)
+                l = l + 1;
+        System.out.println(l);
+
+
 //12. Вывести сумму чисел от 1 до N. */
+
 
 
     }
