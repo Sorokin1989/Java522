@@ -151,7 +151,12 @@ public class homeWork_6 {
 
 
 //12. Вывести сумму чисел от 1 до N. */
-
+        System.out.println("Введите число: ");
+        int number4 = scanner.nextInt();
+        int sum2 = 0;
+        for (int i = 1; i <= number4; i++)
+            sum2 = sum2 + i;
+        System.out.println(sum2);
 
 
     }
