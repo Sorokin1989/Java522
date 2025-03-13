@@ -111,20 +111,26 @@ public class homeWork_6 {
 
 //7.  Вывести числа от 1 до 100, которые делятся на 3 без остатка.
         System.out.println("Числа, которые делятся на 3 без остатка: ");
-        for (int i=1;i<100; i++) {
+        for (int i = 1; i < 100; i++) {
             if (i % 3 == 0)
                 System.out.println(i);
         }
 
 //8.  Вывести сумму чисел от 1 до 50.
-        int sum=0;
-        for (int i=1; i<=50; i++)
-            sum=sum+i;
+        int sum = 0;
+        for (int i = 1; i <= 50; i++)
+            sum = sum + i;
         System.out.println();
         System.out.println("Сумма чисел от 1 до 50: " + sum);
-
+        System.out.println();
 
 //9.  Вывести все числа от 1 до N в одну строку через пробел.
+        System.out.println("Введите число: ");
+        int number1 = scanner.nextInt();
+        for (int i = 1; i < number1; i++)
+            System.out.print(i + " ");
+
+
 //10. Вывести произведение чисел от 1 до N.
 //11. Найти количество чисел от 1 до N, которые делятся на 2 или 5.
 //12. Вывести сумму чисел от 1 до N. */
