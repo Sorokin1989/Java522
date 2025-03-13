@@ -159,6 +159,7 @@ public class homeWork_6 {
         System.out.println(sum2);
 
 
+
     }
 }
 
