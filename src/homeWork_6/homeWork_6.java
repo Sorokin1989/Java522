@@ -7,13 +7,13 @@ public class homeWork_6 {
 
         // 1. Вывести числа от 10 до 1 в обратном порядке.
         for (int i = 10; i > 0; i--)
-            System.out.println(i);
+            System.out.print(i+" ");
 
         System.out.println();
 
 // 2.  Вывести все нечётные числа от 1 до 50.
         for (int i = 1; i < 50; i += 2)
-            System.out.println(i);
+            System.out.print(i+ " ");
         System.out.println();
 
 
