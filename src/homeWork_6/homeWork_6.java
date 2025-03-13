@@ -127,7 +127,7 @@ public class homeWork_6 {
 //9.  Вывести все числа от 1 до N в одну строку через пробел.
         System.out.println("Введите число: ");
         int number1 = scanner.nextInt();
-        for (int i = 1; i < number1; i++)
+        for (int i = 1; i <= number1; i++)
             System.out.print(i + " ");
         System.out.println();
 //10. Вывести произведение чисел от 1 до N.
@@ -137,10 +137,11 @@ public class homeWork_6 {
         for (int i = 1; i <= number2; i++)
             result = result * i;
         System.out.println("Произведение чисел равно: " + result);
+        System.out.println();
 
 
 //11. Найти количество чисел от 1 до N, которые делятся на 2 или 5.
-        System.out.println("введите число: ");
+        System.out.println("Введите число: ");
         int l = 0;
         int number3 = scanner.nextInt();
         System.out.println("Всего чисел, которые делятся на 2 или на 5: ");
@@ -148,6 +149,7 @@ public class homeWork_6 {
             if (i % 2 == 0 || i % 5 == 0)
                 l = l + 1;
         System.out.println(l);
+        System.out.println();
 
 
 //12. Вывести сумму чисел от 1 до N. */
@@ -156,7 +158,7 @@ public class homeWork_6 {
         int sum2 = 0;
         for (int i = 1; i <= number4; i++)
             sum2 = sum2 + i;
-        System.out.println(sum2);
+        System.out.println("Сумма чисел от 1 до введенного числа равна: " + sum2);
 
 
 
