@@ -15,16 +15,30 @@ public class Test {
 
        //    i++;
        //    System.out.println(i);
+       //Scanner scanner=new Scanner(System.in);
+       //System.out.println("Enter num start: ");
+       //int start=scanner.nextInt();
+       //System.out.println("Enter num end");
+       //int end=scanner.nextInt();
+       //for (int i = start; i <= end; i++) {
+       //    System.out.println(i);
+
+       //
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter num start: ");
-        int start=scanner.nextInt();
-        System.out.println("Enter num end");
-        int end=scanner.nextInt();
-        for (int i = start; i <= end; i++) {
+
+        System.out.println("Введите число: ");
+        int num= scanner.nextInt();
+
+
+        for (int i = 0; i <=100 ; i++) {
             System.out.println(i);
 
-        }
+            if (i==num)
+                break;
 
+
+
+        }
 
 
 
