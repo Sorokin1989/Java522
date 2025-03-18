@@ -63,16 +63,20 @@ public class HomeWork_7 {
 
         int h = 7;
 
-        for (int i = 1; i <= h; i++) {
+        for (int i = 0; i <= h; i++) {
             for (int j = h; j > i; j--) {
                 System.out.print(" ");
             }
-            for (int k = 2; k <= (2+i-1); k++) {
+            for (int k = 1; k < (i + 1); k++) {
                 System.out.print(" *");
             }
             System.out.println();
 
         }
+
+        // Задание_7
+
+        // Мощная задача
 
 
     }
