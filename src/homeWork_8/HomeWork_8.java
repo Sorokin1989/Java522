@@ -72,29 +72,29 @@ public class HomeWork_8 {
 
         // Задание_5 ромб
 
-        int k = 10;
+        int k = 8;
         for (int i = 0; i < k; i++) {
             for (int j = k; j > i + 1; j--) {
-                System.out.print(" ");
+                System.out.print("  ");
             }
             for (int j = 0; j < i; j++) {
                 if (j == 0 || j == i - 1) {
-                    System.out.print("* ");
+                    System.out.print(" *  ");
                 } else {
-                    System.out.print("  ");
+                    System.out.print("    ");
                 }
             }
             System.out.println();
         }
-        for (int i = 0; i < k; i++) {
+        for (int i = 0; i <= k; i++) {
             for (int j = 0; j < i; j++) {
-                System.out.print(" ");
+                System.out.print("  ");
             }
             for (int j = k - 1; j > i; j--) {
                 if (j == i + 1 || j == k - 1) {
-                    System.out.print("* ");
+                    System.out.print(" *  ");
                 } else {
-                    System.out.print("  ");
+                    System.out.print("    ");
                 }
 
             }
