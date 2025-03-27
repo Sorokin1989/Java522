@@ -16,7 +16,7 @@ public class HomeWork_10 {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         System.out.println(ANSI_RED + "             <<ИГРА>>" + ANSI_RESET + "\n         <<Угадай Число>>");
 
@@ -31,11 +31,15 @@ public class HomeWork_10 {
         int randomNumber = random.nextInt(max - min + 1) + min;
         int i = 0;
         int count = 5;
+        int shetchik=0;
+
 
         while (true) {
             count--;
             i++;
             int number = scanner.nextInt();
+
+
 
             if (number > max || number < min) {
                 System.out.println("Вы ввели число вне диапазона!!!\n" + "ЗАПУСТИТЕ ИГРУ ЗАНОВО!!!");
@@ -44,25 +48,34 @@ public class HomeWork_10 {
 
 
             if (i == 5) {
-                System.out.println("Вы израсходовали свои попытки\n" + ANSI_GREEN + "НАЧНИТЕ ЗАНОВО!!!\n" + ANSI_RESET +
-                        "Осталось попыток:" + " " + count);
+            Thread.sleep(2000);
+                System.out.println(ANSI_PURPLE+ "       GAME OVER\n" + ANSI_RESET + "Вы израсходовали свои попытки\n" + ANSI_GREEN
+                        + "    НАЧНИТЕ ЗАНОВО!!!\n" + ANSI_RESET +
+                        "    Осталось попыток:" + " " + count);
                 return;
             }
-
+//int count2=1;
             if (number == randomNumber) {
+
                 System.out.println(ANSI_YELLOW + "     <<УРА!!!ПОБЕДА>>\n" + ANSI_RESET + "Вы угадали число). Это число " + number
                         + "\n Осталось попыток:" + " " + count);
                 break;
+
             } else if (number > randomNumber) {
+
+
                 System.out.println("Вы ввели больше, чем загадал компьютер.Число меньше, чем " + number +
                         "\n Осталось попыток:" + " " + count);
             } else {
+
+
                 System.out.println("Вы ввели меньше, чем загадал компьютер. Число больше, чем " + number +
                         "\n Осталось попыток:" + " " + count);
             }
 
 
         }
+        Thread.sleep(2500);
 
         System.out.println("Количество попыток: " + i);
         scanner.close();
