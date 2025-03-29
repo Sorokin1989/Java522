@@ -20,6 +20,8 @@ public class HomeWork_10 {
 
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
+        int min = 0;
+        int max = 100;
 
 //
         while (true) {
@@ -37,15 +39,13 @@ public class HomeWork_10 {
                 System.out.println(ANSI_RED + "             <<ИГРА>>" + ANSI_RESET + "\n         <<Угадай Число>>");
 
 
-                int min = 0;
-                int max = 100;
+
                 System.out.println("    Введите любое число от" + " " + min + " " + "до" + " " + max +
                         ANSI_BLUE + "\n У Вас 5 попыток, чтобы угадать число!!!" + ANSI_RESET);
 
                 int randomNumber = random.nextInt(max - min + 1) + min;
                 int i = 0;
                 int count = 5;
-                int shetchik = 0;
 
 
                 while (true) {
@@ -67,7 +67,6 @@ public class HomeWork_10 {
                                 "    Осталось попыток:" + " " + count);
                         return;
                     }
-                    //int count2=1;
                     if (number == randomNumber) {
 
                         System.out.println(ANSI_YELLOW + "     <<УРА!!!ПОБЕДА>>\n" + ANSI_RESET + "Вы угадали число). Это число " + number
@@ -107,8 +106,46 @@ public class HomeWork_10 {
                     num = scanner.nextInt();
                     if (num == 1)
                         System.out.println("Имя");
-                    else if (num == 2)
-                        System.out.println("Выберите диапазон");
+                    else if (num == 2) {
+                        System.out.println("\n-------------Выберите диапазон-------------");
+
+                        while (true) {
+                            System.out.println("1 - Поменять min");
+                            System.out.println("2 - Поменять max");
+                            System.out.println("3 - Назад");
+
+                            int select = scanner.nextInt();
+                            System.out.println("Ваш диапазон: " + "["+ min + "- " + max + "]");
+
+
+
+                            if (select==1) {
+                                System.out.println("Введите min: ");
+                                int tempMin=scanner.nextInt();
+                                if (tempMin>0)
+                                    min=tempMin;
+                                else
+                                    System.out.println("Повторите ввод еще раз!!!");
+                            }
+                            else if (select==2) {
+                                System.out.println("Введите max: ");
+                                int tempMax=scanner.nextInt();
+                                if (tempMax<100)
+                                    max=tempMax;
+                                else System.out.println("Повторите ввод еще раз!!!");
+                            }
+                            else if (select==3) {
+                                System.out.println("Назад");
+                                if (min<max)
+                                break;
+                                else System.out.println("min должен быть меньше max!!!\n Введите корректные значения!!!");
+                            }else {
+                                System.out.println("Введите верное значение!!!\n Повторите попытку!");
+                            }
+
+
+                        }
+                    }
                     else if (num == 3)
                         System.out.println("Уровень сложности");
                     else if (num == 4) {
@@ -125,7 +162,7 @@ public class HomeWork_10 {
                 System.out.println("Выход");
                 break;
             } else
-                System.out.println("Вы ввели нерректные данные!!!\n Повторите попытку!");
+                System.out.println("Вы ввели некорректные данные!!!\n Повторите попытку!");
 
         }
 
