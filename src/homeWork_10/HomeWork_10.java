@@ -23,8 +23,10 @@ public class HomeWork_10 {
         int min = 0;
         int max = 100;
         String name = "User";
+        int attempts=0;
+        int limit=5;
+        boolean isHelp=true;
 
-//
         while (true) {
             System.out.println("1-Продолжить");
             System.out.println("2-Новая игра");
@@ -41,15 +43,14 @@ public class HomeWork_10 {
 
 
                 System.out.println(name + ",    Введите любое число от" + " " + min + " " + "до" + " " + max +
-                        ANSI_BLUE + "\n У Вас 5 попыток, чтобы угадать число!!!" + ANSI_RESET);
+                        ANSI_BLUE + "\n У Вас" + " " +  limit + " " + "попыток, чтобы угадать число!!!" + ANSI_RESET);
 
                 int randomNumber = random.nextInt(max - min + 1) + min;
                 int i = 0;
-                int count = 5;
 
 
                 while (true) {
-                    count--;
+                    limit--;
                     i++;
                     int number = scanner.nextInt();
 
@@ -64,26 +65,27 @@ public class HomeWork_10 {
                         Thread.sleep(2000);
                         System.out.println(ANSI_PURPLE + "       GAME OVER\n" + ANSI_RESET + name + ",Вы израсходовали свои попытки\n" + ANSI_GREEN
                                 + "    НАЧНИТЕ ЗАНОВО!!!\n" + ANSI_RESET +
-                                "    Осталось попыток:" + " " + count);
+                                "    Осталось попыток:" + " " + limit);
                         return;
                     }
                     if (number == randomNumber) {
 
                         System.out.println(ANSI_YELLOW + "     <<УРА!!!ПОБЕДА>>\n" + ANSI_RESET + name + ",Вы угадали число). Это число " + number
-                                + "\n Осталось попыток:" + " " + count);
+                                + "\n Осталось попыток:" + " " + limit);
                         break;
 
                     } else if (number > randomNumber) {
-
-
-                        System.out.println(name + ",Вы ввели больше, чем загадал компьютер.Число меньше, чем " + number +
-                                "\n Осталось попыток:" + " " + count);
+                        if (isHelp) {
+                            System.out.println(name + ",Вы ввели больше, чем загадал компьютер.Число меньше, чем " + number);
+                        }
+                        System.out.println("\n Осталось попыток:" + " " + limit);
 
                     } else {
+                        if (isHelp) {
+                            System.out.println(name + ",Вы ввели меньше, чем загадал компьютер. Число больше, чем " + number);
+                        }
+                        System.out.println("\n Осталось попыток:" + " " + limit);
 
-
-                        System.out.println(name + ",Вы ввели меньше, чем загадал компьютер. Число больше, чем " + number +
-                                "\n Осталось попыток:" + " " + count);
                     }
 
 
@@ -144,30 +146,58 @@ public class HomeWork_10 {
 
 
                         }
-                    } else if (num == 3)
-                        System.out.println("Уровень сложности");
-                    else if (num == 4) {
-                        System.out.println("Назад");
+                    } else if (num == 3) {
+                        System.out.println("\n-------------Уровень сложности-------------");
+
+
+                        while (true) {
+
+                            System.out.println("1 - Количество попыток");
+                            System.out.println("2 - Подсказки");
+                            System.out.println("3- Назад");
+
+                            int select = scanner.nextInt();
+
+                            if (select == 1) {
+                                System.out.println("Введите количество попыток: ");
+                                int tempLimit = scanner.nextInt();
+                                if (tempLimit>0) {
+                                    limit=tempLimit;
+                                    System.out.println("Теперь количество попыток: " + limit);
+                                } else {
+                                    System.out.println("Количество попыток не может быть равно или меньше 0");
+                                }
+
+                            } else if (select == 2) {
+
+                                System.out.println("true - с подсказками");
+                                System.out.println("false - без подсказок");
+
+                             isHelp=scanner.nextBoolean();
+                                System.out.println("Подсказки " + isHelp);
+
+
+
+
+                            } else if (select==3){
+                                System.out.println("Назад");
+                                break;
+                            }
+
+
+                        }
+                    } else if (num == 4) {
+                        System.out.println("Выход");
                         break;
-                    } else {
-                        System.out.println(name + ",Вы ввели некорректные данные!!! Введите еще раз!!!");
-                        break;
-                    }
+                    } else
+                        System.out.println(name + ",Вы ввели некорректные данные!!!\n Повторите попытку!");
+
                 }
 
 
-            } else if (num == 4) {
-                System.out.println("Выход");
-                break;
-            } else
-                System.out.println(name + ",Вы ввели некорректные данные!!!\n Повторите попытку!");
+            }
 
         }
 
-
     }
-
 }
-
-
-
