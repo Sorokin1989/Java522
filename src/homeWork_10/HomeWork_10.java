@@ -24,10 +24,12 @@ public class HomeWork_10 {
         int max = 100;
         String name = "User";
         int attempts=0;
-        int limit=5;
+        int limit=0;
         boolean isHelp=true;
 
         while (true) {
+
+            System.out.println("ПЕРЕД НАЧАЛОМ ИГРЫ!!!\nВВЕДИТЕ КОЛИЧЕСТВО ПОПЫТОК В МЕНЮ <Настройки> -> <Уровень сложности> -> <Количество попыток>");
             System.out.println("1-Продолжить");
             System.out.println("2-Новая игра");
             System.out.println("3-Настройки");
@@ -44,14 +46,18 @@ public class HomeWork_10 {
 
                 System.out.println(name + ",    Введите любое число от" + " " + min + " " + "до" + " " + max +
                         ANSI_BLUE + "\n У Вас" + " " +  limit + " " + "попыток, чтобы угадать число!!!" + ANSI_RESET);
+                if (limit==0) {
+                    System.out.println("ВВЕДИТЕ КОЛИЧЕСТВО ПОПЫТОК В МЕНЮ <Настройки>\n НАЧНИТЕ ЗАНОВО!!!");
+                    break;
+                }
 
                 int randomNumber = random.nextInt(max - min + 1) + min;
-                int i = 0;
+                //int i = 0;
 
 
                 while (true) {
                     limit--;
-                    i++;
+                    attempts++;
                     int number = scanner.nextInt();
 
 
@@ -61,7 +67,7 @@ public class HomeWork_10 {
                     }
 
 
-                    if (i == 5) {
+                    if (limit==0) {
                         Thread.sleep(2000);
                         System.out.println(ANSI_PURPLE + "       GAME OVER\n" + ANSI_RESET + name + ",Вы израсходовали свои попытки\n" + ANSI_GREEN
                                 + "    НАЧНИТЕ ЗАНОВО!!!\n" + ANSI_RESET +
@@ -92,7 +98,8 @@ public class HomeWork_10 {
                 }
                 Thread.sleep(2500);
 
-                System.out.println("Количество попыток: " + i);
+                System.out.println("Вы угадали за" + " " +  attempts + " " +  "попыток: ");
+                break;
 
             } else if (num == 3) {
                 System.out.println("-------------Настройки--------------");
@@ -187,7 +194,7 @@ public class HomeWork_10 {
 
                         }
                     } else if (num == 4) {
-                        System.out.println("Выход");
+                        System.out.println("Назад");
                         break;
                     } else
                         System.out.println(name + ",Вы ввели некорректные данные!!!\n Повторите попытку!");
@@ -195,9 +202,14 @@ public class HomeWork_10 {
                 }
 
 
-            }
+             } else if (num == 4) {
+            System.out.println("Выход");
+            break;
+        } else
+            System.out.println(name + ",Вы ввели некорректные данные!!!\n Повторите попытку!");
 
         }
+
 
     }
 }
