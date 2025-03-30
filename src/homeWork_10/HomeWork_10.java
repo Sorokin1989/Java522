@@ -29,17 +29,17 @@ public class HomeWork_10 {
 
         while (true) {
             System.out.println(ANSI_CYAN + "ПЕРЕД НАЧАЛОМ ИГРЫ!!!\nВВЕДИТЕ КОЛИЧЕСТВО ПОПЫТОК В МЕНЮ <Настройки> -> <Уровень сложности> -> <Количество попыток>" + ANSI_RESET);
-            System.out.println("1-Продолжить");
-            System.out.println("2-Новая игра");
-            System.out.println("3-Настройки");
-            System.out.println("4-Выход");
+            System.out.println("1 -> Продолжить");
+            System.out.println("2 -> Новая игра");
+            System.out.println("3 -> Настройки");
+            System.out.println("4 -> Выход");
 
             int num = scanner.nextInt();
 
             if (num == 1)
                 System.out.println("Продолжить"); // не смог реализовать!!!
             else if (num == 2) {
-                System.out.println("------------Новая игра--------------");
+                System.out.println(ANSI_CYAN + "<------------Новая игра-------------->" + ANSI_RESET);
                 System.out.println(ANSI_RED + "             <<ИГРА>>" + ANSI_RESET + "\n         <<Угадай Число>>");
                 System.out.println(name + ", Введите любое число от" + " " + min + " " + "до" + " " + max +
                         ANSI_BLUE + "\n У Вас" + " " + limit + " " + "попыток, чтобы угадать число!!!" + ANSI_RESET);
@@ -90,14 +90,14 @@ public class HomeWork_10 {
                 break;
 
             } else if (num == 3) {
-                System.out.println("-------------Настройки--------------");
+                System.out.println(ANSI_RED + "<-------------Настройки-------------->" + ANSI_RESET);
 
                 while (true) {
 
-                    System.out.println("1-Имя");
-                    System.out.println("2-Выберите диапазон");
-                    System.out.println("3-Уровень сложности");
-                    System.out.println("4-Назад");
+                    System.out.println("1 -> Имя");
+                    System.out.println("2 -> Выберите диапазон");
+                    System.out.println("3 -> Уровень сложности");
+                    System.out.println("4 -> Назад");
 
                     num = scanner.nextInt();
                     if (num == 1) {
@@ -107,14 +107,14 @@ public class HomeWork_10 {
                         scanner = new Scanner(System.in);
 
                     } else if (num == 2) {
-                        System.out.println("\n-------------Выберите диапазон-------------");
+                        System.out.println(ANSI_BLUE + "\n<-------------Выберите диапазон------------->" + ANSI_RESET);
 
                         while (true) {
 
                             System.out.println("Ваш диапазон: " + "[" + min + "- " + max + "]");
-                            System.out.println("1 - Поменять min");
-                            System.out.println("2 - Поменять max");
-                            System.out.println("3 - Назад");
+                            System.out.println("1 -> Поменять min");
+                            System.out.println("2 -> Поменять max");
+                            System.out.println("3 -> Назад");
 
                             int select = scanner.nextInt();
 
@@ -135,13 +135,13 @@ public class HomeWork_10 {
                             }
                         }
                     } else if (num == 3) {
-                        System.out.println("\n-------------Уровень сложности-------------");
+                        System.out.println(ANSI_PURPLE + "\n-------------Уровень сложности-------------" + ANSI_RESET);
 
                         while (true) {
 
-                            System.out.println("1 - Количество попыток");
-                            System.out.println("2 - Подсказки");
-                            System.out.println("3- Назад");
+                            System.out.println("1 -> Количество попыток");
+                            System.out.println("2 -> Подсказки");
+                            System.out.println("3 -> Назад");
 
                             int select = scanner.nextInt();
 
@@ -156,8 +156,8 @@ public class HomeWork_10 {
                                 }
 
                             } else if (select == 2) {
-                                System.out.println("true - с подсказками");
-                                System.out.println("false - без подсказок");
+                                System.out.println("--> true - с подсказками");
+                                System.out.println("--> false - без подсказок");
 
                                 isHelp = scanner.nextBoolean();
                                 System.out.println("Подсказки " + isHelp);
