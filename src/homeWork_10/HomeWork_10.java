@@ -16,7 +16,7 @@ public class HomeWork_10 {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public static void main(String[] args) throws InterruptedException, InputMismatchException, IllegalStateException {
+    public static void main(String[] args) throws InterruptedException{
 
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -37,7 +37,7 @@ public class HomeWork_10 {
             int num = scanner.nextInt();
 
             if (num == 1)
-                System.out.println("Продолжить");
+                System.out.println("Продолжить"); // не смог реализовать!!!
             else if (num == 2) {
                 System.out.println("------------Новая игра--------------");
                 System.out.println(ANSI_RED + "             <<ИГРА>>" + ANSI_RESET + "\n         <<Угадай Число>>");
@@ -53,6 +53,8 @@ public class HomeWork_10 {
                     limit--;
                     attempts++;
                     int number = scanner.nextInt();
+
+
 
                     if (number > max || number < min) {
                         System.out.println(name + ",Вы ввели число вне диапазона!!!\n" + "ЗАПУСТИТЕ ИГРУ ЗАНОВО!!!");
