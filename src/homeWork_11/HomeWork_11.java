@@ -1,6 +1,6 @@
 package homeWork_11;
 
-import java.util.Random;
+import java.util.Scanner;
 
 public class HomeWork_11 {
     public static void main(String[] args) {
@@ -251,9 +251,63 @@ public class HomeWork_11 {
         //    }
 
         //15. Заполнить массив из 12 элементов случайными числами от -20 до 20 и вывести произведение всех положительных элементов.
-        Random random = new Random();
-        int min=-20;
-        int max=20;
+        //
+        //    Random random = new Random();
+        //    int min = -20;
+        //    int max = 20;
+        //    int multiplication = 1;
+//
+        //    int[] arr = new int[12];
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = random.nextInt(max - min + 1) + min;
+        //        System.out.print(arr[i] + " ");
+        //    }
+        //    for (int i = 0; i < arr.length; i++) {
+        //        if (arr[i] > 0) {
+        //            multiplication *= arr[i];
+        //        }
+//
+        //    }
+        //    System.out.print("\nПроизведение положительных чисел: " + " " + multiplication);
+
+        // 16. Создать массив из 9 элементов заполнить случайными числами от -5 до 5 и вывести индексы всех нулевых элементов.
+
+        //   Random random = new Random();
+
+        //   int min = -5;
+        //   int max = 5;
+        //   int[] arr = new int[9];
+
+        //   for (int i = 0; i < arr.length; i++) {
+        //       arr[i] = random.nextInt(max - min + 1) + min;
+        //       System.out.print(arr[i] + " ");
+        //   }
+        //   System.out.print("\nИндекс нулевого элемента: ");
+        //   for (int i = 0; i < arr.length; i++) {
+        //       if (arr[i] == 0)
+        //           System.out.print(i + ", ");
+        //   }
+
+        //17. Заполнить массив из 10 элементов последовательностью 1, 2, 3, 4, ..., 10 и вывести сумму элементов с четными индексами.
+
+        Scanner scanner = new Scanner(System.in);
+
+        int[] arr = new int[10];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                sum += arr[i];
+            }
+
+        }
+        System.out.println("\nСумма элементов с четными индексами: " + " " + sum);
 
 
     }
