@@ -378,29 +378,57 @@ public class HomeWork_11 {
         //   }
 
         // 24. Создать массив из 9 элементов и поменять местами первый и последний элементы.
+        //   Random random = new Random();
+        //   int min = 1;
+        //   int max = 20;
+
+        //   int[] arr = new int[9];
+        //   System.out.print("Исходный массив: ");
+        //   for (int i = 0; i < arr.length; i++) {
+        //       arr[i] = random.nextInt(max - min + 1) + min;
+        //       System.out.print(arr[i] + " ");
+        //   }
+        //   System.out.print("\nМассив после замены элементов: ");
+        //
+        //   for (int i = 0; i < arr.length; i++) {
+        //       if (arr.length > 1) {
+        //           int number = arr[0];
+        //           arr[0] = arr[arr.length - 1];
+        //           arr[arr.length - 1] = number;
+        //       }
+        //       System.out.print(arr[i] + " ");
+        //   }
+
+        //25. Заполнить массив из 8 элементов случайными числами и найти разницу между максимальным и минимальным элементами.
+
         Random random = new Random();
-        int min = 1;
+        int min = 0;
         int max = 20;
 
-        int[] arr = new int[9];
-        System.out.print("Исходный массив: ");
+        int[] arr = new int[8];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(max - min + 1) + min;
             System.out.print(arr[i] + " ");
         }
-        System.out.print("\nМассив после замены элементов: ");
 
-
+        int maxx = arr[0];
+        int minn = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr.length > 1) {
-                int number = arr[0];
-                arr[0] = arr[arr.length - 1];
-                arr[arr.length - 1] = number;
+            if (arr[i] > maxx) {
+                maxx = arr[i];
             }
-            System.out.print(arr[i] + " ");
-
-
         }
+        System.out.println();
+
+        System.out.println("Максимальное значение: " + maxx);
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < minn) {
+                minn = arr[i];
+            }
+        }
+        System.out.print("Минимальное значение: " + minn);
+
+        System.out.println("\nРазница между max и min" + " " + (maxx - minn));
 
 
     }
