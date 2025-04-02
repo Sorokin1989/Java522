@@ -1,6 +1,6 @@
 package homeWork_11;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class HomeWork_11 {
     public static void main(String[] args) {
@@ -290,24 +290,44 @@ public class HomeWork_11 {
 
         //17. Заполнить массив из 10 элементов последовательностью 1, 2, 3, 4, ..., 10 и вывести сумму элементов с четными индексами.
 
-        Scanner scanner = new Scanner(System.in);
+        //    Scanner scanner = new Scanner(System.in);
+//
+        //    int[] arr = new int[10];
+//
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = scanner.nextInt();
+        //    }
+        //    for (int i = 0; i < arr.length; i++) {
+        //        System.out.print(arr[i] + " ");
+        //    }
+        //    int sum = 0;
+        //    for (int i = 0; i < arr.length; i++) {
+        //        if (i % 2 == 0) {
+        //            sum += arr[i];
+        //        }
+//
+        //    }
+        //    System.out.println("\nСумма элементов с четными индексами: " + " " + sum);
 
-        int[] arr = new int[10];
+        //18. Создать массив из 6 элементов и проверить, есть ли в нем хотя бы один отрицательный элемент.
 
+        Random random = new Random();
+        int min = -5;
+        int max = 5;
+        int count = 0;
+
+        int[] arr = new int[6];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = scanner.nextInt();
-        }
-        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(max - min + 1) + min;
             System.out.print(arr[i] + " ");
         }
-        int sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (i % 2 == 0) {
-                sum += arr[i];
+            if (arr[i] < 0) {
+                count++;
             }
 
         }
-        System.out.println("\nСумма элементов с четными индексами: " + " " + sum);
+        System.out.println("\nКоличество отрицательных элементов: " + " " + count);
 
 
     }
