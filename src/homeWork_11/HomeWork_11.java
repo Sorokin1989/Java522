@@ -432,6 +432,27 @@ public class HomeWork_11 {
 
         //26. Создать массив из 10 элементов и посчитать, сколько элементов равны заданному числу.
 
+        Random random = new Random();
+        int number = 35;
+        int min = 0;
+        int max = 50;
+        int count = 0;
+
+        int[] arr = new int[10];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(max - min + 1) + min;
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < arr.length; i++) {
+            if (number == arr[i]) {
+                count++;
+            }
+
+        }
+        System.out.print("Количество элементов равных числу: " + number + " " + "равно: " + count);
+
 
         //27. Заполнить массив из 6 элементов квадратами чисел от 1 до 6.
 
@@ -449,20 +470,26 @@ public class HomeWork_11 {
         //}
 
         //28. Создать массив из 9 элементов и заменить каждый элемент на противоположный по знаку.
-        Random random = new Random();
-        int min = -10;
-        int max = 10;
+        //    Random random = new Random();
+        //    int min = -10;
+        //    int max = 10;
 
-        int[] arr = new int[9];
-        System.out.print("Исходный массив: ");
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(max - min + 1) + min;
-            System.out.print(arr[i] + " ");
-        }
-        System.out.print("\nМассив с противоположными знаками: ");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(-arr[i] + " ");
-        }
+        //    int[] arr = new int[9];
+        //    System.out.print("Исходный массив: ");
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = random.nextInt(max - min + 1) + min;
+        //        System.out.print(arr[i] + " ");
+        //    }
+        //    System.out.print("\nМассив с противоположными знаками: ");
+        //    for (int i = 0; i < arr.length; i++) {
+        //        System.out.print(-arr[i] + " ");
+        //    }
+        //29. Заполнить массив из 12 элементов так, чтобы значения элементов с четными индексами были равны 0, а с нечетными индексами - равны их индексам.
+// сделали на уроке!
+
+
+//   30. Создать массив из 10 элементов и найти сумму элементов, стоящих на позициях, кратных 3
+        //сделали на уроке!
 
 
     }
