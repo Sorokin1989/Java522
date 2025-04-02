@@ -311,23 +311,71 @@ public class HomeWork_11 {
 
         //18. Создать массив из 6 элементов и проверить, есть ли в нем хотя бы один отрицательный элемент.
 
-        Random random = new Random();
-        int min = -5;
-        int max = 5;
-        int count = 0;
+        //    Random random = new Random();
+        //    int min = -5;
+        //    int max = 5;
+        //    int count = 0;
 
-        int[] arr = new int[6];
+        //    int[] arr = new int[6];
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = random.nextInt(max - min + 1) + min;
+        //        System.out.print(arr[i] + " ");
+        //    }
+        //    for (int i = 0; i < arr.length; i++) {
+        //        if (arr[i] < 0) {
+        //            count++;
+        //        }
+
+        //    }
+        //    System.out.println("\nКоличество отрицательных элементов: " + " " + count);
+
+        //19. Заполнить массив из 11 элементов числами от 11 до 1 в обратном порядке.
+
+        //    Scanner scanner = new Scanner(System.in);
+        //    int[] arr = new int[11];
+//
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = scanner.nextInt();
+        //    }
+        //    for (int i = arr.length - 1; i >= 0; i--) {
+        //        System.out.print(arr[i] + " ");
+        //    }
+//
+        //20. Создать массив из 5 элементов, заполнить его случайными числами и определить, сколько элементов больше среднего арифметического
+        // решали на уроке!
+
+        //21. Заполнить массив из 10 элементов кубами индексов (0, 1, 8, 27, ...).
+
+        // int[] arr = new int[10];
+
+        // for (int i = 0; i < arr.length; i++) {
+        //     arr[i] = i * i * i;
+        // }
+        // for (int i = 0; i < arr.length; i++) {
+        //     System.out.print(arr[i] + " ");
+        // }
+
+        // 22. Создать массив из 7 элементов и посчитать, сколько раз в нем меняется знак числа при переходе от элемента к элементу.
+        // делали на уроке
+
+        //23. Заполнить массив из 12 элементов случайными числами от 1 до 100 и вывести числа, кратные 5.
+
+        Random random = new Random();
+        int min = 1;
+        int max = 100;
+
+        int[] arr = new int[12];
+        System.out.print("Массив: ");
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(max - min + 1) + min;
             System.out.print(arr[i] + " ");
         }
+        System.out.print("\nЧисла, кратные 5: ");
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < 0) {
-                count++;
-            }
+            if (arr[i] % 5 == 0)
+                System.out.print(arr[i] + " ");
 
         }
-        System.out.println("\nКоличество отрицательных элементов: " + " " + count);
 
 
     }
