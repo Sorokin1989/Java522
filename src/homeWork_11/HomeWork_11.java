@@ -360,20 +360,45 @@ public class HomeWork_11 {
 
         //23. Заполнить массив из 12 элементов случайными числами от 1 до 100 и вывести числа, кратные 5.
 
+        //   Random random = new Random();
+        //   int min = 1;
+        //   int max = 100;
+
+        //   int[] arr = new int[12];
+        //   System.out.print("Массив: ");
+        //   for (int i = 0; i < arr.length; i++) {
+        //       arr[i] = random.nextInt(max - min + 1) + min;
+        //       System.out.print(arr[i] + " ");
+        //   }
+        //   System.out.print("\nЧисла, кратные 5: ");
+        //   for (int i = 0; i < arr.length; i++) {
+        //       if (arr[i] % 5 == 0)
+        //           System.out.print(arr[i] + " ");
+
+        //   }
+
+        // 24. Создать массив из 9 элементов и поменять местами первый и последний элементы.
         Random random = new Random();
         int min = 1;
-        int max = 100;
+        int max = 20;
 
-        int[] arr = new int[12];
-        System.out.print("Массив: ");
+        int[] arr = new int[9];
+        System.out.print("Исходный массив: ");
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(max - min + 1) + min;
             System.out.print(arr[i] + " ");
         }
-        System.out.print("\nЧисла, кратные 5: ");
+        System.out.print("\nМассив после замены элементов: ");
+
+
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 5 == 0)
-                System.out.print(arr[i] + " ");
+            if (arr.length > 1) {
+                int number = arr[0];
+                arr[0] = arr[arr.length - 1];
+                arr[arr.length - 1] = number;
+            }
+            System.out.print(arr[i] + " ");
+
 
         }
 
