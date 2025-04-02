@@ -1,7 +1,6 @@
 package homeWork_11;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class HomeWork_11 {
     public static void main(String[] args) {
@@ -402,51 +401,67 @@ public class HomeWork_11 {
 
         //25. Заполнить массив из 8 элементов случайными числами и найти разницу между максимальным и минимальным элементами.
 
-    //   Random random = new Random();
-    //   int min = 0;
-    //   int max = 20;
+        //   Random random = new Random();
+        //   int min = 0;
+        //   int max = 20;
 
-    //   int[] arr = new int[8];
-    //   for (int i = 0; i < arr.length; i++) {
-    //       arr[i] = random.nextInt(max - min + 1) + min;
-    //       System.out.print(arr[i] + " ");
-    //   }
+        //   int[] arr = new int[8];
+        //   for (int i = 0; i < arr.length; i++) {
+        //       arr[i] = random.nextInt(max - min + 1) + min;
+        //       System.out.print(arr[i] + " ");
+        //   }
 
-    //   int maxx = arr[0];
-    //   int minn = arr[0];
-    //   for (int i = 0; i < arr.length; i++) {
-    //       if (arr[i] > maxx) {
-    //           maxx = arr[i];
-    //       }
-    //   }
-    //   System.out.println();
+        //   int maxx = arr[0];
+        //   int minn = arr[0];
+        //   for (int i = 0; i < arr.length; i++) {
+        //       if (arr[i] > maxx) {
+        //           maxx = arr[i];
+        //       }
+        //   }
+        //   System.out.println();
 
-    //   System.out.println("Максимальное значение: " + maxx);
-    //   for (int i = 0; i < arr.length; i++) {
-    //       if (arr[i] < minn) {
-    //           minn = arr[i];
-    //       }
-    //   }
-    //   System.out.print("Минимальное значение: " + minn);
+        //   System.out.println("Максимальное значение: " + maxx);
+        //   for (int i = 0; i < arr.length; i++) {
+        //       if (arr[i] < minn) {
+        //           minn = arr[i];
+        //       }
+        //   }
+        //   System.out.print("Минимальное значение: " + minn);
 
-    //   System.out.println("\nРазница между max и min" + " " + (maxx - minn));
+        //   System.out.println("\nРазница между max и min" + " " + (maxx - minn));
 
         //26. Создать массив из 10 элементов и посчитать, сколько элементов равны заданному числу.
 
 
         //27. Заполнить массив из 6 элементов квадратами чисел от 1 до 6.
 
-        Scanner scanner=new Scanner(System.in);
-        int [] arr=new int[6];
+        //Scanner scanner=new Scanner(System.in);
+        //int [] arr=new int[6];
 
+        //for (int i = 0; i < arr.length; i++) {
+        //    arr[i]= scanner.nextInt();
+        //}
+
+        //for (int i = 0; i < arr.length; i++) {
+        //    arr[i]*=arr[i];
+
+        //    System.out.print(arr[i] + " ");
+        //}
+
+        //28. Создать массив из 9 элементов и заменить каждый элемент на противоположный по знаку.
+        Random random = new Random();
+        int min = -10;
+        int max = 10;
+
+        int[] arr = new int[9];
+        System.out.print("Исходный массив: ");
         for (int i = 0; i < arr.length; i++) {
-            arr[i]= scanner.nextInt();
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i]*=arr[i];
-
+            arr[i] = random.nextInt(max - min + 1) + min;
             System.out.print(arr[i] + " ");
+        }
+        System.out.print("\nМассив с противоположными знаками: ");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(-arr[i] + " ");
         }
 
 
