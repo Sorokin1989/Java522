@@ -44,5 +44,30 @@ public class HomeWork_12 {
    //        }
    //    }
       //  System.out.print("\nСумма элементов: " + sum);
+
+        //3 Создать двумерный массив 2x4 и вывести все элементы в обратном порядке (от последнего к первому).
+
+        int[][] arrays= {{1, 2, 3, 4},
+                         {5, 6, 7, 8} };
+
+        System.out.print("Исходный массив: ");
+        for (int i = 0; i < arrays.length; i++) {
+            System.out.println();
+            for (int j = 0; j < arrays[i].length; j++) {
+                System.out.print(arrays[i][j] + " ");
+            }
+
+        }
+        System.out.println();
+        System.out.print("\nВ обратном порядке: ");
+        for (int i = arrays.length-1; i >=0; i--) {
+            System.out.println();
+            for (int j = arrays[i].length-1; j >=0; j--) {
+                System.out.print(arrays[i][j] + " ");
+
+
+            }
+            }
+
     }
 }
