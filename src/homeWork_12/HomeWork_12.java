@@ -21,53 +21,79 @@ public class HomeWork_12 {
 
         Scanner scanner = new Scanner(System.in);
 
-   //    int[][] arrays = new int[2][3];
+        //    int[][] arrays = new int[2][3];
 
 
-   //    for (int i = 0; i < arrays.length; i++) {
-   //        for (int j = 0; j < arrays[i].length; j++) {
-   //            arrays[i][j] = scanner.nextInt();
-   //        }
-   //    }
-   //    for (int i = 0; i < arrays.length; i++) {
-   //        System.out.println();
-   //        for (int j = 0; j < arrays[i].length; j++) {
-   //            System.out.print(arrays[i][j] + " ");
-   //        }
-   //    }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            arrays[i][j] = scanner.nextInt();
+        //        }
+        //    }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            System.out.print(arrays[i][j] + " ");
+        //        }
+        //    }
 
 
-   //    int sum = 0;
-   //    for (int i = 0; i < arrays.length; i++) {
-   //        for (int j = 0; j < arrays[i].length; j++) {
-   //            sum = sum + arrays[i][j];
-   //        }
-   //    }
-      //  System.out.print("\nСумма элементов: " + sum);
+        //    int sum = 0;
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            sum = sum + arrays[i][j];
+        //        }
+        //    }
+        //  System.out.print("\nСумма элементов: " + sum);
+
 
         //3 Создать двумерный массив 2x4 и вывести все элементы в обратном порядке (от последнего к первому).
 
-        int[][] arrays= {{1, 2, 3, 4},
-                         {5, 6, 7, 8} };
+        //   int[][] arrays = {{1, 2, 3, 4},
+        //           {5, 6, 7, 8}};
 
-        System.out.print("Исходный массив: ");
-        for (int i = 0; i < arrays.length; i++) {
-            System.out.println();
-            for (int j = 0; j < arrays[i].length; j++) {
-                System.out.print(arrays[i][j] + " ");
-            }
+        //   System.out.print("Исходный массив: ");
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       System.out.println();
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           System.out.print(arrays[i][j] + " ");
+        //       }
 
-        }
-        System.out.println();
-        System.out.print("\nВ обратном порядке: ");
-        for (int i = arrays.length-1; i >=0; i--) {
-            System.out.println();
-            for (int j = arrays[i].length-1; j >=0; j--) {
-                System.out.print(arrays[i][j] + " ");
+        //   }
+        //   System.out.println();
+        //   System.out.print("\nВ обратном порядке: ");
+        //   for (int i = arrays.length - 1; i >= 0; i--) {
+        //       System.out.println();
+        //       for (int j = arrays[i].length - 1; j >= 0; j--) {
+        //           System.out.print(arrays[i][j] + " ");
 
 
-            }
-            }
+        //       }
+        //   }
+
+
+        // 4 Заполнить двумерный массив 3x4 числами от 1 до 12 и найти их среднее арифметическое.
+
+ //      int[][] arrays = {{1, 2, 3, 4},
+ //              {5, 6, 7, 8},
+ //              {9, 10, 11, 12}};
+
+ //      for (int i = 0; i < arrays.length; i++) {
+ //          System.out.println();
+ //          for (int j = 0; j < arrays[i].length; j++) {
+ //              System.out.print(arrays[i][j] + " ");
+ //          }
+ //      }
+ //      double arithmetic = 0;
+ //      int sum = 0;
+ //      for (int i = 0; i < arrays.length; i++) {
+ //          for (int j = 0; j < arrays[i].length; j++) {
+ //              sum = (sum + arrays[i][j]);
+ //              arithmetic = (double) sum / (arrays.length * arrays[i].length);
+ //          }
+ //      }
+ //      System.out.print("\nСреднее арифметическое: " + arithmetic);
+
+
 
     }
 }
