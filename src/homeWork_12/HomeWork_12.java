@@ -1,7 +1,5 @@
 package homeWork_12;
 
-import java.util.Random;
-
 public class HomeWork_12 {
     public static void main(String[] args) {
         //1 Создать двумерный массив 2x5 и вывести его на экран.
@@ -387,33 +385,87 @@ public class HomeWork_12 {
 
         //15 Заполнить двумерный массив 3x4 случайными числами от -20 до 20 и найти произведение всех положительных элементов.
 
-        Random random = new Random();
+        //    Random random = new Random();
 
-        int min = -20;
-        int max = 20;
-        int multiplication = 1;
+        //    int min = -20;
+        //    int max = 20;
+        //    int multiplication = 1;
 
-        int[][] arrays = new int[3][4];
+        //    int[][] arrays = new int[3][4];
 
-        for (int i = 0; i < arrays.length; i++) {
-            for (int j = 0; j < arrays[i].length; j++) {
-                arrays[i][j] = random.nextInt(max - min + 1) + min;
-            }
-        }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            arrays[i][j] = random.nextInt(max - min + 1) + min;
+        //        }
+        //    }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            System.out.print(arrays[i][j] + " ");
+        //        }
+        //    }
+
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            if (arrays[i][j] > 0)
+        //                multiplication *= arrays[i][j];
+        //        }
+        //    }
+        //    System.out.print("\nПроизведение положительных элементов: " + multiplication);
+
+        // 16 Создать двумерный массив 3x3, заполнить случайными числами от -5 до 5 и вывести индексы всех нулевых элементов.
+
+        //  Random random = new Random();
+        //  int min = -5;
+        //  int max = 5;
+
+        //  int[][] arrays = new int[3][3];
+
+        //  for (int i = 0; i < arrays.length; i++) {
+        //      for (int j = 0; j < arrays[i].length; j++) {
+        //          arrays[i][j] = random.nextInt(max - min + 1) + min;
+        //      }
+        //  }
+        //  for (int i = 0; i < arrays.length; i++) {
+        //      System.out.println();
+        //      for (int j = 0; j < arrays[i].length; j++) {
+        //          System.out.print(arrays[i][j] + " ");
+        //      }
+        //  }
+        //  System.out.println("\nИндекс нулевого элемента: ");
+        //  for (int i = 0; i < arrays.length; i++) {
+        //      for (int j = 0; j < arrays[i].length; j++) {
+        //          if (arrays[i][j] == 0) {
+        //              System.out.print(i + ",");
+        //              System.out.print(j);
+        //          }
+
+        //      }
+
+        //  }
+
+        //17 Заполнить двумерный массив 2x5 числами от 1 до 10 и найти сумму элементов
+        // с чётными индексами (строка и столбец одновременно чётные).
+
+        int[][] arrays = {{1, 2, 3, 4, 5},
+                          {6, 7, 8, 9, 10},};
+
         for (int i = 0; i < arrays.length; i++) {
             System.out.println();
             for (int j = 0; j < arrays[i].length; j++) {
                 System.out.print(arrays[i][j] + " ");
-            }
-        }
 
+            }
+
+        }
+        int sum = 0;
         for (int i = 0; i < arrays.length; i++) {
             for (int j = 0; j < arrays[i].length; j++) {
-                if (arrays[i][j] > 0)
-                    multiplication *= arrays[i][j];
+                if (i % 2 == 0 && j % 2 == 0)
+                    sum += arrays[i][j];
             }
         }
-        System.out.print("\nПроизведение положительных элементов: " + multiplication);
-
+        System.out.print("\nСумма элементов с четными индексами: " + sum);
     }
+
 }
