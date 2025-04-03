@@ -1,5 +1,7 @@
 package homeWork_12;
 
+import java.util.Random;
+
 public class HomeWork_12 {
     public static void main(String[] args) {
         //1 Создать двумерный массив 2x5 и вывести его на экран.
@@ -447,25 +449,54 @@ public class HomeWork_12 {
         //17 Заполнить двумерный массив 2x5 числами от 1 до 10 и найти сумму элементов
         // с чётными индексами (строка и столбец одновременно чётные).
 
-        int[][] arrays = {{1, 2, 3, 4, 5},
-                          {6, 7, 8, 9, 10},};
+        //   int[][] arrays = {{1, 2, 3, 4, 5},
+        //                     {6, 7, 8, 9, 10},};
 
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       System.out.println();
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           System.out.print(arrays[i][j] + " ");
+
+        //       }
+
+        //   }
+        //   int sum = 0;
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           if (i % 2 == 0 && j % 2 == 0)
+        //               sum += arrays[i][j];
+        //       }
+        //   }
+        //   System.out.print("\nСумма элементов с четными индексами: " + sum);
+
+        // 18 Создать двумерный массив 2x3 и проверить, есть ли в нём хотя бы один отрицательный элемент.
+
+        Random random = new Random();
+        int min = -10;
+        int max = 10;
+        int count = 0;
+
+        int[][] arrays = new int[2][3];
+
+        for (int i = 0; i < arrays.length; i++) {
+            for (int j = 0; j < arrays[i].length; j++) {
+                arrays[i][j] = random.nextInt(max - min + 1) + min;
+            }
+
+        }
         for (int i = 0; i < arrays.length; i++) {
             System.out.println();
             for (int j = 0; j < arrays[i].length; j++) {
                 System.out.print(arrays[i][j] + " ");
-
             }
-
         }
-        int sum = 0;
         for (int i = 0; i < arrays.length; i++) {
             for (int j = 0; j < arrays[i].length; j++) {
-                if (i % 2 == 0 && j % 2 == 0)
-                    sum += arrays[i][j];
+                if (arrays[i][j] < 0)
+                    count++;
             }
         }
-        System.out.print("\nСумма элементов с четными индексами: " + sum);
+        System.out.print("\nКоличество отрицательных элементов: " + count);
     }
 
 }
