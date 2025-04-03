@@ -223,37 +223,103 @@ public class HomeWork_12 {
 
         //10 Создать двумерный массив 2x5 и заменить все нечётные числа на 0.
 
-        Random random = new Random();
+        //    Random random = new Random();
 
-        int min = 1;
-        int max = 50;
+        //    int min = 1;
+        //    int max = 50;
 
-        int[][] arrays = new int[2][5];
+        //    int[][] arrays = new int[2][5];
 
-        for (int i = 0; i < arrays.length; i++) {
-            for (int j = 0; j < arrays[i].length; j++) {
-                arrays[i][j] = random.nextInt(max - min + 1) + min;
-                ;
-            }
-        }
-        for (int i = 0; i < arrays.length; i++) {
-            System.out.println();
-            for (int j = 0; j < arrays[i].length; j++) {
-                System.out.print(arrays[i][j] + " ");
-            }
-        }
-        System.out.println();
-        System.out.print("\nЗамена нечетных чисел на 0: ");
-        for (int i = 0; i < arrays.length; i++) {
-            System.out.println();
-            for (int j = 0; j < arrays[i].length; j++) {
-                if (arrays[i][j] % 2 != 0) {
-                    arrays[i][j] = 0;
-                }
-                System.out.print(arrays[i][j] + " ");
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            arrays[i][j] = random.nextInt(max - min + 1) + min;
+        //            ;
+        //        }
+        //    }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            System.out.print(arrays[i][j] + " ");
+        //        }
+        //    }
+        //    System.out.println();
+        //    System.out.print("\nЗамена нечетных чисел на 0: ");
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            if (arrays[i][j] % 2 != 0) {
+        //                arrays[i][j] = 0;
+        //            }
+        //            System.out.print(arrays[i][j] + " ");
 
-            }
-        }
+        //        }
+        //    }
+
+
+        //11 Заполнить двумерный массив 2x7 случайными числами от 0 до 50 и вывести их сумму.
+
+        //   Random random = new Random();
+        //   int min = 0;
+        //   int max = 50;
+        //   int sum = 0;
+
+        //   int[][] arrays = new int[2][7];
+
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           arrays[i][j] = random.nextInt(max - min + 1) + min;
+        //       }
+        //   }
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       System.out.println();
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           System.out.print(arrays[i][j] + " ");
+        //       }
+        //   }
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       System.out.println();
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           sum = sum + arrays[i][j];
+        //       }
+        //   }
+        //   System.out.print("Сумма элементов: " + sum);
+
+
+        //12 Создать двумерный массив 2x5 и посчитать количество чётных и нечётных элементов.
+
+  //     Random random = new Random();
+  //     int min = 0;
+  //     int max = 50;
+  //     int count = 0;
+  //     int count2 = 0;
+
+  //     int[][] arrays = new int[2][5];
+
+  //     for (int i = 0; i < arrays.length; i++) {
+  //         for (int j = 0; j < arrays[i].length; j++) {
+  //             arrays[i][j] = random.nextInt(max - min + 1) + min;
+  //         }
+
+  //     }
+  //     for (int i = 0; i < arrays.length; i++) {
+  //         System.out.println();
+  //         for (int j = 0; j < arrays[i].length; j++) {
+  //             System.out.print(arrays[i][j] + " ");
+  //         }
+
+  //     }
+  //     for (int i = 0; i < arrays.length; i++) {
+  //         System.out.println();
+  //         for (int j = 0; j < arrays[i].length; j++) {
+  //             if (arrays[i][j] % 2 == 0)
+  //                 count++;
+  //             else count2++;
+  //         }
+
+  //     }
+  //     System.out.print("Количество четных элементов: " + count);
+  //     System.out.print("\nКоличество нечетных элементов: " + count2);
+
 
     }
 }
