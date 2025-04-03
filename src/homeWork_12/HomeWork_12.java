@@ -195,17 +195,46 @@ public class HomeWork_12 {
 
         // 9 Заполнить двумерный массив 2x5 случайными числами от -10 до 10 и вывести только отрицательные числа.
 
+        //    Random random = new Random();
+        //    int min = -10;
+        //    int max = 10;
+        //    int[][] arrays = new int[2][5];
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            arrays[i][j] = random.nextInt(max - min + 1) + min;
+
+        //        }
+        //    }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            System.out.print(arrays[i][j] + " ");
+        //        }
+        //    }
+        //    System.out.println();
+        //    System.out.print("\nОтрицательные числа: ");
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            if (arrays[i][j] < 0)
+        //                System.out.print(arrays[i][j] + " ");
+        //        }
+        //    }
+
+        //10 Создать двумерный массив 2x5 и заменить все нечётные числа на 0.
+
         Random random = new Random();
 
-        int min = -10;
-        int max = 10;
+        int min = 1;
+        int max = 50;
 
         int[][] arrays = new int[2][5];
+
         for (int i = 0; i < arrays.length; i++) {
             for (int j = 0; j < arrays[i].length; j++) {
                 arrays[i][j] = random.nextInt(max - min + 1) + min;
+                ;
             }
-
         }
         for (int i = 0; i < arrays.length; i++) {
             System.out.println();
@@ -214,13 +243,17 @@ public class HomeWork_12 {
             }
         }
         System.out.println();
-        System.out.print("\nОтрицательные числа: ");
+        System.out.print("\nЗамена нечетных чисел на 0: ");
         for (int i = 0; i < arrays.length; i++) {
             System.out.println();
             for (int j = 0; j < arrays[i].length; j++) {
-                if (arrays[i][j] < 0)
-                    System.out.print(arrays[i][j] + " ");
+                if (arrays[i][j] % 2 != 0) {
+                    arrays[i][j] = 0;
+                }
+                System.out.print(arrays[i][j] + " ");
+
             }
         }
+
     }
 }
