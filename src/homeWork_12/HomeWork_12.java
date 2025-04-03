@@ -1,6 +1,6 @@
 package homeWork_12;
 
-import java.util.Random;
+import java.util.Scanner;
 
 public class HomeWork_12 {
     public static void main(String[] args) {
@@ -287,38 +287,74 @@ public class HomeWork_12 {
 
         //12 Создать двумерный массив 2x5 и посчитать количество чётных и нечётных элементов.
 
-  //     Random random = new Random();
-  //     int min = 0;
-  //     int max = 50;
-  //     int count = 0;
-  //     int count2 = 0;
+        //     Random random = new Random();
+        //     int min = 0;
+        //     int max = 50;
+        //     int count = 0;
+        //     int count2 = 0;
 
-  //     int[][] arrays = new int[2][5];
+        //     int[][] arrays = new int[2][5];
 
-  //     for (int i = 0; i < arrays.length; i++) {
-  //         for (int j = 0; j < arrays[i].length; j++) {
-  //             arrays[i][j] = random.nextInt(max - min + 1) + min;
-  //         }
+        //     for (int i = 0; i < arrays.length; i++) {
+        //         for (int j = 0; j < arrays[i].length; j++) {
+        //             arrays[i][j] = random.nextInt(max - min + 1) + min;
+        //         }
 
-  //     }
-  //     for (int i = 0; i < arrays.length; i++) {
-  //         System.out.println();
-  //         for (int j = 0; j < arrays[i].length; j++) {
-  //             System.out.print(arrays[i][j] + " ");
-  //         }
+        //     }
+        //     for (int i = 0; i < arrays.length; i++) {
+        //         System.out.println();
+        //         for (int j = 0; j < arrays[i].length; j++) {
+        //             System.out.print(arrays[i][j] + " ");
+        //         }
 
-  //     }
-  //     for (int i = 0; i < arrays.length; i++) {
-  //         System.out.println();
-  //         for (int j = 0; j < arrays[i].length; j++) {
-  //             if (arrays[i][j] % 2 == 0)
-  //                 count++;
-  //             else count2++;
-  //         }
+        //     }
+        //     for (int i = 0; i < arrays.length; i++) {
+        //         System.out.println();
+        //         for (int j = 0; j < arrays[i].length; j++) {
+        //             if (arrays[i][j] % 2 == 0)
+        //                 count++;
+        //             else count2++;
+        //         }
 
-  //     }
-  //     System.out.print("Количество четных элементов: " + count);
-  //     System.out.print("\nКоличество нечетных элементов: " + count2);
+        //     }
+        //     System.out.print("Количество четных элементов: " + count);
+        //     System.out.print("\nКоличество нечетных элементов: " + count2);
+
+        //13 Ввести с клавиатуры двумерный массив 3x5 и найти минимальное значение.
+
+        //    Scanner scanner = new Scanner(System.in);
+
+   //    int[][] arrays = new int[3][5];
+
+
+   //    for (int i = 0; i < arrays.length; i++) {
+   //        for (int j = 0; j < arrays[i].length; j++) {
+   //            arrays[i][j] = scanner.nextInt();
+   //        }
+
+   //    }
+   //    for (int i = 0; i < arrays.length; i++) {
+   //        System.out.println();
+   //        for (int j = 0; j < arrays[i].length; j++) {
+   //            System.out.print(arrays[i][j] + " ");
+   //        }
+
+   //    }
+   //    System.out.println();
+   //    System.out.print("\nМинимальное значение в массиве: ");
+   //    int min = arrays[0][0];
+   //    for (int i = 0; i < arrays.length; i++) {
+   //        for (int j = 0; j < arrays[i].length; j++) {
+   //            if (arrays[i][j] < min) {
+   //                min = arrays[i][j];
+   //            }
+   //        }
+
+   //    }
+   //    System.out.print(min);
+
+
+
 
 
     }
