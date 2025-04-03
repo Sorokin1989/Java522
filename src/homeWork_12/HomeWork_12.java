@@ -1,6 +1,6 @@
 package homeWork_12;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class HomeWork_12 {
     public static void main(String[] args) {
@@ -324,38 +324,96 @@ public class HomeWork_12 {
 
         //    Scanner scanner = new Scanner(System.in);
 
-   //    int[][] arrays = new int[3][5];
+        //    int[][] arrays = new int[3][5];
 
 
-   //    for (int i = 0; i < arrays.length; i++) {
-   //        for (int j = 0; j < arrays[i].length; j++) {
-   //            arrays[i][j] = scanner.nextInt();
-   //        }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            arrays[i][j] = scanner.nextInt();
+        //        }
 
-   //    }
-   //    for (int i = 0; i < arrays.length; i++) {
-   //        System.out.println();
-   //        for (int j = 0; j < arrays[i].length; j++) {
-   //            System.out.print(arrays[i][j] + " ");
-   //        }
+        //    }
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        System.out.println();
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            System.out.print(arrays[i][j] + " ");
+        //        }
 
-   //    }
-   //    System.out.println();
-   //    System.out.print("\nМинимальное значение в массиве: ");
-   //    int min = arrays[0][0];
-   //    for (int i = 0; i < arrays.length; i++) {
-   //        for (int j = 0; j < arrays[i].length; j++) {
-   //            if (arrays[i][j] < min) {
-   //                min = arrays[i][j];
-   //            }
-   //        }
+        //    }
+        //    System.out.println();
+        //    System.out.print("\nМинимальное значение в массиве: ");
+        //    int min = arrays[0][0];
+        //    for (int i = 0; i < arrays.length; i++) {
+        //        for (int j = 0; j < arrays[i].length; j++) {
+        //            if (arrays[i][j] < min) {
+        //                min = arrays[i][j];
+        //            }
+        //        }
 
-   //    }
-   //    System.out.print(min);
-
-
+        //    }
+        //    System.out.print(min);
 
 
+        //14 Создать двумерный массив 2x4 и заменить все отрицательные числа на их модули.
+
+        //   Random random = new Random();
+        //   int min = -20;
+        //   int max = 20;
+
+        //   int[][] arrays = new int[2][4];
+
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           arrays[i][j] = random.nextInt(max - min + 1) + min;
+        //       }
+        //   }
+        //   System.out.print("Исходный массив: ");
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       System.out.println();
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           System.out.print(arrays[i][j] + " ");
+        //       }
+        //   }
+        //   System.out.print("\nМассив после замены знака: ");
+        //   for (int i = 0; i < arrays.length; i++) {
+        //       System.out.println();
+        //       for (int j = 0; j < arrays[i].length; j++) {
+        //           if (arrays[i][j] < 0)
+        //               arrays[i][j] = -arrays[i][j];
+        //           System.out.print(arrays[i][j] + " ");
+        //       }
+        //   }
+
+
+        //15 Заполнить двумерный массив 3x4 случайными числами от -20 до 20 и найти произведение всех положительных элементов.
+
+        Random random = new Random();
+
+        int min = -20;
+        int max = 20;
+        int multiplication = 1;
+
+        int[][] arrays = new int[3][4];
+
+        for (int i = 0; i < arrays.length; i++) {
+            for (int j = 0; j < arrays[i].length; j++) {
+                arrays[i][j] = random.nextInt(max - min + 1) + min;
+            }
+        }
+        for (int i = 0; i < arrays.length; i++) {
+            System.out.println();
+            for (int j = 0; j < arrays[i].length; j++) {
+                System.out.print(arrays[i][j] + " ");
+            }
+        }
+
+        for (int i = 0; i < arrays.length; i++) {
+            for (int j = 0; j < arrays[i].length; j++) {
+                if (arrays[i][j] > 0)
+                    multiplication *= arrays[i][j];
+            }
+        }
+        System.out.print("\nПроизведение положительных элементов: " + multiplication);
 
     }
 }
