@@ -1,10 +1,8 @@
 package homeWork_11;
 
-import java.util.Random;
-
 public class HomeWork_11 {
     public static void main(String[] args) {
-        // - 1. Создать статический массив из 10 чисел и вывести его на экран.
+        //  1. Создать статический массив из 10 чисел и вывести его на экран.
         //   int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         //   for (int i = 0; i < 10; i++) {
         //     System.out.print(arr[i] + " ");
@@ -33,11 +31,11 @@ public class HomeWork_11 {
         // 3. Создать статический массив из 8 элементов и вывести его в обратном порядке.
 
 
-        //  int[] arr={0,3,4,2,5,6,7,8};
-        //  for (int i = arr.length-1; i >=0;i--) {
-        //      System.out.print(arr[i] + " ");
-
-        //  }
+        //    int[] arr={1,2,3,4,5,6,7,8};
+        //    for (int i = arr.length-1; i >=0;i--) {
+        //  System.out.print(arr[i] + " ");
+//
+        //    }
 
         // 4. Заполнить статический массив из 12 элементов числами от 1 до 12 и найти среднее арифметическое.
 
@@ -98,25 +96,19 @@ public class HomeWork_11 {
         //   } System.out.println("\nМаксимальное число в массиве: " + maxx);
 
         // 7. Заполнить статический массив из 15 элементов четными числами от 2 до 30.
+        //сделать!!
+   //    int[] arr = new int[15];
+   //    for (int i = 0; i < arr.length; i++) {
+   //        arr[i] = 2 + i * 2;
+   //        System.out.print(arr[i] + " ");
+   //    }
 
-        //   Random random=new Random();
-        //   int min=2;
-        //   int max=30;
-
-
-        //   int[] arr=new int[15];
-        //   for (int i = 0; i < arr.length; i++) {
-        //       arr[i]= random.nextInt(max-min+1)+min;
-        //       if (arr[i] % 2 == 0) {
-
-        //           System.out.print(arr[i] + " ");
-        //       }
-        //   }
 
         //8. Ввести статический массив из 6 чисел и посчитать количество положительных элементов.
         // показывали на уроке!
 
-        //    //9. Заполнить статический массив из 10 элементов случайными числами от -10 до 10 и вывести только отрицательные элементы.
+
+        //9. Заполнить статический массив из 10 элементов случайными числами от -10 до 10 и вывести только отрицательные элементы.
 
         //    Random random=new Random();
         //    int min=-10;
@@ -355,8 +347,10 @@ public class HomeWork_11 {
         //     System.out.print(arr[i] + " ");
         // }
 
+
         // 22. Создать массив из 7 элементов и посчитать, сколько раз в нем меняется знак числа при переходе от элемента к элементу.
         // делали на уроке
+
 
         //23. Заполнить массив из 12 элементов случайными числами от 1 до 100 и вывести числа, кратные 5.
 
@@ -432,26 +426,26 @@ public class HomeWork_11 {
 
         //26. Создать массив из 10 элементов и посчитать, сколько элементов равны заданному числу.
 
-        Random random = new Random();
-        int number = 35;
-        int min = 0;
-        int max = 50;
-        int count = 0;
-
-        int[] arr = new int[10];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(max - min + 1) + min;
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-        for (int i = 0; i < arr.length; i++) {
-            if (number == arr[i]) {
-                count++;
-            }
-
-        }
-        System.out.print("Количество элементов равных числу: " + number + " " + "равно: " + count);
+        //    Random random = new Random();
+        //    int number = 35;
+        //    int min = 0;
+        //    int max = 50;
+        //    int count = 0;
+//
+        //    int[] arr = new int[10];
+//
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = random.nextInt(max - min + 1) + min;
+        //        System.out.print(arr[i] + " ");
+        //    }
+        //    System.out.println();
+        //    for (int i = 0; i < arr.length; i++) {
+        //        if (number == arr[i]) {
+        //            count++;
+        //        }
+//
+        //    }
+        //    System.out.print("Количество элементов равных числу " + number + " " + "равно: " + count);
 
 
         //27. Заполнить массив из 6 элементов квадратами чисел от 1 до 6.
@@ -484,13 +478,16 @@ public class HomeWork_11 {
         //    for (int i = 0; i < arr.length; i++) {
         //        System.out.print(-arr[i] + " ");
         //    }
+
+
         //29. Заполнить массив из 12 элементов так, чтобы значения элементов с четными индексами были равны 0, а с нечетными индексами - равны их индексам.
-// сделали на уроке!
+// делали на уроке!
 
 
 //   30. Создать массив из 10 элементов и найти сумму элементов, стоящих на позициях, кратных 3
-        //сделали на уроке!
+        //делали на уроке!
 
 
     }
 }
+
