@@ -1,6 +1,7 @@
 package homeWork_13;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class HomeWork_13 {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class HomeWork_13 {
         int sum = sum(10, 20);
         System.out.println("Сумма: " + sum);
 
-        boolean a = isPositive(1);
+        boolean a = isPositive(2);
         System.out.println("Число положительное :" + a);
 
         int[] newArr = doubleArray(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
@@ -24,6 +25,12 @@ public class HomeWork_13 {
 
         double average = average(0, 2, 3);
         System.out.println("Среднее арифметическое: " + average);
+
+        boolean numm = isEven(6);
+        System.out.println("Число четное: " + numm);
+
+        int number = generateRandomNumber(10, 33);
+        System.out.println("Случайное число: " + number);
 
 
     }
@@ -68,9 +75,7 @@ public class HomeWork_13 {
     //Что делает: возвращает true, если число положительное
 
     public static boolean isPositive(int number) {
-        if (number > 0)
-            return true;
-        else return false;
+        return number > 0;
     }
     //6. Метод doubleArray(int[] arr)
     //Принимает: массив целых чисел
@@ -107,5 +112,24 @@ public class HomeWork_13 {
         double average = (double) sum / 3;
         return average;
     }
+
+    //9. Метод isEven(int number)
+    //Принимает: одно число
+    //Что делает: возвращает true, если число чётное
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    // 10. Метод generateRandomNumber(int min, int max)
+    //Принимает: два числа min, max
+    //Возвращает: int
+    //Что делает: возвращает случайное число от min до max
+
+    public static int generateRandomNumber(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
+    }
+
 
 }
