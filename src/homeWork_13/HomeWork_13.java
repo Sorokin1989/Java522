@@ -19,8 +19,11 @@ public class HomeWork_13 {
         int[] newArr = doubleArray(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
         System.out.println(Arrays.toString(newArr));
 
-        int summ = arraySum(new int[]{1,2,3,4,5});
+        int summ = arraySum(new int[]{1, 2, 3, 4, 5});
         System.out.println("Сумма элементов массива: " + summ);
+
+        double average = average(0, 2, 3);
+        System.out.println("Среднее арифметическое: " + average);
 
 
     }
@@ -88,14 +91,21 @@ public class HomeWork_13 {
     //Что делает: возвращает сумму всех элементов массива
 
     public static int arraySum(int[] arr) {
-        //int[] array = new int[10];
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
         }
         return sum;
+    }
 
-
+    //8. Метод average(int a, int b, int c)
+    //Принимает: три числа
+    //Возвращает: double
+    //Что делает: возвращает среднее арифметическое
+    public static double average(int a, int b, int c) {
+        int sum = a + b + c;
+        double average = (double) sum / 3;
+        return average;
     }
 
 }
