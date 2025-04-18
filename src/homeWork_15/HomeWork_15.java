@@ -22,14 +22,14 @@ public class HomeWork_15 {
 //         isEmpty()
 //         isBlank()
 
-        String str = "Dima";
+        String str = "Dmitrii";
 
         System.out.println(str.length());
-        char[] arr = {'D', 'i', 'm', 'a'};
+        char[] arr = {'D', 'm', 'i', 't','r','i','i'};
         System.out.println(length(arr));
 
-        char symb = 'm';
-        System.out.println(str.indexOf('m', 5));
+        char symb = 'i';
+        System.out.println(str.indexOf('i', 4));
         System.out.println(myIndexOf(arr, symb));
 
 
@@ -45,7 +45,7 @@ public class HomeWork_15 {
     public static int myIndexOf(char[] arr, char symb) {
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == symb && i==5)
+            if (arr[i] == symb && i>=4)
                 return i;
 
         }
