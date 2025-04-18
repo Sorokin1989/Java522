@@ -25,12 +25,15 @@ public class HomeWork_15 {
         String str = "Dmitrii";
 
         System.out.println(str.length());
-        char[] arr = {'D', 'm', 'i', 't','r','i','i'};
+        char[] arr = {'D', 'm', 'i', 't', 'r', 'i', 'i'};
         System.out.println(length(arr));
 
-        char symb = 'i';
-        System.out.println(str.indexOf('i', 4));
+        char symb = 'a';
+        System.out.println(str.indexOf('a', 4));
         System.out.println(myIndexOf(arr, symb));
+
+        System.out.println(str.lastIndexOf('a'));
+        System.out.println(lastIndexOf(arr, 'a'));
 
 
     }
@@ -45,10 +48,20 @@ public class HomeWork_15 {
     public static int myIndexOf(char[] arr, char symb) {
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == symb && i>=4)
+            if (arr[i] == symb && i >= 4)
                 return i;
-
         }
         return -1;
     }
+
+    public static int lastIndexOf(char[] arr, char symb) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+
+            if ( arr[i] == symb )
+                return i;
+        }
+            return -1;
+
+    }
+
 }
