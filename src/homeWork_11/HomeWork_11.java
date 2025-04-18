@@ -1,5 +1,7 @@
 package homeWork_11;
 
+import java.util.Random;
+
 public class HomeWork_11 {
     public static void main(String[] args) {
         //  1. Создать статический массив из 10 чисел и вывести его на экран.
@@ -97,15 +99,34 @@ public class HomeWork_11 {
 
         // 7. Заполнить статический массив из 15 элементов четными числами от 2 до 30.
         //сделать!!
-   //    int[] arr = new int[15];
-   //    for (int i = 0; i < arr.length; i++) {
-   //        arr[i] = 2 + i * 2;
-   //        System.out.print(arr[i] + " ");
-   //    }
+        //    int[] arr = new int[15];
+        //    for (int i = 0; i < arr.length; i++) {
+        //        arr[i] = 2 + i * 2;
+        //        System.out.print(arr[i] + " ");
+        //    }
 
 
-        //8. Ввести статический массив из 6 чисел и посчитать количество положительных элементов.
+        //8. Вывести статический массив из 6 чисел и посчитать количество положительных элементов.
         // показывали на уроке!
+
+        Random random=new Random();
+
+        int min=-10;
+        int max=10;
+        int count=0;
+
+        int[] arr=new int[6];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]= random.nextInt(max-min+1)+min;
+            System.out.print(arr[i] + " ");
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]>0)
+                count++;
+        }
+        System.out.print("\nКоличество положительных элементов: " + count);
+
 
 
         //9. Заполнить статический массив из 10 элементов случайными числами от -10 до 10 и вывести только отрицательные элементы.
@@ -486,6 +507,29 @@ public class HomeWork_11 {
 
 //   30. Создать массив из 10 элементов и найти сумму элементов, стоящих на позициях, кратных 3
         //делали на уроке!
+
+   //    Random random = new Random();
+   //    int min = 1;
+   //    int max = 50;
+
+   //    int[] arr = new int[10];
+
+   //    for (int i = 0; i < arr.length; i++) {
+   //        arr[i] = random.nextInt(max - min + 1) + min;
+   //    }
+   //    for (int i = 0; i < arr.length; i++) {
+   //        System.out.print(arr[i] + " ");
+
+   //    }
+   //    int sum=0;
+   //    for (int i = 0; i < arr.length; i++) {
+   //        if (i%3==0) {
+   //            sum+=arr[i];
+   //        }
+
+   //    }
+   //    System.out.println();
+   //    System.out.print(sum);
 
 
     }

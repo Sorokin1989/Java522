@@ -6,6 +6,7 @@ import java.util.Random;
 public class HomeWork_13 {
     public static void main(String[] args) {
         sayHi();
+
         int num = square(5);
         System.out.println(num);
 
