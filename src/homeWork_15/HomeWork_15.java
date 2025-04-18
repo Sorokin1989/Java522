@@ -17,8 +17,8 @@ public class HomeWork_15 {
 //         str.indexOf('a',5)
 //         str.lastIndexOf('a')
 //         str.lastIndexOf('a',5)
-//         str.toLowerCase()
 //         charAt(10)
+//         str.toLowerCase()
 //         isEmpty()
 //         isBlank()
 
@@ -38,8 +38,15 @@ public class HomeWork_15 {
         System.out.println(str.lastIndexOf('i', 3));
         System.out.println(lastIndexOf(arr, 'i', 3));
 
+
+        System.out.println(str.charAt(5));
+        System.out.println(charAt(arr, 5));
+
         System.out.println(str.toLowerCase());
         System.out.println(toLowerCase(arr));
+
+        System.out.println(str.isEmpty());
+        System.out.println(isEmpty(arr));
 
 
     }
@@ -76,16 +83,30 @@ public class HomeWork_15 {
         return -1;
     }
 
-    public static char[] toLowerCase( char[] arr) {
+
+    public static char charAt(char[] arr, int index) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i]>64 && arr[i]<91) {
-                arr[i]= (char) ( arr[i] + 32);
+            if (i == index)
+                return arr[i];
+        }
+        return ' ';
+    }
+
+    public static char[] toLowerCase(char[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 64 && arr[i] < 91) {
+                arr[i] = (char) (arr[i] + 32);
             }
         }
         return arr;
-
-
     }
 
+    public static boolean isEmpty(char[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == ' ')
+                return true;
+        }
+        return false;
+    }
 
 }
