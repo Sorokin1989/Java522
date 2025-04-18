@@ -25,7 +25,7 @@ public class HomeWork_15 {
         String str = "DMITRII";
 
         System.out.println(str.length());
-        char[] arr = {'D', 'M', 'I', 'T', 'R', 'I', 'I'};
+        char[] arr = { 'D','M','I', 'T', 'R', 'I', 'I'};
         System.out.println(length(arr));
 
         char symb = 'a';
