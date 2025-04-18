@@ -22,10 +22,10 @@ public class HomeWork_15 {
 //         isEmpty()
 //         isBlank()
 
-        String str = "Dmitrii";
+        String str = "DMITRII";
 
         System.out.println(str.length());
-        char[] arr = {'D', 'm', 'i', 't', 'r', 'i', 'i'};
+        char[] arr = {'D', 'M', 'I', 'T', 'R', 'I', 'I'};
         System.out.println(length(arr));
 
         char symb = 'a';
@@ -39,6 +39,7 @@ public class HomeWork_15 {
         System.out.println(lastIndexOf(arr, 'i', 3));
 
         System.out.println(str.toLowerCase());
+        System.out.println(toLowerCase(arr));
 
 
     }
@@ -77,9 +78,11 @@ public class HomeWork_15 {
 
     public static char[] toLowerCase( char[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i]=)
-
+            if (arr[i]>64 && arr[i]<91) {
+                arr[i]= (char) ( arr[i] + 32);
+            }
         }
+        return arr;
 
 
     }
