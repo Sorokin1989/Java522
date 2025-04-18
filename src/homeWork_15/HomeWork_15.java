@@ -35,6 +35,11 @@ public class HomeWork_15 {
         System.out.println(str.lastIndexOf('a'));
         System.out.println(lastIndexOf(arr, 'a'));
 
+        System.out.println(str.lastIndexOf('i', 3));
+        System.out.println(lastIndexOf(arr, 'i', 3));
+
+        System.out.println(str.toLowerCase());
+
 
     }
 
@@ -56,12 +61,28 @@ public class HomeWork_15 {
 
     public static int lastIndexOf(char[] arr, char symb) {
         for (int i = arr.length - 1; i >= 0; i--) {
-
-            if ( arr[i] == symb )
+            if (arr[i] == symb)
                 return i;
         }
-            return -1;
+        return -1;
+    }
+
+    public static int lastIndexOf(char[] arr, char symb, int beginIndex) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == symb && beginIndex >= i)
+                return i;
+        }
+        return -1;
+    }
+
+    public static char[] toLowerCase( char[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]=)
+
+        }
+
 
     }
+
 
 }
