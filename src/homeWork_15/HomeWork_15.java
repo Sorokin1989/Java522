@@ -23,31 +23,37 @@ public class HomeWork_15 {
 //         isBlank()
 
         String str = "DMITRII";
+        char[] arr = str.toCharArray();
+
+        String str2 = " ";
+        char[] arr2 = str2.toCharArray();
+
 
         System.out.println(str.length());
-        char[] arr = { 'D','M','I', 'T', 'R', 'I', 'I'};
         System.out.println(length(arr));
 
-        char symb = 'a';
-        System.out.println(str.indexOf('a', 4));
+        char symb = 'I';
+        System.out.println(str.indexOf('I', 4));
         System.out.println(myIndexOf(arr, symb));
 
-        System.out.println(str.lastIndexOf('a'));
-        System.out.println(lastIndexOf(arr, 'a'));
+        System.out.println(str.lastIndexOf('D'));
+        System.out.println(lastIndexOf(arr, 'D'));
 
-        System.out.println(str.lastIndexOf('i', 3));
-        System.out.println(lastIndexOf(arr, 'i', 3));
+        System.out.println(str.lastIndexOf('I', 3));
+        System.out.println(lastIndexOf(arr, 'I', 3));
 
 
-        System.out.println(str.charAt(5));
-        System.out.println(charAt(arr, 5));
+        System.out.println(str.charAt(3));
+        System.out.println(charAt(arr, 3));
 
         System.out.println(str.toLowerCase());
         System.out.println(toLowerCase(arr));
 
-        System.out.println(str.isEmpty());
-        System.out.println(isEmpty(arr));
+        System.out.println(str2.isEmpty());
+        System.out.println(isEmpty(arr2));
 
+        System.out.println(str2.isBlank());
+        System.out.println(isBlank(arr2));
 
     }
 
@@ -101,12 +107,24 @@ public class HomeWork_15 {
         return arr;
     }
 
-    public static boolean isEmpty(char[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == ' ')
+    public static boolean isEmpty(char[] arr2) {
+        for (int i = 0; i <= arr2.length; i++) {
+            if (arr2.length == 0)
                 return true;
         }
         return false;
     }
+
+    public static boolean isBlank(char[] arr2) {
+        if (arr2.length == 0)
+            return true;
+        for (int i = 0; i < arr2.length; i++) {
+            if (arr2[i] != ' ')
+                return false;
+        }
+        return true;
+
+    }
+
 
 }
