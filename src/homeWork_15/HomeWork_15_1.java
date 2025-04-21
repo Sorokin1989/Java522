@@ -31,34 +31,34 @@ public class HomeWork_15_1 {
 
 
      System.out.println(str.length());
-     System.out.println(length(arr));
+     System.out.println(myLength(arr));
 
      char symb = 'I';
      System.out.println(str.indexOf('I', 4));
      System.out.println(myIndexOf(arr, symb));
 
      System.out.println(str.lastIndexOf('D'));
-     System.out.println(lastIndexOf(arr, 'D'));
+     System.out.println(myLastIndexOf(arr, 'D'));
 
      System.out.println(str.lastIndexOf('I', 3));
-     System.out.println(lastIndexOf(arr, 'I', 3));
+     System.out.println(myLastIndexOf(arr, 'I', 3));
 
 
      System.out.println(str.charAt(3));
-     System.out.println(charAt(arr, 3));
+     System.out.println(myCharAt(arr, 3));
 
      System.out.println(str.toLowerCase());
-     System.out.println(toLowerCase(arr));
+     System.out.println(myToLowerCase(arr));
 
      System.out.println(str2.isEmpty());
-     System.out.println(isEmpty(arr2));
+     System.out.println(myIsEmpty(arr2));
 
      System.out.println(str2.isBlank());
-     System.out.println(isBlank(arr2));
+     System.out.println(myIsBlank(arr2));
 
     }
 
-  public static int length(char[] str) {
+  public static int myLength(char[] str) {
       char[] arr = new char[str.length];
       for (int i = 0; i < arr.length; i++) {
 
@@ -76,7 +76,7 @@ public class HomeWork_15_1 {
       return -1;
   }
 
-  public static int lastIndexOf(char[] str, char symb) {
+  public static int myLastIndexOf(char[] str, char symb) {
       char[] arr = new char[str.length];
      for (int i = arr.length - 1; i >= 0; i--) {
           if (str[i] == symb)
@@ -85,7 +85,7 @@ public class HomeWork_15_1 {
       return -1;
   }
 
-  public static int lastIndexOf(char[] str, char symb, int beginIndex) {
+  public static int myLastIndexOf(char[] str, char symb, int beginIndex) {
       char[] arr = new char[str.length];
       for (int i = arr.length - 1; i >= 0; i--) {
           if (str[i] == symb && beginIndex >= i)
@@ -95,7 +95,7 @@ public class HomeWork_15_1 {
   }
 
 
-  public static char charAt(char[] str, int index) {
+  public static char myCharAt(char[] str, int index) {
       char[] arr = new char[str.length];
       for (int i = 0; i < arr.length; i++) {
           if (i == index)
@@ -104,7 +104,7 @@ public class HomeWork_15_1 {
       return ' ';
   }
 
-    public static char[] toLowerCase(char[] str) {
+    public static char[] myToLowerCase(char[] str) {
         char[] arr = new char[str.length];
         for (int i = 0; i < arr.length; i++) {
             if (str[i] >= 65 && str[i] <= 90) {
@@ -116,7 +116,7 @@ public class HomeWork_15_1 {
         return arr;
     }
 
-   public static boolean isEmpty(char[] str2) {
+   public static boolean myIsEmpty(char[] str2) {
        char[] arr2 = new char[str2.length];
        for (int i = 0; i <= arr2.length; i++) {
            if (str2.length == 0)
@@ -125,7 +125,7 @@ public class HomeWork_15_1 {
        return false;
    }
 
-  public static boolean isBlank(char[] str2) {
+  public static boolean myIsBlank(char[] str2) {
       char[] arr2 = new char[str2.length];
        if (str2.length == 0)
            return true;
