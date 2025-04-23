@@ -19,13 +19,27 @@ public class HomeWork_16 {
 //        -     split("Farid"));
 //        -     replace("Farid","Dima"));
 
-        String str1 = "Dmitrii";
-        String str2 = "Dmitrii";
+        String str1 = "Dmitrii Sorokin";
+        String str2 = "Dmitrii Sorokin";
+        String suffix="okinn";
+        String prefix="Dmi";
+
         char[] arr1 = str1.toCharArray();
         char[] arr2 = str2.toCharArray();
+        char[] suff=suffix.toCharArray();
+        char[] pref=prefix.toCharArray();
 
         System.out.println(str1.equals(str2));
         System.out.println(myEquals(arr1, arr2));
+
+        System.out.println(str1.endsWith("okinn"));
+        System.out.println(myEndsWith(arr1,suff));
+
+        System.out.println(str1.startsWith("Dmi"));
+        System.out.println(myStartsWith(arr1,pref));
+
+
+
 
     }
 
@@ -42,6 +56,41 @@ public class HomeWork_16 {
             return true;
         else return false;
     }
+
+    public static boolean myEndsWith(char[] str1,char[] suffix) {
+        int strLength = str1.length;
+        int suffixLength = suffix.length;
+
+        if (suffixLength > strLength) {
+            return false;
+        }
+
+        for (int i = 0; i < suffixLength; i++) {
+            if (str1[strLength - suffixLength + i] != suffix[i]) {
+                return false;
+            }
+        }
+
+            return true;
+
+    }
+    public static boolean myStartsWith(char[] str1,char[] prefix) {
+        int strLength = str1.length;
+        int prefixLength = prefix.length;
+        if (prefixLength>strLength)
+            return false;
+
+        for (int i = 0; i < prefixLength; i++) {
+            if (str1[i] != prefix[i]) {
+                return false;
+            }
+        }
+
+        return true;
+
+
+    }
+
 
 
 }
