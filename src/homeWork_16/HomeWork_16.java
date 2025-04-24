@@ -25,7 +25,6 @@ public class HomeWork_16 {
         String prefix = "Dmitrii";
 
 
-
         char[] arr1 = str1.toCharArray();
         char[] arr2 = str2.toCharArray();
         char[] suff = suffix.toCharArray();
@@ -41,18 +40,21 @@ public class HomeWork_16 {
         System.out.println(myStartsWith(arr1, pref));
 
         System.out.println(str1.replace('D', 'F'));
-        System.out.println(myReplace(arr1,'D','F'));
+        System.out.println(str1);
+        System.out.println(myReplace(arr1, 'D', 'F'));
+        System.out.println(arr1);
+
+        System.out.println(str1.toCharArray());
+        System.out.println(myToCharArray(str1));
 
 
     }
 
-    public static boolean myEquals(char[] str1, char[] str2) {
-        char[] arr1 = new char[str1.length];
-        char[] arr2 = new char[str2.length];
-        for (int i = 0; i < str1.length; i++) {
+    public static boolean myEquals(char[] arr1, char[] arr2) {
+        for (int i = 0; i < arr1.length; i++) {
 
         }
-        for (int i = 0; i < str2.length; i++) {
+        for (int i = 0; i < arr2.length; i++) {
 
         }
         if (Arrays.equals(arr1, arr2))
@@ -95,18 +97,24 @@ public class HomeWork_16 {
 
     }
 
-    public static char[] myReplace(char[] str1, char oldChar,char newChar) {
+    public static char[] myReplace(char[] str1, char oldChar, char newChar) {
         char[] arr1 = new char[str1.length];
-        for (int i = 0; i < arr1.length; i++) {
+        for (int i = 0; i < str1.length; i++) {
             if (str1[i] == oldChar) {
-                arr1[i] = newChar;
+                str1[i] = newChar;
             } else {
-                arr1[i]=str1[i];
+                arr1[i] = str1[i];
             }
 
         }
-        return arr1;
+        return str1;
+    }
 
+    public static char[] myToCharArray(String str1) {
+        // char[] arr1 = new char[str1.length()];
+        // for (int i = 0; i < str1.length(); i++) {
+        //     arr1[i] = str1.charAt(i);
 
+        return str1.toCharArray();
     }
 }
