@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 public class HomeWork_16 {
     public static void main(String[] args) {
-        //        -     equals("Farid"));
-//        -     endsWith("dlayev"));
-//        -     startsWith("Abdullayev"));
-//        -     replace('F','Z'));
+        //        +     equals("Farid"));
+//        +     endsWith("dlayev"));
+//        +     startsWith("Abdullayev"));
+//        +     replace('F','Z'));
 
-//        -     toCharArray());
-//        -     equalsIgnoreCase("Farid"));
-//        -     substring(10));
+//        +     toCharArray());
+//        +     equalsIgnoreCase("Farid"));
+//        +     substring(10));
 //        -     substring(10,20));
 //        +     trim());
 
@@ -20,7 +20,7 @@ public class HomeWork_16 {
 //        -     replace("Farid","Dima"));
 
         String str1 = "Dmitrii Sorokin";
-        String str2 = "Dmitrii Sorokin";
+        String str2 = "Dmitrii sorokin";
         String suffix = "okin";
         String prefix = "DmitR";
 
@@ -47,16 +47,19 @@ public class HomeWork_16 {
         System.out.println(str1.toCharArray());
         System.out.println(myToCharArray(str1));
 
+        System.out.println(str1.equalsIgnoreCase(str2));
+        System.out.println(myEqualsIgnoreCase(arr1, arr2));
+
+        System.out.println(str1.substring(10));
+        System.out.println(mySubstring(arr1, 10));
+
+        System.out.println(str1.substring(5, 10));
+        System.out.println(mySubstring(arr1, 5, 10));
+
 
     }
 
     public static boolean myEquals(char[] arr1, char[] arr2) {
-        for (int i = 0; i < arr1.length; i++) {
-
-        }
-        for (int i = 0; i < arr2.length; i++) {
-
-        }
         if (Arrays.equals(arr1, arr2))
             return true;
         else return false;
@@ -117,4 +120,41 @@ public class HomeWork_16 {
         }
         return arr1;
     }
+
+    public static boolean myEqualsIgnoreCase(char[] arr1, char[] arr2) {
+        for (int i = 0; i < arr1.length; i++) {
+            if (Character.toLowerCase(arr1[i]) != Character.toLowerCase(arr2[i]))
+                return false;
+        }
+        return true;
+    }
+
+    public static char[] mySubstring(char[] str1, int beginIndex) {
+        int newLength = str1.length - beginIndex;
+        char[] arr1 = new char[newLength];
+        for (int i = beginIndex; i < str1.length; i++) {
+            arr1[i - beginIndex] = str1[i];
+        }
+        return arr1;
+
+    }
+
+    public static char[] mySubstring(char[] str1, int beginIndex, int endIndex) {
+        int newLength = endIndex - beginIndex;
+        char[] arr1 = new char[newLength];
+        for (int i = beginIndex; i < endIndex; i++) {
+            arr1[i - beginIndex] = str1[i];
+        }
+        return arr1;
+
+    }
 }
+
+
+
+
+
+
+
+
+
