@@ -12,8 +12,8 @@ public class HomeWork_16 {
 //        +     toCharArray());
 //        +     equalsIgnoreCase("Farid"));
 //        +     substring(10));
-//        -     substring(10,20));
-//        +     trim());
+//        +     substring(10,20));
+//        +     trim()); Делали на уроке
 
 //        -     contains("  "));
 //        -     split("Farid"));
@@ -96,7 +96,6 @@ public class HomeWork_16 {
         }
 
         return true;
-
 
     }
 
