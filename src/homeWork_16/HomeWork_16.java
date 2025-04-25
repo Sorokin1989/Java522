@@ -21,8 +21,8 @@ public class HomeWork_16 {
 
         String str1 = "Dmitrii Sorokin";
         String str2 = "Dmitrii Sorokin";
-        String suffix = "okinn";
-        String prefix = "Dmitrii";
+        String suffix = "okin";
+        String prefix = "DmitR";
 
 
         char[] arr1 = str1.toCharArray();
@@ -33,16 +33,16 @@ public class HomeWork_16 {
         System.out.println(str1.equals(str2));
         System.out.println(myEquals(arr1, arr2));
 
-        System.out.println(str1.endsWith("okinn"));
+        System.out.println(str1.endsWith("okin"));
         System.out.println(myEndsWith(arr1, suff));
 
-        System.out.println(str1.startsWith("Dmi"));
+        System.out.println(str1.startsWith("DmitR"));
         System.out.println(myStartsWith(arr1, pref));
 
+
         System.out.println(str1.replace('D', 'F'));
-        System.out.println(str1);
         System.out.println(myReplace(arr1, 'D', 'F'));
-        System.out.println(arr1);
+
 
         System.out.println(str1.toCharArray());
         System.out.println(myToCharArray(str1));
@@ -101,20 +101,20 @@ public class HomeWork_16 {
         char[] arr1 = new char[str1.length];
         for (int i = 0; i < str1.length; i++) {
             if (str1[i] == oldChar) {
-                str1[i] = newChar;
+                arr1[i] = newChar;
             } else {
                 arr1[i] = str1[i];
             }
 
         }
-        return str1;
+        return arr1;
     }
 
     public static char[] myToCharArray(String str1) {
-        // char[] arr1 = new char[str1.length()];
-        // for (int i = 0; i < str1.length(); i++) {
-        //     arr1[i] = str1.charAt(i);
-
-        return str1.toCharArray();
+        char[] arr1 = new char[str1.length()];
+        for (int i = 0; i < str1.length(); i++) {
+            arr1[i] = str1.charAt(i);
+        }
+        return arr1;
     }
 }
