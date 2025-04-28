@@ -21,6 +21,14 @@ public class HomeWork_18 {
         //Напиши метод, который по индексу выводит элемент массива.
         //Если индекс выходит за пределы массива, обрабатывай ArrayIndexOutOfBoundsException и выводи сообщение "Индекс за пределами массива".
         //
+        int[] arr={1,2,3,4,5};
+        try {
+            System.out.println(getNum(arr, 5));
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+
         //3. Парсинг числа из строки
         //Описание:
         //Напиши метод, который принимает строку и конвертирует её в число (Integer.parseInt).
@@ -65,6 +73,16 @@ public class HomeWork_18 {
     public static int div(int a, int b) throws ArithmeticException {
         if (b == 0) throw new ArithmeticException("На 0 делить нельзя!");
         return a / b;
+    }
+
+    public static int getNum(int[] arr, int index) {
+        try {
+            if (index > 4);
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println("Индекс за пределами массива");
+        }
+
+        return arr[index];
     }
 
 }
