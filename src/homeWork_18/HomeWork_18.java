@@ -23,7 +23,7 @@ public class HomeWork_18 {
         //
         int[] arr={1,2,3,4,5};
         try {
-            System.out.println(getNum(arr, 5));
+            System.out.println(getNum(arr, 10));
         } catch (ArrayIndexOutOfBoundsException exception) {
             System.out.println(exception.getMessage());
         }
@@ -76,11 +76,7 @@ public class HomeWork_18 {
     }
 
     public static int getNum(int[] arr, int index) {
-        try {
-            if (index > 4);
-        } catch (ArrayIndexOutOfBoundsException exception) {
-            System.out.println("Индекс за пределами массива");
-        }
+        if (index<0 || index>=arr.length) throw new ArrayIndexOutOfBoundsException("Индекс за пределами массива");
 
         return arr[index];
     }
