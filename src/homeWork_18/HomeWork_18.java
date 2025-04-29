@@ -49,6 +49,13 @@ public class HomeWork_18 {
         //Напиши код, который может выбросить и ArithmeticException (деление на ноль) и ArrayIndexOutOfBoundsException (выход за границы массива).
         //Лови эти два исключения в разных catch блоках.
         //
+        try {
+            System.out.println(getNum(arr, 10));
+            System.out.println(div(10, 0));
+        } catch (ArrayIndexOutOfBoundsException | ArithmeticException exception) {
+            System.out.println(exception.getMessage());
+        }
+
         //5. Использование объединённого catch
         //Описание:
         //Тоже самое, но используй объединение (catch (ArithmeticException | ArrayIndexOutOfBoundsException e)).
