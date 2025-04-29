@@ -21,7 +21,7 @@ public class HomeWork_18 {
         //Напиши метод, который по индексу выводит элемент массива.
         //Если индекс выходит за пределы массива, обрабатывай ArrayIndexOutOfBoundsException и выводи сообщение "Индекс за пределами массива".
         //
-        int[] arr={1,2,3,4,5};
+        int[] arr = {1, 2, 3, 4, 5};
         try {
             System.out.println(getNum(arr, 10));
         } catch (ArrayIndexOutOfBoundsException exception) {
@@ -41,9 +41,6 @@ public class HomeWork_18 {
         }
 
 
-
-
-
         //4. Множественный catch
         //Описание:
         //Напиши код, который может выбросить и ArithmeticException (деление на ноль) и ArrayIndexOutOfBoundsException (выход за границы массива).
@@ -52,10 +49,11 @@ public class HomeWork_18 {
         try {
             System.out.println(getNum(arr, 10));
             System.out.println(div(10, 0));
-        } catch (ArrayIndexOutOfBoundsException | ArithmeticException exception) {
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println(exception.getMessage());
+        } catch (ArithmeticException exception) {
             System.out.println(exception.getMessage());
         }
-
         //5. Использование объединённого catch
         //Описание:
         //Тоже самое, но используй объединение (catch (ArithmeticException | ArrayIndexOutOfBoundsException e)).
@@ -93,7 +91,7 @@ public class HomeWork_18 {
     }
 
     public static int getNum(int[] arr, int index) {
-        if (index<0 || index>=arr.length) throw new ArrayIndexOutOfBoundsException("Индекс за пределами массива");
+        if (index < 0 || index >= arr.length) throw new ArrayIndexOutOfBoundsException("Индекс за пределами массива");
 
         return arr[index];
     }
