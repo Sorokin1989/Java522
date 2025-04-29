@@ -34,6 +34,16 @@ public class HomeWork_18 {
         //Напиши метод, который принимает строку и конвертирует её в число (Integer.parseInt).
         //Если строка некорректная (например "abc"), обрабатывай NumberFormatException и выводи "Ошибка преобразования строки в число".
         //
+        try {
+            System.out.println(myParse("abc"));
+        } catch (NumberFormatException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+
+
+
+
         //4. Множественный catch
         //Описание:
         //Напиши код, который может выбросить и ArithmeticException (деление на ноль) и ArrayIndexOutOfBoundsException (выход за границы массива).
@@ -79,6 +89,17 @@ public class HomeWork_18 {
         if (index<0 || index>=arr.length) throw new ArrayIndexOutOfBoundsException("Индекс за пределами массива");
 
         return arr[index];
+    }
+
+
+    public static int myParse(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Ошибка преобразования строки в число");
+        }
+
+
     }
 
 }
