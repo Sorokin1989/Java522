@@ -1,5 +1,8 @@
 package homeWork_18;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class HomeWork_18 {
     public static void main(String[] args) {
         //1. Деление с проверкой на ноль
@@ -71,7 +74,7 @@ public class HomeWork_18 {
         //
         try {
             myArgumentException();
-        }catch (IllegalArgumentException exception) {
+        } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
 
@@ -80,26 +83,25 @@ public class HomeWork_18 {
         //Описание:
         //Напиши код, который делит два числа, и независимо от результата всегда пишет "Блок finally сработал".
         //
-        int a=5;
-        int b=1;
+        int a = 5;
+        int b = 1;
         try {
-            System.out.println( a / b);
+            System.out.println(a / b);
         } finally {
             System.out.println("блок finally сработал");
         }
-
-
-
-
 
 
         //8. Перехват и повторный выброс исключения
         //Описание:
         //Напиши код, который ловит исключение, выводит сообщение, а затем снова бросает его (throw e).
         //
-
-
-
+        //     try {
+        //         myArgumentException();
+        //     } catch (Exception exception) {
+        //         System.out.println(exception.getMessage());
+        //         throw exception;
+        //     }
 
         //9. Пользовательский ввод с проверкой
         //Описание:
@@ -107,6 +109,22 @@ public class HomeWork_18 {
         //Пусть пользователь вводит число.
         //Если он ввёл что-то кроме числа, выводи сообщение об ошибке (InputMismatchException) и проси ввести снова.
         //
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+
+        try {
+            System.out.println("Введите число: ");
+            int number = scanner.nextInt();
+            System.out.println("Вы ввели число " + number);
+            break;
+
+        } catch (InputMismatchException exception) {
+            System.out.println("Ошибка! InputMismatchException, Вы ввели не число! Введите число!" );
+            scanner.next();
+        }
+    } scanner.close();
+
         //10. Обработка массива строк с числами
         //Описание:
         //Есть массив строк вида ["10", "20", "abc", "30"].
@@ -137,10 +155,9 @@ public class HomeWork_18 {
 
 
     }
+
     public static void myArgumentException() {
         throw new IllegalArgumentException("Это было сделано специально");
     }
-
-
 
 }
