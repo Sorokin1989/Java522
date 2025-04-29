@@ -132,20 +132,25 @@ public class HomeWork_18 {
         //Пробегись по массиву и попробуй превратить каждую строку в число.
         //Если строка не число — обработай исключение и напиши "Некорректное значение: abc".
 
-        String[] array = {"10", "20", "10", "30"};
+        String[] array = {"10", "20", "adf", "30"};
         int[] arrNumber = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             try {
                 arrNumber[i] = Integer.parseInt(array[i]);
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка!!" + array[i] + " не число!");
-                ;
+                System.out.println("Ошибка!! Некорректное значение " + array[i] + " не число!");
+                arrNumber[i]=0;
+
             }
 
         }
-        for (int number : arrNumber) {
-            System.out.print(number + " ");
+        System.out.println("Массив преобразован: ");
+        for (int i = 0; i < arrNumber.length; i++) {
+            System.out.print(arrNumber[i] + " ");
+
         }
+
+
 
     }
 
