@@ -70,7 +70,7 @@ public class HomeWork_18 {
         //Напиши метод, который всегда бросает IllegalArgumentException с сообщением "Это было сделано специально".
         //
         try {
-            System.out.println(myArgumentException());
+            myArgumentException();
         }catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
@@ -80,10 +80,27 @@ public class HomeWork_18 {
         //Описание:
         //Напиши код, который делит два числа, и независимо от результата всегда пишет "Блок finally сработал".
         //
+        int a=5;
+        int b=1;
+        try {
+            System.out.println( a / b);
+        } finally {
+            System.out.println("блок finally сработал");
+        }
+
+
+
+
+
+
         //8. Перехват и повторный выброс исключения
         //Описание:
         //Напиши код, который ловит исключение, выводит сообщение, а затем снова бросает его (throw e).
         //
+
+
+
+
         //9. Пользовательский ввод с проверкой
         //Описание:
         //Используй Scanner.
@@ -120,8 +137,10 @@ public class HomeWork_18 {
 
 
     }
-    public static String myArgumentException() {
+    public static void myArgumentException() {
         throw new IllegalArgumentException("Это было сделано специально");
     }
+
+
 
 }
