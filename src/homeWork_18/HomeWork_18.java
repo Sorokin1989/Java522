@@ -58,10 +58,24 @@ public class HomeWork_18 {
         //Описание:
         //Тоже самое, но используй объединение (catch (ArithmeticException | ArrayIndexOutOfBoundsException e)).
         //
+        try {
+            System.out.println(getNum(arr, 10));
+            System.out.println(div(10, 0));
+        } catch (ArrayIndexOutOfBoundsException | ArithmeticException exception) {
+            System.out.println(exception.getMessage());
+        }
+
         //6. Принудительный выброс исключения
         //Описание:
         //Напиши метод, который всегда бросает IllegalArgumentException с сообщением "Это было сделано специально".
         //
+        try {
+            System.out.println(myArgumentException());
+        }catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+
         //7. Работа с finally без catch
         //Описание:
         //Напиши код, который делит два числа, и независимо от результата всегда пишет "Блок finally сработал".
@@ -105,6 +119,9 @@ public class HomeWork_18 {
         }
 
 
+    }
+    public static String myArgumentException() {
+        throw new IllegalArgumentException("Это было сделано специально");
     }
 
 }
