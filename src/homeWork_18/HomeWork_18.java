@@ -113,17 +113,18 @@ public class HomeWork_18 {
         Scanner scanner = new Scanner(System.in);
         while (true) {
 
-        try {
-            System.out.println("Введите число: ");
-            int number = scanner.nextInt();
-            System.out.println("Вы ввели число " + number);
-            break;
+            try {
+                System.out.println("Введите число: ");
+                int number = scanner.nextInt();
+                System.out.println("Вы ввели число " + number);
+                break;
 
-        } catch (InputMismatchException exception) {
-            System.out.println("Ошибка! InputMismatchException, Вы ввели не число! Введите число!" );
-            scanner.next();
+            } catch (InputMismatchException exception) {
+                System.out.println("Ошибка! InputMismatchException, Вы ввели не число! Введите число!");
+                scanner.next();
+            }
         }
-    } scanner.close();
+        scanner.close();
 
         //10. Обработка массива строк с числами
         //Описание:
@@ -131,6 +132,20 @@ public class HomeWork_18 {
         //Пробегись по массиву и попробуй превратить каждую строку в число.
         //Если строка не число — обработай исключение и напиши "Некорректное значение: abc".
 
+        String[] array = {"10", "20", "10", "30"};
+        int[] arrNumber = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            try {
+                arrNumber[i] = Integer.parseInt(array[i]);
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка!!" + array[i] + " не число!");
+                ;
+            }
+
+        }
+        for (int number : arrNumber) {
+            System.out.print(number + " ");
+        }
 
     }
 
