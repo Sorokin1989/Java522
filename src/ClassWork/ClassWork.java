@@ -1,5 +1,6 @@
 package ClassWork;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ClassWork {
@@ -118,5 +119,40 @@ public class ClassWork {
             System.out.print(arr[i] + " ");
 
         }
+        //✅ 9. Обратный порядок массива
+        //Условие:
+        //1) Есть 2 массива в отсортированнов виде
+        //
+        //   int[] arr = {-5,0,1,1,2,3,6,8,22,45,678}
+        //   int[] arr2 = {-10,2,3,6,7,7,7,9,11,1000,1010,1100}
+        //
+        //
+        //   int[] arr3 = { -10,-5,0,1,1,2,2,3,3,6,6,7,7,7,8,9,11,22,45,678,1000,1010,1100}
+        //
+        //
+        //   Нельзя использовать сортировку
+        //
+        //
+        //public static int[] twoArr(int[] one, int[] two) {
+        //
+        //    return arr3;
+        //}
+        System.out.println();
+        System.out.println();
+        int[] arr1 = {-5,0,1,1,2,3,6,8,22,45,678};
+        int[] arr2 = {-10,2,3,6,7,7,7,9,11,1000,1010,1100};
+        System.out.println(Arrays.toString(twoArr(arr1, arr2)));
+    }
+
+    public static int[] twoArr(int[] arr1, int[] arr2) {
+int[] arr3= new int[arr1.length+arr2.length];
+        for (int i = 0; i < arr1.length; i++) {
+            arr3[i]=arr1[i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            arr3[arr1.length+i]=arr2[i];
+        }
+
+        return arr3;
     }
 }
