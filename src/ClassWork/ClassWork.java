@@ -31,7 +31,7 @@ public class ClassWork {
             System.out.println("Наибольшее число: " + number2);
         else if (number3 > number1 && number3 > number2)
             System.out.println("Наибольшее число:" + number3);
-        else if (number1 == number2 && number1 == number3 && number2 == number3)
+        else if (number1 == number2 && number2 == number3)
             System.out.println("Все числа равны!");
         else if (number1 == number2 && number1 > number3 || number2 > number3)
             System.out.println("2 наибольших числа: " + number1 + " и " + number2);
