@@ -58,6 +58,24 @@ public class ClassWork {
         // ✅ 5. Проверка числа на простоту
         // Условие:
         // Проверьте, является ли число простым (делится только на 1 и себя).
+        System.out.println("Введите число: ");
+        int number = scanner.nextInt();
+        if (number < 2) {
+            System.out.println("Число не должно быть меньше 2");
+            return;
+        }
+        int i2 = 2;
+        boolean isFlag = false;
+        while (i2 * i2 <= number) {
+            if (number % i2 == 0) {
+                isFlag = true;
+                break;
+            }
+            i2++;
+        }
+        if (isFlag)
+            System.out.println("Число не простое");
+        else System.out.println("Число простое");
 
 
         //✅ 6. Поиск слова в массиве строк
