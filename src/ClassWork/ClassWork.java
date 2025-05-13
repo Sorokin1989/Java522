@@ -49,7 +49,7 @@ public class ClassWork {
 
         for (int i = 1; i <= 10; i++) {
             for (int j = 1; j <= 10; j++) {
-                System.out.print(i*j+ "\t");
+                System.out.print(i * j + "\t");
             }
             System.out.println();
 
@@ -65,7 +65,7 @@ public class ClassWork {
         //Пользователь вводит слово, а программа ищет его в массиве строк.
         //Цель: строки, массивы, цикл.
         String[] words = {"dima", "oleg", "katya", "mike", "bob", "john"};
-        Scanner scanner1=new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
 
         System.out.print("Введите слово для поиска: ");
         String inputWord = scanner1.nextLine();
@@ -139,20 +139,32 @@ public class ClassWork {
         //}
         System.out.println();
         System.out.println();
-        int[] arr1 = {-5,0,1,1,2,3,6,8,22,45,678};
-        int[] arr2 = {-10,2,3,6,7,7,7,9,11,1000,1010,1100};
+        int[] arr1 = {-5, 0, 1, 1, 2, 3, 6, 8, 22, 45, 678};
+        int[] arr2 = {-10, 2, 3, 6, 7, 7, 7, 9, 11, 1000, 1010, 1100};
         System.out.println(Arrays.toString(twoArr(arr1, arr2)));
     }
 
     public static int[] twoArr(int[] arr1, int[] arr2) {
-int[] arr3= new int[arr1.length+arr2.length];
+        int[] arr3 = new int[arr1.length + arr2.length];
+
         for (int i = 0; i < arr1.length; i++) {
-            arr3[i]=arr1[i];
+            arr3[i] = arr1[i];
         }
         for (int i = 0; i < arr2.length; i++) {
-            arr3[arr1.length+i]=arr2[i];
+            arr3[arr1.length + i] = arr2[i];
         }
+        int[] arr3Sort = new int[arr3.length];
 
-        return arr3;
+        for (int j = 0; j < arr3.length; j++) {
+            int minIndex = -1;
+            for (int i = 0; i < arr3.length; i++) {
+                if (minIndex == -1 || arr3[i] < arr3[minIndex]) {
+                    minIndex = i;
+                }
+            }
+            arr3Sort[j] = arr3[minIndex];
+            arr3[minIndex] = Integer.MAX_VALUE;
+        }
+        return arr3Sort;
     }
 }
