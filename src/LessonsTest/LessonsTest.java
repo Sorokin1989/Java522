@@ -39,10 +39,10 @@ public class LessonsTest {
         //Вход: [3, 1] и [4, 2]
         //Выход: [1, 2, 3, 4]
 
-        int[] array={3,1};
-        int[] array4={4,2};
+        int[] array = {3, 1};
+        int[] array4 = {4, 2};
 
-       int[] arr5= twoArrSort(array,array4);
+        int[] arr5 = twoArrSort(array, array4);
         System.out.println(Arrays.toString(arr5));
 
 
@@ -54,17 +54,28 @@ public class LessonsTest {
         //Вход: [7, 2, 9]
         //Выход: 2
 
-        int [] arR={7,2,9};
-        int min=arR[0];
+        int[] arR = {7, 2, 9};
+        int min = arR[0];
         System.out.println("Минимальное значение: ");
         for (int i = 0; i < arR.length; i++) {
-            if (arR[i]<min) {
-                min=arR[i];
+            if (arR[i] < min) {
+                min = arR[i];
             }
         }
         System.out.println(min);
 
 
+        //Задание 5: Создать функцию для объединения и сортировки двух массивов
+        //Описание:
+        //Создайте функцию mergeAndSort, которая принимает два массива и возвращает
+        // отсортированный объединенный массив.
+        //Результат: [2, 3, 4, 5]
+
+        int[] arr6 = {5, 3};
+        int[] arr7 = {2, 4};
+
+        int[] arrSort = mergeAndSort(arr6, arr7);
+        System.out.println(Arrays.toString(arrSort));
 
 
     }
@@ -93,17 +104,45 @@ public class LessonsTest {
     }
 
     public static int[] twoArrSort(int[] arr, int[] arr2) {
-        int[] array=new int[arr.length+arr2.length];
+        int[] array = new int[arr.length + arr2.length];
         for (int i = 0; i < arr.length; i++) {
-            array[i]=arr[i];
+            array[i] = arr[i];
         }
         for (int i = 0; i < arr2.length; i++) {
-            array[arr.length+i]=arr2[i];
+            array[arr.length + i] = arr2[i];
 
         }
         Arrays.sort(array);
         return array;
+
     }
 
+    public static int[] mergeAndSort(int[] arr, int[] arr2) {
+        int[] arr3 = new int[arr.length + arr2.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr3[i] = arr[i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            arr3[arr.length + i] = arr2[i];
+        }
+        int[] arrSort3 = new int[arr3.length];
+
+        for (int j = 0; j < arr3.length; j++) {
+            int minIndex = -1;
+            for (int i = 0; i < arr3.length; i++) {
+                if (minIndex == -1 || arr3[i] < arr3[minIndex]) {
+                    minIndex = i;
+                }
+            }
+            arrSort3[j] = arr3[minIndex];
+            arr3[minIndex] = Integer.MAX_VALUE;
+        }
+        return arrSort3;
+    }
 
 }
+
+
+
+
+
