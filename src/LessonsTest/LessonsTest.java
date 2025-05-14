@@ -87,16 +87,43 @@ public class LessonsTest {
         //Вход: [1, 2, 0, 4]
         //Выход: Есть ноль
 
-        int[] arRay = {1, 2, 0, 4};
-        for (int i = 0; i < arRay.length; i++) {
-            if (arRay[i] == 0) {
-                System.out.println("Есть ноль");
-                return;
-            }
-        }
-        System.out.println("Нет нуля");
+      // int[] arRay = {1, 2, 0, 4};
+      // for (int i = 0; i < arRay.length; i++) {
+      //     if (arRay[i] == 0) {
+      //         System.out.println("Есть ноль");
+      //         return;
+      //     }
+      // }
+      // System.out.println("Нет нуля");
 
+
+        //Задание 7: Подсчитать сумму элементов массива
+        //Описание:
+        //Создайте программу, которая вычисляет сумму всех элементов массива.
+        //
+        //Пример:
+        //Вход: [1, 2, 3]
+        //Выход: 6
+
+        int[] array7=new int[3];
+        array7[0]=1;
+        array7[1]=2;
+        array7[2]=3;
+        int sum=0;
+
+        for (int i = 0; i < array7.length; i++) {
+            sum+=array7[i];
+        }
+        System.out.println("Сумма: " + sum);
     }
+
+
+
+
+
+
+
+
 
     public static int[] twoArr(int[] array1, int[] array2) {
         int[] array3 = new int[array1.length + array2.length];
