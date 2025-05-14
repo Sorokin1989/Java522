@@ -78,6 +78,24 @@ public class LessonsTest {
         System.out.println(Arrays.toString(arrSort));
 
 
+        //Задание 6: Проверить, есть ли в массиве число 0
+        //Описание:
+        //Напишите программу, которая проверяет, содержит ли массив число 0.
+        // Если да — выводит "Есть ноль", иначе — "Нет нуля".
+        //
+        //Пример:
+        //Вход: [1, 2, 0, 4]
+        //Выход: Есть ноль
+
+        int[] arRay = {1, 2, 0, 4};
+        for (int i = 0; i < arRay.length; i++) {
+            if (arRay[i] == 0) {
+                System.out.println("Есть ноль");
+                return;
+            }
+        }
+        System.out.println("Нет нуля");
+
     }
 
     public static int[] twoArr(int[] array1, int[] array2) {
