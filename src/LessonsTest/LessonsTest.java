@@ -28,9 +28,25 @@ public class LessonsTest {
 
         int[] arr = {10, 20};
         int[] arr2 = {30, 40};
-
         int[] array3 = twoArr2(arr, arr2);
         System.out.println(Arrays.toString(array3));
+
+        //Задание 3: Отсортировать массив из двух объединенных массивов
+        //Описание:
+        //Объедините два массива и отсортируйте полученный массив по возрастанию.
+        //
+        //Пример:
+        //Вход: [3, 1] и [4, 2]
+        //Выход: [1, 2, 3, 4]
+
+        int[] array={3,1};
+        int[] array4={4,2};
+
+       int[] arr5= twoArrSort(array,array4);
+        System.out.println(Arrays.toString(arr5));
+
+
+
     }
 
     public static int[] twoArr(int[] array1, int[] array2) {
@@ -54,6 +70,19 @@ public class LessonsTest {
             arr3[arr.length + i] = arr2[i];
         }
         return arr3;
+    }
+
+    public static int[] twoArrSort(int[] arr, int[] arr2) {
+        int[] array=new int[arr.length+arr2.length];
+        for (int i = 0; i < arr.length; i++) {
+            array[i]=arr[i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            array[arr.length+i]=arr2[i];
+
+        }
+        Arrays.sort(array);
+        return array;
     }
 
 
