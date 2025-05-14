@@ -46,6 +46,26 @@ public class LessonsTest {
         System.out.println(Arrays.toString(arr5));
 
 
+        //Задание 4: Найти минимальный элемент в массиве
+        //Описание:
+        //Напишите программу, которая находит самый маленький элемент в массиве.
+        //
+        //Пример:
+        //Вход: [7, 2, 9]
+        //Выход: 2
+
+        int [] arR={7,2,9};
+        int min=arR[0];
+        System.out.println("Минимальное значение: ");
+        for (int i = 0; i < arR.length; i++) {
+            if (arR[i]<min) {
+                min=arR[i];
+            }
+        }
+        System.out.println(min);
+
+
+
 
     }
 
