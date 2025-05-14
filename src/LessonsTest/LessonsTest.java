@@ -115,6 +115,45 @@ public class LessonsTest {
             sum+=array7[i];
         }
         System.out.println("Сумма: " + sum);
+
+
+        //Задание 8: Создать новый массив из элементов исходного с шагом 2
+        //Описание:
+        //Создайте новый массив, который содержит каждый второй элемент исходного массива.
+        //
+        //Пример:
+        //Вход: [10, 20, 30, 40, 50]
+        //Выход: [20, 40]
+
+        int[] array8={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
+        for (int i = 0; i < array8.length; i++) {
+            System.out.print(array8[i] + " ");
+        }
+        int[] array9=new int[array8.length];
+        System.out.println();
+        for (int i = 0; i < array8.length; i++) {
+            if (i%2!=0) {
+                array9[i] = array8[i];
+            }
+        }
+        int count=0;
+        for (int i = 0; i < array9.length; i++) {
+            if (array9[i]!=0)
+                count++;
+        }
+        int[] newArr=new int[count];
+        int newIndex=0;
+        for (int i = 0; i < array9.length; i++) {
+           if (array9[i]!=0) {
+               newArr[newIndex] = array9[i];
+               newIndex++;
+           }
+        }
+        System.out.println();
+        for (int i = 0; i < newArr.length; i++) {
+            System.out.print(newArr[i] + " ");
+
+        }
     }
 
 
