@@ -44,6 +44,20 @@ public class LessonTest2 {
         if (!found)
             System.out.println("Нет такого числа!");
 
+        //Задание 4: Создать массив из 15 элементов, заполнить его числами по возрастанию, начиная с 10.
+        // Вывести массив.
+
+        arr = new int[15];
+        number = 10;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = number + i;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+
+        }
+
+
     }
 }
 
