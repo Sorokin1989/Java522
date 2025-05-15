@@ -1,6 +1,7 @@
 package LessonsTest;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class LessonTest2 {
     public static void main(String[] args) {
@@ -26,5 +27,23 @@ public class LessonTest2 {
             sum += arr[i];
         }
         System.out.println("Сумма всех элементов: " + sum);
+
+
+        //Задание 3: Определить, есть ли в массиве число, равное заданному пользователем значению.
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        boolean found = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == number) {
+                System.out.println("В массиве есть это число!");
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+            System.out.println("Нет такого числа!");
+
     }
 }
+
