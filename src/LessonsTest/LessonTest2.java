@@ -89,6 +89,27 @@ public class LessonTest2 {
         }
         System.out.println("Количество чисел, которые больше среднего арифметического равно " + count);
 
+        //Задание 6: В массиве из 12 элементов заменить все отрицательные числа на нули.
+
+        arr = new int[12];
+        min = -100;
+        max = 100;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(max - min + 1) + min;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 0)
+                arr[i] = 0;
+        }
+        System.out.println();
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+
+        }
+
 
     }
 }
