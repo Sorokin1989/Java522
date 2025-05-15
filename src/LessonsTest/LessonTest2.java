@@ -57,6 +57,38 @@ public class LessonTest2 {
 
         }
 
+        //Задание 5: Создать массив из 20 элементов и определить,
+        // сколько в нем элементов больше среднего арифметического всех элементов.
+        System.out.println();
+        System.out.println("Массив: ");
+
+        Random random1 = new Random();
+        int size = 20;
+        arr = new int[size];
+        double arifmetic = 0;
+        min = 1;
+        max = 100;
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random1.nextInt(max - min + 1) + min;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+
+        }
+        sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        arifmetic = (double) sum / size;
+        System.out.println("\nСреднее арифметическое: " + arifmetic);
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > arifmetic)
+                count++;
+        }
+        System.out.println("Количество чисел, которые больше среднего арифметического равно " + count);
+
 
     }
 }
