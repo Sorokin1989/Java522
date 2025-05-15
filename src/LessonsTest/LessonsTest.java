@@ -1,6 +1,7 @@
 package LessonsTest;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class LessonsTest {
     public static void main(String[] args) {
@@ -87,14 +88,14 @@ public class LessonsTest {
         //Вход: [1, 2, 0, 4]
         //Выход: Есть ноль
 
-      // int[] arRay = {1, 2, 0, 4};
-      // for (int i = 0; i < arRay.length; i++) {
-      //     if (arRay[i] == 0) {
-      //         System.out.println("Есть ноль");
-      //         return;
-      //     }
-      // }
-      // System.out.println("Нет нуля");
+        // int[] arRay = {1, 2, 0, 4};
+        // for (int i = 0; i < arRay.length; i++) {
+        //     if (arRay[i] == 0) {
+        //         System.out.println("Есть ноль");
+        //         return;
+        //     }
+        // }
+        // System.out.println("Нет нуля");
 
 
         //Задание 7: Подсчитать сумму элементов массива
@@ -105,14 +106,14 @@ public class LessonsTest {
         //Вход: [1, 2, 3]
         //Выход: 6
 
-        int[] array7=new int[3];
-        array7[0]=1;
-        array7[1]=2;
-        array7[2]=3;
-        int sum=0;
+        int[] array7 = new int[3];
+        array7[0] = 1;
+        array7[1] = 2;
+        array7[2] = 3;
+        int sum = 0;
 
         for (int i = 0; i < array7.length; i++) {
-            sum+=array7[i];
+            sum += array7[i];
         }
         System.out.println("Сумма: " + sum);
 
@@ -125,43 +126,85 @@ public class LessonsTest {
         //Вход: [10, 20, 30, 40, 50]
         //Выход: [20, 40]
 
-        int[] array8={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
+        int[] array8 = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150};
         for (int i = 0; i < array8.length; i++) {
             System.out.print(array8[i] + " ");
         }
-        int[] array9=new int[array8.length];
+        int[] array9 = new int[array8.length];
         System.out.println();
         for (int i = 0; i < array8.length; i++) {
-            if (i%2!=0) {
+            if (i % 2 != 0) {
                 array9[i] = array8[i];
             }
         }
-        int count=0;
+        int count = 0;
         for (int i = 0; i < array9.length; i++) {
-            if (array9[i]!=0)
+            if (array9[i] != 0)
                 count++;
         }
-        int[] newArr=new int[count];
-        int newIndex=0;
+        int[] newArr = new int[count];
+        int newIndex = 0;
         for (int i = 0; i < array9.length; i++) {
-           if (array9[i]!=0) {
-               newArr[newIndex] = array9[i];
-               newIndex++;
-           }
+            if (array9[i] != 0) {
+                newArr[newIndex] = array9[i];
+                newIndex++;
+            }
         }
         System.out.println();
         for (int i = 0; i < newArr.length; i++) {
             System.out.print(newArr[i] + " ");
 
         }
+
+
+        //Задание 9: Проверить, есть ли в массиве число больше 10
+        //Описание:
+        //Напишите программу, которая проверяет наличие элемента больше чем 10.
+        // Если есть — выводит "Есть число больше 10", иначе — "Нет чисел больше 10".
+        //
+        //Пример:
+        //Вход: [5, 8, 12]
+        //Выход: Есть число больше 10
+        System.out.println();
+        int[] array10 = {5, 8};
+        int counter = 0;
+
+        for (int i = 0; i < array10.length; i++) {
+
+            for (int j = 0; j < array10.length; j++) {
+                if (array10[i] > 10) {
+                    System.out.println("Есть числа больше 10");
+                    return;
+                }
+            }
+        }
+        System.out.println("Нет чисел больше 10");
+
+
+        //Задание 10: Создать массив из чисел от 1 до N
+        //Описание:
+        //Напишите программу, которая создает массив из чисел от 1 до N (включительно).
+        //
+        //Пример:
+        //Для N=5 результат: [1, 2, 3, 4, 5]
+
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+
+        int[] arr11 = new int[number];
+
+        for (int i = 0; i < arr11.length; i++) {
+            arr11[i] = i + 1;
+
+        }
+
+        for (int i = 0; i < arr11.length; i++) {
+            System.out.print(arr11[i] + " ");
+
+        }
+
+
     }
-
-
-
-
-
-
-
 
 
     public static int[] twoArr(int[] array1, int[] array2) {
