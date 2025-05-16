@@ -171,18 +171,17 @@ public class ClassWork {
         for (int i = 0; i < arr2.length; i++) {
             arr3[arr1.length + i] = arr2[i];
         }
-        int[] arr3Sort = new int[arr3.length];
 
-        for (int j = 0; j < arr3.length; j++) {
-            int minIndex = -1;
-            for (int i = 0; i < arr3.length; i++) {
-                if (minIndex == -1 || arr3[i] < arr3[minIndex]) {
-                    minIndex = i;
-                }
+        for (int i = 0; i < arr3.length-1; i++) {
+            for (int j = 0; j < arr3.length-1-i; j++) {
+                if (arr3[j]>arr3[j+1]) {
+                    int temp=arr3[j];
+                    arr3[j]=arr3[j+1];
+                    arr3[j+1]=temp;
+
             }
-            arr3Sort[j] = arr3[minIndex];
-            arr3[minIndex] = Integer.MAX_VALUE;
         }
-        return arr3Sort;
+     }
+     return arr3;
     }
 }
