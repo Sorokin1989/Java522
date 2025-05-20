@@ -144,6 +144,12 @@ class UserProfile {
     private String email;
     private String password;
 
+    UserProfile() {
+        this.username=" ";
+        this.email=" ";
+        this.password=" ";
+    }
+
     public String getUsername() {
         return username;
     }
@@ -158,7 +164,7 @@ class UserProfile {
 
     public void setEmail(String email) {
 
-        if (email.matches(".+@.+\\..+")) {
+        if ( email.matches(".+@.+\\..+")) {
             this.email = email;
         } else System.out.println("Ошибка! Введите корректную почту!");
     }
