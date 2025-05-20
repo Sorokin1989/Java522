@@ -9,7 +9,8 @@ public class HomeWork_21 {
         //Проверьте, что к полям нельзя получить доступ напрямую из другого класса.
         Person person = new Person();
         // person.age=50; нельзя обратится к полю age напрямую!!!
-        person.setAge(100);
+        // person.name="Николай";
+        person.setAge(36);
         person.setName("Программист");
         System.out.println(person.getAge());
         System.out.println(person.getName());
@@ -31,7 +32,7 @@ public class HomeWork_21 {
         BankAccount bankAccount = new BankAccount();
         try {
             System.out.println("Вы внесли: " + bankAccount.deposit(1000));
-            System.out.println("Вы сняли: " + bankAccount.withdraw(0));
+            // System.out.println("Вы сняли: " + bankAccount.withdraw(500));
 
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
@@ -43,12 +44,17 @@ public class HomeWork_21 {
 
         //✅ Задание 4: Только для записи
         //Создайте класс Logger с приватным полем logLevel.
-        //Добавьте только сеттер для этого поля (без геттера), чтобы можно было установить уровень логирования, но нельзя было его узнать извне.
+        //Добавьте только сеттер для этого поля (без геттера),
+        // чтобы можно было установить уровень логирования, но нельзя было его узнать извне.
         //
+        Logger logger = new Logger();
+        logger.setLogLevel("ERROR");
+
+
         //✅ Задание 5: Только для записи
         //Создайте класс Logger с приватным полем logLevel.
         //Добавьте только сеттер для этого поля (без геттера), чтобы можно было установить уровень логирования, но нельзя было его узнать извне.
-        //
+        //(то же самое!)
         //
         //✅ Задание 6: Изменяемость объекта
         //Создайте класс UserProfile с приватными полями: username (строка), email (строка), password (строка).
@@ -59,22 +65,30 @@ public class HomeWork_21 {
         //
         //password должен быть не короче 8 символов.
         //Если проверка не проходит — данные не изменяются, а выводится сообщение об ошибке.
+
+        UserProfile userProfile = new UserProfile();
+
+        userProfile.setEmail("sorokindmitrijj@rambler.ru");
+        System.out.println(userProfile.getEmail());
+        userProfile.setPassword("1234567");
+        System.out.println(userProfile.getPassword());
+        userProfile.setUsername("Дмитрий");
+        System.out.println(userProfile.getUsername());
     }
 }
 
 class BankAccount {
 
-    private double balance = 0;
-
+    private double balance = 1000;
 
     public double deposit(int money) {
         if (money <= 0) {
             throw new IllegalArgumentException("Сумма должна быть положительной!");
         }
         balance = balance + money;
-        return balance;
-       // System.out.println("Вы пополнили баланс на " + money + " рублей");
+        return money;
     }
+
 
     public double withdraw(int money) {
         if (money <= 0) {
@@ -84,8 +98,7 @@ class BankAccount {
             throw new IllegalArgumentException("Недостаточно средств!");
         }
         balance = balance - money;
-        return balance;
-       // System.out.println("Вы сняли с баланса " + money + " рублей");
+        return money;
 
     }
 
@@ -103,7 +116,7 @@ class Person {
     }
 
     public void setAge(int age) {
-        if (age > 0 && age < 100)
+        if (age >= 0 && age <= 100)
             this.age = age;
         else System.out.println("Некорректное значение!!!");
     }
@@ -114,6 +127,50 @@ class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+}
+
+class Logger {
+    private String logLevel;
+
+    public void setLogLevel(String logLevel) {
+        this.logLevel = logLevel;
+
+    }
+}
+
+class UserProfile {
+    private String username;
+    private String email;
+    private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+
+        if (email.matches(".+@.+\\..+")) {
+            this.email = email;
+        } else System.out.println("Ошибка! Введите корректную почту!");
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        if (password.matches(".{8,}"))
+            this.password = password;
+        else System.out.println("Пароль меньше 8 символов!");
     }
 }
 
