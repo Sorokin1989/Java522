@@ -70,7 +70,7 @@ public class HomeWork_21 {
 
         userProfile.setEmail("sorokindmitrijj@rambler.ru");
         System.out.println(userProfile.getEmail());
-        userProfile.setPassword("1234567");
+        userProfile.setPassword("12345678");
         System.out.println(userProfile.getPassword());
         userProfile.setUsername("Дмитрий");
         System.out.println(userProfile.getUsername());
@@ -145,9 +145,9 @@ class UserProfile {
     private String password;
 
     UserProfile() {
-        this.username=" ";
-        this.email=" ";
-        this.password=" ";
+        this.username = " ";
+        this.email = " ";
+        this.password = " ";
     }
 
     public String getUsername() {
@@ -164,7 +164,7 @@ class UserProfile {
 
     public void setEmail(String email) {
 
-        if ( email.matches(".+@.+\\..+")) {
+        if (email.matches(".+@.+\\..+")) {
             this.email = email;
         } else System.out.println("Ошибка! Введите корректную почту!");
     }
