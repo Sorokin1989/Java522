@@ -1,46 +1,63 @@
 package homeWork_22;
 
-class Person {
-    private String name;
-    private int age;
-    public static int count = 1;
-    private int id;
+//class Person {
+//    private String name;
+//    private int age;
+//    public static int count = 1;
+//    private int id;
+//
+//    // Person(int id) {
+//    //     this.id=id;
+//
+//    // }
+//
+//    // public Person() {
+//
+//    // }
+//
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//        this.id = count++;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
+//
+//    public void printInfo() {
+//        System.out.println(name+ " " + age+ " " + id);
+//
+//    }
+//}
 
-    // Person(int id) {
-    //     this.id=id;
+class  Person {
+    int age;
+    String name;
+    String surname;
+}
 
-    // }
+class Teacher extends Person {
+    double salary;
 
-    // public Person() {
-
-    // }
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-        this.id = count++;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void printInfo() {
-        System.out.println(name+ " " + age+ " " + id);
-
-    }
+}
+class Student extends Person {
+double stypendia;
+}
+class Parent extends Person {
+    double salary;
 }
 
 
