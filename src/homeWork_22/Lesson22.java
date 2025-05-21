@@ -3,22 +3,22 @@ package homeWork_22;
 class Person {
     private String name;
     private int age;
-    public static int count=1;
+    public static int count = 1;
     private int id;
 
-  // Person(int id) {
-  //     this.id=id;
+    // Person(int id) {
+    //     this.id=id;
 
-  // }
+    // }
 
-   // public Person() {
+    // public Person() {
 
-   // }
+    // }
 
-    public Person(String name, int age, int id) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
-        this.id=id;
+        this.id = count++;
     }
 
     public String getName() {
@@ -36,22 +36,28 @@ class Person {
     public void setAge(int age) {
         this.age = age;
     }
-}
 
+    public void printInfo() {
+        System.out.println(name+ " " + age+ " " + id);
+
+    }
+}
 
 
 
 public class Lesson22 {
     public static void main(String[] args) {
-      Person p1=new Person("Farid",29,1);
-      p1.count=10;
-      Person p2=new Person("Oleg",34,2);
-      p1.count=20;
-      Person p3=new Person("Dasha",22,3);
-      p1.count=30;
-        Person.count=1;
-        System.out.println(Person.count);
-
+    //  Person p1 = new Person("Farid", 29);
+    //  // p1.count=10;
+    //  p1.printInfo();
+    //  Person p2 = new Person("Oleg", 34);
+        //p1.count=20;
+        //p2.printInfo();
+        //Person p3 = new Person("Dasha", 22);
+      //  p3.printInfo();
+        //p1.count=30;
+        //   Person.count=1;
+        // System.out.println(Person.count);
 
 
     }
