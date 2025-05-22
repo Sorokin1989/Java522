@@ -44,7 +44,9 @@ public class HomeWork_22 {
         User user1 = new User();
         User user2 = new User();
 
-        User.getCount();
+
+
+       User.getCount();
 
 
         //
@@ -119,21 +121,20 @@ class Manager extends Employee {
 }
 
 class User {
-    static int count;
+  static int count;
 
 
     static {
         count = 0;
-
+        System.out.println("Создание пользователей");
     }
 
     User() {
         count++;
     }
 
-    static void getCount() {
+     static void getCount() {
         System.out.println("Количество созданных пользователей: " + count);
-
     }
 
 }
