@@ -56,9 +56,9 @@ public class HomeWork_22 {
         //Добавь метод printInfo(), который выводит имя и возраст только если данные валидны.
         //
 
-        Person person=new Person("Дмитрий", 36);
-        Person person1=new Person("Владимир", 23);
-        Person person2=new Person("Николай", 33);
+        Person person = new Person("Дмитрий", 36);
+        Person person1 = new Person("Владимир", 23);
+        Person person2 = new Person("Николай", 33);
 
         System.out.println(person.isValid());
         System.out.println(person1.isValid());
@@ -68,9 +68,6 @@ public class HomeWork_22 {
         person1.printInfo();
         person2.printInfo();
 
-
-
-
         //
         //Задание 4 — Использование final и проверок
         //Создай класс Passport с полями:
@@ -79,6 +76,14 @@ public class HomeWork_22 {
         //Добавь конструктор, геттеры.
         //Создай класс Citizen, у которого есть поле Passport passport.
         //Добавь метод, который печатает паспортные данные гражданина.
+
+        Passport passport = new Passport("1234567891", "Русский");
+        Citizen citizen = new Citizen(passport);
+        System.out.println();
+
+        citizen.printInfo();
+
+
     }
 }
 
@@ -157,24 +162,58 @@ class Person {
     private String name;
     private int age;
 
-    Person(String name,int age) {
-        this.name=name;
-        this.age=age;
-
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
     public boolean isValid() {
         if (name != null && !name.isBlank() && age > 0) {
             return true;
-
-        } return false;
-
+        }
+        return false;
     }
 
     public void printInfo() {
         if (isValid()) {
             System.out.println(name + " " + age);
         }
-
     }
 }
+
+
+class Passport {
+    private final String number;
+    private String nationality;
+
+    Passport(String number, String nationality) {
+        this.number = number;
+        if (nationality != null && !nationality.isBlank()) {
+            this.nationality = nationality;
+        } else
+            this.nationality=" ";
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+}
+
+class Citizen {
+    private Passport passport;
+
+    public Citizen(Passport passport) {
+        this.passport = passport;
+    }
+
+    public void printInfo() {
+        System.out.println("Паспорт №: " + passport.getNumber());
+        System.out.println("Национальность: " + passport.getNationality());
+    }
+
+}
+
