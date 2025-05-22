@@ -8,27 +8,25 @@ public class HomeWork_22 {
         //Добавь геттеры и сеттеры, при этом:
         //Возраст можно установить только в диапазоне от 18 до 65.
         //Имя не должно быть пустым.
-        //Создай класс Manager, который наследуется от Employee и добавь ему поле department.
+        //Создай класс Manager, который наследуется от Employee и добавь ему поле department
+        Manager manager = new Manager("Дмитрий", 36, "Отдел маркетинга");
+        Manager manager1 = new Manager("Владимир", 32, "Отдел финансов");
+        Manager manager2 = new Manager("Николай", 25, "Отдел персонала");
 
-        Manager manager = new Manager("Дмитрий", 36);
-        Manager manager1 = new Manager("Владимир", 32);
-        Manager manager2 = new Manager("Николай", 25);
 
         //  manager.setName("");
         // manager.setAge(20);
 
+        System.out.println(manager.getId() + " " + manager.getName() + " "
+                + manager.getAge() + " " + manager.getDepartment());
 
-        System.out.print(manager.getName() + " ");
-        System.out.print(manager.getAge() + " ");
-        System.out.println(manager.getId() + " ");
+        System.out.println(manager1.getId() + " " + manager1.getName() + " "
+                + manager1.getAge() + " " + manager1.getDepartment());
 
-        System.out.print(manager1.getName() + " ");
-        System.out.print(manager1.getAge() + " ");
-        System.out.println(manager1.getId() + " ");
+        System.out.println(manager2.getId() + " " + manager2.getName() + " "
+                + manager2.getAge() + " " + manager2.getDepartment());
 
-        System.out.print(manager2.getName() + " ");
-        System.out.print(manager2.getAge() + " ");
-        System.out.println(manager2.getId() + " ");
+        System.out.println();
 
 
         //
@@ -77,7 +75,7 @@ public class HomeWork_22 {
         //Создай класс Citizen, у которого есть поле Passport passport.
         //Добавь метод, который печатает паспортные данные гражданина.
 
-        Passport passport = new Passport("1234567891", "Русский");
+        Passport passport = new Passport("12344546", "Русский");
         Citizen citizen = new Citizen(passport);
         System.out.println();
 
@@ -131,11 +129,25 @@ class Employee {
 }
 
 class Manager extends Employee {
-    String department;
+    private String department;
 
 
-    Manager(String name, int age) {
+    Manager(String name, int age, String department) {
         super(name, age);
+        if (department != null && !department.isBlank()) {
+            this.department = department;
+        } else
+            this.department = " ";
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        if (department != null && !department.isBlank()) {
+            this.department = department;
+        }
     }
 }
 
@@ -191,8 +203,9 @@ class Passport {
         if (nationality != null && !nationality.isBlank()) {
             this.nationality = nationality;
         } else
-            this.nationality=" ";
+            this.nationality = " ";
     }
+
 
     public String getNumber() {
         return number;
