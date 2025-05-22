@@ -44,9 +44,7 @@ public class HomeWork_22 {
         User user1 = new User();
         User user2 = new User();
 
-
-
-       User.getCount();
+        User.getCount();
 
 
         //
@@ -57,6 +55,22 @@ public class HomeWork_22 {
         //возраст > 0
         //Добавь метод printInfo(), который выводит имя и возраст только если данные валидны.
         //
+
+        Person person=new Person("Дмитрий", 36);
+        Person person1=new Person("Владимир", 23);
+        Person person2=new Person("Николай", 33);
+
+        System.out.println(person.isValid());
+        System.out.println(person1.isValid());
+        System.out.println(person2.isValid());
+
+        person.printInfo();
+        person1.printInfo();
+        person2.printInfo();
+
+
+
+
         //
         //Задание 4 — Использование final и проверок
         //Создай класс Passport с полями:
@@ -121,7 +135,7 @@ class Manager extends Employee {
 }
 
 class User {
-  static int count;
+    static int count;
 
 
     static {
@@ -133,8 +147,34 @@ class User {
         count++;
     }
 
-     static void getCount() {
+    static void getCount() {
         System.out.println("Количество созданных пользователей: " + count);
     }
 
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    Person(String name,int age) {
+        this.name=name;
+        this.age=age;
+
+    }
+
+    public boolean isValid() {
+        if (name != null && !name.isBlank() && age > 0) {
+            return true;
+
+        } return false;
+
+    }
+
+    public void printInfo() {
+        if (isValid()) {
+            System.out.println(name + " " + age);
+        }
+
+    }
 }
