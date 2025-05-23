@@ -19,8 +19,8 @@ public class HomeWork_23 {
         //Создай объект Animal и Dog и вызови метод speak() у каждого.
         //
 
-        Animal animal=new Animal();
-        Dog dog=new Dog();
+        Animal animal = new Animal();
+        Dog dog = new Dog();
         animal.speak();
         dog.speak();
 
@@ -31,14 +31,19 @@ public class HomeWork_23 {
         //Создай конструкторы и методы для вывода полной информации.
         //Создай объект Student и выведи данные.
 
-        Student student=new Student("Дмитрий",20,"Московский Государственный Университет");
+        Student student = new Student("Дмитрий", 20, "Московский Государственный Университет");
         student.printInfo();
+
         //
         //4. Абстрактный класс
         //Задание:
         //Создай абстрактный класс Shape с абстрактным методом getArea() и обычным методом printInfo().
         //Создай класс Circle, который наследует Shape и реализует метод getArea().
         //Создай объект Circle и выведи площадь круга.
+
+        Circle circle = new Circle(10);
+        circle.printInfo();
+
         //
         //
         //5. Абстрактный метод + массив объектов
@@ -54,6 +59,7 @@ public class HomeWork_23 {
         //Нельзя использовать готовое решение
     }
 }
+
 final class MathConstants {
     final double PI;
     final double E;
@@ -82,8 +88,8 @@ class Dog extends Animal {
 }
 
 class Person {
-    String name;
-    int age;
+    private String name;
+    private int age;
 
     public String getName() {
         return name;
@@ -106,12 +112,11 @@ class Person {
         this.age = age;
 
 
-
     }
 }
 
 class Student extends Person {
-     String university;
+    private String university;
 
     public String getUniversity() {
         return university;
@@ -122,13 +127,47 @@ class Student extends Person {
     }
 
     public Student(String name, int age, String university) {
-        super(name,age);
-        this.university=university;
+        super(name, age);
+        this.university = university;
 
 
     }
 
     public void printInfo() {
-        System.out.println(getName()+ " " + getAge() + " " + getUniversity());
+        System.out.println(getName() + " " + getAge() + " " + getUniversity());
+
+    }
+}
+
+abstract class Shape {
+    abstract double getArea();
+
+    double square;
+
+    void printInfo() {
+        System.out.println("Площадь фигуры: ");
+    }
+
+
+}
+
+class Circle extends Shape {
+    double R;
+    final double PI;
+
+    Circle(double R) {
+        this.PI = 3.14;
+        this.R = R;
+    }
+
+    @Override
+    double getArea() {
+        return square = PI * R * R;
+    }
+
+    @Override
+    void printInfo() {
+        System.out.println("Площадь круга: " + getArea());
+
     }
 }
