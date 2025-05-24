@@ -52,6 +52,22 @@ public class HomeWork_23 {
         //Создай два подкласса: FullTimeEmployee и PartTimeEmployee, каждый со своей реализацией зарплаты.
         //Создай массив Employee[] и заполни его объектами разных классов. Выведи зарплату каждого.
         //
+        Employee[] employees = new Employee[6];
+        employees[0]=new FullTimeEmployee("Дмитрий",1200,500);
+        employees[1]=new FullTimeEmployee("Владимир",1000,400);
+        employees[2]=new FullTimeEmployee("Николай",900,450);
+        employees[3]=new PartTimeEmployee("Владислав",1000,450);
+        employees[4]=new PartTimeEmployee("Мария",1000,550);
+        employees[5]=new PartTimeEmployee("Екатерина",900,350);
+        System.out.println();
+        employees[0].calculateSalary();
+        employees[1].calculateSalary();
+        employees[2].calculateSalary();
+        employees[3].calculateSalary();
+        employees[4].calculateSalary();
+        employees[5].calculateSalary();
+
+
         //
         //6. int[] arr = {9,1,7,2,8,4,5,0,2};
         //
@@ -168,6 +184,51 @@ class Circle extends Shape {
     @Override
     void printInfo() {
         System.out.println("Площадь круга: " + getArea());
+
+    }
+}
+
+abstract class Employee {
+    double hourlyRate;
+    int numberOfHoursWorked;
+    double salary;
+    String name;
+
+    public Employee(String name, double hourlyRate, int numberOfHoursWorked) {
+        this.hourlyRate = hourlyRate;
+        this.numberOfHoursWorked = numberOfHoursWorked;
+        this.name=name;
+    }
+
+    abstract void calculateSalary();
+}
+
+class FullTimeEmployee extends Employee {
+
+
+    public FullTimeEmployee(String name, double hourlyRate, int numberOfHoursWorked) {
+        super(name, hourlyRate, numberOfHoursWorked);
+    }
+
+    @Override
+    void calculateSalary() {
+        salary=hourlyRate*(double)numberOfHoursWorked;
+        System.out.println(name + " " + "Зарплата: " + salary + " рублей");
+
+    }
+}
+
+class PartTimeEmployee extends Employee {
+
+
+    public PartTimeEmployee(String name, double hourlyRate, int numberOfHoursWorked) {
+        super(name, hourlyRate, numberOfHoursWorked);
+    }
+
+    @Override
+    void calculateSalary() {
+        salary=hourlyRate*((double) numberOfHoursWorked /2);
+        System.out.println(name + " " + "Зарплата: " + salary + " рублей");
 
     }
 }
