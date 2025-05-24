@@ -53,7 +53,7 @@ public class HomeWork_23 {
         //Создай массив Employee[] и заполни его объектами разных классов. Выведи зарплату каждого.
         //
         Employee[] employees = new Employee[6];
-        employees[0] = new FullTimeEmployee("Дмитрий", 8, 500);
+        employees[0] = new FullTimeEmployee("", 8, 500);
         employees[1] = new FullTimeEmployee("Владимир", 8, 400);
         employees[2] = new FullTimeEmployee("Николай", 8, 450);
         employees[3] = new PartTimeEmployee("Владислав", 8, 450);
@@ -189,20 +189,22 @@ class Circle extends Shape {
 }
 
 abstract class Employee {
-    final int WorkDaysOfMonth = 22;
+    static final int WORK_DAYS_OF_MONTH = 22;
     double standardHourlyRate;
     int numberOfWorkingHoursPerDay;
     double salary;
     String name;
 
-    public Employee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay ) {
-        if (standardHourlyRate>0) {
+    public Employee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay) {
+        if (standardHourlyRate > 0) {
             this.standardHourlyRate = standardHourlyRate;
-        }
-        if (numberOfWorkingHoursPerDay>0) {
+        } else System.out.println("Введите корректное значение!");
+        if (numberOfWorkingHoursPerDay > 0) {
             this.numberOfWorkingHoursPerDay = numberOfWorkingHoursPerDay;
-        }
-        this.name = name;
+        } else System.out.println("Введите корректное значение!");
+        if (name != null && !name.isBlank()) {
+            this.name = name;
+        } else this.name = " ";
     }
 
     abstract void calculateSalary();
@@ -211,13 +213,13 @@ abstract class Employee {
 class FullTimeEmployee extends Employee {
 
 
-    public FullTimeEmployee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay ) {
-        super(name, standardHourlyRate, numberOfWorkingHoursPerDay );
+    public FullTimeEmployee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay) {
+        super(name, standardHourlyRate, numberOfWorkingHoursPerDay);
     }
 
     @Override
     void calculateSalary() {
-        salary = standardHourlyRate * (double) numberOfWorkingHoursPerDay * WorkDaysOfMonth;
+        salary = standardHourlyRate * (double) numberOfWorkingHoursPerDay * WORK_DAYS_OF_MONTH;
         System.out.println(name + " " + "Зарплата: " + salary + " рублей");
 
     }
@@ -227,12 +229,12 @@ class PartTimeEmployee extends Employee {
 
 
     public PartTimeEmployee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay) {
-        super(name,standardHourlyRate, numberOfWorkingHoursPerDay);
+        super(name, standardHourlyRate, numberOfWorkingHoursPerDay);
     }
 
     @Override
     void calculateSalary() {
-        salary = standardHourlyRate * ((double) numberOfWorkingHoursPerDay * WorkDaysOfMonth / 2);
+        salary = standardHourlyRate * ((double) numberOfWorkingHoursPerDay * WORK_DAYS_OF_MONTH / 2);
         System.out.println(name + " " + "Зарплата: " + salary + " рублей");
 
     }
