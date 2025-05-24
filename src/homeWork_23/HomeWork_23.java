@@ -1,5 +1,7 @@
 package homeWork_23;
 
+import java.util.Arrays;
+
 public class HomeWork_23 {
     public static void main(String[] args) {
         //1. Финальный класс
@@ -53,7 +55,7 @@ public class HomeWork_23 {
         //Создай массив Employee[] и заполни его объектами разных классов. Выведи зарплату каждого.
         //
         Employee[] employees = new Employee[6];
-        employees[0] = new FullTimeEmployee("", 8, 500);
+        employees[0] = new FullTimeEmployee("Дмитрий", 8, 500);
         employees[1] = new FullTimeEmployee("Владимир", 8, 400);
         employees[2] = new FullTimeEmployee("Николай", 8, 450);
         employees[3] = new PartTimeEmployee("Владислав", 8, 450);
@@ -73,6 +75,26 @@ public class HomeWork_23 {
         //
         //Отсортировать массив
         //Нельзя использовать готовое решение
+
+        int[] arr = {9, 1, 7, 2, 8, 4, 5, 0, 2};
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
+
+        System.out.println(Arrays.toString(arr)); //(альтернативный вариант вывода)
+
+
     }
 }
 
