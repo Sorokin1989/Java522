@@ -32,6 +32,20 @@ public class TestLessons {
         car3.displayInfo();
         car4.displayInfo();
 
+        //Задание 3: Переопределение методов
+        //Описание:
+        //Создайте класс Shape с методом calculateArea(), возвращающим 0. Создайте подклассы:
+        //
+        //Rectangle с полями width и height, переопределите метод для вычисления площади.
+        //Circle с полем radius, переопределите метод для вычисления площади.
+        //В main() создайте объекты этих классов и вызовите их методы.
+
+        Rectangle rectangle = new Rectangle(3, 4);
+        Circle circle = new Circle(5);
+
+        System.out.println(rectangle.calculateArea());
+        System.out.println(circle.calculateArea());
+
 
     }
 
@@ -81,6 +95,45 @@ class Car extends Vehicle {
     void displayInfo() {
         System.out.println(brand + " " + year + " " + numberOfDoors);
 
+    }
+}
+
+class Shape {
+
+    double s;
+
+
+    public int calculateArea() {
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    int width;
+    int height;
+
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int calculateArea() {
+        return (int) (s = width * height);
+    }
+
+}
+
+class Circle extends Shape {
+    final double PI = 3.14;
+    int radius;
+
+    public Circle(int radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public int calculateArea() {
+        return (int) (s = PI * radius * radius);
     }
 }
 
