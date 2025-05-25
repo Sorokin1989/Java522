@@ -62,12 +62,16 @@ public class HomeWork_23 {
         employees[4] = new PartTimeEmployee("Мария", 8, 550);
         employees[5] = new PartTimeEmployee("Екатерина", 8, 350);
         System.out.println();
-        employees[0].calculateSalary();
-        employees[1].calculateSalary();
-        employees[2].calculateSalary();
-        employees[3].calculateSalary();
-        employees[4].calculateSalary();
-        employees[5].calculateSalary();
+        //employees[0].calculateSalary();
+        //employees[1].calculateSalary();
+        //employees[2].calculateSalary();
+        //employees[3].calculateSalary();
+        //employees[4].calculateSalary();
+        //employees[5].calculateSalary();
+        for (int i = 0; i < employees.length; i++) {
+            employees[i].calculateSalary();
+
+        }
 
 
         //
