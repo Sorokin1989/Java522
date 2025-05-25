@@ -59,6 +59,22 @@ public class TestLessons {
         bird.fly();
         penguin.fly();
 
+        //Задание 5: Абстрактные классы
+        //Описание:
+        //Создайте абстрактный класс Employee с полями имя и зарплата,
+        // а также абстрактным методом calculateBonus().
+        //
+        //Создайте подклассы:
+        //
+        //Manager — бонус 20% от зарплаты.
+        //Developer — бонус 10% от зарплаты.
+        //В основном классе создайте объекты этих классов и выведите их бонусы.
+
+        Manager manager = new Manager("Владимир", 10000);
+        Developer developer = new Developer("Дмитрий", 1000000);
+        System.out.println(manager.calculateBonus());
+        System.out.println(developer.calculateBonus());
+
 
     }
 
@@ -172,4 +188,43 @@ class Penguin extends Bird {
         System.out.println("пингвин не умеет летать");
     }
 }
+
+
+abstract class Employee {
+    String name;
+    double salary;
+
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    abstract double calculateBonus();
+
+}
+
+class Manager extends Employee {
+
+    public Manager(String name, double salary) {
+        super(name, salary);
+    }
+
+    @Override
+    double calculateBonus() {
+        return salary * 0.2;
+    }
+}
+
+//— бонус 20% от зарплаты.
+class Developer extends Employee {
+
+    public Developer(String name, double salary) {
+        super(name, salary);
+    }
+
+    @Override
+    double calculateBonus() {
+        return salary * 0.1;
+    }
+}//— бонус 10% от зарплаты.
 
