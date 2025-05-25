@@ -46,6 +46,19 @@ public class TestLessons {
         System.out.println(rectangle.calculateArea());
         System.out.println(circle.calculateArea());
 
+        //Задание 4: Множественное наследование через интерфейсы
+        //Описание:
+        //Создайте интерфейс Flyable с методом fly().
+        //Создайте класс Bird, реализующий интерфейс, и добавьте поле species. В методе fly() выведите сообщение о том, что птица летит.
+        //
+        //Создайте класс Penguin, который наследует от Bird, но переопределяет метод так, чтобы он выводил, что пингвин не умеет летать.
+        //
+        //В основном классе создайте объекты и вызовите методы.
+        Bird bird = new Bird();
+        Penguin penguin = new Penguin();
+        bird.fly();
+        penguin.fly();
+
 
     }
 
@@ -134,6 +147,29 @@ class Circle extends Shape {
     @Override
     public int calculateArea() {
         return (int) (s = PI * radius * radius);
+    }
+}
+
+interface Flyable {
+    public void fly();
+
+
+}
+
+class Bird implements Flyable {
+    String species;
+
+    @Override
+    public void fly() {
+        System.out.println("Птица летает!");
+
+    }
+}
+
+class Penguin extends Bird {
+    @Override
+    public void fly() {
+        System.out.println("пингвин не умеет летать");
     }
 }
 
