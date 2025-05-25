@@ -8,7 +8,7 @@ public class HomeWork_23 {
         //Задание:
         //Создай финальный класс MathConstants, в котором будут финальные переменные PI и E.
         //Попробуй создать от него наследника. Объясни, что произошло и почему.
-
+//Ответ:
         // выходит ошибка (Cannot inherit from final 'homeWork_23.MathConstants')
         //нельзя наследоваться от класса с ключевым словом final.
         //final значит последний класс, у которого не может быть наследников.
@@ -107,8 +107,8 @@ final class MathConstants {
     final double E;
 
     MathConstants(double pi, double e) {
-        PI = pi;
-        E = e;
+        this.PI = pi;
+        this.E = e;
     }
 }
 
@@ -186,9 +186,7 @@ abstract class Shape {
 
     double square;
 
-    void printInfo() {
-        System.out.println("Площадь фигуры: ");
-    }
+    abstract void printInfo();
 
 
 }
