@@ -2,6 +2,7 @@ package homeWork_24;
 
 interface Shape {
     double area();
+
     double perimeter();
 }
 
@@ -10,7 +11,7 @@ class Circle implements Shape {
     final double PI;
 
     Circle(double R) {
-        if (R>0) {
+        if (R > 0) {
             this.R = R;
         }
         this.PI = 3.14;
@@ -18,99 +19,115 @@ class Circle implements Shape {
 
     @Override
     public double area() {
-        return PI*R*R;
+        return PI * R * R;
     }
 
     @Override
     public double perimeter() {
-        return 2*PI*R;
+        return 2 * PI * R;
     }
 }
+
 class Rectangle implements Shape {
     double length;
     double width;
 
     public Rectangle(double length, double width) {
-        if (length>0) {
+        if (length > 0) {
             this.length = length;
         }
-        if (width>0) {
+        if (width > 0) {
             this.width = width;
         }
     }
 
     @Override
     public double area() {
-        return length*width;
+        return length * width;
     }
 
     @Override
     public double perimeter() {
-        return 2*(length+width);
+        return 2 * (length + width);
     }
 }
+
 class Triangle implements Shape {
-    double a; // основание треугольника
+    double a;// основание треугольника
+    double b; // 1 сторона треугольника
+    double c; // 2 сторона треугольника
     double h;// высота треугольника
 
-    public Triangle(double a, double h) {
-        if (a>0) {
+    public Triangle(double a, double h, double b, double c) {
+        if (a > 0) {
             this.a = a;
         }
-        if (h>0) {
+        if (h > 0) {
             this.h = h;
+        }
+        if (b > 0) {
+            this.b = b;
+        }
+        if (c > 0) {
+            this.c = c;
         }
     }
 
     @Override
     public double area() {
-        return (a*h)/2;
+        return (a * h) / 2;
     }
 
     @Override
     public double perimeter() {
-        return 0;
+        return a + b + c;
     }
 }
 
 // ////////////////////////////////////////////////////////////////////////
 interface Movable {
     void moveForward();
+
     void moveBackWard();
 
 }
-class Car implements Movable{
+
+class Car implements Movable {
     @Override
     public void moveForward() {
         System.out.println("Машина едет вперёд!");
     }
+
     @Override
     public void moveBackWard() {
         System.out.println("Машина едет назад!");
 
     }
 }
+
 class Robot implements Movable {
     @Override
     public void moveForward() {
         System.out.println("Робот идет вперед!");
     }
+
     @Override
     public void moveBackWard() {
         System.out.println("Робот идёт назад!");
     }
 }
-class Animal implements Movable{
+
+class Animal implements Movable {
     @Override
     public void moveForward() {
         System.out.println("Животное бежит вперед!");
     }
+
     @Override
     public void moveBackWard() {
         System.out.println("Животное бежит назад!");
     }
 }
-
 
 
 public class HomeWork_24 {
@@ -125,13 +142,13 @@ public class HomeWork_24 {
         //Создай классы Car, Robot, Animal, которые реализуют этот интерфейс по-своему.
         //
         //
-        Car car=new Car();
+        Car car = new Car();
         car.moveForward();
         car.moveBackWard();
-        Robot robot=new Robot();
+        Robot robot = new Robot();
         robot.moveForward();
         robot.moveBackWard();
-        Animal animal=new Animal();
+        Animal animal = new Animal();
         animal.moveForward();
         animal.moveBackWard();
 
