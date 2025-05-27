@@ -1,7 +1,68 @@
 package homeWork_24;
 
+interface Shape {
+    double area();
+    double perimeter();
+}
 
+class Circle implements Shape {
+    double R;
+    final double PI;
 
+    Circle(double R) {
+        if (R>0) {
+            this.R = R;
+        }
+        this.PI = 3.14;
+    }
+
+    @Override
+    public double area() {
+        return PI*R*R;
+    }
+
+    @Override
+    public double perimeter() {
+        return 2*PI*R;
+    }
+}
+class Rectangle implements Shape {
+    double length;
+    double width;
+
+    public Rectangle(double length, double width) {
+        if (length>0) {
+            this.length = length;
+        }
+        if (width>0) {
+            this.width = width;
+        }
+    }
+
+    @Override
+    public double area() {
+        return length*width;
+    }
+
+    @Override
+    public double perimeter() {
+        return 2*(length+width);
+    }
+}
+class Triangle implements Shape {
+
+    @Override
+    public double area() {
+        return 0;
+    }
+
+    @Override
+    public double perimeter() {
+        return 0;
+    }
+}
+
+// ////////////////////////////////////////////////////////////////////////
 interface Movable {
     void moveForward();
     void moveBackWard();
@@ -53,7 +114,15 @@ public class HomeWork_24 {
         //Создай классы Car, Robot, Animal, которые реализуют этот интерфейс по-своему.
         //
         //
-
+        Car car=new Car();
+        car.moveForward();
+        car.moveBackWard();
+        Robot robot=new Robot();
+        robot.moveForward();
+        robot.moveBackWard();
+        Animal animal=new Animal();
+        animal.moveForward();
+        animal.moveBackWard();
 
         //2. Интерфейс "Фигура"
         //Создай интерфейс Shape с методами:
@@ -65,6 +134,8 @@ public class HomeWork_24 {
         //Создай классы Circle, Rectangle, Triangle, которые реализуют интерфейс.
         //
         //
+
+
         // 3. Интерфейс "Музыкальный инструмент"
         //Создай интерфейс Instrument с методом:
         //
