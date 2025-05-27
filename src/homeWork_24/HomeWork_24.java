@@ -1,5 +1,33 @@
 package homeWork_24;
 
+
+interface Payment {
+    void pay(double amount);
+}
+
+class CreditCardPayment implements Payment {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Оплата кредитной картой! " + amount + " рублей");
+    }
+}
+
+class PayPalPayment implements Payment {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Оплата через систему PayPal! " + amount + " рублей");
+    }
+}
+
+class CryptoPayment implements Payment {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Оплата криптовалютой " + amount + " рублей");
+    }
+}
+
+
+// //////////////////////////////////////////////////
 interface Printable {
     void print();
 }
@@ -261,13 +289,12 @@ public class HomeWork_24 {
         //
         //
         System.out.println();
-        Book book=new Book();
+        Book book = new Book();
         book.print();
-        Magazine magazine=new Magazine();
+        Magazine magazine = new Magazine();
         magazine.print();
-        Newspaper newspaper=new Newspaper();
+        Newspaper newspaper = new Newspaper();
         newspaper.print();
-
 
 
         //5. Интерфейс "Платёжная система"
@@ -276,5 +303,13 @@ public class HomeWork_24 {
         //void pay(double amount);
         //
         //Реализующие классы: CreditCardPayment, PayPalPayment, CryptoPayment.
+        System.out.println();
+        CreditCardPayment creditCardPayment = new CreditCardPayment();
+        creditCardPayment.pay(10000);
+        PayPalPayment payPalPayment = new PayPalPayment();
+        payPalPayment.pay(10000);
+        CryptoPayment cryptoPayment = new CryptoPayment();
+        cryptoPayment.pay(10000);
+
     }
 }
