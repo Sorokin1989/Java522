@@ -220,6 +220,7 @@ public class HomeWork_24 {
         //Создай классы Circle, Rectangle, Triangle, которые реализуют интерфейс.
         //
         //
+        System.out.println();
         Circle circle = new Circle(5);
         System.out.println("Площадь круга: " + circle.area());
         System.out.println("Периметр круга: " + circle.perimeter());
@@ -243,7 +244,7 @@ public class HomeWork_24 {
         //
         //
         //
-
+        System.out.println();
         Guitar guitar = new Guitar();
         guitar.play();
         Piano piano = new Piano();
@@ -259,6 +260,14 @@ public class HomeWork_24 {
         //Классы: Book, Magazine, Newspaper.
         //
         //
+        System.out.println();
+        Book book=new Book();
+        book.print();
+        Magazine magazine=new Magazine();
+        magazine.print();
+        Newspaper newspaper=new Newspaper();
+        newspaper.print();
+
 
 
         //5. Интерфейс "Платёжная система"
