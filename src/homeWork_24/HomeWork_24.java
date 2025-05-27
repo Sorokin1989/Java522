@@ -162,6 +162,15 @@ public class HomeWork_24 {
         //Создай классы Circle, Rectangle, Triangle, которые реализуют интерфейс.
         //
         //
+        Circle circle=new Circle(5);
+        circle.area();
+        circle.perimeter();
+        Rectangle rectangle=new Rectangle(5,8);
+        rectangle.area();
+        rectangle.perimeter();
+        Triangle triangle=new Triangle(5,10,7,8);
+        triangle.area();
+        triangle.perimeter();
 
 
         // 3. Интерфейс "Музыкальный инструмент"
