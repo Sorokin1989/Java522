@@ -1,5 +1,36 @@
 package homeWork_24;
 
+interface Instrument {
+    void play();
+}
+
+class Guitar implements Instrument {
+    @Override
+    public void play() {
+        System.out.println("Играть на гитаре!");
+    }
+}
+class Piano implements Instrument {
+    @Override
+    public void play() {
+        System.out.println("Играть на пианино!");
+
+    }
+}
+class Drums implements Instrument {
+    @Override
+    public void play() {
+        System.out.println("Играть на барабанах!");
+
+    }
+}
+
+
+
+
+
+
+// ////////////////////////////////////////////////////////////////
 interface Shape {
     double area();
 
@@ -7,8 +38,8 @@ interface Shape {
 }
 
 class Circle implements Shape {
-    double R;
-    final double PI = 3.14;
+    private double R;
+    private static final double PI = 3.14;
 
     Circle(double R) {
         if (R > 0) {
@@ -28,8 +59,8 @@ class Circle implements Shape {
 }
 
 class Rectangle implements Shape {
-    double length;
-    double width;
+    private double length;
+    private double width;
 
     public Rectangle(double length, double width) {
         if (length > 0) {
@@ -52,10 +83,10 @@ class Rectangle implements Shape {
 }
 
 class Triangle implements Shape {
-    double a;// основание треугольника
-    double b; // 1 сторона треугольника
-    double c; // 2 сторона треугольника
-    double h;// высота треугольника
+    private double a;// основание треугольника
+    private double b; // 1 сторона треугольника
+    private double c; // 2 сторона треугольника
+    private double h;// высота треугольника
 
     public Triangle(double a, double h) {
         if (h > 0 && a > 0) {
@@ -189,6 +220,7 @@ public class HomeWork_24 {
         //
         //
         //
+
         //4. Интерфейс "Печатное устройство"
         //Интерфейс Printable:
         //
