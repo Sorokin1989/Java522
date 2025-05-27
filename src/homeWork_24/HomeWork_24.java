@@ -50,10 +50,21 @@ class Rectangle implements Shape {
     }
 }
 class Triangle implements Shape {
+    double a; // основание треугольника
+    double h;// высота треугольника
+
+    public Triangle(double a, double h) {
+        if (a>0) {
+            this.a = a;
+        }
+        if (h>0) {
+            this.h = h;
+        }
+    }
 
     @Override
     public double area() {
-        return 0;
+        return (a*h)/2;
     }
 
     @Override
