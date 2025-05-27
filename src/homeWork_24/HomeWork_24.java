@@ -8,13 +8,12 @@ interface Shape {
 
 class Circle implements Shape {
     double R;
-    final double PI;
+    final double PI = 3.14;
 
     Circle(double R) {
         if (R > 0) {
             this.R = R;
-        }
-        this.PI = 3.14;
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
     }
 
     @Override
@@ -35,10 +34,10 @@ class Rectangle implements Shape {
     public Rectangle(double length, double width) {
         if (length > 0) {
             this.length = length;
-        }
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
         if (width > 0) {
             this.width = width;
-        }
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
     }
 
     @Override
@@ -61,16 +60,16 @@ class Triangle implements Shape {
     public Triangle(double a, double h, double b, double c) {
         if (a > 0) {
             this.a = a;
-        }
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
         if (h > 0) {
             this.h = h;
-        }
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
         if (b > 0) {
             this.b = b;
-        }
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
         if (c > 0) {
             this.c = c;
-        }
+        } else throw new IllegalArgumentException("Число должно быть больше 0");
     }
 
     @Override
