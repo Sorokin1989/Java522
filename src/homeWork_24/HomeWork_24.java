@@ -57,12 +57,17 @@ class Triangle implements Shape {
     double c; // 2 сторона треугольника
     double h;// высота треугольника
 
-    public Triangle(double a, double h, double b, double c) {
-        if (a > 0) {
+    public Triangle(double a, double h) {
+        if (h > 0 && a > 0) {
+            this.h = h;
             this.a = a;
         } else throw new IllegalArgumentException("Число должно быть больше 0");
-        if (h > 0) {
-            this.h = h;
+
+    }
+
+    public Triangle(double a, double b, double c) {
+        if (a > 0) {
+            this.a = a;
         } else throw new IllegalArgumentException("Число должно быть больше 0");
         if (b > 0) {
             this.b = b;
@@ -169,9 +174,10 @@ public class HomeWork_24 {
         System.out.println("Площадь прямоугольника: " + rectangle.area());
         System.out.println("Периметр прямоугольника: " + rectangle.perimeter());
 
-        Triangle triangle = new Triangle(5, 10, 7, 8);
+        Triangle triangle = new Triangle(5, 6);
+        Triangle triangle1 = new Triangle(5, 6, 8);
         System.out.println("Площадь треугольника: " + triangle.area());
-        System.out.println("Периметр треугольника: " + triangle.perimeter());
+        System.out.println("Периметр треугольника: " + triangle1.perimeter());
 
 
         // 3. Интерфейс "Музыкальный инструмент"
