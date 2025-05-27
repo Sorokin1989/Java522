@@ -1,5 +1,31 @@
 package homeWork_24;
 
+interface Printable {
+    void print();
+}
+
+class Book implements Printable {
+    @Override
+    public void print() {
+        System.out.println("Печатаем книгу!");
+    }
+}
+
+class Magazine implements Printable {
+    @Override
+    public void print() {
+        System.out.println("Печатаем журнал!");
+    }
+}
+
+class Newspaper implements Printable {
+    @Override
+    public void print() {
+        System.out.println("Печатаем газету!");
+    }
+}
+
+//  ///////////////////////////////////////////////////////////////////
 interface Instrument {
     void play();
 }
@@ -10,6 +36,7 @@ class Guitar implements Instrument {
         System.out.println("Играть на гитаре!");
     }
 }
+
 class Piano implements Instrument {
     @Override
     public void play() {
@@ -17,6 +44,7 @@ class Piano implements Instrument {
 
     }
 }
+
 class Drums implements Instrument {
     @Override
     public void play() {
@@ -24,11 +52,6 @@ class Drums implements Instrument {
 
     }
 }
-
-
-
-
-
 
 // ////////////////////////////////////////////////////////////////
 interface Shape {
@@ -221,6 +244,13 @@ public class HomeWork_24 {
         //
         //
 
+        Guitar guitar = new Guitar();
+        guitar.play();
+        Piano piano = new Piano();
+        piano.play();
+        Drums drums = new Drums();
+        drums.play();
+
         //4. Интерфейс "Печатное устройство"
         //Интерфейс Printable:
         //
@@ -229,6 +259,8 @@ public class HomeWork_24 {
         //Классы: Book, Magazine, Newspaper.
         //
         //
+
+
         //5. Интерфейс "Платёжная система"
         //Интерфейс Payment:
         //
