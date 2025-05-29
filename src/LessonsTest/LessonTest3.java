@@ -83,20 +83,47 @@ enum Move {
     }
 }
 
+enum Season {
+    winter("декабрь", "январь", "февраль"), spring("март", "апрель", "май"),
+    summer("июнь", "июль", "август"), autumn("сентябрь", "октябрь", "ноябрь");
+
+    private String oneM;
+    private String twoM;
+    private String threeM;
+
+    public String getOneM() {
+        return oneM;
+    }
+
+    public String getThreeM() {
+        return threeM;
+    }
+
+    public String getTwoM() {
+        return twoM;
+    }
+
+    Season(String oneM, String twoM, String threeM) {
+        this.oneM = oneM;
+        this.twoM = twoM;
+        this.threeM = threeM;
+
+
+    }
+}
 
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        System.out.println(Move.UP.getDirection());
-        System.out.println(Move.DOWN.getDirection());
-        System.out.println(Move.LEFT.getDirection());
-        System.out.println(Move.RIGHT.getDirection());
-
-
-
-
-
+//        System.out.println(Move.UP.getDirection());
+//        System.out.println(Move.DOWN.getDirection());
+//        System.out.println(Move.LEFT.getDirection());
+//        System.out.println(Move.RIGHT.getDirection());
+        System.out.println(Season.autumn.getOneM() + " " + Season.autumn.getTwoM() + " " + Season.autumn.getThreeM());
+        System.out.println(Season.winter.getOneM() + " " + Season.winter.getTwoM() + " " + Season.winter.getThreeM());
+        System.out.println(Season.spring.getOneM() + " " + Season.spring.getTwoM() + " " + Season.spring.getThreeM());
+        System.out.println(Season.summer.getOneM() + " " + Season.summer.getTwoM() + " " + Season.summer.getThreeM());
 
 
 //        Student student=new Student();
@@ -113,13 +140,6 @@ public class LessonTest3 {
 //
 //        System.out.println(person1.getPositionType());
 //        System.out.println(person2.getPositionType());
-
-
-
-
-
-
-
 
 
 //        enum Move {
@@ -157,9 +177,6 @@ public class LessonTest3 {
 //        if (day==selected) {
 //            System.out.println("This is MONDAY");
 //        }
-
-
-
 
 
 //        Color color = Color.WHITE;
