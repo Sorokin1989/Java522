@@ -9,9 +9,61 @@ enum Day {
 }
 
 
+
+
+class Person {
+    String name;
+    PositionType positionType;
+
+    public Person(String name, PositionType positionType) {
+        this.name = name;
+        this.positionType = positionType;
+    }
+
+    public Person(String name) {
+        this.name = name;
+    }
+}
+
+enum PositionType {
+    TEACHER, STUDENT, PARENT
+}
+
 public class LessonTest3 {
     public static void main(String[] args) {
 
+        Person person1=new Person("Dima",PositionType.STUDENT);// студент
+        Person person2=new Person("Farid",PositionType.TEACHER);// учитель
+
+        System.out.println(person1.name + person1.positionType);
+        System.out.println(person2.name + person2.positionType);
+
+
+
+
+
+
+
+//        enum Move {
+//            UP, DOWN, LEFT,RIGHT
+//        }
+
+
+//        Day day=Day.MONDAY;
+//        System.out.println(day.ordinal());
+//        System.out.println(day.name());
+//        System.out.println(day);
+//        System.out.println(Day.MONDAY);
+
+//
+//        System.out.println(day.compareTo(Day.SATURDAY));
+//
+//        for (int i = 0; i < Day.values().length; i++) {
+//            System.out.print(Day.values()[i] + " ");
+//
+//        }
+
+//        System.out.println(Day.values());
 //        Day day=Day.FRIDAY;
 //        System.out.println(day.ordinal());
 //        Day day=Day.FRIDAY;
@@ -21,7 +73,10 @@ public class LessonTest3 {
 //}
 //        String str="MONDAY";
 //        Day day=Day.MONDAY;
-//        if (day.name().equals(str)) {
+//
+//        Day selected=Day.valueOf(str);
+//
+//        if (day==selected) {
 //            System.out.println("This is MONDAY");
 //        }
 
