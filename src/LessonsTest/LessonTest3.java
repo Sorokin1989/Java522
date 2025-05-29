@@ -42,38 +42,69 @@ enum Day {
 //}
 
 
+//
+//class Student {
+//    int age;
+//    String name;
+//
+//    public Teacher convertToTeacher() {
+//        Teacher teacher=new Teacher();
+//        teacher.name=this.name;
+//        teacher.age=this.age;
+//        return teacher;
+//    }
+//
+//}
+//
+//class Teacher {
+//    int age;
+//    String name;
+//
+//}
+//
 
-class Student {
-    int age;
-    String name;
+enum Move {
+    UP("W"), DOWN("S"), LEFT("A"), RIGHT("D");
 
-    public Teacher convertToTeacher() {
-        Teacher teacher=new Teacher();
-        teacher.name=this.name;
-        teacher.age=this.age;
-        return teacher;
+    private String direction;
+
+    public String getDirection() {
+        return direction;
     }
 
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    Move(String direction) {
+        this.direction = direction;
+
+
+    }
 }
-
-class Teacher {
-    int age;
-    String name;
-
-}
-
 
 
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        Student student=new Student();
-        student.age=36;
-        student.name="Dima";
+        System.out.println(Move.UP.getDirection());
+        System.out.println(Move.DOWN.getDirection());
+        System.out.println(Move.LEFT.getDirection());
+        System.out.println(Move.RIGHT.getDirection());
 
-        Teacher teacher=student.convertToTeacher();
-        System.out.println(teacher.name + " " + teacher.age);
+
+
+
+
+
+
+//        Student student=new Student();
+//        student.age=36;
+//        student.name="Dima";
+//
+//        Teacher teacher=student.convertToTeacher();
+//        System.out.println(teacher.name + " " + teacher.age);
 
 //        Person person1=new Person("Dima",PositionType.STUDENT);// студент
 //        Person person2=new Person("Farid",PositionType.TEACHER);// учитель
