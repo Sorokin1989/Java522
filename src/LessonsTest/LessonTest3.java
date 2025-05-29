@@ -9,34 +9,81 @@ enum Day {
 }
 
 
+//
+//
+//class Person {
+//   private String name;
+//   private PositionType positionType;
+//
+//    public Person(String name, PositionType positionType) {
+//        this.name = name;
+//        this.positionType = positionType;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public PositionType getPositionType() {
+//        return positionType;
+//    }
+//
+//    public void setPositionType(PositionType positionType) {
+//        this.positionType = positionType;
+//    }
+//}
+
+//enum PositionType {
+//    TEACHER, STUDENT, PARENT
+//}
 
 
-class Person {
+
+class Student {
+    int age;
     String name;
-    PositionType positionType;
 
-    public Person(String name, PositionType positionType) {
-        this.name = name;
-        this.positionType = positionType;
+    public Teacher convertToTeacher() {
+        Teacher teacher=new Teacher();
+        teacher.name=this.name;
+        teacher.age=this.age;
+        return teacher;
     }
 
-    public Person(String name) {
-        this.name = name;
-    }
 }
 
-enum PositionType {
-    TEACHER, STUDENT, PARENT
+class Teacher {
+    int age;
+    String name;
+
 }
+
+
+
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        Person person1=new Person("Dima",PositionType.STUDENT);// студент
-        Person person2=new Person("Farid",PositionType.TEACHER);// учитель
+        Student student=new Student();
+        student.age=36;
+        student.name="Dima";
 
-        System.out.println(person1.name + person1.positionType);
-        System.out.println(person2.name + person2.positionType);
+        Teacher teacher=student.convertToTeacher();
+        System.out.println(teacher.name + " " + teacher.age);
+
+//        Person person1=new Person("Dima",PositionType.STUDENT);// студент
+//        Person person2=new Person("Farid",PositionType.TEACHER);// учитель
+//
+//        person1.setPositionType(PositionType.TEACHER);
+//
+//        System.out.println(person1.getPositionType());
+//        System.out.println(person2.getPositionType());
+
+
 
 
 
