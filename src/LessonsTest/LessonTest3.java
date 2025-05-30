@@ -113,7 +113,20 @@ enum Day {
 //}
 
 enum Direction {
-    UP, DOWN, LEFT, RIGHT
+    UP(0,1), DOWN(0,-1), LEFT(-1,0), RIGHT(1,0);
+
+    private final int xStep, yStep;
+
+    Direction(int xStep, int yStep) {
+        this.xStep = xStep;
+        this.yStep = yStep;
+
+    }
+    public void step(Point point) {
+        point.x+=xStep;
+        point.y+=yStep;
+
+    }
 }
 
 class Player {
@@ -146,12 +159,14 @@ class Player {
     }
 
     public void move() {
-        switch (direction) {
-            case UP -> this.point.y += 1;
-            case DOWN -> this.point.y -= 1;
-            case LEFT -> this.point.x -= 1;
-            case RIGHT -> this.point.x += 1;
-        }
+
+        direction.step(point);
+//        switch (direction) {
+//            case UP -> this.point.y += 1;
+//            case DOWN -> this.point.y -= 1;
+//            case LEFT -> this.point.x -= 1;
+//            case RIGHT -> this.point.x += 1;
+//        }
     }
 
     @Override
