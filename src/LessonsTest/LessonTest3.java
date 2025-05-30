@@ -173,6 +173,10 @@ public class LessonTest3 {
         player.move(Direction.RIGHT);
         System.out.println(player);
 
+        player.move(Direction.UP);
+        player.move(Direction.UP);
+        System.out.println(player);
+
 
 //        System.out.println(Move.UP.getDirection());
 //        System.out.println(Move.DOWN.getDirection());
