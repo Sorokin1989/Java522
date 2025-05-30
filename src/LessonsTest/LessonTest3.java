@@ -120,15 +120,32 @@ class Player {
 
     private String name;
     private Point point;
-    //private Direction direction;
+    private Direction direction;
 
 
     public Player(String name) {
         this.name = name;
         this.point = new Point(0, 0);
+       // this.direction = Direction.UP;
     }
 
-    public void move(Direction direction) {
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public void move() {
         switch (direction) {
             case UP -> this.point.y += 1;
             case DOWN -> this.point.y -= 1;
@@ -139,7 +156,7 @@ class Player {
 
     @Override
     public String toString() {
-        return  name + " Location=" + point + "\n";
+        return name + " Location=" + point + "\n";
     }
 }
 
@@ -166,16 +183,34 @@ public class LessonTest3 {
     public static void main(String[] args) {
 
 
-        Player player=new Player("Dima");
-        player.move(Direction.UP);
-        player.move(Direction.UP);
-        player.move(Direction.RIGHT);
-        player.move(Direction.RIGHT);
+        Player player = new Player("Dima");
+        player.setDirection(Direction.UP);
+        player.move();
+        player.move();
+        player.setDirection(Direction.RIGHT);
+        player.move();
+        player.move();
+        System.out.println(player);
+        player.setDirection(Direction.UP);
+        player.move();
+        player.move();
         System.out.println(player);
 
-        player.move(Direction.UP);
-        player.move(Direction.UP);
+        System.out.println("Teleport");
+        player.setPoint(new Point(5,5));
         System.out.println(player);
+
+
+        //  Player player=new Player("Dima");
+        //  player.move(Direction.UP);
+        //  player.move(Direction.UP);
+        //  player.move(Direction.RIGHT);
+        //  player.move(Direction.RIGHT);
+        //  System.out.println(player);
+//
+        //  player.move(Direction.UP);
+        //  player.move(Direction.UP);
+        //  System.out.println(player);
 
 
 //        System.out.println(Move.UP.getDirection());
