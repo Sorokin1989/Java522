@@ -63,52 +63,101 @@ enum Day {
 //}
 //
 
-enum Move {
-    UP("W"), DOWN("S"), LEFT("A"), RIGHT("D");
+//enum Move {
+//    UP("W"), DOWN("S"), LEFT("A"), RIGHT("D");
+//
+//    private String direction;
+//
+//    public String getDirection() {
+//        return direction;
+//    }
+//
+//    public void setDirection(String direction) {
+//        this.direction = direction;
+//    }
+//
+//    Move(String direction) {
+//        this.direction = direction;
+//
+//
+//    }
+//}
+//
+//enum Season {
+//    winter("декабрь", "январь", "февраль"), spring("март", "апрель", "май"),
+//    summer("июнь", "июль", "август"), autumn("сентябрь", "октябрь", "ноябрь");
+//
+//    private String oneM;
+//    private String twoM;
+//    private String threeM;
+//
+//    public String getOneM() {
+//        return oneM;
+//    }
+//
+//    public String getThreeM() {
+//        return threeM;
+//    }
+//
+//    public String getTwoM() {
+//        return twoM;
+//    }
+//
+//    Season(String oneM, String twoM, String threeM) {
+//        this.oneM = oneM;
+//        this.twoM = twoM;
+//        this.threeM = threeM;
+//
+//
+//    }
+//}
 
-    private String direction;
-
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    Move(String direction) {
-        this.direction = direction;
-
-
-    }
+enum Direction {
+    UP, DOWN, LEFT, RIGHT
 }
 
-enum Season {
-    winter("декабрь", "январь", "февраль"), spring("март", "апрель", "май"),
-    summer("июнь", "июль", "август"), autumn("сентябрь", "октябрь", "ноябрь");
+class Player {
 
-    private String oneM;
-    private String twoM;
-    private String threeM;
+    private String name;
+    private Point point;
+    //private Direction direction;
 
-    public String getOneM() {
-        return oneM;
+
+    public Player(String name) {
+        this.name = name;
+        this.point = new Point(0, 0);
     }
 
-    public String getThreeM() {
-        return threeM;
+    public void move(Direction direction) {
+        switch (direction) {
+            case UP -> this.point.y += 1;
+            case DOWN -> this.point.y -= 1;
+            case LEFT -> this.point.x -= 1;
+            case RIGHT -> this.point.x += 1;
+
+        }
+
+
     }
 
-    public String getTwoM() {
-        return twoM;
+
+}
+
+class Point {
+    public int x;
+    public int y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    Season(String oneM, String twoM, String threeM) {
-        this.oneM = oneM;
-        this.twoM = twoM;
-        this.threeM = threeM;
+    public Point() {
+    }
 
-
+    @Override
+    public String toString() {
+        return "x: " + x + ", y: " + y;
     }
 }
 
@@ -120,10 +169,10 @@ public class LessonTest3 {
 //        System.out.println(Move.DOWN.getDirection());
 //        System.out.println(Move.LEFT.getDirection());
 //        System.out.println(Move.RIGHT.getDirection());
-        System.out.println(Season.autumn.getOneM() + " " + Season.autumn.getTwoM() + " " + Season.autumn.getThreeM());
-        System.out.println(Season.winter.getOneM() + " " + Season.winter.getTwoM() + " " + Season.winter.getThreeM());
-        System.out.println(Season.spring.getOneM() + " " + Season.spring.getTwoM() + " " + Season.spring.getThreeM());
-        System.out.println(Season.summer.getOneM() + " " + Season.summer.getTwoM() + " " + Season.summer.getThreeM());
+        //System.out.println(Season.autumn.getOneM() + " " + Season.autumn.getTwoM() + " " + Season.autumn.getThreeM());
+        //System.out.println(Season.winter.getOneM() + " " + Season.winter.getTwoM() + " " + Season.winter.getThreeM());
+        //System.out.println(Season.spring.getOneM() + " " + Season.spring.getTwoM() + " " + Season.spring.getThreeM());
+        //System.out.println(Season.summer.getOneM() + " " + Season.summer.getTwoM() + " " + Season.summer.getThreeM());
 
 
 //        Student student=new Student();
