@@ -113,18 +113,28 @@ enum Day {
 //}
 
 enum Direction {
-    UP(0,1), DOWN(0,-1), LEFT(-1,0), RIGHT(1,0);
+    UP(0, 1), DOWN(0, -1), LEFT(-1, 0), RIGHT(1, 0);
 
     private final int xStep, yStep;
+
+    static int stepLength = 1;
+
+    public static void setStepLength(int stepLength) {
+        if (stepLength > 0) {
+            Direction.stepLength = stepLength;
+        }
+    }
 
     Direction(int xStep, int yStep) {
         this.xStep = xStep;
         this.yStep = yStep;
 
     }
+
     public void step(Point point) {
-        point.x+=xStep;
-        point.y+=yStep;
+        point.x += xStep * stepLength;
+
+        point.y += yStep * stepLength;
 
     }
 }
@@ -139,7 +149,7 @@ class Player {
     public Player(String name) {
         this.name = name;
         this.point = new Point(0, 0);
-       // this.direction = Direction.UP;
+        // this.direction = Direction.UP;
     }
 
     public Point getPoint() {
@@ -200,20 +210,21 @@ public class LessonTest3 {
 
         Player player = new Player("Dima");
         player.setDirection(Direction.UP);
-        player.move();
+        Direction.setStepLength(20);
         player.move();
         player.setDirection(Direction.RIGHT);
-        player.move();
+        Direction.setStepLength(3);
         player.move();
         System.out.println(player);
         player.setDirection(Direction.UP);
+        Direction.setStepLength(2);
         player.move();
-        player.move();
+
         System.out.println(player);
 
-        System.out.println("Teleport");
-        player.setPoint(new Point(5,5));
-        System.out.println(player);
+//        System.out.println("Teleport");
+//        player.setPoint(new Point(5, 5));
+//        System.out.println(player);
 
 
         //  Player player=new Player("Dima");
