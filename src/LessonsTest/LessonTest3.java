@@ -134,13 +134,13 @@ class Player {
             case DOWN -> this.point.y -= 1;
             case LEFT -> this.point.x -= 1;
             case RIGHT -> this.point.x += 1;
-
         }
-
-
     }
 
-
+    @Override
+    public String toString() {
+        return  name + " Location=" + point + "\n";
+    }
 }
 
 class Point {
@@ -164,6 +164,15 @@ class Point {
 
 public class LessonTest3 {
     public static void main(String[] args) {
+
+
+        Player player=new Player("Dima");
+        player.move(Direction.UP);
+        player.move(Direction.UP);
+        player.move(Direction.RIGHT);
+        player.move(Direction.RIGHT);
+        System.out.println(player);
+
 
 //        System.out.println(Move.UP.getDirection());
 //        System.out.println(Move.DOWN.getDirection());
