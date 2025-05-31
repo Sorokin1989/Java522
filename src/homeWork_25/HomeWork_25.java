@@ -39,39 +39,40 @@ enum Priority {
 }
 
 enum Direction {
-    NORTH("SOUTH"), SOUTH("NORTH"), EAST("WEST"),
-    WEST("EAST");
-    final String directionOpposite;
+    NORTH, SOUTH, EAST, WEST;
 
-   Direction(String directionOpposite) {
-       this.directionOpposite = directionOpposite;
-   }
+    public Direction opposite() {
+        if (this == NORTH) {
+            return SOUTH;
+        } else if (this == SOUTH) {
+            return NORTH;
+        } else if (this == EAST) {
+            return WEST;
+        } else if (this == WEST) {
+            return EAST;
+        } else return this;
 
-    public String opposite() {
-       return this.directionOpposite;
-        }
     }
+}
 
 enum OrderStatus {
     NEW, PROCESSING, SHIPPED, DELIVERED, CANCELLED;
 
-   boolean canChangeTo(OrderStatus newStatus) {
+    boolean canChangeTo(OrderStatus newStatus) {
 
-       if (this==NEW) {
-           return newStatus==PROCESSING ||newStatus==CANCELLED;
-       } else if (this==PROCESSING) {
-           return newStatus==SHIPPED||newStatus==CANCELLED;
-       } else if (this==SHIPPED) {
-           return newStatus==DELIVERED;
-       } else if (this==DELIVERED) {
-           return false;
-       } else if (this==CANCELLED) {
-           return false;
-       } else return false;
-   }
+        if (this == NEW) {
+            return newStatus == PROCESSING || newStatus == CANCELLED;
+        } else if (this == PROCESSING) {
+            return newStatus == SHIPPED || newStatus == CANCELLED;
+        } else if (this == SHIPPED) {
+            return newStatus == DELIVERED;
+        } else if (this == DELIVERED) {
+            return false;
+        } else if (this == CANCELLED) {
+            return false;
+        } else return false;
+    }
 }
-
-
 
 
 public class HomeWork_25 {
@@ -110,7 +111,7 @@ public class HomeWork_25 {
         //Цель: создать enum Direction с направлениями NORTH, SOUTH, EAST, WEST.
         //Добавь метод opposite() — возвращает противоположное направление.
         //
-        Direction direction = Direction.NORTH;
+        Direction direction = Direction.EAST;
         System.out.println(direction.opposite());
 
 
@@ -119,7 +120,7 @@ public class HomeWork_25 {
         //Цель: создать enum OrderStatus с этапами заказа: NEW, PROCESSING, SHIPPED, DELIVERED, CANCELLED.
         // Добавь метод canChangeTo(OrderStatus newStatus) — можно ли перейти в другой статус.
 
-        OrderStatus orderStatus=OrderStatus.NEW;
+        OrderStatus orderStatus = OrderStatus.NEW;
         System.out.println(orderStatus.canChangeTo(OrderStatus.SHIPPED));
     }
 }
