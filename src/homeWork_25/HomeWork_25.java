@@ -9,6 +9,51 @@ enum Day {
 
 }
 
+enum Currency {
+    USD(78.5), EUR(89.0), RUB(1);
+
+    private double rateToRUB;
+
+    Currency(double rateToRUB) {
+        this.rateToRUB = rateToRUB;
+    }
+
+    double toRuble(double amount) {
+        return amount * rateToRUB;
+
+    }
+
+}
+
+enum Priority {
+    LOW(25), MEDIUM(50), HIGH(75), CRITICAL(100);
+    final int levelCode;
+
+    Priority(int levelCode) {
+        this.levelCode = levelCode;
+    }
+
+    public int getLevelCode() {
+        return levelCode;
+    }
+}
+
+enum Direction {
+    NORTH("SOUTH"), SOUTH("NORTH"), EAST("WEST"),
+    WEST("EAST");
+    final String directionOpposite;
+
+   Direction(String directionOpposite) {
+       this.directionOpposite = directionOpposite;
+   }
+
+    public String opposite() {
+       return this.directionOpposite;
+        }
+    }
+
+
+
 
 public class HomeWork_25 {
     public static void main(String[] args) {
@@ -23,18 +68,33 @@ public class HomeWork_25 {
         //ЗАДАНИЕ 2: Курс валют
         //Цель: создать enum Currency с валютами (USD, EUR, RUB) и их курсом к рублю.
         //Добавь метод toRuble(double amount).
+
+        Currency currency = Currency.USD;
+        System.out.println(currency.toRuble(100));
+
+        //currency.toRuble(10000);
+
+
         //
         //
         //ЗАДАНИЕ 3: Уровень приоритета задач
         //Цель: создать enum Priority с уровнями LOW, MEDIUM, HIGH, CRITICAL.
         //У каждого должен быть числовой код приоритета.
         //
+        Priority priority = Priority.HIGH;
+        System.out.println(priority.getLevelCode());
+
+
         //
         //
         //ЗАДАНИЕ 4: Направления движения
         //Цель: создать enum Direction с направлениями NORTH, SOUTH, EAST, WEST.
         //Добавь метод opposite() — возвращает противоположное направление.
         //
+        Direction direction = Direction.NORTH;
+        System.out.println(direction.opposite());
+
+
         //
         //ЗАДАНИЕ 5: Статус заказа
         //Цель: создать enum OrderStatus с этапами заказа: NEW, PROCESSING, SHIPPED, DELIVERED, CANCELLED.
