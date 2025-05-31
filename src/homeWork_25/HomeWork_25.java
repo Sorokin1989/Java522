@@ -59,13 +59,13 @@ enum OrderStatus {
 
        if (this==NEW) {
            return newStatus==PROCESSING ||newStatus==CANCELLED;
-       } else if (newStatus==PROCESSING) {
+       } else if (this==PROCESSING) {
            return newStatus==SHIPPED||newStatus==CANCELLED;
-       } else if (newStatus==SHIPPED) {
+       } else if (this==SHIPPED) {
            return newStatus==DELIVERED;
-       } else if (newStatus==DELIVERED) {
+       } else if (this==DELIVERED) {
            return false;
-       } else if (newStatus==CANCELLED) {
+       } else if (this==CANCELLED) {
            return false;
        } else return false;
    }
