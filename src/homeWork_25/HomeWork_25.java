@@ -52,6 +52,25 @@ enum Direction {
         }
     }
 
+enum OrderStatus {
+    NEW, PROCESSING, SHIPPED, DELIVERED, CANCELLED;
+
+   boolean canChangeTo(OrderStatus newStatus) {
+
+       if (this==NEW) {
+           return newStatus==PROCESSING ||newStatus==CANCELLED;
+       } else if (newStatus==PROCESSING) {
+           return newStatus==SHIPPED||newStatus==CANCELLED;
+       } else if (newStatus==SHIPPED) {
+           return newStatus==DELIVERED;
+       } else if (newStatus==DELIVERED) {
+           return false;
+       } else if (newStatus==CANCELLED) {
+           return false;
+       } else return false;
+   }
+}
+
 
 
 
@@ -99,5 +118,8 @@ public class HomeWork_25 {
         //ЗАДАНИЕ 5: Статус заказа
         //Цель: создать enum OrderStatus с этапами заказа: NEW, PROCESSING, SHIPPED, DELIVERED, CANCELLED.
         // Добавь метод canChangeTo(OrderStatus newStatus) — можно ли перейти в другой статус.
+
+        OrderStatus orderStatus=OrderStatus.NEW;
+        System.out.println(orderStatus.canChangeTo(OrderStatus.SHIPPED));
     }
 }
