@@ -132,28 +132,43 @@ package LessonsTest;
 //    }
 //
 //}
-enum Weekday {
-    MONDAY(false), TUESDAY(false), WEDNESDAY(false),
-    THURSDAY(false), FRIDAY(false), SATURDAY(true), SUNDAY(true);
-   private final boolean flag;
+//enum Weekday {
+//    MONDAY(false), TUESDAY(false), WEDNESDAY(false),
+//    THURSDAY(false), FRIDAY(false), SATURDAY(true), SUNDAY(true);
+//   private final boolean flag;
+//
+//    Weekday(boolean flag) {
+//        this.flag = flag;
+//    }
+//
+//    public boolean isWeekend() {
+//        return flag;
+//    }
+//}
 
-    Weekday(boolean flag) {
-        this.flag = flag;
+enum CardSuit {
+    Червы("red"), Бубны("red"), Трефы("black"), Пики("black");
+    final String color;
+
+    CardSuit(String color) {
+        this.color = color;
     }
 
-    public boolean isWeekend() {
-        return flag;
+    public String getColor() {
+        return color;
     }
 }
-
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
+        for (CardSuit cardSuit: CardSuit.values())
+            System.out.println(cardSuit + " " + cardSuit.getColor());;
 
-        for (Weekday weekday : Weekday.values()) {
-            System.out.println(weekday + " " + weekday.isWeekend());
-        }
+
+//        for (Weekday weekday : Weekday.values()) {
+//            System.out.println(weekday + " " + weekday.isWeekend());
+//        }
 
 //        for (Planet planet:Planet.values()) {
 //            System.out.println(planet.name() + " " + planet.getSurfaceGravity());
