@@ -190,26 +190,53 @@ package LessonsTest;
 //}
 
 
-enum Season {
-    WINTER(-20), SPRING(+15), SUMMER(+25), AUTUMN(+10);
-    int t;
+//enum Season {
+//    WINTER(-20), SPRING(+15), SUMMER(+25), AUTUMN(+10);
+//    int t;
+//
+//    Season(int t) {
+//        this.t = t;
+//    }
+//
+//    public boolean isWarm() {
+//        if (t > 15) {
+//            return true;
+//        } else return false;
+//    }
+//}
 
-    Season(int t) {
-        this.t = t;
+
+enum CardRank {
+    TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6),
+    SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(11),
+    QUEEN(12), KING(13), ACE(14);
+    final int number;
+
+    CardRank(int number) {
+        this.number = number;
     }
 
-    public boolean isWarm() {
-        if (t > 15) {
-            return true;
-        } else return false;
+    public boolean isFaceCard() {
+        switch (this) {
+            case JACK, QUEEN, KING -> {
+                return true;
+            }
+            default -> {
+                return false;
+            }
+        }
     }
 }
+
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        for (Season season : Season.values())
-            System.out.println(season + " " + season.isWarm());
+        for (CardRank cardRank : CardRank.values())
+            System.out.println(cardRank + " " + cardRank.isFaceCard());
+
+//        for (Season season : Season.values())
+//            System.out.println(season + " " + season.isWarm());
 
 //        for (TrafficLightColor trafficLightColor: TrafficLightColor.values())
 //            System.out.println(trafficLightColor + " " +  trafficLightColor.getNext());
