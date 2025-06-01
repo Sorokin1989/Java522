@@ -206,34 +206,71 @@ package LessonsTest;
 //}
 
 
-enum CardRank {
-    TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6),
-    SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(11),
-    QUEEN(12), KING(13), ACE(14);
-    final int number;
+//enum CardRank {
+//    TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6),
+//    SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(11),
+//    QUEEN(12), KING(13), ACE(14);
+//    final int number;
+//
+//    CardRank(int number) {
+//        this.number = number;
+//    }
+//
+//    public boolean isFaceCard() {
+//        switch (this) {
+//            case JACK, QUEEN, KING -> {
+//                return true;
+//            }
+//            default -> {
+//                return false;
+//            }
+//        }
+//    }
+//}
 
-    CardRank(int number) {
-        this.number = number;
+
+enum PaymentMethod {
+    CREDIT_CARD(1000, 10000), PAYPAL(1500, 15000),
+    BANK_TRANSFER(2500, 25000);
+
+   private final double minLimit;
+    private final double maxLimit;
+
+    PaymentMethod(double minLimit, double maxLimit) {
+        this.minLimit = minLimit;
+        this.maxLimit = maxLimit;
     }
 
-    public boolean isFaceCard() {
-        switch (this) {
-            case JACK, QUEEN, KING -> {
-                return true;
-            }
-            default -> {
-                return false;
-            }
-        }
+    @Override
+    public String toString() {
+        return "PaymentMethod{" +
+                "minLimit=" + minLimit +
+                ", maxLimit=" + maxLimit +
+                '}';
+    }
+
+    boolean canPay(double amount) {
+
+        return amount <= maxLimit && amount >= minLimit;
     }
 }
-
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        for (CardRank cardRank : CardRank.values())
-            System.out.println(cardRank + " " + cardRank.isFaceCard());
+        PaymentMethod paymentMethod = PaymentMethod.CREDIT_CARD;
+        PaymentMethod paymentMethod1 = PaymentMethod.PAYPAL;
+        PaymentMethod paymentMethod2 = PaymentMethod.BANK_TRANSFER;
+
+        System.out.println(paymentMethod.canPay(1500));
+        System.out.println(paymentMethod1.canPay(1500));
+        System.out.println(paymentMethod2.canPay(1500));
+
+        System.out.println(paymentMethod);
+
+
+//        for (CardRank cardRank : CardRank.values())
+//            System.out.println(cardRank + " " + cardRank.isFaceCard());
 
 //        for (Season season : Season.values())
 //            System.out.println(season + " " + season.isWarm());
