@@ -43,48 +43,87 @@ package LessonsTest;
 //}
 
 
-enum Direction {
-    NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST;
+//enum Direction {
+//    NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST;
+//
+//    public Direction opposite() {
+//        switch (this) {
+//            case NORTH -> {
+//                return SOUTH;
+//            }
+//            case SOUTH -> {
+//                return NORTH;
+//            }
+//            case WEST -> {
+//                return EAST;
+//            }
+//            case EAST -> {
+//                return WEST;
+//            }
+//            case NORTHEAST -> {
+//                return SOUTHWEST;
+//            }
+//            case SOUTHEAST -> {
+//                return NORTHWEST;
+//            }
+//            case SOUTHWEST -> {
+//                return NORTHEAST;
+//            }
+//            case NORTHWEST -> {
+//                return SOUTHEAST;
+//            }
+//            default -> throw new IllegalStateException("Unexpected direction: " + this);
+//        }
+//    }
+//
+//
+//}
+//
 
-    public Direction opposite() {
-        switch (this) {
-            case NORTH -> {
-                return SOUTH;
-            }
-            case SOUTH -> {
-                return NORTH;
-            }
-            case WEST -> {
-                return EAST;
-            }
-            case EAST -> {
-                return WEST;
-            }
-            case NORTHEAST -> {
-                return SOUTHWEST;
-            }
-            case SOUTHEAST -> {
-                return NORTHWEST;
-            }
-            case SOUTHWEST -> {
-                return NORTHEAST;
-            }
-            case NORTHWEST -> {
-                return SOUTHEAST;
-            }
-            default -> throw new IllegalStateException("Unexpected direction: " + this);
-        }
+enum Season {
+    WINTER, SPRING, SUMMER, AUTUMN;
+
+
+}
+class WeatherForecast {
+    Season season;
+
+    public WeatherForecast(Season season) {
+        this.season = season;
     }
 
 
+    String getAverageTemperature() {
+        switch (season) {
+            case AUTUMN -> {
+                return "+15";
+            }
+            case WINTER -> {
+                return "-15";
+            }
+            case SPRING -> {
+                return "+10";
+            }
+            case SUMMER -> {
+                return "+25";
+            }
+            default -> {
+                throw new IllegalArgumentException("Некорректное значение");
+            }
+        }
+
+    }
 }
 
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        Direction direction = Direction.NORTHEAST;
-        System.out.println(direction.opposite());
+        WeatherForecast weatherForecast=new WeatherForecast(Season.SPRING);
+        System.out.println(weatherForecast.getAverageTemperature());
+
+//        Direction direction = Direction.NORTHEAST;
+//        System.out.println(direction.opposite());
 
 //        Robot robot = new Robot();
 //        System.out.println(robot.getDirection());
