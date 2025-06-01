@@ -80,47 +80,75 @@ package LessonsTest;
 //}
 //
 
-enum Season {
-    WINTER, SPRING, SUMMER, AUTUMN;
+//enum Season {
+//    WINTER, SPRING, SUMMER, AUTUMN;
+//
+//
+//}
+//class WeatherForecast {
+//    Season season;
+//
+//    public WeatherForecast(Season season) {
+//        this.season = season;
+//    }
+//
+//
+//    String getAverageTemperature() {
+//        switch (season) {
+//            case AUTUMN -> {
+//                return "+15";
+//            }
+//            case WINTER -> {
+//                return "-15";
+//            }
+//            case SPRING -> {
+//                return "+10";
+//            }
+//            case SUMMER -> {
+//                return "+25";
+//            }
+//            default -> throw new IllegalArgumentException("Некорректное значение");
+//
+//        }
+//
+//    }
+//}
 
+enum Planet {
+    MERCURY(2440*1000,3.3e23), VENUS(6051.8*1000,4.87e24), EARTH(6371*1000,5.972e24 ), MARS(3390.6*1000,418e23);
 
-}
-class WeatherForecast {
-    Season season;
+   public static final double G = 6.67430e-11;
 
-    public WeatherForecast(Season season) {
-        this.season = season;
+    private final double R;
+     private final double m;
+
+    Planet(double r, double m) {
+        this.R = r;
+        this.m = m;
     }
 
-
-    String getAverageTemperature() {
-        switch (season) {
-            case AUTUMN -> {
-                return "+15";
-            }
-            case WINTER -> {
-                return "-15";
-            }
-            case SPRING -> {
-                return "+10";
-            }
-            case SUMMER -> {
-                return "+25";
-            }
-            default -> {
-                throw new IllegalArgumentException("Некорректное значение");
-            }
-        }
-
+    double getSurfaceGravity() {
+        return G * m / (R*R);
     }
+
 }
 
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        WeatherForecast weatherForecast=new WeatherForecast(Season.SPRING);
-        System.out.println(weatherForecast.getAverageTemperature());
+        for (Planet planet:Planet.values()) {
+            System.out.println(planet.name() + " " + planet.getSurfaceGravity());
+
+        }
+
+
+
+
+
+
+//        WeatherForecast weatherForecast=new WeatherForecast(Season.SPRING);
+//        System.out.println(weatherForecast.getAverageTemperature());
 
 //        Direction direction = Direction.NORTHEAST;
 //        System.out.println(direction.opposite());
