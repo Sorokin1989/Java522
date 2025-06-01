@@ -146,24 +146,61 @@ package LessonsTest;
 //    }
 //}
 
-enum CardSuit {
-    Червы("red"), Бубны("red"), Трефы("black"), Пики("black");
-    final String color;
+//enum CardSuit {
+//    Червы("red"), Бубны("red"), Трефы("black"), Пики("black");
+//    final String color;
+//
+//    CardSuit(String color) {
+//        this.color = color;
+//    }
+//
+//    public String getColor() {
+//        return color;
+//    }
+//}
 
-    CardSuit(String color) {
-        this.color = color;
+enum TrafficLightColor {
+    Красный(30), Желтый(5), Зеленый(25);
+
+    int timeSecond;
+
+    TrafficLightColor(int timeSecond) {
+        this.timeSecond = timeSecond;
     }
 
-    public String getColor() {
-        return color;
+    public int getTimeSecond() {
+        return timeSecond;
+    }
+
+    public TrafficLightColor getNext() {
+        switch (this) {
+            case Красный -> {
+                return Зеленый;
+            }
+            case Зеленый -> {
+                return Желтый;
+            }
+            case Желтый -> {
+                return Красный;
+            }
+            default -> throw new IllegalArgumentException("Некорректное значение!");
+        }
+
     }
 }
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        for (CardSuit cardSuit: CardSuit.values())
-            System.out.println(cardSuit + " " + cardSuit.getColor());;
+        for (TrafficLightColor trafficLightColor: TrafficLightColor.values())
+            System.out.println(trafficLightColor + " " +  trafficLightColor.getNext());
+
+
+
+
+
+//        for (CardSuit cardSuit: CardSuit.values())
+//            System.out.println(cardSuit + " " + cardSuit.getColor());;
 
 
 //        for (Weekday weekday : Weekday.values()) {
