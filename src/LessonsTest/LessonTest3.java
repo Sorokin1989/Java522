@@ -159,44 +159,60 @@ package LessonsTest;
 //    }
 //}
 
-enum TrafficLightColor {
-    Красный(30), Желтый(5), Зеленый(25);
+//enum TrafficLightColor {
+//    Красный(30), Желтый(5), Зеленый(25);
+//
+//    int timeSecond;
+//
+//    TrafficLightColor(int timeSecond) {
+//        this.timeSecond = timeSecond;
+//    }
+//
+//    public int getTimeSecond() {
+//        return timeSecond;
+//    }
+//
+//    public TrafficLightColor getNext() {
+//        switch (this) {
+//            case Красный -> {
+//                return Зеленый;
+//            }
+//            case Зеленый -> {
+//                return Желтый;
+//            }
+//            case Желтый -> {
+//                return Красный;
+//            }
+//            default -> throw new IllegalArgumentException("Некорректное значение!");
+//        }
+//
+//    }
+//}
 
-    int timeSecond;
 
-    TrafficLightColor(int timeSecond) {
-        this.timeSecond = timeSecond;
+enum Season {
+    WINTER(-20), SPRING(+15), SUMMER(+25), AUTUMN(+10);
+    int t;
+
+    Season(int t) {
+        this.t = t;
     }
 
-    public int getTimeSecond() {
-        return timeSecond;
-    }
-
-    public TrafficLightColor getNext() {
-        switch (this) {
-            case Красный -> {
-                return Зеленый;
-            }
-            case Зеленый -> {
-                return Желтый;
-            }
-            case Желтый -> {
-                return Красный;
-            }
-            default -> throw new IllegalArgumentException("Некорректное значение!");
-        }
-
+    public boolean isWarm() {
+        if (t > 15) {
+            return true;
+        } else return false;
     }
 }
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        for (TrafficLightColor trafficLightColor: TrafficLightColor.values())
-            System.out.println(trafficLightColor + " " +  trafficLightColor.getNext());
+        for (Season season : Season.values())
+            System.out.println(season + " " + season.isWarm());
 
-
-
+//        for (TrafficLightColor trafficLightColor: TrafficLightColor.values())
+//            System.out.println(trafficLightColor + " " +  trafficLightColor.getNext());
 
 
 //        for (CardSuit cardSuit: CardSuit.values())
