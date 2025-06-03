@@ -229,44 +229,119 @@ package LessonsTest;
 //}
 
 
-enum PaymentMethod {
-    CREDIT_CARD(1000, 10000), PAYPAL(1500, 15000),
-    BANK_TRANSFER(2500, 25000);
+//enum PaymentMethod {
+//    CREDIT_CARD(1000, 10000), PAYPAL(1500, 15000),
+//    BANK_TRANSFER(2500, 25000);
+//
+//   private final double minLimit;
+//    private final double maxLimit;
+//
+//    PaymentMethod(double minLimit, double maxLimit) {
+//        this.minLimit = minLimit;
+//        this.maxLimit = maxLimit;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "PaymentMethod{" +
+//                "minLimit=" + minLimit +
+//                ", maxLimit=" + maxLimit +
+//                '}';
+//    }
+//
+//    boolean canPay(double amount) {
+//
+//        return amount <= maxLimit && amount >= minLimit;
+//    }
+//}
 
-   private final double minLimit;
-    private final double maxLimit;
 
-    PaymentMethod(double minLimit, double maxLimit) {
-        this.minLimit = minLimit;
-        this.maxLimit = maxLimit;
+//enum ErrorSeverity {
+//    LOW(1,"Начальный"), MEDIUM(2,"Средний"),
+//    HIGH(3,"Высокий"), CRITICAL(4,"Мега");
+
+//    private final   int priority;
+//    private final String description;
+//
+//    ErrorSeverity(int priority, String description) {
+//        this.priority = priority;
+//        this.description = description;
+//    }
+
+//    public  boolean shouldAlert() {
+//        return this == HIGH || this == CRITICAL;
+//    }
+//
+//}
+//
+
+
+//enum Color {
+//    RED("#FF0000"), GREEN("#00FF00"), BLUE("#00B7EB");
+//
+//    private final String codColor;
+//
+//    Color(String codColor) {
+//        this.codColor = codColor;
+//    }
+//
+//    public  String getHexCode() {
+//        switch (this) {
+//            case RED, GREEN, BLUE -> {
+//                return codColor;
+//            }
+//            default -> throw new IllegalArgumentException("Некорректное значение");
+//
+//        }
+
+//    }
+//}
+enum OrderStatus {
+    PENDING, PROCESSING, SHIPPED, DELIVERED;
+
+    public boolean isFinal() {
+        return this == OrderStatus.SHIPPED || this == OrderStatus.DELIVERED;
     }
 
-    @Override
-    public String toString() {
-        return "PaymentMethod{" +
-                "minLimit=" + minLimit +
-                ", maxLimit=" + maxLimit +
-                '}';
-    }
 
-    boolean canPay(double amount) {
 
-        return amount <= maxLimit && amount >= minLimit;
-    }
 }
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        PaymentMethod paymentMethod = PaymentMethod.CREDIT_CARD;
-        PaymentMethod paymentMethod1 = PaymentMethod.PAYPAL;
-        PaymentMethod paymentMethod2 = PaymentMethod.BANK_TRANSFER;
+        OrderStatus orderStatus=OrderStatus.PROCESSING;
 
-        System.out.println(paymentMethod.canPay(1500));
-        System.out.println(paymentMethod1.canPay(1500));
-        System.out.println(paymentMethod2.canPay(1500));
+        System.out.println(orderStatus.isFinal());
 
-        System.out.println(paymentMethod);
+    //   ЗАДАНИЕ 3: Статусы заказа
+
+    //   Создайте enum OrderStatus с статусами: PENDING, PROCESSING, SHIPPED, DELIVERED.
+    //           Добавьте метод isFinal(), который возвращает true,
+        //           если статус является конечным (SHIPPED или DELIVERED).
+
+
+
+//        Color color=Color.RED;
+//        Color color1=Color.GREEN;
+//        Color color2=Color.BLUE;
+//
+//        System.out.println(color.getHexCode());
+//        System.out.println(color1.getHexCode());
+//        System.out.println(color2.getHexCode());
+
+//        for (ErrorSeverity errorSeverity: ErrorSeverity.values())
+//            System.out.println(errorSeverity + " " + errorSeverity.shouldAlert());
+
+//        PaymentMethod paymentMethod = PaymentMethod.CREDIT_CARD;
+//        PaymentMethod paymentMethod1 = PaymentMethod.PAYPAL;
+//        PaymentMethod paymentMethod2 = PaymentMethod.BANK_TRANSFER;
+//
+//        System.out.println(paymentMethod.canPay(1500));
+//        System.out.println(paymentMethod1.canPay(1500));
+//        System.out.println(paymentMethod2.canPay(1500));
+//
+//        System.out.println(paymentMethod);
 
 
 //        for (CardRank cardRank : CardRank.values())
