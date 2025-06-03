@@ -296,23 +296,58 @@ package LessonsTest;
 
 //    }
 //}
-enum OrderStatus {
-    PENDING, PROCESSING, SHIPPED, DELIVERED;
+//enum OrderStatus {
+//    PENDING, PROCESSING, SHIPPED, DELIVERED;
+//
+//    public boolean isFinal() {
+//        return this == OrderStatus.SHIPPED || this == OrderStatus.DELIVERED;
+//    }
+//
+//
+//
+//}
 
-    public boolean isFinal() {
-        return this == OrderStatus.SHIPPED || this == OrderStatus.DELIVERED;
+import java.util.Objects;
+
+enum FileType {
+    TEXT("txt",1), IMAGE("jpeg",5),
+    VIDEO("mp4",100), AUDIO("mp3",10), ARCHIVE("zip",3);
+    private  String extension;
+    private int maxSizeMB;
+
+    FileType(String extension, int maxSizeMB) {
+        this.extension = extension;
+        this.maxSizeMB = maxSizeMB;
     }
 
-
-
+    public boolean isSupportedExtension(String extension) {
+        return Objects.equals(this.extension, extension);
+    }
 }
+
 
 public class LessonTest3 {
     public static void main(String[] args) {
 
-        OrderStatus orderStatus=OrderStatus.PROCESSING;
+        FileType fileType=FileType.ARCHIVE;
 
-        System.out.println(orderStatus.isFinal());
+        System.out.println(fileType.isSupportedExtension("mp3"));
+
+
+        //ЗАДАНИЕ 5: Типы файлов и их свойства
+        //
+        //Создайте enum FileType с типами: TEXT, IMAGE, VIDEO, AUDIO, ARCHIVE.
+        //Каждому типу присвойте поля: extension (расширение файла), maxSizeMB (максимальный размер файла в мегабайтах).
+        //Добавьте метод isSupportedExtension(String ext) для проверки, подходит ли расширение для данного типа.
+
+
+
+
+
+//
+//        OrderStatus orderStatus=OrderStatus.PROCESSING;
+//
+//        System.out.println(orderStatus.isFinal());
 
     //   ЗАДАНИЕ 3: Статусы заказа
 
