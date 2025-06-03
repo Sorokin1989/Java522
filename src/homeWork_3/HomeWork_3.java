@@ -77,6 +77,8 @@ public class HomeWork_3 {
         4) так как u=12, --u = 11 (finalResult = 12 % 12 + 11) = 11 */
         System.out.println(finalResult);
 
-
+        int p1 = 20;
+        int q1 = p1-- % ++p1 + --p1; // q = (20 % (21)) + (19)
+        System.out.println(q1);
     }
 }
