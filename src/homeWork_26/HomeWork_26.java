@@ -35,6 +35,19 @@ class MyList {
 
     public void add(int index, int value) {
 
+        int[] tmp = new int[arr.length + 1];
+        for (int i = 0; i < arr.length; i++) {
+            tmp[i] = arr[i];
+        }
+        tmp[index] = value;
+
+        for (int i = index; i < arr.length; i++) {
+            tmp[i + 1] = arr[i];
+        }
+
+        arr = tmp;
+        size++;
+
     }
 
     public void print() {
@@ -64,6 +77,9 @@ public class HomeWork_26 {
         myList.add(40);
         myList.addStart(100);
         myList.addStart(150);
+
+        myList.add(3, 200);
+        myList.add(5, 400);
 
 
         myList.print();
