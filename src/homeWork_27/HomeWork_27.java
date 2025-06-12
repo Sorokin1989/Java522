@@ -80,7 +80,7 @@ class MyLinkedList {
     public void addByIndex(int index, int value) {//public void addByIndex(int index, int value)     10,20,10,20,30 =>1, 5 => 10,5,20,10,20,30
 
         if (index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Индекс не корректен!");
+            throw new IndexOutOfBoundsException("Индекс не корректен!");
         }
         int count = 0;
         Node node=head;
@@ -89,13 +89,14 @@ class MyLinkedList {
             node=node.next;
         }
         if (index>count) {
-            throw new ArrayIndexOutOfBoundsException("Индекс некорректен!");
+            throw new IndexOutOfBoundsException("Индекс некорректен!");
         }
 
         Node node1=new Node(value);
         if (index==0) {
             node1.next=head;
            head=node1;
+           return;
         }
         node=head;
         for (int i = 0; i < index-1; i++) {
@@ -104,22 +105,7 @@ class MyLinkedList {
         node1.next=node.next;
         node.next=node1;
 
-
-
-
     }
-    // public void add(int value) {
-    //        if (head == null) {
-    //            head = new Node(value);
-    //        } else {
-    //            Node tmp = head;
-    //            while (tmp.next != null) {
-    //                tmp = tmp.next;
-    //            }
-    //            tmp.next = new Node(value);
-    //        }
-    //    }
-
 
     public void print() {
         Node tmp = head;
@@ -144,12 +130,12 @@ public class HomeWork_27 {
 
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.add(10);
-        myLinkedList.add(10);
-        myLinkedList.add(30);
         myLinkedList.add(20);
-//        myLinkedList.add(50);
-//        myLinkedList.add(60);
-//        myLinkedList.add(70);
+        myLinkedList.add(30);
+        myLinkedList.add(40);
+        myLinkedList.add(50);
+        myLinkedList.add(60);
+        myLinkedList.add(70);
 //        myLinkedList.add(80);
 //        myLinkedList.addStart(100);
 //        myLinkedList.addStart(101);
@@ -158,6 +144,7 @@ public class HomeWork_27 {
         System.out.println(myLinkedList.contains(20));
         // System.out.println(myLinkedList.removeByFirstValue(10));
         System.out.println(myLinkedList.removeByAllValue(10));
+        myLinkedList.addByIndex(3,100);
         myLinkedList.print();
 
 
