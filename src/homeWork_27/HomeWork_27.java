@@ -77,6 +77,49 @@ class MyLinkedList {
         return value;
     }
 
+    public void addByIndex(int index, int value) {//public void addByIndex(int index, int value)     10,20,10,20,30 =>1, 5 => 10,5,20,10,20,30
+
+        if (index < 0) {
+            throw new ArrayIndexOutOfBoundsException("Индекс не корректен!");
+        }
+        int count = 0;
+        Node node=head;
+        while (node!=null) {
+            count++;
+            node=node.next;
+        }
+        if (index>count) {
+            throw new ArrayIndexOutOfBoundsException("Индекс некорректен!");
+        }
+
+        Node node1=new Node(value);
+        if (index==0) {
+            node1.next=head;
+           head=node1;
+        }
+        node=head;
+        for (int i = 0; i < index-1; i++) {
+            node=node.next;
+        }
+        node1.next=node.next;
+        node.next=node1;
+
+
+
+
+    }
+    // public void add(int value) {
+    //        if (head == null) {
+    //            head = new Node(value);
+    //        } else {
+    //            Node tmp = head;
+    //            while (tmp.next != null) {
+    //                tmp = tmp.next;
+    //            }
+    //            tmp.next = new Node(value);
+    //        }
+    //    }
+
 
     public void print() {
         Node tmp = head;
