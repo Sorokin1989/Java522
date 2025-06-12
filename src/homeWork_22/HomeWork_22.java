@@ -54,6 +54,7 @@ public class HomeWork_22 {
         //Добавь метод printInfo(), который выводит имя и возраст только если данные валидны.
         //
 
+        System.out.println();
         Person person = new Person("Дмитрий", 36);
         Person person1 = new Person("Владимир", 23);
         Person person2 = new Person("Николай", 33);

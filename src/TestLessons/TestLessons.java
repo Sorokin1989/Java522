@@ -215,7 +215,6 @@ class Manager extends Employee {
     }
 }
 
-//— бонус 20% от зарплаты.
 class Developer extends Employee {
 
     public Developer(String name, double salary) {
@@ -226,5 +225,5 @@ class Developer extends Employee {
     double calculateBonus() {
         return salary * 0.1;
     }
-}//— бонус 10% от зарплаты.
+}
 

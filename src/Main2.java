@@ -1,19 +1,15 @@
 public class Main2 {
     public static void main(String[] args) {
-//        test(10);
-//
-//    }
-//
-//    public static void test(int x) {
-//        if (x <= 0) return;
-//        System.out.print(x + " ");
-//        x--;
-//        test(x);
+        try {
+            myArgumentException(); // Вызов метода, который выбрасывает исключение
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage()); // Вывод сообщения об ошибке
+            throw exception; // Повторный выброс исключения
+        }
+    }
 
-
-        String str="";
-        System.out.println(str.isEmpty());
-        System.out.println(str.isBlank());
-  }
+    // Метод, который всегда выбрасывает IllegalArgumentException
+    public static void myArgumentException() {
+        throw new IllegalArgumentException("Это было сделано специально");
+    }
 }
-

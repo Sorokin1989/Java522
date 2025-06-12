@@ -43,22 +43,31 @@ package homeWork_22;
 //    }
 //}
 
-class  Person {
-    int age;
-    String name;
-    String surname;
-}
+import homeWork_21.HomeWork_21;
 
-class Teacher extends Person {
-    double salary;
+//class  Person {
+//    int age;
+//    String name;
+//    String surname;
+//}
+//
+//class Teacher extends Person {
+//    double salary;
+//
+//}
+//class Student extends Person {
+//double stypendia;
+//}
+//class Parent extends Person {
+//    double salary;
+//}
+//class A extends HomeWork_21 {
+//
+//  //  A(String name, int age) {
+//  //      super(name, age);
+//  //  }
 
-}
-class Student extends Person {
-double stypendia;
-}
-class Parent extends Person {
-    double salary;
-}
+//}
 
 
 

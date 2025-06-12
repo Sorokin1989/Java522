@@ -47,8 +47,11 @@ public class HomeWork_15_1 {
      System.out.println(str.charAt(3));
      System.out.println(myCharAt(arr, 3));
 
+
      System.out.println(str.toLowerCase());
      System.out.println(myToLowerCase(arr));
+
+
 
      System.out.println(str2.isEmpty());
      System.out.println(myIsEmpty(arr2));
@@ -88,7 +91,7 @@ public class HomeWork_15_1 {
   public static int myLastIndexOf(char[] str, char symb, int beginIndex) {
       char[] arr = new char[str.length];
       for (int i = arr.length - 1; i >= 0; i--) {
-          if (str[i] == symb && beginIndex >= i)
+         if (str[i] == symb && beginIndex >= i)
               return i;
       }
       return -1;

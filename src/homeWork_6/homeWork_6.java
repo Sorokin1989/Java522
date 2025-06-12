@@ -38,16 +38,16 @@ public class homeWork_6 {
         int a = 0;
         for (int i = 1; i <= 100; i++) {
             if (i % 5 == 0)
-                a = a + 1;
+                a++;
         }
         System.out.println("Количество чисел, кратных 5 равно: " + a);
         System.out.println();
 
 
 //5.  Вывести квадраты чисел от 1 до 10.
-
+        int sq = 0;
         for (int i = 1; i <= 10; i++) {
-            int sq = 0;
+
             sq = i * i;
             System.out.println("Квадрат числа " + i + " равен: " + sq);
             System.out.println();

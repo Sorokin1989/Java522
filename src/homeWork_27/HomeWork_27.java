@@ -57,6 +57,13 @@ class MyLinkedList {
         return false;
     }
 
+    public int removeByFirstValue(int value) {
+        if (head == null || head.value != value) return -1;
+        head = head.next;
+        return value;
+
+    }
+
 
     public void print() {
         Node tmp = head;
@@ -82,8 +89,8 @@ public class HomeWork_27 {
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.add(10);
         myLinkedList.add(20);
-        //     myLinkedList.add(30);
-        //      myLinkedList.add(40);
+        myLinkedList.add(30);
+        myLinkedList.add(40);
 //        myLinkedList.add(50);
 //        myLinkedList.add(60);
 //        myLinkedList.add(70);
@@ -92,7 +99,8 @@ public class HomeWork_27 {
 //        myLinkedList.addStart(101);
         System.out.println(myLinkedList.isEmpty());
         System.out.println(myLinkedList.size());
-        System.out.println(myLinkedList.contains(10));
+        System.out.println(myLinkedList.contains(20));
+        System.out.println(myLinkedList.removeByFirstValue(10));
         myLinkedList.print();
 
 

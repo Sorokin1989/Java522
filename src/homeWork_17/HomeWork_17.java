@@ -10,13 +10,11 @@ public class HomeWork_17 {
 //        -     replace("Farid","Dima"));
 
         String str1 = "      Dmitrii Sorokin      ";
-        String str2 = "Dmitrii sorokin";
         String suff = "trii";
 
 
 
         char[] arr1 = str1.toCharArray();
-        char[] arr2 = str2.toCharArray();
         char[] newSuff=suff.toCharArray();
 
 

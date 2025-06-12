@@ -7,6 +7,10 @@ public class Animal {
         a.sum();
         b.sum();
     }
+
+    public void makeSound() {
+
+    }
 }
 class A {
     int x = 5, y = 5;

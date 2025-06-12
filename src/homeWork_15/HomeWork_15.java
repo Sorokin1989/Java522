@@ -25,8 +25,9 @@ public class HomeWork_15 {
         String str = "DMITRII";
         char[] arr = str.toCharArray();
 
-        String str2 = " ";
-        char[] arr2 = str2.toCharArray();
+
+        String str2 = " ";                        // переменные для методов isEmpty() и isBlank()
+        char[] arr2 = str2.toCharArray();         // переменные для методов isEmpty() и isBlank()
 
 
         System.out.println(str.length());
@@ -99,10 +100,12 @@ public class HomeWork_15 {
     }
 
     public static char[] toLowerCase(char[] arr) {
+        //char[] arr = new char[str.length];
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 64 && arr[i] < 91) {
                 arr[i] = (char) (arr[i] + 32);
             }
+          //  arr[i]=str[i];
         }
         return arr;
     }

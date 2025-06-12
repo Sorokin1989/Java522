@@ -10,7 +10,7 @@ public class HomeWork_14 {
         // }
         //  int[] arr = {1,3,4,5,6,7};
         //
-        // printArr(  arr, arr.length)
+        // printArr(  arr, arr.length);
         //
         // //result : 1,3,4,5,6,7
 

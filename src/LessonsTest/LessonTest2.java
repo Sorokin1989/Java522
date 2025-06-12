@@ -113,33 +113,35 @@ public class LessonTest2 {
         //Создайте массив из 10 случайных чисел от 1 до 100.
         // Определите и выведите минимальный и максимальный элемент.
 
-        Random random = new Random();
-        int min = 1;
-        int max = 100;
-        int[] arr = new int[10];
+   //    Random random = new Random();
+   //    int min = 1;
+   //    int max = 100;
+   //    int[] arr = new int[10];
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(max - min + 1) + min;
-        }
-        int minNumber = arr[0];
-        int maxNumber = arr[0];
+   //    for (int i = 0; i < arr.length; i++) {
+   //        arr[i] = random.nextInt(max - min + 1) + min;ccc
+   //    }
+   //    int minNumber = arr[0];
+   //    int maxNumber = arr[0];
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+   //    for (int i = 0; i < arr.length; i++) {
+   //        System.out.print(arr[i] + " ");
 
-        }
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < minNumber) {
-                minNumber = arr[i];
-            }
-            if (arr[i] > maxNumber) {
-                maxNumber = arr[i];
-            }
-        }
-        System.out.println("\nМинимальное значение: " + minNumber);
+   //    }
+   //    for (int i = 1; i < arr.length; i++) {
+   //        if (arr[i] < minNumber) {
+   //            minNumber = arr[i];
+   //        }
+   //        if (arr[i] > maxNumber) {
+   //            maxNumber = arr[i];
+   //        }
+   //    }
+   //    System.out.println("\nМинимальное значение: " + minNumber);
 
 
-        System.out.println("Максимальное значение: " + maxNumber);
+   //    System.out.println("Максимальное значение: " + maxNumber);
+
+
 
     }
 }

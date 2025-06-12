@@ -1,6 +1,7 @@
 package homeWork_11;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class HomeWork_11 {
     public static void main(String[] args) {
@@ -109,23 +110,23 @@ public class HomeWork_11 {
         //8. Вывести статический массив из 6 чисел и посчитать количество положительных элементов.
         // показывали на уроке!
 
-        Random random=new Random();
-
-        int min=-10;
-        int max=10;
-        int count=0;
-
-        int[] arr=new int[6];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i]= random.nextInt(max-min+1)+min;
-            System.out.print(arr[i] + " ");
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]>0)
-                count++;
-        }
-        System.out.print("\nКоличество положительных элементов: " + count);
+   //     Random random=new Random();
+//
+   //     int min=-10;
+   //     int max=10;
+   //     int count=0;
+//
+   //     int[] arr=new int[6];
+//
+   //     for (int i = 0; i < arr.length; i++) {
+   //         arr[i]= random.nextInt(max-min+1)+min;
+   //         System.out.print(arr[i] + " ");
+   //     }
+   //     for (int i = 0; i < arr.length; i++) {
+   //         if (arr[i]>0)
+   //             count++;
+   //     }
+   //     System.out.print("\nКоличество положительных элементов: " + count);
 
 
 
@@ -344,16 +345,15 @@ public class HomeWork_11 {
 
         //19. Заполнить массив из 11 элементов числами от 11 до 1 в обратном порядке.
 
-        //    Scanner scanner = new Scanner(System.in);
-        //    int[] arr = new int[11];
-//
-        //    for (int i = 0; i < arr.length; i++) {
-        //        arr[i] = scanner.nextInt();
-        //    }
-        //    for (int i = arr.length - 1; i >= 0; i--) {
-        //        System.out.print(arr[i] + " ");
-        //    }
-//
+            Scanner scanner = new Scanner(System.in);
+            int[] arr = new int[11];
+
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = scanner.nextInt();
+            }
+            for (int i = arr.length - 1; i >= 0; i--) {
+                System.out.print(arr[i] + " ");
+            }
         //20. Создать массив из 5 элементов, заполнить его случайными числами и определить, сколько элементов больше среднего арифметического
         // решали на уроке!
 

@@ -40,10 +40,11 @@ public class LessonsTest {
         //Вход: [3, 1] и [4, 2]
         //Выход: [1, 2, 3, 4]
 
-        int[] array = {3, 1};
-        int[] array4 = {4, 2};
 
-        int[] arr5 = twoArrSort(array, array4);
+         arr = new int[]{3, 1};
+         arr2 = new int[]{4, 2};
+
+        int[] arr5 = twoArrSort(arr, arr2);
         System.out.println(Arrays.toString(arr5));
 
 

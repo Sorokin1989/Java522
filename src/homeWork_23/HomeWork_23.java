@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class HomeWork_23 {
     public static void main(String[] args) {
+
+     //   System.out.println(sortArr(arr[i]));
         //1. Финальный класс
         //Задание:
         //Создай финальный класс MathConstants, в котором будут финальные переменные PI и E.
@@ -80,23 +82,24 @@ public class HomeWork_23 {
         //Отсортировать массив
         //Нельзя использовать готовое решение
 
-        int[] arr = {9, 1, 7, 2, 8, 4, 5, 0, 2};
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
+      int[] arr = {9, 1, 7, 2, 8, 4, 5, 0, 2};
+
+     for (int i = 0; i < arr.length-1 ; i++) {
+         for (int j = 0; j < arr.length-1; j++) {
+             if (arr[j] > arr[j + 1]) {
+                 int temp = arr[j];
+                 arr[j] = arr[j + 1];
+                 arr[j + 1] = temp;
+             }
+         }
+     }
+     for (int i = 0; i < arr.length; i++) {
+         System.out.print(arr[i] + " ");
+     }
+     System.out.println();
 
 
-        System.out.println(Arrays.toString(arr)); //(альтернативный вариант вывода)
+   //   System.out.println(Arrays.toString(arr)); //(альтернативный вариант вывода)
 
 
     }
@@ -263,3 +266,5 @@ class PartTimeEmployee extends Employee {
 
     }
 }
+
+
