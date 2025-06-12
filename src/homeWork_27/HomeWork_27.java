@@ -61,7 +61,20 @@ class MyLinkedList {
         if (head == null || head.value != value) return -1;
         head = head.next;
         return value;
+    }
 
+    public int removeByAllValue(int value) { // public int removeByAllValue(int value)   10,20,10,20,30 => 10 => 20,20,30
+        if (head == null) return -1;
+        while (head != null && head.value == value) {
+            head = head.next;
+        }
+        Node node = head;
+        while (node != null && node.next != null) {
+            if (node.next.value == value) {
+                node.next = node.next.next;
+            } else node = node.next;
+        }
+        return value;
     }
 
 
@@ -88,9 +101,9 @@ public class HomeWork_27 {
 
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.add(10);
-        myLinkedList.add(20);
+        myLinkedList.add(10);
         myLinkedList.add(30);
-        myLinkedList.add(40);
+        myLinkedList.add(20);
 //        myLinkedList.add(50);
 //        myLinkedList.add(60);
 //        myLinkedList.add(70);
@@ -100,7 +113,8 @@ public class HomeWork_27 {
         System.out.println(myLinkedList.isEmpty());
         System.out.println(myLinkedList.size());
         System.out.println(myLinkedList.contains(20));
-        System.out.println(myLinkedList.removeByFirstValue(10));
+        // System.out.println(myLinkedList.removeByFirstValue(10));
+        System.out.println(myLinkedList.removeByAllValue(10));
         myLinkedList.print();
 
 
