@@ -14,21 +14,30 @@ public class HomeWork_28 {
         dictionary.put("cow", "корова");
         dictionary.put("lion", "лев");
         dictionary.put("goose", "гусь");
-
+        Scanner scanner = new Scanner(System.in);
         do {
             System.out.println();
-            System.out.println("Если хотите выйти из программы---> введите exit\n" +
-                    "Если хотите распечатать словарь---> введите print ");
+            System.out.println("=> Выйти из программы---> введите exit\n" +
+                    "=> Распечатать словарь---> введите print \n" +
+                    "=> Очистить словарь----> введите cls");
+
             System.out.print("Введите слово: ");
-            Scanner scanner = new Scanner(System.in);
+
             String word = scanner.nextLine();
             word = word.toLowerCase();
+
+            if (word.equals("cls")) {
+                dictionary.clear();
+                System.out.println("СЛОВАРЬ ОЧИЩЕН!");
+                continue;
+            }
 
 
             if (word.equals("exit")) {
                 System.out.println("До свидания!");
                 break;
             }
+
 
             if (word.equals("print")) {
                 int count = 1;
