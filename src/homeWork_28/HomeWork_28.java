@@ -5,6 +5,29 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class HomeWork_28 {
+
+    public static int countNum(String word) {
+        int count = 0;
+        for (char c : word.toCharArray()) {
+            if (Character.isDigit(c)) {
+                count++;
+            }
+        }
+        return count;
+
+    }
+
+    public static int countLetter(String word) {
+        int count = 0;
+        for (char c : word.toCharArray()) {
+            if (Character.isLetter(c)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
     public static void main(String[] args) {
 
         Map<String, String> dictionary = new HashMap<>();
@@ -20,12 +43,40 @@ public class HomeWork_28 {
             System.out.println("=> Выйти из программы---> введите exit\n" +
                     "=> Распечатать словарь---> введите print \n" +
                     "=> Очистить словарь----> введите cls\n" +
-                    "=> Количество пар слов в словаре-----> введите size");
+                    "=> Количество пар слов в словаре-----> введите size\n" +
+                    "=> Количество букв в словаре------> введите letter\n" +
+                    "=> Количество чисел в словаре------> введите num");
 
             System.out.print("Введите слово: ");
             Scanner scanner = new Scanner(System.in);
             String word = scanner.nextLine();
             word = word.toLowerCase();
+
+            if (word.equals("num")) {
+                int countNum=0;
+                for (String key: dictionary.keySet()) {
+                    countNum=countNum+countNum(key);
+                    String value=dictionary.get(key);
+                    if (value!=null) {
+                        countNum=countNum+countNum(value);
+                    }
+                }
+                System.out.println("Количество чисел в словаре: " + countNum);
+                continue;
+            }
+
+            if (word.equals("letter")) {
+                int countLetter = 0;
+                for (String key : dictionary.keySet()) {
+                    countLetter = countLetter + key.length();
+                    String value = dictionary.get(key);
+                    if (value != null) {
+                        countLetter = countLetter + countLetter(value);
+                    }
+                }
+                System.out.println("Количество букв в словаре: " + countLetter);
+                continue;
+            }
 
             if (word.equals("cls")) {
                 dictionary.clear();
