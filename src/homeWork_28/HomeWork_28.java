@@ -2,7 +2,6 @@ package homeWork_28;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class HomeWork_28 {
@@ -59,13 +58,16 @@ public class HomeWork_28 {
                     System.out.println("Введите правильный ключ: ");
                     String keyWord = scanner.nextLine();
                     keyWord = keyWord.toLowerCase();
-                    for (String key : dictionary.keySet()) {
-                        if (Objects.equals(keyWord, key)) {
-                            System.out.println("Введите новое значение: ");
-                            word = scanner.nextLine();
-                        }
-                    }
 
+                    if (dictionary.containsKey(keyWord)) {
+                        System.out.println("Введите новое значение: ");
+                        String newWord = scanner.nextLine();
+                        dictionary.replace(keyWord, newWord);
+                        System.out.println("Значение ключа " + keyWord + " обновлено");
+                        break;
+                    } else {
+                        System.out.println("Ключ " + keyWord + " не найден. Введите корректное значение!");
+                    }
                     if (dictionary.containsKey(keyWord)) {
                         dictionary.replace(keyWord, word);
                         break;
