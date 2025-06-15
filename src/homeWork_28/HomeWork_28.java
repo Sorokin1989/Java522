@@ -165,6 +165,7 @@ public class HomeWork_28 {
                         System.out.println("Слово переведено с \n" + "1 - (en) => (ru)\n " +
                                 "2 - (ru) => (en)\n " + "3 - Отмена ");
                         select = scanner.nextInt();
+                        scanner.nextLine();
 
                         switch (select) {
                             case 1:
@@ -176,6 +177,7 @@ public class HomeWork_28 {
                                 System.out.println("Слово было добавлено!");
                                 break;
                             case 3:
+                                System.out.println("Слово не добавлено!");
                                 break;
                             default:
                                 System.out.println("Некорректное значение!");
