@@ -45,20 +45,51 @@ public class HomeWork_28 {
                     "=> Очистить словарь----> введите cls\n" +
                     "=> Количество пар слов в словаре-----> введите size\n" +
                     "=> Количество букв в словаре------> введите letter\n" +
-                    "=> Количество чисел в словаре------> введите num");
+                    "=> Количество чисел в словаре------> введите num\n" +
+                    "=> Удалить слово по ключу-------> введите delete");
 
             System.out.print("Введите слово: ");
             Scanner scanner = new Scanner(System.in);
             String word = scanner.nextLine();
             word = word.toLowerCase();
 
+            if (word.equals("update")) {
+                while (true) {
+                    System.out.println("Введите ключ: ");
+                    String keyWord=scanner.nextLine();
+                    System.out.println("Введите новое значение: ");
+                    word=scanner.nextLine();
+                    if (dictionary.containsKey(keyWord)) {
+                        dictionary.replace(keyWord,word);
+                        break;
+                    }
+                }
+            }
+
+            if (word.equals("delete")) {
+                while (true) {
+                    System.out.println("Введите ключ : ");
+                    String keyWord = scanner.nextLine();
+                    if (dictionary.containsKey(keyWord)) {
+                        dictionary.remove(keyWord);
+                        System.out.println("Ключ '" + keyWord + "' удален.");
+                        break;
+                    } else {
+                        System.out.println("Ключ '" + keyWord + "' не найден. Введите правильный ключ!");
+                    }
+
+                }
+                continue;
+            }
+
+
             if (word.equals("num")) {
-                int countNum=0;
-                for (String key: dictionary.keySet()) {
-                    countNum=countNum+countNum(key);
-                    String value=dictionary.get(key);
-                    if (value!=null) {
-                        countNum=countNum+countNum(value);
+                int countNum = 0;
+                for (String key : dictionary.keySet()) {
+                    countNum = countNum + countNum(key);
+                    String value = dictionary.get(key);
+                    if (value != null) {
+                        countNum = countNum + countNum(value);
                     }
                 }
                 System.out.println("Количество чисел в словаре: " + countNum);
