@@ -68,10 +68,6 @@ public class HomeWork_28 {
                     } else {
                         System.out.println("Ключ " + keyWord + " не найден. Введите корректное значение!");
                     }
-                    if (dictionary.containsKey(keyWord)) {
-                        dictionary.replace(keyWord, word);
-                        break;
-                    }
                 }
                 continue;
             }
