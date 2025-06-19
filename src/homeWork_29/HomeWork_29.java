@@ -116,6 +116,25 @@ class MyList {
         }
     }
 
+    public void removeByAllValue(int value) {
+        if (contains(value)) {
+            boolean isOne = true;
+            int[] result = new int[arr.length - 1];
+            for (int i = 0, j = 0; i < arr.length; i++) {
+//                if (arr[i] == value && isOne) {
+//                    isOne = false;
+//                    continue;
+//                }
+                result[j++] = arr[i];
+            }
+
+            arr = result;
+            size--;
+            decreaseArr();
+        }
+
+    }
+
     public int containsCount(int value){
         int count = 0;
         for (int i = 0; i < size; i++) {
@@ -147,6 +166,8 @@ public class HomeWork_29 {
         myList.add(30);
         myList.add(40);
         myList.add(50);
+
+        myList.removeByFirstValue(10);
 
         myList.print();
 
