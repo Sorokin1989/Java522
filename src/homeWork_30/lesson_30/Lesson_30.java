@@ -17,13 +17,52 @@ public class Lesson_30 {
 //            throw new RuntimeException(e);
 //        }
 
-        File file=new File("Dima");
+//        File file=new File("Dima");
+//
+//        if (file.mkdir()) {
+//            System.out.println("Папка создана!");
+//        }
+//        else System.out.println("Папка уже существует!");
+//
+//        File file=new File("Dima/Dima/text.txt");
+//
+//        if (file.mkdirs()) {
+//            System.out.println("Папка создана!");
+//        }
+//        else System.out.println("Папка уже существует!");
+//
 
-        if (file.mkdir()) {
-            System.out.println("Папка создана!");
-        }
-        else System.out.println("Папка уже существует!");
+
+//
+//        File file=new File("Dima");
+//
+//        if (file.delete()) {
+//            System.out.println("Delete!");
+//        }
+//        else System.out.println("Not delete!");
+//
+
+
+//        File file=new File("Dima/Dima");
+//
+//        if (file.exists()) {
+//            System.out.println("есть!");
+//        }
+//        else System.out.println("нет");
+//
+//
+//        File file=new File("text.txt");
+//
+//        System.out.println("Файл :" + file.isFile());
+//        System.out.println("Папка  :" + file.isDirectory());
+
+        File oldFile=new File("text.txt");
+        File newFile=new File("newName.txt");
+
+        oldFile.renameTo(newFile);
 
 
     }
-}
+
+    }
+
