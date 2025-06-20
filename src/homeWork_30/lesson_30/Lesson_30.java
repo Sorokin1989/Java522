@@ -6,9 +6,13 @@ import java.io.IOException;
 public class Lesson_30 {
     public static void main(String[] args)  {
 
-        File file=new File("text.txt");
+        File file=new File("text2.txt");
         try {
-            file.createNewFile();
+            if (file.createNewFile()) {
+                System.out.println("Файл создан!");
+            }
+            else System.out.println("Файл уже существует!");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
