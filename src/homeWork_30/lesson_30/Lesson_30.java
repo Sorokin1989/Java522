@@ -1,31 +1,37 @@
 package homeWork_30.lesson_30;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Lesson_30 {
 
-    public static void printDirectoryTree(File folder, String str) {
-        if (folder == null || !folder.exists()) return;
-        File[] files = folder.listFiles();
-        if (files == null) return;
-        for (File f : files) {
-            if (f.isDirectory()) {
-                System.out.println(str + "|--" + f.getName() + "(#)");
-                printDirectoryTree(f,str+"  ");
-            } else {
-                System.out.println(str + "|--" + f.getName() + "(*)");
-            }
-        }
+//    public static void printDirectoryTree(File folder, String str) {
+//        if (folder == null || !folder.exists()) return;
+//        File[] files = folder.listFiles();
+//        if (files == null) return;
+//        for (File f : files) {
+//            if (f.isDirectory()) {
+//                System.out.println(str + "|--" + f.getName() + "(#)");
+//                printDirectoryTree(f,str+"  ");
+//            } else {
+//                System.out.println(str + "|--" + f.getName() + "(*)");
+//            }
+//        }
+//
+//    }
 
-    }
 
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
+        FileWriter fileWriter=new FileWriter("test.txt");
+        fileWriter.write("Hello Dima");
+        fileWriter.close();
 
-        System.out.println("(*) --> Это файл ");
-        System.out.println("(#) --> Это папка ");
-        File rootFolder =new File("C:\\");
-        printDirectoryTree(rootFolder,"");
+//        System.out.println("(*) --> Это файл ");
+//        System.out.println("(#) --> Это папка ");
+//        File rootFolder =new File("C:\\");
+//        printDirectoryTree(rootFolder,"");
 //      File file=new File("text2.txt");
 //        try {
 //            if (file.createNewFile()) {
