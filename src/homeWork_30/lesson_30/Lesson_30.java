@@ -1,12 +1,31 @@
 package homeWork_30.lesson_30;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 
 public class Lesson_30 {
+
+    public static void printDirectoryTree(File folder, String str) {
+        if (folder == null || !folder.exists()) return;
+        File[] files = folder.listFiles();
+        if (files == null) return;
+        for (File f : files) {
+            if (f.isDirectory()) {
+                System.out.println(str + "|--" + f.getName() + "(#)");
+                printDirectoryTree(f,str+"  ");
+            } else {
+                System.out.println(str + "|--" + f.getName() + "(*)");
+            }
+        }
+
+    }
+
+
     public static void main(String[] args) {
 
+        System.out.println("(*) --> Это файл ");
+        System.out.println("(#) --> Это папка ");
+        File rootFolder =new File("C:\\");
+        printDirectoryTree(rootFolder,"");
 //      File file=new File("text2.txt");
 //        try {
 //            if (file.createNewFile()) {
@@ -90,13 +109,36 @@ public class Lesson_30 {
 //            }
 //            break;
 
-     //   }
-        File folder = new File("C:\\SCANNER");
+        //   }
+//        File folder = new File("C:\\SCANNER");
+//
+//       File[] files = folder.listFiles();
+//        for (File file : files) {
+//
+//            System.out.println((file.isFile()?"File "  : "Folder") + " " + file.getName());
+//        }
 
-       File[] files = folder.listFiles();
-        for (File file : files) {
+//        File folder=new File("data");
+//        folder.mkdir();
+//        File file=new File(folder,"test.txt");
+//        try {
+//            file.createNewFile();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
-            System.out.println(file.getName() + " " + (file.isFile()?"File "  : "Folder"));
-        }
+//        File rootFolder=new File("C:\\");
+//
+//        int count=1;
+//        for (File file :rootFolder.listFiles()) {
+//            System.out.println(count++ + ") " + file.getName());
+//
+//            for (File subFile : Objects.requireNonNull(file.listFiles())) {
+//                System.out.println("---" + subFile.getName());
+//            }
+//
+//        }
+
+
     }
 }
