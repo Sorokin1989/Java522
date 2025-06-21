@@ -24,9 +24,26 @@ public class Lesson_30 {
 
     public static void main(String[] args) throws IOException {
 
-        FileWriter fileWriter=new FileWriter("test.txt");
-        fileWriter.write("Hello Dima");
-        fileWriter.close();
+//        FileWriter fileWriter=new FileWriter("test.txt");
+//        fileWriter.write("Hello Dima");
+//        fileWriter.close();
+//        File file=new File("testet.txt");
+//        file.createNewFile();
+//
+//        FileWriter fileWriter=new FileWriter(file);
+//        fileWriter.write("Hello Dima");
+//     fileWriter.close();
+//       FileWriter fileWriter=new FileWriter("test.txt",true);
+//        fileWriter.write("Dima");
+//       fileWriter.close();
+
+//        FileWriter fileWriter=new FileWriter("test.txt");
+//        fileWriter.write(new char[]{'D','i','m','a'});
+//
+//
+//        fileWriter.close();
+
+
 
 //        System.out.println("(*) --> Это файл ");
 //        System.out.println("(#) --> Это папка ");
