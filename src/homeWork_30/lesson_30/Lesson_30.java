@@ -1,10 +1,50 @@
 package homeWork_30.lesson_30;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+class Person {
+    String name;
+    String surname;
+    String email;
+    int age;
+
+    @Override
+    public String toString() {
+        return name + " " + surname + " " + email + " " + age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Person(String name, String surname, int age, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+
+
+    }
+}
 
 public class Lesson_30 {
+
 
 //    public static void printDirectoryTree(File folder, String str) {
 //        if (folder == null || !folder.exists()) return;
@@ -24,6 +64,24 @@ public class Lesson_30 {
 
     public static void main(String[] args) throws IOException {
 
+        FileWriter fileWriter = new FileWriter("test.txt");
+        List<Person> people = new ArrayList<>();
+        people.addAll(List.of(
+                new Person("Dima", "Sorokin", 36, "sorokindmitrijj2@rambler.ru"),
+                new Person("Dima", "Sorokin", 76, "sorokindmitrijj2@rambler.ru"),
+                new Person("Dima", "Sorokin", 96, "sorokindmitrijj2@rambler.ru"),
+                new Person("Dima", "Sorokin", 56, "sorokindmitrijj2@rambler.ru"),
+                new Person("Dima", "Sorokin", 36, "sorokindmitrijj2@rambler.ru"),
+                new Person("Dima", "Sorokin", 56, "sorokindmitrijj2@rambler.ru"),
+                new Person("Dima", "Sorokin", 26, "sorokindmitrijj2@rambler.ru")
+        ));
+
+        for (Person person : people) {
+            fileWriter.write(person + "\n");
+        }
+
+        fileWriter.close();;
+
 //        FileWriter fileWriter=new FileWriter("test.txt");
 //        fileWriter.write("Hello Dima");
 //        fileWriter.close();
@@ -42,7 +100,6 @@ public class Lesson_30 {
 //
 //
 //        fileWriter.close();
-
 
 
 //        System.out.println("(*) --> Это файл ");
