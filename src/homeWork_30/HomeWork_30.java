@@ -1,8 +1,26 @@
 package homeWork_30;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class HomeWork_30 {
+
+
+public static void createFile() throws IOException {
+    Scanner scanner=new Scanner(System.in);
+    System.out.println("Введите название файла: ");
+    String fileName=scanner.nextLine();
+    File file=new File(fileName);
+    if (file.createNewFile()) {
+        System.out.println("Файл создан!");
+
+    }
+
+}
+
+
+
     public static void main(String[] args) {
 
 
