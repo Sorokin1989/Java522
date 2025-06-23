@@ -1,5 +1,6 @@
 package homeWork_30.lesson_30;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,23 +65,39 @@ public class Lesson_30 {
 
     public static void main(String[] args) throws IOException {
 
-        FileWriter fileWriter = new FileWriter("test.txt");
-        List<Person> people = new ArrayList<>();
-        people.addAll(List.of(
-                new Person("Dima", "Sorokin", 36, "sorokindmitrijj2@rambler.ru"),
-                new Person("Dima", "Sorokin", 76, "sorokindmitrijj2@rambler.ru"),
-                new Person("Dima", "Sorokin", 96, "sorokindmitrijj2@rambler.ru"),
-                new Person("Dima", "Sorokin", 56, "sorokindmitrijj2@rambler.ru"),
-                new Person("Dima", "Sorokin", 36, "sorokindmitrijj2@rambler.ru"),
-                new Person("Dima", "Sorokin", 56, "sorokindmitrijj2@rambler.ru"),
-                new Person("Dima", "Sorokin", 26, "sorokindmitrijj2@rambler.ru")
-        ));
+//        FileReader fileReader=new FileReader("test.txt");
+//        int data=fileReader.read();
+//        char sumb=(char) data;
+//        System.out.println(sumb);
 
-        for (Person person : people) {
-            fileWriter.write(person + "\n");
+        FileReader fileReader=new FileReader("test.txt");
+      char[] buffer=new char[100];
+      int countSymbl=fileReader.read(buffer);
+        for (int i = 0; i < countSymbl; i++) {
+            System.out.print(buffer[i]);
         }
+        fileReader.close();
 
-        fileWriter.close();;
+
+
+
+//        FileWriter fileWriter = new FileWriter("test.txt",true);
+//        List<Person> people = new ArrayList<>();
+//        people.addAll(List.of(
+//                new Person("Dima", "Sorokin", 36, "sorokindmitrijj2@rambler.ru"),
+//                new Person("Dima", "Sorokin", 76, "sorokindmitrijj2@rambler.ru"),
+//                new Person("Dima", "Sorokin", 96, "sorokindmitrijj2@rambler.ru"),
+//                new Person("Dima", "Sorokin", 56, "sorokindmitrijj2@rambler.ru"),
+//                new Person("Dima", "Sorokin", 36, "sorokindmitrijj2@rambler.ru"),
+//                new Person("Dima", "Sorokin", 56, "sorokindmitrijj2@rambler.ru"),
+//                new Person("Dima", "Sorokin", 26, "sorokindmitrijj2@rambler.ru")
+//        ));
+//
+//        for (Person person : people) {
+//            fileWriter.write(person + "\n");
+//        }
+//
+//        fileWriter.close();;
 
 //        FileWriter fileWriter=new FileWriter("test.txt");
 //        fileWriter.write("Hello Dima");
