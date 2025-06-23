@@ -19,7 +19,7 @@ public class HomeWork_30 {
 
     public static void createFile() throws IOException {
         System.out.println("Введите название файла: ");
-        String fileName = scanner.nextLine();
+         fileName = scanner.nextLine();
         File file = new File(fileName);
         if (file.createNewFile()) {
             System.out.println("Файл создан!" + file.getAbsolutePath());
@@ -133,99 +133,109 @@ public class HomeWork_30 {
 
 
     public static void main(String[] args) {
-
-
-        System.out.println("1---> Создание объектов файловой системы\n" +
-                "2---> Запись в файл\n" +
-                "3---> Чтение из файла\n" +
-                "4---> Получение информации\n" +
-                "5---> Переименование\n" +
-                "6---> Удаление\n" +
-                "7---> Перемещение\n" +
-                "8---> Отображение структуры папок\n" +
-                "9---> Выход");
         Scanner scanner = new Scanner(System.in);
-        int select = scanner.nextInt();
 
-        try {
             while (true) {
-                switch (select) {
-                    case 1:
+                try {
+                    System.out.println("1---> Создание объектов файловой системы\n" +
+                            "2---> Запись в файл\n" +
+                            "3---> Чтение из файла\n" +
+                            "4---> Получение информации\n" +
+                            "5---> Переименование\n" +
+                            "6---> Удаление\n" +
+                            "7---> Перемещение\n" +
+                            "8---> Отображение структуры папок\n" +
+                            "9---> Выход");
 
-                        System.out.println("1-Создание нового текстового файла по указанному пути\n" +
-                                "2-Создание новой папки по указанному пути");
-                        select = scanner.nextInt();
-                        switch (select) {
-                            case 1:
-                                createFile();
-                                break;
-                            case 2:
-                                createDirectory();
-                                break;
+                    int select = scanner.nextInt();
+                    scanner.nextLine();
 
-                            default:
-                                System.out.println("Введите правильное значение!");
-                        }
-                    case 2:
-                        System.out.println("1-Запись строки в файл (с перезаписью содержимого)\n" +
-                                "2-Добавление строки в конец файла (без удаления существующего текста)");
-                        select = scanner.nextInt();
-                        switch (select) {
-                            case 1:
-                                writeToFile();
+                    switch (select) {
+                        case 1:
 
-                                break;
-                            case 2:
-                                writeToFileNotDelete();
-                                break;
-                            default:
-                                System.out.println("Введите правильное значение!");
-                        }
-                        break;
-                    case 3:
-                        readToFile();
-                        break;
-                    case 4:
-                        printInfo();
-                        break;
-                    case 5:
-                        reNameTo();
-                        break;
-                    case 6:
-                        System.out.println("1-Удаление файла\n" +
-                                "2-Удаление пустой папки");
-                        select=scanner.nextInt();
-                        switch (select) {
-                            case 1:
-                                deleteFile();
-                                break;
-                            case 2:
-                                deleteFolder();
-                                break;
-                            default:
-                                System.out.println("Введите корректное значение!");
-                        }
-                        break;
-                    case 7:
-                        moveFile();
-                        break;
-                    case 8:
-                        printDirectoryTree(folder,"");
-                        break;
-                    case 9:
-                        System.out.println("Вы вышли!");
-                        break;
-                    default:
-                        System.out.println("Введите корректное значение!");
+                            System.out.println("1-Создание нового текстового файла по указанному пути\n" +
+                                    "2-Создание новой папки по указанному пути");
+                            int selectNum = scanner.nextInt();
+                            switch (selectNum) {
+                                case 1:
+                                    scanner.nextLine();
+                                    createFile();
+                                    break;
+                                case 2:
+                                    scanner.nextLine();
+                                    createDirectory();
+                                    break;
 
+                                default:
+                                    System.out.println("Введите правильное значение!");
 
+                            }
+                        case 2:
+                            System.out.println("1-Запись строки в файл (с перезаписью содержимого)\n" +
+                                    "2-Добавление строки в конец файла (без удаления существующего текста)");
+                            int selectNum2 = scanner.nextInt();
+                            switch (selectNum2) {
+                                case 1:
+                                    scanner.nextLine();
+                                    writeToFile();
+                                    break;
+                                case 2:
+                                    scanner.nextLine();
+                                    writeToFileNotDelete();
+                                    break;
+                                default:
+                                    System.out.println("Введите правильное значение!");
+                            }
+                            break;
+                        case 3:
+                            readToFile();
+                            break;
+                        case 4:
+                            printInfo();
+                            break;
+                        case 5:
+                            System.out.println("Введите новое имя файла/папки:");
+                            newFileName = scanner.nextLine();
+                            reNameTo();
+                            break;
+                        case 6:
+                            System.out.println("1-Удаление файла\n" +
+                                    "2-Удаление пустой папки");
+                           int selectNum3 = scanner.nextInt();
+                           scanner.nextLine();
+                            switch (selectNum3) {
+                                case 1:
+                                    deleteFile();
+                                    break;
+                                case 2:
+                                    deleteFolder();
+                                    break;
+                                default:
+                                    System.out.println("Введите корректное значение!");
+                            }
+                            break;
+                        case 7:
+                            moveFile();
+                            break;
+                        case 8:
+                            printDirectoryTree(folder, "");
+                            break;
+                        case 9:
+                            System.out.println("Вы вышли!");
+                           return;
+                        default:
+                            System.out.println("Введите корректное значение!");
+
+                    }
+                } catch (Exception e) {
+                    System.out.println("Ошибка!" + e.getMessage());
+                    scanner.nextLine();
                 }
+
 
             }
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
         //1) Создание объектов файловой системы
         //-- Создание новой папки по указанному пути
         //-- Создание нового текстового файла по указанному пути
