@@ -54,14 +54,23 @@ public class HomeWork_30 {
     }
 
     public static void readToFile() throws IOException {
-        FileReader fileReader = new FileReader(fileName);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        File file = new File(fileName);
+        if (!file.exists()) {
+            System.out.println("Файл не существует!");
+            return;
+        }
+        if (file.length() == 0) {
+            System.out.println("Файл пустой!");
+            return;
+        }
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         String line;
-        while ((line = bufferedReader.readLine()) != null) {
+        while ((line = bufferedReader.readLine()) != null){
             System.out.println(line);
         }
+            bufferedReader.close();
 
-    }
+        }
 
     public static void printInfo() {
         File file = new File(String.valueOf(fileName));
@@ -149,7 +158,6 @@ public class HomeWork_30 {
 
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
             while (true) {
                 try {
@@ -184,8 +192,8 @@ public class HomeWork_30 {
 
                                 default:
                                     System.out.println("Введите правильное значение!");
-
                             }
+                            break;
                         case 2:
                             System.out.println("1-Запись строки в файл (с перезаписью содержимого)\n" +
                                     "2-Добавление строки в конец файла (без удаления существующего текста)");
@@ -238,7 +246,7 @@ public class HomeWork_30 {
                             break;
                         case 9:
                             System.out.println("Вы вышли!");
-                           return;
+                           break;
                         default:
                             System.out.println("Введите корректное значение!");
                             break;
