@@ -40,6 +40,7 @@ public class HomeWork_30 {
         String str = scanner.nextLine();
         FileWriter fileWriter = new FileWriter(fileName);
         fileWriter.write(str);
+        System.out.println("Текст записан!");
         fileWriter.close();
     }
 
@@ -48,6 +49,7 @@ public class HomeWork_30 {
         String str = scanner.nextLine();
         FileWriter fileWriter = new FileWriter(fileName, true);
         fileWriter.write(str);
+        System.out.println("Текст добавлен");
         fileWriter.close();
     }
 
@@ -63,6 +65,11 @@ public class HomeWork_30 {
 
     public static void printInfo() {
         File file = new File(String.valueOf(fileName));
+
+        if (!file.exists()) {
+            System.out.println("Файл или папка не существует!");
+            return;
+        }
         System.out.println("File              : " + file.getName());
         System.out.println("Path              : " + file.getPath());
         System.out.println("Size              : " + file.length());
@@ -74,9 +81,18 @@ public class HomeWork_30 {
     }
 
     public static void reNameTo() {
+
+        if (newFileName==null||newFileName.trim().isEmpty()) {
+            System.out.println("Новое имя не указано!");
+            return;
+        }
         File oldFile = new File(fileName);
         File newFile = new File(newFileName);
-        oldFile.renameTo(newFile);
+
+        if(oldFile.renameTo(newFile)) {
+            System.out.println("Файл или папка переименованы!");
+            fileName=newFile.getAbsolutePath();
+        } else System.out.println("Не удалось переименовать!");
     }
 
     public static void deleteFile() {
@@ -103,9 +119,9 @@ public class HomeWork_30 {
     }
 
     public static void moveFile() throws IOException {
-        System.out.println("Введите текущее имя файла!");
+        System.out.println("Введите полный путь файла или папки!");
         String sourceName = scanner.nextLine();
-        System.out.println("Введите новое имя файла!");
+        System.out.println("Введите новый путь файла или папки!");
         String destName = scanner.nextLine();
         File source = new File(sourceName);
         File dest = new File(destName);
@@ -225,6 +241,7 @@ public class HomeWork_30 {
                            return;
                         default:
                             System.out.println("Введите корректное значение!");
+                            break;
 
                     }
                 } catch (Exception e) {
