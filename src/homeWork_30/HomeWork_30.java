@@ -1,23 +1,55 @@
 package homeWork_30;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class HomeWork_30 {
+     private static String fileName;
+     private static Scanner scanner=new Scanner(System.in);
+
+    public HomeWork_30(String fileName) {
+        this.fileName = fileName;
+    }
 
 
-public static void createFile() throws IOException {
-    Scanner scanner=new Scanner(System.in);
+    public static void createFile() throws IOException {
     System.out.println("Введите название файла: ");
     String fileName=scanner.nextLine();
     File file=new File(fileName);
     if (file.createNewFile()) {
-        System.out.println("Файл создан!");
+        System.out.println("Файл создан!" + file.getAbsolutePath());
+    }
+    else System.out.println("Файл уже существует или не может быть создан!");
+}
 
+    public static void createDirectory() throws IOException {
+        System.out.println("Введите название папки: ");
+        String dirName=scanner.nextLine();
+        File dir=new File(dirName);
+        if (dir.mkdir()) {
+            System.out.println("Папка создана!" + dir.getAbsolutePath());
+        }
+        else System.out.println("Папка уже существует или не может быть создана!");
     }
 
-}
+    public static void writeToFile() throws IOException {
+        System.out.println("Введите текст в файл: ");
+        String str=scanner.nextLine();
+        FileWriter fileWriter=new FileWriter(fileName);
+        fileWriter.write(str);
+       fileWriter.close();
+    }
+
+    public static void writeToFileNotDelete() throws IOException {
+        System.out.println("Введите текст в файл: ");
+        String str=scanner.nextLine();
+        FileWriter fileWriter=new FileWriter(fileName,true);
+        fileWriter.write(str);
+        fileWriter.close();
+    }
+
 
 
 
