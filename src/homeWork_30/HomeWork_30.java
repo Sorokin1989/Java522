@@ -1,53 +1,71 @@
 package homeWork_30;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class HomeWork_30 {
-     private static String fileName;
-     private static Scanner scanner=new Scanner(System.in);
+    private static String fileName;
+    private static final Scanner scanner = new Scanner(System.in);
 
     public HomeWork_30(String fileName) {
-        this.fileName = fileName;
+        HomeWork_30.fileName = fileName;
     }
 
 
     public static void createFile() throws IOException {
-    System.out.println("Введите название файла: ");
-    String fileName=scanner.nextLine();
-    File file=new File(fileName);
-    if (file.createNewFile()) {
-        System.out.println("Файл создан!" + file.getAbsolutePath());
+        System.out.println("Введите название файла: ");
+        String fileName = scanner.nextLine();
+        File file = new File(fileName);
+        if (file.createNewFile()) {
+            System.out.println("Файл создан!" + file.getAbsolutePath());
+        } else System.out.println("Файл уже существует или не может быть создан!");
     }
-    else System.out.println("Файл уже существует или не может быть создан!");
-}
 
     public static void createDirectory() throws IOException {
         System.out.println("Введите название папки: ");
-        String dirName=scanner.nextLine();
-        File dir=new File(dirName);
+        String dirName = scanner.nextLine();
+        File dir = new File(dirName);
         if (dir.mkdir()) {
             System.out.println("Папка создана!" + dir.getAbsolutePath());
-        }
-        else System.out.println("Папка уже существует или не может быть создана!");
+        } else System.out.println("Папка уже существует или не может быть создана!");
     }
 
     public static void writeToFile() throws IOException {
         System.out.println("Введите текст в файл: ");
-        String str=scanner.nextLine();
-        FileWriter fileWriter=new FileWriter(fileName);
+        String str = scanner.nextLine();
+        FileWriter fileWriter = new FileWriter(fileName);
         fileWriter.write(str);
-       fileWriter.close();
+        fileWriter.close();
     }
 
     public static void writeToFileNotDelete() throws IOException {
         System.out.println("Введите текст в файл: ");
-        String str=scanner.nextLine();
-        FileWriter fileWriter=new FileWriter(fileName,true);
+        String str = scanner.nextLine();
+        FileWriter fileWriter = new FileWriter(fileName, true);
         fileWriter.write(str);
         fileWriter.close();
+    }
+
+    public static void readToFile() throws IOException {
+        FileReader fileReader = new FileReader(fileName);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+        while ((line = bufferedReader.readLine()) == null) {
+            System.out.println(line);
+        }
+
+    }
+
+    public static void printInfo() {
+        File file = new File(fileName);
+        System.out.println("File              : " + file.getName());
+        System.out.println("Path              : " + file.getPath());
+        System.out.println("Size              : " + file.length());
+        System.out.println("AbsolutePath      : " + file.getAbsolutePath());
+        System.out.println("Data update       : " + file.lastModified());
+        System.out.println("Read              : " + file.canRead());
+        System.out.println("Run               : " + file.canExecute());
+        System.out.println("Write             : " + file.canWrite());
     }
 
 
@@ -87,7 +105,7 @@ public class HomeWork_30 {
                             "2-Добавление строки в конец файла (без удаления существующего текста)");
                     select = scanner.nextInt();
                     switch (select) {
-                        case 1,2:
+                        case 1, 2:
                             break;
                         default:
                             System.out.println("Введите правильное значение!");
