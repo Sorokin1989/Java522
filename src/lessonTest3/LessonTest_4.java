@@ -1,29 +1,44 @@
 package lessonTest3;
 
-
-interface Printable {
-    void print(String str);
-}
-
-class Test2 implements Printable {
-
-    @Override
-    public void print(String str) {
-        System.out.println(str);
-
-    }
-}
+//
+//interface Printable {
+//    void print(String str);
+//}
+//
+//class Test2 implements Printable {
+//
+//    @Override
+//    public void print(String str) {
+//        System.out.println(str);
+//
+//    }
+//}
 
 //interface Operationable {
 //    int calculate(int x, int y);
 //
 //}
+interface Printable<T> {
+    void print(T str);
 
+}
 
 
 
 public class LessonTest_4 {
     public static void main(String[] args) {
+        Printable printable=(x)-> System.out.println(x);
+
+        printable.print(1);
+        printable.print("Dima");
+        printable.print('e');
+        printable.print(true);
+
+
+
+
+
+
 
 //        Operationable sum=(x,y)->
 //        {
