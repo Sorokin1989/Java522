@@ -30,34 +30,48 @@ package lessonTest3;
 //
 //}
 
-interface Testable{
-    String test();
-}
-abstract class Test2 {
- abstract void test();
-
-}
+//interface Testable{
+//    String test();
+//}
+//abstract class Test2 {
+// abstract void test();
+//
+//}
 
 public class LessonTest_4 {
+
+    public static void printArr(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
-        Test2 test2=new Test2() {
-            @Override
-            void test() {
-                System.out.println("frewyeythdj");
-            }
-        };
 
-        test2.test();
+        int [] arr={1,2,3,4,5,6,7,8,9,10};
 
-        Testable testable=()-> "Hello";
-        System.out.println(testable.test());
-//        Printable printable = (x) -> System.out.println(x);
+        printArr(arr);
+
+
+//        Test2 test2=new Test2() {
+//            @Override
+//            void test() {
+//                System.out.println("frewyeythdj");
+//            }
+//        };
 //
-//        printable.print(1);
-//        printable.print("Dima");
-//        printable.print('e');
-//        printable.print(true);
+//        test2.test();
+//
+//        Testable testable=()-> "Hello";
+//        System.out.println(testable.test());
+////        Printable printable = (x) -> System.out.println(x);
+////
+////        printable.print(1);
+////        printable.print("Dima");
+////        printable.print('e');
+////        printable.print(true);
 
 
 //        Operationable sum=(x,y)->
