@@ -47,12 +47,52 @@ public class LessonTest_4 {
         System.out.println();
     }
 
+    public static void printArrChet(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
+
+    public static void printArrNeChet(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+    public static void printArrMoreThen(int[] arr,int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > x) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void printArrLessThen(int[] arr,int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < x) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
 
-        int [] arr={1,2,3,4,5,6,7,8,9,10};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         printArr(arr);
+        printArrChet(arr);
+        printArrNeChet(arr);
+        printArrMoreThen(arr,5);
+        printArrLessThen(arr,5);
 
 
 //        Test2 test2=new Test2() {
