@@ -83,6 +83,24 @@ public class LessonTest_4 {
         System.out.println();
     }
 
+    public static void printArrEqualsThen(int[] arr,int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void printArrTo2To3(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]%2==0 && arr[i]%3==0) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
 
@@ -93,6 +111,8 @@ public class LessonTest_4 {
         printArrNeChet(arr);
         printArrMoreThen(arr,5);
         printArrLessThen(arr,5);
+        printArrEqualsThen(arr,5);
+        printArrTo2To3(arr);
 
 
 //        Test2 test2=new Test2() {
