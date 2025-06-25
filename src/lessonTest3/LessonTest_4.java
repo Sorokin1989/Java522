@@ -1,174 +1,61 @@
 package lessonTest3;
 
-//
-//interface Printable {
-//    void print(String str);
-//}
-//
-//class Test2 implements Printable {
-//
-//    @Override
-//    public void print(String str) {
-//        System.out.println(str);
-//
-//    }
-//}
-
-//interface Operationable {
-//    int calculate(int x, int y);
-//
-//}
-//interface Printable<T> {
-//    void print(T str);
-//
-//}
-//interface Printable<T> {
-//   //void print2(T str);
-//
-//    void print(T str);
-//
-//
-//}
-
-//interface Testable{
-//    String test();
-//}
-//abstract class Test2 {
-// abstract void test();
-//
-//}
-
+interface CounterCondition{
+    boolean check(int num);
+}
 public class LessonTest_4 {
-
-    public static void printArr(int[] arr) {
+    public static void sumIf(int[] arr, CounterCondition condition) {
+        int sum=0;
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArrChet(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 2 == 0) {
-                System.out.print(arr[i] + " ");
+            if (condition.check(arr[i])) {
+                sum+=arr[i];
             }
         }
-        System.out.println();
+        System.out.print(sum);
     }
 
-
-    public static void printArrNeChet(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 2 != 0) {
-                System.out.print(arr[i] + " ");
-            }
-        }
-        System.out.println();
-    }
-    public static void printArrMoreThen(int[] arr,int x) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > x) {
-                System.out.print(arr[i] + " ");
-            }
-        }
-        System.out.println();
-    }
-
-    public static void printArrLessThen(int[] arr,int x) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < x) {
-                System.out.print(arr[i] + " ");
-            }
-        }
-        System.out.println();
-    }
-
-    public static void printArrEqualsThen(int[] arr,int x) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) {
-                System.out.print(arr[i] + " ");
-            }
-        }
-        System.out.println();
-    }
-
-    public static void printArrTo2To3(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]%2==0 && arr[i]%3==0) {
-                System.out.print(arr[i] + " ");
-            }
-        }
-        System.out.println();
-    }
 
     public static void main(String[] args) {
 
+        //  метод sumIf(int[] arr, CounterCondition condition):
+        //
+        //Найти сумму отрицательных чисел в массиве.
+        //Пример условия: x -> x < 0
 
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] arr={1,-1,-3,4,-5,7,6,-4};
 
-        printArr(arr);
-        printArrChet(arr);
-        printArrNeChet(arr);
-        printArrMoreThen(arr,5);
-        printArrLessThen(arr,5);
-        printArrEqualsThen(arr,5);
-        printArrTo2To3(arr);
+        sumIf(arr,(x)->x<0);
 
 
-//        Test2 test2=new Test2() {
-//            @Override
-//            void test() {
-//                System.out.println("frewyeythdj");
-//            }
-//        };
-//
-//        test2.test();
-//
-//        Testable testable=()-> "Hello";
-//        System.out.println(testable.test());
-////        Printable printable = (x) -> System.out.println(x);
-////
-////        printable.print(1);
-////        printable.print("Dima");
-////        printable.print('e');
-////        printable.print(true);
+        //
+        //Найти сумму чисел, делящихся на 3 без остатка.
+        //Пример условия: x -> x % 3 == 0
 
 
-//        Operationable sum=(x,y)->
-//        {
-//           int rezult= x + y;
-//           rezult*=rezult;
-//           return rezult;
-//        };
-//        Operationable raznost=(x,y)->x-y;
-//        Operationable umnogenie=(x,y)->x*y;
-//        Operationable delenie=(x,y)->x/y;
-//
-//        System.out.println(sum.calculate(10,5));
-//        System.out.println(raznost.calculate(10,5));
-//        System.out.println(umnogenie.calculate(10,5));
-//        System.out.println(delenie.calculate(10,5));
+        //
+        //Найти сумму чисел, которые больше 10.
+        //Пример условия: x -> x > 10
+        //
+        //Найти сумму чисел, оканчивающихся на четную цифру (0, 2, 4, 6, 8).
+        //Пример условия: x -> Math.abs(x) % 10 % 2 == 0
+        //
+        //Найти сумму чисел в диапазоне от 5 до 15 включительно.
+        //Пример условия: x -> x >= 5 && x <= 15
+        //
+        //Найти сумму четных чисел.
+        //Пример условия: x -> x % 2 == 0
+        //
+        //Найти сумму чисел, которые являются кратными 10.
+        //Пример условия: x -> x % 10 == 0
+        //
+        //Найти сумму чисел, которые меньше или равны -5.
+        //Пример условия: x -> x <= -5
+        //
+        //Найти сумму положительных чисел больше 20.
+        //Пример условия: x -> x > 20
+        //
+        //Найти сумму чисел с нечетной цифрой в единицах (например, числа, оканчивающиеся на 1,3,5,7 или 9).
+        //Пример условия: x -> Math.abs(x) % 10 % 2 != 0
 
-
-//        Test2 test2 = new Test2();
-//        test2.print("Dima");
-
-//        Printable printable=new Printable() {
-//            @Override
-//            public void print(String str) {
-//                System.out.println(str);
-//            }
-//        };
-//
-//        printable.print("Dima");
-
-//        Printable printable=(str)->{
-//            System.out.println(str);
-//            System.out.println(str);
-//            System.out.println(str);
-//            System.out.println(str);
-//            System.out.println(str);
-//        };
-//        printable.print("Dima");
     }
 }
