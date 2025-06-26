@@ -123,6 +123,17 @@ public class Lesson_32 {
 //            System.out.print(num + " ");
 //        }
 
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//        people=people.stream().filter(x->x.age<50&&x.name.contains("D")).toList();
+//        System.out.println(people);
+
         List<Person> people=new ArrayList<>();
         people.add(new Person("Dima",36));
         people.add(new Person("Kola",26));
@@ -131,8 +142,9 @@ public class Lesson_32 {
         people.add(new Person("Vika",90));
         people.add(new Person("Olga",65));
 
-        people=people.stream().filter(x->x.age<50&&x.name.contains("D")).toList();
+        people=people.stream().limit(3).toList();
         System.out.println(people);
+
 
 
 
