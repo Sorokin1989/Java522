@@ -134,19 +134,93 @@ public class Lesson_32 {
 //        people=people.stream().filter(x->x.age<50&&x.name.contains("D")).toList();
 //        System.out.println(people);
 
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//        people=people.stream().limit(3).toList();
+//        System.out.println(people);
+
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//        people=people.stream().skip(3).toList();
+//        System.out.println(people);
+//        List<String> arr = new ArrayList<>();
+//       arr.add("Dima");
+//       arr.add("AAhv");
+//       arr.add("AAnjvjir");
+//       arr.add("hrthr");
+//       arr.add("gjtykt");
+//       arr.add("muykj");
+//       arr.add("uo;lui");
+//       arr.add("dafwer");
+//        arr.add("Dima");
+//        arr.add("AAhv");
+//        arr.add("AAnjvjir");
+//        arr.add("hrthr");
+//        arr.add("gjtykt");
+//        arr.add("muykj");
+//        arr.add("uo;lui");
+//        arr.add("dafwer");
+//        arr.add("Dima");
+//        arr.add("AAhv");
+//        arr.add("AAnjvjir");
+//        arr.add("hrthr");
+//        arr.add("gjtykt");
+//        arr.add("muykj");
+//        arr.add("uo;lui");
+//        arr.add("dafwer");
+//
+//        arr=arr.stream().distinct().toList();
+//        System.out.println(arr);
+
+//        List<String> arr = new ArrayList<>();
+//        arr.add("Dima");
+//        arr.add("AAhv");
+//        arr.add("AAnjvjir");
+//        arr.add("hrthr");
+//        arr.add("gjtykt");
+//        arr.add("muykj");
+//        arr.add("uo;lui");
+//        arr.add("dafwer");
+//
+//
+//        arr=arr.stream().map(x->"Ms(mister)" + x).toList();
+//        System.out.println(arr);
+
+//        List<String> arr = new ArrayList<>();
+//        arr.add("Dima");
+//        arr.add("AAhv");
+//        arr.add("AAnjvjir");
+//        arr.add("hrthr");
+//        arr.add("gjtykt");
+//        arr.add("muykj");
+//        arr.add("uo;lui");
+//        arr.add("dafwer");
+//
+//
+//        arr=arr.stream().sorted((x,y)->y.compareTo(x)).toList();
+//        System.out.println(arr);
         List<Person> people=new ArrayList<>();
-        people.add(new Person("Dima",36));
-        people.add(new Person("Kola",26));
-        people.add(new Person("Farid",46));
-        people.add(new Person("Petya",86));
-        people.add(new Person("Vika",90));
-        people.add(new Person("Olga",65));
+      people.add(new Person("Dima",36));
+      people.add(new Person("Kola",26));
+      people.add(new Person("Farid",46));
+      people.add(new Person("Petya",86));
+      people.add(new Person("Vika",90));
+      people.add(new Person("Olga",65));
 
-        people=people.stream().limit(3).toList();
+      people=people.stream().sorted((x,y)->y.name.compareTo(x.name)).toList();
+
         System.out.println(people);
-
-
-
-
     }
 }
