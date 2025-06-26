@@ -21,14 +21,14 @@ public class HomeWork_32 {
 //Получи List<Integer> с длинами всех городов.
 //
         List<String> cities = Arrays.asList("Baku", "London", "New York", "Berlin");
-       // List<Integer> list=cities.stream().map(x->x.length()).toList();
-        List<Integer> list=cities.stream().mapToInt(x->x.length()).boxed().toList();
+        // List<Integer> list=cities.stream().map(x->x.length()).toList();
+        List<Integer> list = cities.stream().mapToInt(x -> x.length()).boxed().toList();
         System.out.println(list);
 
 //3)Сортировка по длине строки
 //Отсортируй cities по возрастанию длины названия.
 
-       cities= cities.stream().sorted((x,y)->x.length()-y.length()).toList();
+        cities = cities.stream().sorted((x, y) -> x.length() - y.length()).toList();
         System.out.println(cities);
 
 
