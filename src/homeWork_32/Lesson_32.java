@@ -62,8 +62,20 @@ public class Lesson_32 {
 //}
         //5)создание стрима из строки;
 
-        IntStream intStream= "Dima123".chars();
-        intStream.forEach(x-> System.out.println(x));
+//        IntStream intStream= "Dima123".chars();
+//        intStream.forEach(x-> System.out.println(x));
+
+        //6)создание стрима из builder;
+
+        Stream.Builder<String> builder= Stream.builder();
+        Stream<String> stream=builder.add("a1").add("a2").add("a3").add("a4").add("a5").build();
+        System.out.println(stream.collect(Collectors.toList()));
+
+
+
+
+
+
 
 
 
