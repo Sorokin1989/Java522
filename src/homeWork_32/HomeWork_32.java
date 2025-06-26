@@ -27,6 +27,11 @@ public class HomeWork_32 {
 
 //3)Сортировка по длине строки
 //Отсортируй cities по возрастанию длины названия.
+
+       cities= cities.stream().sorted((x,y)->x.length()-y.length()).toList();
+        System.out.println(cities);
+
+
 //
 //4)Переименование файлов
 //Дана коллекция List<String> files = Arrays.asList("photo.jpg", "doc.txt", "archive.zip").
