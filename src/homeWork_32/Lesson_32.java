@@ -3,6 +3,29 @@ package homeWork_32;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+
+
 
 public class Lesson_32 {
     public static void main(String[] args) throws IOException {
@@ -81,21 +104,36 @@ public class Lesson_32 {
 //            System.out.print(num+ " ");
 //        }
 
-        List<String> arr = new ArrayList<>();
-        arr.add("Dima");
-        arr.add("AAhv");
-        arr.add("AAnjvjir");
-        arr.add("hrthr");
-        arr.add("gjtykt");
-        arr.add("muykj");
-        arr.add("uo;lui");
-        arr.add("dafwer");
+//        List<String> arr = new ArrayList<>();
+//        arr.add("Dima");
+//        arr.add("AAhv");
+//        arr.add("AAnjvjir");
+//        arr.add("hrthr");
+//        arr.add("gjtykt");
+//        arr.add("muykj");
+//        arr.add("uo;lui");
+//        arr.add("dafwer");
+//
+//        arr = (List<String>) arr.stream().filter(x -> x.contains("A")).toList();
+//
+//        arr.forEach(x-> System.out.print(x + " "));
+//        System.out.println(arr);
+//        System.out.println(arr.stream().toList());
+//        for (String num : arr) {
+//            System.out.print(num + " ");
+//        }
 
-        arr = (List<String>) arr.stream().filter(x -> x.contains("A")).toList();
-        System.out.println(arr);
-        for (String num : arr) {
-            System.out.print(num + " ");
-        }
+        List<Person> people=new ArrayList<>();
+        people.add(new Person("Dima",36));
+        people.add(new Person("Kola",26));
+        people.add(new Person("Farid",46));
+        people.add(new Person("Petya",86));
+        people.add(new Person("Vika",90));
+        people.add(new Person("Olga",65));
+
+        people=people.stream().filter(x->x.age<50&&x.name.contains("D")).toList();
+        System.out.println(people);
+
 
 
     }
