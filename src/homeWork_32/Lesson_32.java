@@ -2,8 +2,10 @@ package homeWork_32;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 class Person {
@@ -211,16 +213,35 @@ public class Lesson_32 {
 //
 //        arr=arr.stream().sorted((x,y)->y.compareTo(x)).toList();
 //        System.out.println(arr);
-        List<Person> people=new ArrayList<>();
-      people.add(new Person("Dima",36));
-      people.add(new Person("Kola",26));
-      people.add(new Person("Farid",46));
-      people.add(new Person("Petya",86));
-      people.add(new Person("Vika",90));
-      people.add(new Person("Olga",65));
+//        List<Person> people=new ArrayList<>();
+//      people.add(new Person("Dima",36));
+//      people.add(new Person("Kola",26));
+//      people.add(new Person("Farid",46));
+//      people.add(new Person("Petya",86));
+//      people.add(new Person("Vika",90));
+//      people.add(new Person("Olga",65));
+//
+//      people=people.stream().sorted((x,y)->y.name.compareTo(x.name)).toList();
+//
+//        System.out.println(people);
 
-      people=people.stream().sorted((x,y)->y.name.compareTo(x.name)).toList();
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//        people.stream().peek(x-> System.out.println(x.age)).toList();
 
-        System.out.println(people);
+
+        Stream<String> stream= Stream.of("A1","A2","A3","A4","A5");
+//     System.out.println(stream.collect(Collectors.toList()));
+
+       int[]arr= stream.mapToInt(x-> Integer.parseInt(x.substring(1))).toArray();
+        System.out.println(Arrays.toString(arr));
+
+
     }
 }
