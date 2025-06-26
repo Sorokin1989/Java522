@@ -67,9 +67,32 @@ public class Lesson_32 {
 
         //6)создание стрима из builder;
 
-        Stream.Builder<String> builder= Stream.builder();
-        Stream<String> stream=builder.add("a1").add("a2").add("a3").add("a4").add("a5").build();
-        System.out.println(stream.collect(Collectors.toList()));
+//        Stream.Builder<String> builder= Stream.builder();
+//        Stream<String> stream=builder.add("a1").add("a2").add("a3").add("a4").add("a5").build();
+//        System.out.println(stream.collect(Collectors.toList()));
+//
+//
+         //filter
+//        List<Integer> arr=new ArrayList<>();
+//        arr.add(1);
+//        arr.add(2);
+//        arr.add(3);
+//        arr.add(4);
+//        arr.add(5);
+//        arr.add(6);
+//        arr.add(7);
+//        arr.add(8);
+//        arr.add(9);
+//        arr.add(10);
+//
+//        List<Integer> rezult=arr.stream().filter(x->x==5).toList();
+//        for (Integer num:rezult) {
+//            System.out.print(num+ " ");
+//        }
+
+
+
+
 
 
 
