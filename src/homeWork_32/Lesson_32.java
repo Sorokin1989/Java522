@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Lesson_32 {
@@ -59,7 +60,11 @@ public class Lesson_32 {
 //} catch (IOException e) {
 //    throw new RuntimeException(e);
 //}
-        //5)создание стрима из file;
+        //5)создание стрима из строки;
+
+        IntStream intStream= "Dima123".chars();
+        intStream.forEach(x-> System.out.println(x));
+
 
 
 
