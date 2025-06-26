@@ -36,10 +36,22 @@ public class HomeWork_32 {
 //4)Переименование файлов
 //Дана коллекция List<String> files = Arrays.asList("photo.jpg", "doc.txt", "archive.zip").
 //Добавь префикс "backup_" ко всем названиям файлов.
+        List<String> files = Arrays.asList("photo.jpg", "doc.txt", "archive.zip");
+
+        files=files.stream().map(x->"backup_" + x).toList();
+        System.out.println(files);
+
+
 //
 //5)Объединение слов
 //Есть List<String> phrases = Arrays.asList("Java is", "fun to", "learn and", "use!").
 //Раздели все фразы на отдельные слова с помощью flatMap.
+        List<String> phrases = Arrays.asList("Java is", "fun to", "learn and", "use!");
+        phrases=phrases.stream().flatMap(x->Arrays.stream(x.split(" "))).toList();
+        System.out.println(phrases);
+
+
+
 //
 //Задания на терминальные методы:
 //6)Проверка наличия большого числа
