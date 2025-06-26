@@ -1,17 +1,8 @@
 package homeWork_32;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Lesson_32 {
     public static void main(String[] args) throws IOException {
@@ -39,7 +30,7 @@ public class Lesson_32 {
 //        Stream<String> stream = list.stream();
 //        System.out.println(stream.collect(Collectors.toList()));
 
-       // 4)создание стрима из file;
+        // 4)создание стрима из file;
 
 //        File file=new File("data.txt");
 //        file.createNewFile();
@@ -72,7 +63,7 @@ public class Lesson_32 {
 //        System.out.println(stream.collect(Collectors.toList()));
 //
 //
-         //filter
+        //filter
 //        List<Integer> arr=new ArrayList<>();
 //        arr.add(1);
 //        arr.add(2);
@@ -90,17 +81,21 @@ public class Lesson_32 {
 //            System.out.print(num+ " ");
 //        }
 
+        List<String> arr = new ArrayList<>();
+        arr.add("Dima");
+        arr.add("AAhv");
+        arr.add("AAnjvjir");
+        arr.add("hrthr");
+        arr.add("gjtykt");
+        arr.add("muykj");
+        arr.add("uo;lui");
+        arr.add("dafwer");
 
-
-
-
-
-
-
-
-
-
-
+        arr = (List<String>) arr.stream().filter(x -> x.contains("A")).toList();
+        System.out.println(arr);
+        for (String num : arr) {
+            System.out.print(num + " ");
+        }
 
 
     }
