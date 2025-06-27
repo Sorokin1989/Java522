@@ -306,6 +306,21 @@ public class Lesson_32 {
 //        } else
 //            System.out.println("Объекта нет");
 
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));;
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//        System.out.println(people.stream().filter(x->x.age>40).count());
+//        System.out.println(people.stream().max(Comparator.comparing(Person::getAge)));
+//        System.out.println(people.stream().min(Comparator.comparing(Person::getAge)));
+
+
+        // sum, avg
+
         List<Person> people=new ArrayList<>();
         people.add(new Person("Farid",46));
         people.add(new Person("Dima",36));
@@ -314,9 +329,9 @@ public class Lesson_32 {
         people.add(new Person("Vika",90));
         people.add(new Person("Olga",65));
 
-        System.out.println(people.stream().filter(x->x.age>40).count());
-        System.out.println(people.stream().max(Comparator.comparing(Person::getAge)));
-        System.out.println(people.stream().min(Comparator.comparing(Person::getAge)));
+        System.out.println(people.stream().mapToInt(x->x.age).sum());
+        System.out.println(people.stream().mapToInt(x->x.age).average().getAsDouble());
+
 
 
 
