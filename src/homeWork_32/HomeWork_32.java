@@ -13,7 +13,7 @@ public class HomeWork_32 {
 //Отфильтруй только те числа, которые делятся на 5, но не делятся на 10.
         List<Integer> numbers = Arrays.asList(10, 15, 20, 25, 30, 35, 40);
 
-        numbers = numbers.stream().filter(x -> x % 5 == 0 && x % 10 != 0).toList();
+        numbers = numbers.stream().filter(x -> x % 5 == 0 && x % 10 != 0).toList();// или .collect(Collectors.toList());
         System.out.println(numbers);
 
 
@@ -24,13 +24,13 @@ public class HomeWork_32 {
 //
         List<String> cities = Arrays.asList("Baku", "London", "New York", "Berlin");
         // List<Integer> list=cities.stream().map(x->x.length()).toList();
-        List<Integer> list = cities.stream().mapToInt(x -> x.length()).boxed().toList();
+        List<Integer> list = cities.stream().mapToInt(x -> x.length()).boxed().toList();// или .collect(Collectors.toList());
         System.out.println(list);
 
 //3)Сортировка по длине строки
 //Отсортируй cities по возрастанию длины названия.
 
-        cities = cities.stream().sorted((x, y) -> x.length() - y.length()).toList();
+        cities = cities.stream().sorted((x, y) -> x.length() - y.length()).toList(); //или .collect(Collectors.toList());
         System.out.println(cities);
 
 
@@ -40,7 +40,7 @@ public class HomeWork_32 {
 //Добавь префикс "backup_" ко всем названиям файлов.
         List<String> files = Arrays.asList("photo.jpg", "doc.txt", "archive.zip");
 
-        files = files.stream().map(x -> "backup_" + x).toList();
+        files = files.stream().map(x -> "backup_" + x).toList(); // или .collect(Collectors.toList());
         System.out.println(files);
 
 
@@ -49,7 +49,7 @@ public class HomeWork_32 {
 //Есть List<String> phrases = Arrays.asList("Java is", "fun to", "learn and", "use!").
 //Раздели все фразы на отдельные слова с помощью flatMap.
         List<String> phrases = Arrays.asList("Java is", "fun to", "learn and", "use!");
-        phrases = phrases.stream().flatMap(x -> Arrays.stream(x.split(" "))).toList();
+        phrases = phrases.stream().flatMap(x -> Arrays.stream(x.split(" "))).toList();// или .collect(Collectors.toList());
         System.out.println(phrases);
 
 
@@ -97,7 +97,7 @@ public class HomeWork_32 {
         integerList.add(46);
         integerList.add(54);
         integerList.add(12);
-        integerList.add(88);
+        integerList.add(87);
         integerList.add(35);
         integerList.add(77);
         integerList.add(56);
