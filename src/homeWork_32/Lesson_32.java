@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -236,11 +237,73 @@ public class Lesson_32 {
 //        people.stream().peek(x-> System.out.println(x.age)).toList();
 
 
-        Stream<String> stream= Stream.of("A1","A2","A3","A4","A5");
-//     System.out.println(stream.collect(Collectors.toList()));
+//        Stream<String> stream= Stream.of("A1","A2","A3","A4","A5");
+//    System.out.println(stream.collect(Collectors.toList()));
+//
+//       int[]arr= stream.mapToInt(x-> Integer.parseInt(x.substring(1))).toArray();
+//        System.out.println(Arrays.toString(arr));
+//        Stream<String> stream= Stream.of("A1","A2","grgewg","efwfgewfgewfg,dav,faefve,cfasc","dbf");
+//
+//        List<String> list=stream.flatMap(x->Arrays.stream(x.split(","))).toList();
+//        System.out.println(list);
+        //List<Person> people=new ArrayList<>();
+//       people.add(new Person("Dima",36));
+//       people.add(new Person("Kola",26));
+//       people.add(new Person("Farid",46));
+//       people.add(new Person("Petya",86));
+//       people.add(new Person("Vika",90));
+//       people.add(new Person("Olga",65));
+//
+//  people.stream().distinct()
+//               .sorted((x,y)->x.age-y.age)
+//               .skip(3).limit(5).peek(x-> System.out.println(x)).toList();
 
-       int[]arr= stream.mapToInt(x-> Integer.parseInt(x.substring(1))).toArray();
-        System.out.println(Arrays.toString(arr));
+// anyMatch NoneMatch allMatch
+
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//        System.out.println(people.stream().allMatch(x->x.age>50));// все числа больше
+//        System.out.println(people.stream().noneMatch(x->x.age>50)); // никакое число не больше
+//        System.out.println(people.stream().anyMatch(x->x.age>50)); // хотя бы одно больше
+
+
+
+        // findFirst findAny
+
+//        List<Person> people=new ArrayList<>();
+//        people.add(new Person("Farid",46));
+//        people.add(new Person("Dima",36));
+//        people.add(new Person("Kola",26));;
+//        people.add(new Person("Petya",86));
+//        people.add(new Person("Vika",90));
+//        people.add(new Person("Olga",65));
+//
+//      Optional<Person> first=people.stream().filter(x->x.age>500).findFirst();
+//       // System.out.println(first.get());
+//
+//        if (first.isPresent()) {
+//            System.out.println("Объект есть!");
+//            System.out.println(first.get());
+//        } else
+//            System.out.println("Объекта нет");
+
+        List<Person> people=new ArrayList<>();
+        people.add(new Person("Farid",46));
+        people.add(new Person("Dima",36));
+        people.add(new Person("Kola",26));;
+        people.add(new Person("Petya",86));
+        people.add(new Person("Vika",90));
+        people.add(new Person("Olga",65));
+
+        System.out.println(people.stream().filter(x->x.age>40).count());
+
+
 
 
     }
