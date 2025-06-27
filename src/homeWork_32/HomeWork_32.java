@@ -1,5 +1,6 @@
 package homeWork_32;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,9 +58,32 @@ public class HomeWork_32 {
 //6)Проверка наличия большого числа
 //Дан список List<Integer> numbers.
 //Используй anyMatch, чтобы проверить, есть ли число больше 1000.
+        List<Integer> numberss=new ArrayList<>();
+        numberss.add(1000);
+        numberss.add(100);
+        numberss.add(10000);
+        numberss.add(1300);
+        numberss.add(1100);
+        numberss.add(1560);
+        numberss.add(1580);
+        numberss.add(45);
+
+        System.out.println(numberss.stream().anyMatch(x->x>1000));
+
 //
 //7)Поиск самого короткого слова
 //Дан список слов. Найди слово с минимальной длиной с помощью min.
+
+        List<String> stringList=new ArrayList<>();
+        stringList.add("Dima");
+        stringList.add("Nikolai");
+        stringList.add("Roman");
+        stringList.add("Evgenii");
+        stringList.add("Ola");
+
+        System.out.println(stringList.stream().min((x,y)->x.length()-y.length()));
+
+
 //
 //8)Сумма чётных чисел
 //Дан список чисел. Найди сумму только чётных чисел с помощью reduce.
