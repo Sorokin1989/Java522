@@ -1,10 +1,7 @@
 package homeWork_32;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,6 +12,22 @@ class Person {
 
     public Person(String name, int age) {
         this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -302,6 +315,9 @@ public class Lesson_32 {
         people.add(new Person("Olga",65));
 
         System.out.println(people.stream().filter(x->x.age>40).count());
+        System.out.println(people.stream().max(Comparator.comparing(Person::getAge)));
+        System.out.println(people.stream().min(Comparator.comparing(Person::getAge)));
+
 
 
 
