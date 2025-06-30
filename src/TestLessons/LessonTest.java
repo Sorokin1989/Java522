@@ -42,7 +42,7 @@ public class LessonTest {
         //Дан список List<String> words = Arrays.asList("Java", "is", "awesome");
         //Объединить все слова в одну строку через пробел.
 
-        List<String> words = Arrays.asList("Java", "is", "awesome");
+        List<String> words = Arrays.asList("stream", "Java", "is", "awesome","Java", "is", "awesome");
 
         System.out.println(words.stream().collect(Collectors.joining(" ")));
 
@@ -73,14 +73,23 @@ public class LessonTest {
         //Подсчет суммы всех чисел
         //Дан список чисел. Посчитать сумму всех элементов с помощью reduce.
 
+        System.out.println(numbers.stream().reduce(Integer::sum).orElse(0));
+
 
 
         //
         //Подсчет количества уникальных слов
         //Дан список слов с возможными повторениями. Посчитать количество уникальных слов.
+        System.out.println(words.stream().distinct().count());
+
         //
         //Поиск строки, содержащей подстроку "stream"
         //Использовать filter и findFirst, чтобы найти первую строку, содержащую слово "stream".
+
+
+        System.out.println(words.stream().filter(x->x.contains("stream")).findFirst().orElse(null));
+
+
 
     }
 }
