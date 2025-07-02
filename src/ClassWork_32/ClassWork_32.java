@@ -1,6 +1,8 @@
 package ClassWork_32;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 //class MyThread extends Thread {
@@ -62,12 +64,29 @@ class MyThread implements Runnable {
 public class ClassWork_32 {
     public static void main(String[] args) throws IOException, InterruptedException {
 
+        ExecutorService executorService= Executors.newFixedThreadPool(5);
+
+        for (int i = 0; i < 100; i++) {
+            int taskNumber=i;
+            executorService.submit(()->{
+                System.out.println("Задача# " + taskNumber + " выполняется в потоке" +Thread.currentThread().getName());
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+        }
 
 
 
 
-        System.out.println("Start main");
 
+
+
+//        System.out.println("Start main");
+//
 //                System.out.println("Start myThread");
 //                for (int i = 0; i < 10; i++) {
 //                    try {
@@ -82,25 +101,25 @@ public class ClassWork_32 {
 //                System.out.println("End myThread");
 //            }
 //        };
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                System.out.println("Start myThread");
-                for (int i = 0; i < 10; i++) {
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    System.out.print(i + " ");
-
-                }
-                System.out.println("End myThread");
-
-            }
-        };
-        thread.start();
-        System.out.println("End Main");
+      //  Thread thread = new Thread() {
+//            @Override
+//            public void run() {
+//                System.out.println("Start myThread");
+//                for (int i = 0; i < 10; i++) {
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    System.out.print(i + " ");
+//
+//                }
+//                System.out.println("End myThread");
+//
+//            }
+//        };
+//        thread.start();
+//        System.out.println("End Main");
 //        System.out.println("Start main");
 //
 //               System.out.println("Start myThread");
