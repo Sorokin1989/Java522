@@ -1,6 +1,7 @@
 package ClassWork_32;
 
 import java.io.IOException;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -63,21 +64,49 @@ class MyThread implements Runnable {
 
 public class ClassWork_32 {
     public static void main(String[] args) throws IOException, InterruptedException {
-
         ExecutorService executorService= Executors.newFixedThreadPool(5);
 
-        for (int i = 0; i < 100; i++) {
-            int taskNumber=i;
-            executorService.submit(()->{
-                System.out.println("Задача# " + taskNumber + " выполняется в потоке" +Thread.currentThread().getName());
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        Runnable runnable=()-> {
+            System.out.println("Task Runnable начал выполнение" + Thread.currentThread().getName());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
-        }
+            System.out.println("Task Runnable завершил выполнение" + Thread.currentThread().getName());
+        };
+
+        Callable<Integer> integerCallable=()->{
+            System.out.println("Task Callable<Integer> начал выполнение" + Thread.currentThread().getName());
+          int result=43;
+            Thread.sleep(5000);
+            System.out.println("Task Callable<Integer> завершил выполнение" + Thread.currentThread().getName());
+            return result;
+        };
+
+        Callable<String> stringCallable=()->{
+            System.out.println("Task Callable<String> начал выполнение" + Thread.currentThread().getName());
+          String result="Hello World";
+            Thread.sleep(5000);
+            System.out.println("Task Callable<String> завершил выполнение" + Thread.currentThread().getName());
+            return result;
+        };
+
+//        ExecutorService executorService= Executors.newFixedThreadPool(5);
+//
+//        for (int i = 0; i < 100; i++) {
+//            int taskNumber=i;
+//            executorService.submit(()->{
+//                System.out.println("Задача# " + taskNumber + " выполняется в потоке " +Thread.currentThread().getName());
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+//        }
+//        executorService.shutdown();
 
 
 
