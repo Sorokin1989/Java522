@@ -6,52 +6,43 @@ public class Contact {
     //Фамилия
     //Номер телефона
     //Возраст
+    private static int idCounter = 1;
+    private final int id;
+    private final String name;
+    private final String surname;
+    private final int phoneNumber;
+    private final int age;
 
-    private int id;
-    private String name;
-    private String surname;
-    private int phoneNumber;
-    private int age;
-
-    public Contact(int id, String name, String surname, int phoneNumber, int age) {
-        this.id = id;
+    public Contact(String name, String surname, int phoneNumber, int age) {
+        this.id = idCounter++;
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    @Override
+    public String toString() {
+        return "id= " + id + ", " + name + ", " + surname + ", " + phoneNumber + ", " + age;
     }
-
-
 }

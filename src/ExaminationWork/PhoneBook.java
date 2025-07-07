@@ -54,7 +54,7 @@ public class PhoneBook {
         System.out.println("Введите пароль: ");
         String password=scanner.nextLine();
 
-        Optional<User> userOptional=users.stream().filter(x->x.getUsername.equals(username)).findFirst();
+        Optional<User> userOptional=users.stream().filter(x->x.getUsername().equals(username)).findFirst();
         if (userOptional.isPresent()) {
             User user=userOptional.get();
             if (user.getPassword().equals(password)) {
