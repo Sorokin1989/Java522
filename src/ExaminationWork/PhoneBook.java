@@ -66,5 +66,86 @@ public class PhoneBook {
 
             }
         }
+
+
+    }
+
+    static void userMenu() {
+        while (true) {
+            System.out.println("1---> Контакты\n" +
+                    "2---> Поиск\n" +
+                    "3---> Фильтрация\n" +
+                    "4---> Сортировка\n" +
+                    "5---> Логирование\n" +
+                    "6---> Назад");
+
+            int select=scanner.nextInt();
+            switch (select) {
+                case 1:
+                    System.out.println("контакты");
+
+                    break;
+                case 2:
+                    System.out.println("поиск");
+                    break;
+                case 3:
+                    System.out.println("фильтрация");
+                case 4:
+                    System.out.println("сортировка");
+                case 5:
+                    System.out.println("логирование");
+                case 6:
+                    System.out.println("назад");
+                    break;
+                default:
+                    System.out.println("Введите корректное значение!");
+            }
+        }
+    }
+    static void contactsMenu() {
+        while (true) {
+            System.out.println("1---> Добавить\n" +
+                    "2---> Удалить\n" +
+                    "3---> Редактировать\n" +
+                    "4---> Отобразить\n" +
+                    "5---> Назад");
+            int select= scanner.nextInt();
+            switch (select) {
+                case 1:
+                    System.out.println("Добавить");
+                    break;
+                case 2:
+                    System.out.println("Удалить");
+                    break;
+                case 3:
+                    System.out.println("Редактировать");
+                    break;
+                case 4:
+                    System.out.println("Отобразить");
+                    break;
+                case 5:
+                    System.out.println("назад");
+                    break;
+                default:
+                    System.out.println("Некорректное значение");
+            }
+
+        }
+    }
+    static void searchContacts() {
+        while (true) {
+            System.out.println("0---> Регистр OFF\n" +
+                    "1---> По имени\n" +
+                    "2---> По фамилии\n" +
+                    "3---> По номеру\n" +
+                    "4--->По всем параметрам\n" +
+                    "5---> Спец поиск (_ , %)\n");
+
+            int select= scanner.nextInt();
+
+            switch (select) {
+                case 1:
+            }
+        }
     }
 }

@@ -39,7 +39,7 @@ public class FileManager {
     public static List<Contact> loadContact(String fileName) throws IOException {
         List<Contact> contacts = new ArrayList<>();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
             String line;
             while ((line = bufferedReader.readLine()) != null) ;
             String[] parts = line.split("\\|");
@@ -50,7 +50,6 @@ public class FileManager {
                 int phoneNumber = Integer.parseInt(parts[3]);
                 int age = Integer.parseInt(parts[4]);
                 Contact contact = new Contact(name, surname, phoneNumber, age);
-                contact.getId();
                 contacts.add(contact);
 
             }
