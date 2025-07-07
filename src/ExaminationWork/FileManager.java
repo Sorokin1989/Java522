@@ -43,13 +43,14 @@ public class FileManager {
             String line;
             while ((line = bufferedReader.readLine()) != null) ;
             String[] parts = line.split("\\|");
-            if (parts.length == 5) {
+            if (parts.length == 6) {
                 int id = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 String surname = parts[2];
                 int phoneNumber = Integer.parseInt(parts[3]);
                 int age = Integer.parseInt(parts[4]);
-                Contact contact = new Contact(name, surname, phoneNumber, age);
+                String gender = parts[5];
+                Contact contact = new Contact(name, surname, phoneNumber, age, gender);
                 contacts.add(contact);
 
             }
@@ -59,16 +60,28 @@ public class FileManager {
         }
         return contacts;
     }
-    public static void saveContact(List<Contact> contacts,String fileName) throws IOException {
-        try {
-            BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(fileName));
-            for (Contact contact:contacts) {
-                bufferedWriter.write(contact.getId() + "|" + contact.getName()+ "|" + contact.getSurname()
-                + "|" + contact.getPhoneNumber() + "|" + contact.getAge());
-                bufferedWriter.newLine();
+
+    //    public static void saveContact(List<Contact> contacts,String fileName) throws IOException {
+//        try {
+//            BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(fileName));
+//            for (Contact contact:contacts) {
+//                bufferedWriter.write(contact.getId() + "|" + contact.getName()+ "|" + contact.getSurname()
+//                + "|" + contact.getPhoneNumber() + "|" + contact.getAge());
+//                bufferedWriter.newLine();
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Ошибка записи контактов " + e.getMessage());
+//        }
+//    }
+    public static void saveContactsToFile(String userName, List<Contact> contacts) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(userName + ".txt"))) {
+            for (Contact contact : contacts) {
+                writer.write(contact.getName() + "," + contact.getPhoneNumber() + "," + contact.getGender());
+                writer.newLine();
             }
-        } catch (Exception e) {
-            System.out.println("Ошибка записи контактов " + e.getMessage());
+            System.out.println("Контакты успешно сохранены в файл " + userName + ".txt");
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении файла: " + e.getMessage());
         }
     }
 }

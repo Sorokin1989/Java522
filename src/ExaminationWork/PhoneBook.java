@@ -1,8 +1,9 @@
 package ExaminationWork;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
+
+import static ExaminationWork.FileManager.saveContactsToFile;
 
 public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
@@ -13,9 +14,9 @@ public class PhoneBook {
     private final static String fileLogger = "logger.txt";
     private final static String fileUserName = "username.txt";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        // users = FileManager.loadUsers(USERS_FILE);
+         users = FileManager.loadUsers(USERS_FILE);
 
 
         while (true) {
@@ -33,7 +34,7 @@ public class PhoneBook {
                         singIn();
                         break;
                     case 2:
-                        System.out.println("Регистрация");
+                        signUp();
                         break;
                     case 3:
                         System.out.println("Выход");
@@ -53,7 +54,7 @@ public class PhoneBook {
     }
 
     static void singIn() {
-        System.out.println("Введите имя пользователя: ");
+        System.out.println("Введите логин пользователя: ");
         String username = scanner.nextLine();
         scanner.nextLine();
         System.out.println("Введите пароль: ");
@@ -67,6 +68,37 @@ public class PhoneBook {
 
             }
         }
+
+
+    }
+
+    static void signUp() {
+        System.out.println("Введите имя пользователя: ");
+        String name= scanner.nextLine();
+        scanner.nextLine();
+        System.out.println("Введите фамилию пользователя: ");
+        String surname= scanner.nextLine();
+        //scanner.nextLine();
+        System.out.println("Введите логин пользователя: ");
+        String userName=scanner.nextLine();
+
+        boolean exists=users.stream().anyMatch(x->x.getUsername().equals(userName));
+        if (exists) {
+            System.out.println("Такой логин существует!");
+            return;
+        }
+        System.out.println("Введите пароль: ");
+       String password1= scanner.nextLine();
+        System.out.println("Введите пароль еще раз: ");
+       String password2= scanner.nextLine();
+       if (!password1.equals(password2)) {
+           System.out.println("Пароли не совпадают!");
+           return;
+       }
+       User newUser=new User(userName,password1);
+       users.add(newUser);
+        saveContactsToFile(userName,new ArrayList<>());
+        System.out.println("Пользователь зарегистрирован!");
 
 
     }
