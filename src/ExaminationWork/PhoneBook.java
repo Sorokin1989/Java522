@@ -5,17 +5,17 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class PhoneBook {
-    static Scanner scanner=new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     static List<User> users;
     static List<Contact> contacts;
     static final String USERS_FILE = "users.txt";
-    private final static String fileContact="contacts.txt";
-    private final static String fileLogger="logger.txt";
-    private final static  String fileUserName="username.txt";
+    private final static String fileContact = "contacts.txt";
+    private final static String fileLogger = "logger.txt";
+    private final static String fileUserName = "username.txt";
 
     public static void main(String[] args) {
 
-       // users = FileManager.loadUsers(USERS_FILE);
+        // users = FileManager.loadUsers(USERS_FILE);
 
 
         while (true) {
@@ -27,7 +27,7 @@ public class PhoneBook {
                         "|3 - Выход             |");
                 System.out.println("------------------------");
 
-                int select= scanner.nextInt();
+                int select = scanner.nextInt();
                 switch (select) {
                     case 1:
                         singIn();
@@ -51,16 +51,17 @@ public class PhoneBook {
 
 
     }
+
     static void singIn() {
         System.out.println("Введите имя пользователя: ");
-        String username=scanner.nextLine();
+        String username = scanner.nextLine();
         scanner.nextLine();
         System.out.println("Введите пароль: ");
-        String password=scanner.nextLine();
+        String password = scanner.nextLine();
 
-        Optional<User> userOptional=users.stream().filter(x->x.getUsername().equals(username)).findFirst();
+        Optional<User> userOptional = users.stream().filter(x -> x.getUsername().equals(username)).findFirst();
         if (userOptional.isPresent()) {
-            User user=userOptional.get();
+            User user = userOptional.get();
             if (user.getPassword().equals(password)) {
                 System.out.println("Успешный вход!");
 
@@ -79,7 +80,7 @@ public class PhoneBook {
                     "5---> Логирование\n" +
                     "6---> Назад");
 
-            int select=scanner.nextInt();
+            int select = scanner.nextInt();
             switch (select) {
                 case 1:
                     System.out.println("контакты");
@@ -102,6 +103,7 @@ public class PhoneBook {
             }
         }
     }
+
     static void contactsMenu() {
         while (true) {
             System.out.println("1---> Добавить\n" +
@@ -109,7 +111,7 @@ public class PhoneBook {
                     "3---> Редактировать\n" +
                     "4---> Отобразить\n" +
                     "5---> Назад");
-            int select= scanner.nextInt();
+            int select = scanner.nextInt();
             switch (select) {
                 case 1:
                     System.out.println("Добавить");
@@ -132,6 +134,7 @@ public class PhoneBook {
 
         }
     }
+
     static void searchContacts() {
         while (true) {
             System.out.println("0---> Регистр OFF\n" +
@@ -139,13 +142,71 @@ public class PhoneBook {
                     "2---> По фамилии\n" +
                     "3---> По номеру\n" +
                     "4--->По всем параметрам\n" +
-                    "5---> Спец поиск (_ , %)\n");
+                    "5---> Спец поиск (_ , %)\n" +
+                    "6---> Назад");
 
-            int select= scanner.nextInt();
+            int select = scanner.nextInt();
 
             switch (select) {
                 case 1:
+                    System.out.println("0---> Регистр OFF\n");
+                    break;
+                case 2:
+                    System.out.println("1---> По имени\n");
+                    break;
+                case 3:
+                    System.out.println("3---> По номеру\n");
+                    break;
+                case 4:
+                    System.out.println("4--->По всем параметрам\n");
+                    break;
+                case 5:
+                    System.out.println("5---> Спец поиск (_ , %)\n");
+                case 6:
+                    System.out.println("Назад");
+                    return;
+                default:
+                    System.out.println("Введите корректное значение");
             }
         }
     }
+
+    static void filterContacts() {
+        while (true) {
+            System.out.println("1--->только мужчины\n" +
+                    "2--->только женщины\n" +
+                    "3---> возраст больше n\n" +
+                    "4---> возраст меньше n");
+
+            int select = scanner.nextInt();
+
+            switch (select) {
+                case 1:
+                    System.out.println("1--->только мужчины\n");
+                    break;
+                case 2:
+                    System.out.println("2--->только женщины\n");
+                    break;
+                case 3:
+                    System.out.println("3--->возраст больше n");
+                    break;
+                case 4:
+                    System.out.println("4---> возраст меньше n");
+                    break;
+                default:
+                    System.out.println("Некорректное значение!");
+            }
+
+        }
+
+    }
+
+    static void sortContacts() {
+
+    }
+
+    static void showLogger() {
+
+    }
+
 }
