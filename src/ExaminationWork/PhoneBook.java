@@ -9,6 +9,9 @@ public class PhoneBook {
     static List<User> users;
     static List<Contact> contacts;
     static final String USERS_FILE = "users.txt";
+    private final static String fileContact="contacts.txt";
+    private final static String fileLogger="logger.txt";
+    private final static  String fileUserName="username.txt";
 
     public static void main(String[] args) {
 
@@ -27,7 +30,7 @@ public class PhoneBook {
                 int select= scanner.nextInt();
                 switch (select) {
                     case 1:
-                        System.out.println("Войти");
+                        singIn();
                         break;
                     case 2:
                         System.out.println("Регистрация");
@@ -51,6 +54,7 @@ public class PhoneBook {
     static void singIn() {
         System.out.println("Введите имя пользователя: ");
         String username=scanner.nextLine();
+        scanner.nextLine();
         System.out.println("Введите пароль: ");
         String password=scanner.nextLine();
 
