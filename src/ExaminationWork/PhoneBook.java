@@ -1,5 +1,6 @@
 package ExaminationWork;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -29,6 +30,7 @@ public class PhoneBook {
                 System.out.println("------------------------");
 
                 int select = scanner.nextInt();
+                scanner.nextLine();
                 switch (select) {
                     case 1:
                         singIn();
@@ -56,7 +58,6 @@ public class PhoneBook {
     static void singIn() {
         System.out.println("Введите логин пользователя: ");
         String username = scanner.nextLine();
-        scanner.nextLine();
         System.out.println("Введите пароль: ");
         String password = scanner.nextLine();
 
@@ -65,6 +66,12 @@ public class PhoneBook {
             User user = userOptional.get();
             if (user.getPassword().equals(password)) {
                 System.out.println("Успешный вход!");
+                try {
+                    loadUserContacts(username);
+                } catch (IOException e) {
+                    System.out.println("Контактов нет!");
+                }
+                userMenu();
 
             }
         }
@@ -75,7 +82,6 @@ public class PhoneBook {
     static void signUp() {
         System.out.println("Введите имя пользователя: ");
         String name= scanner.nextLine();
-        scanner.nextLine();
         System.out.println("Введите фамилию пользователя: ");
         String surname= scanner.nextLine();
         //scanner.nextLine();
@@ -115,21 +121,20 @@ public class PhoneBook {
             int select = scanner.nextInt();
             switch (select) {
                 case 1:
-                    System.out.println("контакты");
-
+                    contactsMenu();
                     break;
                 case 2:
-                    System.out.println("поиск");
+                    searchContacts();
                     break;
                 case 3:
-                    System.out.println("фильтрация");
+                    filterContacts();
                 case 4:
-                    System.out.println("сортировка");
+                    sortContacts();
                 case 5:
-                    System.out.println("логирование");
+                    showLogger();
                 case 6:
                     System.out.println("назад");
-                    break;
+               return;
                 default:
                     System.out.println("Введите корректное значение!");
             }
@@ -159,12 +164,28 @@ public class PhoneBook {
                     break;
                 case 5:
                     System.out.println("назад");
-                    break;
+                   return;
                 default:
                     System.out.println("Некорректное значение");
             }
 
         }
+    }
+    static void loadUserContacts(String userName) throws IOException {
+        String fileName="contacts/" + userName+ "contacts.txt";
+        File file=new File(fileName);
+
+        if (!file.exists()) {
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+            FileManager.saveContactsToFile(fileName,new ArrayList<>());
+            contacts=FileManager.loadContact(fileName);
+
+
+        }
+    }
+    static void saveUserContacts(String userName) {
+       // FileManager.saveContactsToFile(contacts,"contacts/" + userName + "contacts.txt");
     }
 
     static void searchContacts() {
@@ -235,10 +256,25 @@ public class PhoneBook {
 
     static void sortContacts() {
 
+
     }
 
     static void showLogger() {
 
     }
 
+
+//   private void contactAdd() {
+//       System.out.println("Введите имя контакта: ");
+//       String name= scanner.nextLine();
+//       System.out.println("Введите фамилию контакта");
+//       String surname= scanner.nextLine();
+//       System.out.println("Введите номер телефона: ");
+//       String phoneNumber= scanner.nextLine();
+//       System.out.println("Введите возраст");
+//       int age= scanner.nextInt();
+//       System.out.println("Введите пол (Мужской/Женский");
+//       Contact contact=new Contact(name,surname,phoneNumber,age,gender);
+//
+//    }
 }

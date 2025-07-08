@@ -73,7 +73,7 @@ public class FileManager {
 //            System.out.println("Ошибка записи контактов " + e.getMessage());
 //        }
 //    }
-    public static void saveContactsToFile(String userName, List<Contact> contacts) {
+    public static void saveContactsToFile(String userName,List<Contact> contacts) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(userName + ".txt"))) {
             for (Contact contact : contacts) {
                 writer.write(contact.getName() + "," + contact.getPhoneNumber() + "," + contact.getGender());
