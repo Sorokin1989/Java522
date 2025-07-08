@@ -38,7 +38,7 @@ public class Contact {
         return surname;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -63,15 +63,27 @@ public class Contact {
         String phoneNumber= scanner.nextLine();
         scanner.nextLine();
         System.out.println("Введите возраст");
-         age= scanner.nextInt();
+
+        try {
+            age= scanner.nextInt();
+        } catch (Exception e) {
+            if (age < 0 || age > 100) {
+                System.out.println("Некорректный ввод возраста. Установка значения по умолчанию 0.");
+                age=0;
+            }
+        }
         scanner.nextLine();
         System.out.println("Введите пол (Мужской/Женский");
         gender= scanner.nextLine();
+        if (gender.equalsIgnoreCase("Мужской")) {
+            gender="Мужской";
+        }
+        if (gender.equalsIgnoreCase("Женский")) {
+            gender="Женский";
+        }
         Contact contact=new Contact(name,surname,phoneNumber,age,gender);
         PhoneBook.contacts.add(contact);
         System.out.println("Контакт добавлен!");
-
-
-
     }
+
 }
