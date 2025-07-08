@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import static ExaminationWork.Contact.contactAdd;
+import static ExaminationWork.Contact.editContact;
 import static ExaminationWork.FileManager.saveContactsToFile;
 
 public class PhoneBook {
@@ -151,13 +153,13 @@ public class PhoneBook {
             int select = scanner.nextInt();
             switch (select) {
                 case 1:
-                   Contact.contactAdd();
+                   contactAdd();
                     break;
                 case 2:
-                    System.out.println("Удалить");
+                    editContact();
                     break;
                 case 3:
-                    System.out.println("Редактировать");
+                    System.out.println("Удалить");
                     break;
                 case 4:
                     System.out.println("Отобразить");

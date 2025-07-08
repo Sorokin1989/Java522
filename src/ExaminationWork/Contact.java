@@ -157,22 +157,33 @@ public class Contact {
                     break;
                 case 2:
                     System.out.println("Введите новую фамилию: ");
-                    String newSurname= scanner.nextLine();
+                    String newSurname = scanner.nextLine();
                     setSurname(newSurname);
                     break;
                 case 3:
                     System.out.println("Введите новый номер телефона: ");
-                    String newPhoneNumber= scanner.nextLine();
+                    String newPhoneNumber = scanner.nextLine();
                     setPhoneNumber(newPhoneNumber);
                     break;
                 case 4:
                     System.out.println("Введите новый возраст: ");
-                    int newAge= scanner.nextInt();
-                    setAge(newAge);
+
+                    try {
+                        int newAge = scanner.nextInt();
+                        setAge(newAge);
+                        if (newAge < 0 || newAge > 100) {
+                            System.out.println("Введите корректный возраст!");
+                            return;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Некорректный возраст!");
+                        return;
+                    }
+
                     break;
                 case 5:
-                    System.out.println("Введите пол: ");
-                    String newGender= scanner.nextLine();
+                    System.out.println("Введите пол:(Мужской/Женский) ");
+                    String newGender = scanner.nextLine();
                     setGender(newGender);
                     break;
                 case 6:
@@ -180,10 +191,9 @@ public class Contact {
                     return;
                 default:
                     System.out.println("Некорректное значение!");
-
-
-
+                    return;
             }
+            System.out.println("Контакт обновлен!");
         }
     }
 }
