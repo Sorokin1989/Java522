@@ -151,7 +151,7 @@ public class PhoneBook {
             int select = scanner.nextInt();
             switch (select) {
                 case 1:
-                    System.out.println("Добавить");
+                   Contact.contactAdd();
                     break;
                 case 2:
                     System.out.println("Удалить");

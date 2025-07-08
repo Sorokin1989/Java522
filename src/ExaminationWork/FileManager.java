@@ -47,7 +47,7 @@ public class FileManager {
                 int id = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 String surname = parts[2];
-                int phoneNumber = Integer.parseInt(parts[3]);
+                String phoneNumber = parts[3];
                 int age = Integer.parseInt(parts[4]);
                 String gender = parts[5];
                 Contact contact = new Contact(name, surname, phoneNumber, age, gender);
