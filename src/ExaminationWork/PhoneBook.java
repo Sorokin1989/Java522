@@ -2,10 +2,12 @@ package ExaminationWork;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
-import static ExaminationWork.Contact.contactAdd;
-import static ExaminationWork.Contact.editContact;
+import static ExaminationWork.Contact.*;
 import static ExaminationWork.FileManager.saveContactsToFile;
 
 public class PhoneBook {
@@ -19,7 +21,7 @@ public class PhoneBook {
 
     public static void main(String[] args) throws IOException {
 
-         users = FileManager.loadUsers(USERS_FILE);
+        users = FileManager.loadUsers(USERS_FILE);
 
 
         while (true) {
@@ -84,29 +86,29 @@ public class PhoneBook {
 
     static void signUp() {
         System.out.println("Введите имя пользователя: ");
-        String name= scanner.nextLine();
+        String name = scanner.nextLine();
         System.out.println("Введите фамилию пользователя: ");
-        String surname= scanner.nextLine();
+        String surname = scanner.nextLine();
         //scanner.nextLine();
         System.out.println("Введите логин пользователя: ");
-        String userName=scanner.nextLine();
+        String userName = scanner.nextLine();
 
-        boolean exists=users.stream().anyMatch(x->x.getUsername().equals(userName));
+        boolean exists = users.stream().anyMatch(x -> x.getUsername().equals(userName));
         if (exists) {
             System.out.println("Такой логин существует!");
             return;
         }
         System.out.println("Введите пароль: ");
-       String password1= scanner.nextLine();
+        String password1 = scanner.nextLine();
         System.out.println("Введите пароль еще раз: ");
-       String password2= scanner.nextLine();
-       if (!password1.equals(password2)) {
-           System.out.println("Пароли не совпадают!");
-           return;
-       }
-       User newUser=new User(userName,password1);
-       users.add(newUser);
-        saveContactsToFile(userName,new ArrayList<>());
+        String password2 = scanner.nextLine();
+        if (!password1.equals(password2)) {
+            System.out.println("Пароли не совпадают!");
+            return;
+        }
+        User newUser = new User(userName, password1);
+        users.add(newUser);
+        saveContactsToFile(userName, new ArrayList<>());
         System.out.println("Пользователь зарегистрирован!");
 
 
@@ -137,7 +139,7 @@ public class PhoneBook {
                     showLogger();
                 case 6:
                     System.out.println("назад");
-               return;
+                    return;
                 default:
                     System.out.println("Введите корректное значение!");
             }
@@ -154,41 +156,43 @@ public class PhoneBook {
             int select = scanner.nextInt();
             switch (select) {
                 case 1:
-                   contactAdd();
+                    contactAdd(contacts);
                     break;
                 case 2:
                     editContact();
                     break;
                 case 3:
-                    System.out.println("Удалить");
+                    deleteContact();
                     break;
                 case 4:
-                    System.out.println("Отобразить");
+                    printContact();
                     break;
                 case 5:
                     System.out.println("назад");
-                   return;
+                    return;
                 default:
                     System.out.println("Некорректное значение");
             }
 
         }
     }
+
     static void loadUserContacts(String userName) throws IOException {
-        String fileName="contacts/" + userName+ "contacts.txt";
-        File file=new File(fileName);
+        String fileName = "contacts/" + userName + "contacts.txt";
+        File file = new File(fileName);
 
         if (!file.exists()) {
             file.getParentFile().mkdirs();
             file.createNewFile();
-            FileManager.saveContactsToFile(fileName,new ArrayList<>());
-            contacts=FileManager.loadContact(fileName);
+            FileManager.saveContactsToFile(fileName, new ArrayList<>());
+            contacts = FileManager.loadContact(fileName);
 
 
         }
     }
+
     static void saveUserContacts(String userName) {
-       // FileManager.saveContactsToFile(contacts,"contacts/" + userName + "contacts.txt");
+        // FileManager.saveContactsToFile(contacts,"contacts/" + userName + "contacts.txt");
     }
 
     static void searchContacts() {

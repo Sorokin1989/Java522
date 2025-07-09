@@ -1,5 +1,6 @@
 package ExaminationWork;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Contact {
@@ -10,40 +11,40 @@ public class Contact {
     //Возраст
     static Scanner scanner = new Scanner(System.in);
     private static int idCounter = 1;
-    private static int id;
-    private static String name;
-    private static String surname;
-    private static String phoneNumber;
-    private static int age;
-    private static String gender;
+    private int id;
+    private String name;
+    private String surname;
+    private String phoneNumber;
+    private int age;
+    private String gender;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
-        Contact.gender = gender;
-        id = idCounter++;
-        Contact.name = name;
-        Contact.surname = surname;
-        Contact.phoneNumber = phoneNumber;
-        Contact.age = age;
+        this.gender = gender;
+        this.id = idCounter++;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
     }
 
-    public static void setName(String name) {
-        Contact.name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public static void setSurname(String surname) {
-        Contact.surname = surname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public static void setPhoneNumber(String phoneNumber) {
-        Contact.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public static void setAge(int age) {
-        Contact.age = age;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public static void setGender(String gender) {
-        Contact.gender = gender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public int getId() {
@@ -75,7 +76,7 @@ public class Contact {
         return "id= " + id + ", " + name + ", " + surname + ", " + phoneNumber + ", " + age + ", " + gender;
     }
 
-    public static void contactAdd() {
+    public static void contactAdd(List<Contact> contacts) {
         System.out.println("Введите имя контакта: ");
         String name = scanner.nextLine();
         System.out.println("Введите фамилию контакта");
@@ -83,24 +84,26 @@ public class Contact {
         System.out.println("Введите номер телефона: ");
         String phoneNumber = scanner.nextLine();
         System.out.println("Введите возраст");
+        int age = 0;
         try {
-            age = scanner.nextInt();
-        } catch (Exception e) {
+            age = Integer.parseInt(scanner.nextLine());
             if (age < 0 || age > 100) {
-                System.out.println("Некорректный ввод возраста. Установка значения по умолчанию 0.");
+                System.out.println("Некорректный возраст. Установка значения по умолчанию 0.");
                 age = 0;
             }
+        } catch (Exception e) {
+            System.out.println("Некорректный ввод возраста. Установка значения по умолчанию 0.");
+            age = 0;
         }
-        scanner.nextLine();
         System.out.println("Введите пол (Мужской/Женский");
-        gender = scanner.nextLine();
-        if (gender.equalsIgnoreCase("Мужской")) {
+        String gender = scanner.nextLine();
+        if ((!gender.equalsIgnoreCase("Мужской") && !gender.equalsIgnoreCase("Женский"))) {
+            System.out.println("Пол некорректен! По умолчанию-- не указан");
+            gender = "Не указан";
+        } else if (gender.equalsIgnoreCase("Мужской")) {
             gender = "Мужской";
-            return;
-        }
-        if (gender.equalsIgnoreCase("Женский")) {
+        } else if (gender.equalsIgnoreCase("Женский")) {
             gender = "Женский";
-            return;
         }
         Contact contact = new Contact(name, surname, phoneNumber, age, gender);
         PhoneBook.contacts.add(contact);
@@ -115,8 +118,9 @@ public class Contact {
         System.out.println("Выберите контакт для редактирования: ");
         for (int i = 0; i < PhoneBook.contacts.size(); i++) {
             Contact contact = PhoneBook.contacts.get(i);
-            System.out.println("%d. %s %s, Телефон: %s, Возраст: %d, Пол: %s%n" + i + 1 + contact.getName() +
-                    contact.getSurname() + contact.getPhoneNumber() + contact.getAge() + contact.getGender());
+            System.out.println("ID" + (i + 1) + " Имя " + contact.getName() +
+                    " Фамилия " + contact.getSurname() + " Телефон " + contact.getPhoneNumber() +
+                    " Возраст " + contact.getAge() + " Пол " + contact.getGender());
             int index = -1;
 
             try {
@@ -197,31 +201,42 @@ public class Contact {
             System.out.println("Контакт обновлен!");
         }
     }
+
     public static void deleteContact() {
-        if (PhoneBook.contacts==null || PhoneBook.contacts.isEmpty()) {
+        if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список контактов пустой");
             return;
         }
         System.out.println("Выберите контакт для удаления: ");
         for (int i = 0; i < PhoneBook.contacts.size(); i++) {
-            Contact contact=PhoneBook.contacts.get(i);
-            System.out.println("ID " + i+1 + " Имя " + name + "Фамилия " + surname + "Телефон " + phoneNumber +
-                    "Возраст " + age + "Пол" + gender);
+            Contact contact = PhoneBook.contacts.get(i);
+            System.out.println("ID " + (i + 1) + " Имя " + contact.getName() + " Фамилия " + contact.getSurname() +
+                    " Телефон " + contact.getPhoneNumber() +
+                    " Возраст " + contact.getAge() + " Пол " + contact.getGender());
+
         }
-        int index=-1;
+        int index = -1;
         try {
             System.out.println("Введите номер для удаления контакта: ");
-            index= scanner.nextInt()-1;
-            if (index<0 || index>PhoneBook.contacts.size()) {
-                System.out.println("Некорректный ввод. введите правильное значение!");
+            index = scanner.nextInt() - 1;
+            if (index < 0 || index > PhoneBook.contacts.size()) {
+                System.out.println("Некорректный номер. введите правильное значение!");
                 return;
             }
         } catch (Exception e) {
-            System.out.println("Некорректный ввод.");
+            System.out.println("Некорректный ввод. Введите правильное значение!");
+            return;
         }
+        Contact removedContact = PhoneBook.contacts.remove(index);
+        System.out.println("Контакт " + removedContact.getName() + removedContact.getSurname() + "успешно удален!");
 
     }
+
     public static void printContact() {
+        if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
+            System.out.println("Список пустой!");
+            return;
+        }
         System.out.println(PhoneBook.contacts);
     }
 }
