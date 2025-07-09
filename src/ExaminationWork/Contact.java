@@ -121,86 +121,87 @@ public class Contact {
             System.out.println("ID" + (i + 1) + " Имя " + contact.getName() +
                     " Фамилия " + contact.getSurname() + " Телефон " + contact.getPhoneNumber() +
                     " Возраст " + contact.getAge() + " Пол " + contact.getGender());
-            int index = -1;
+        }
+        int index = -1;
 
-            try {
-                System.out.println("Введите номер контакта: ");
-                index = Integer.parseInt(scanner.nextLine()) - 1;
-                if (index < 0 || index > PhoneBook.contacts.size()) {
-                    System.out.println("Неправильный индекс!");
+        try {
+            System.out.println("Введите номер контакта: ");
+            index = Integer.parseInt(scanner.nextLine()) - 1;
+            if (index < 0 || index >= PhoneBook.contacts.size()) {
+                System.out.println("Неправильный индекс!");
+                return;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Некорректный ввод!");
+            return;
+        }
+        Contact contactToEdit = PhoneBook.contacts.get(index);
+
+        System.out.println("Выберите элемент для редактирования: ");
+        System.out.println("1 ---> Имя\n" +
+                "2 ---> Фамилия\n" +
+                "3 ---> Телефон\n" +
+                "4 ---> Возраст\n" +
+                "5 ---> Пол\n" +
+                "6 ---> Назад");
+        System.out.print("Введите номер пункта для редактирования: ");
+
+        int select;
+        try {
+            select = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Некорректный ввод!");
+            return;
+        }
+        switch (select) {
+            case 1:
+                System.out.println("Введите новое имя: ");
+                String newName = scanner.nextLine();
+                contactToEdit.setName(newName);
+                break;
+            case 2:
+                System.out.println("Введите новую фамилию: ");
+                String newSurname = scanner.nextLine();
+                contactToEdit.setSurname(newSurname);
+                break;
+            case 3:
+                System.out.println("Введите новый номер телефона: ");
+                String newPhoneNumber = scanner.nextLine();
+                contactToEdit.setPhoneNumber(newPhoneNumber);
+                break;
+            case 4:
+                System.out.println("Введите новый возраст: ");
+
+                try {
+                    int newAge = Integer.parseInt(scanner.nextLine());
+
+                    if (newAge < 0 || newAge > 100) {
+                        System.out.println("Введите корректный возраст!");
+                        return;
+                    } else contactToEdit.setAge(newAge);
+                } catch (Exception e) {
+                    System.out.println("Некорректный возраст!");
                     return;
                 }
 
-            } catch (Exception e) {
-                System.out.println("Некорректный ввод!");
+                break;
+            case 5:
+                // scanner.nextLine();
+                System.out.println("Введите пол (Мужской/Женский): ");
+                String newGender = scanner.nextLine();
+                contactToEdit.setGender(newGender);
+                break;
+            case 6:
+                System.out.println("Назад");
                 return;
-            }
-            Contact contactToEdit = PhoneBook.contacts.get(index);
-
-            System.out.println("Выберите элемент для редактирования: ");
-            System.out.println("1 ---> Имя\n" +
-                    "2 ---> Фамилия\n" +
-                    "3 ---> Телефон\n" +
-                    "4 ---> Возраст\n" +
-                    "5 ---> Пол\n" +
-                    "6 ---> Назад");
-            System.out.println("Введите номер пункта для редактирования: ");
-
-            int select;
-            try {
-                select = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Некорректный ввод!");
+            default:
+                System.out.println("Некорректное значение!");
                 return;
-            }
-            switch (select) {
-                case 1:
-                    System.out.println("Введите новое имя: ");
-                    String newName = scanner.nextLine();
-                    contactToEdit.setName(newName);
-                    break;
-                case 2:
-                    System.out.println("Введите новую фамилию: ");
-                    String newSurname = scanner.nextLine();
-                    contactToEdit.setSurname(newSurname);
-                    break;
-                case 3:
-                    System.out.println("Введите новый номер телефона: ");
-                    String newPhoneNumber = scanner.nextLine();
-                    contactToEdit.setPhoneNumber(newPhoneNumber);
-                    break;
-                case 4:
-                    System.out.println("Введите новый возраст: ");
-
-                    try {
-                        int newAge = scanner.nextInt();
-                        contactToEdit.setAge(newAge);
-                        if (newAge < 0 || newAge > 100) {
-                            System.out.println("Введите корректный возраст!");
-                            return;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Некорректный возраст!");
-                        return;
-                    }
-
-                    break;
-                case 5:
-                    scanner.nextLine();
-                    System.out.println("Введите пол (Мужской/Женский): ");
-                    String newGender = scanner.nextLine();
-                    contactToEdit.setGender(newGender);
-                    break;
-                case 6:
-                    System.out.println("Назад");
-                    return;
-                default:
-                    System.out.println("Некорректное значение!");
-                    return;
-            }
-            System.out.println("Контакт обновлен!");
         }
+        System.out.println("Контакт обновлен!");
     }
+
 
     public static void deleteContact() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
@@ -218,8 +219,8 @@ public class Contact {
         int index = -1;
         try {
             System.out.println("Введите номер для удаления контакта: ");
-            index = scanner.nextInt() - 1;
-            if (index < 0 || index > PhoneBook.contacts.size()) {
+            index = Integer.parseInt(scanner.nextLine()) - 1;
+            if (index < 0 || index >= PhoneBook.contacts.size()) {
                 System.out.println("Некорректный номер. введите правильное значение!");
                 return;
             }
