@@ -82,9 +82,7 @@ public class Contact {
         String surname = scanner.nextLine();
         System.out.println("Введите номер телефона: ");
         String phoneNumber = scanner.nextLine();
-        scanner.nextLine();
         System.out.println("Введите возраст");
-
         try {
             age = scanner.nextInt();
         } catch (Exception e) {
@@ -98,9 +96,11 @@ public class Contact {
         gender = scanner.nextLine();
         if (gender.equalsIgnoreCase("Мужской")) {
             gender = "Мужской";
+            return;
         }
         if (gender.equalsIgnoreCase("Женский")) {
             gender = "Женский";
+            return;
         }
         Contact contact = new Contact(name, surname, phoneNumber, age, gender);
         PhoneBook.contacts.add(contact);
@@ -153,24 +153,24 @@ public class Contact {
                 case 1:
                     System.out.println("Введите новое имя: ");
                     String newName = scanner.nextLine();
-                    setName(newName);
+                    contactToEdit.setName(newName);
                     break;
                 case 2:
                     System.out.println("Введите новую фамилию: ");
                     String newSurname = scanner.nextLine();
-                    setSurname(newSurname);
+                    contactToEdit.setSurname(newSurname);
                     break;
                 case 3:
                     System.out.println("Введите новый номер телефона: ");
                     String newPhoneNumber = scanner.nextLine();
-                    setPhoneNumber(newPhoneNumber);
+                    contactToEdit.setPhoneNumber(newPhoneNumber);
                     break;
                 case 4:
                     System.out.println("Введите новый возраст: ");
 
                     try {
                         int newAge = scanner.nextInt();
-                        setAge(newAge);
+                        contactToEdit.setAge(newAge);
                         if (newAge < 0 || newAge > 100) {
                             System.out.println("Введите корректный возраст!");
                             return;
@@ -182,9 +182,10 @@ public class Contact {
 
                     break;
                 case 5:
-                    System.out.println("Введите пол:(Мужской/Женский) ");
+                    scanner.nextLine();
+                    System.out.println("Введите пол (Мужской/Женский): ");
                     String newGender = scanner.nextLine();
-                    setGender(newGender);
+                    contactToEdit.setGender(newGender);
                     break;
                 case 6:
                     System.out.println("Назад");
@@ -195,5 +196,32 @@ public class Contact {
             }
             System.out.println("Контакт обновлен!");
         }
+    }
+    public static void deleteContact() {
+        if (PhoneBook.contacts==null || PhoneBook.contacts.isEmpty()) {
+            System.out.println("Список контактов пустой");
+            return;
+        }
+        System.out.println("Выберите контакт для удаления: ");
+        for (int i = 0; i < PhoneBook.contacts.size(); i++) {
+            Contact contact=PhoneBook.contacts.get(i);
+            System.out.println("ID " + i+1 + " Имя " + name + "Фамилия " + surname + "Телефон " + phoneNumber +
+                    "Возраст " + age + "Пол" + gender);
+        }
+        int index=-1;
+        try {
+            System.out.println("Введите номер для удаления контакта: ");
+            index= scanner.nextInt()-1;
+            if (index<0 || index>PhoneBook.contacts.size()) {
+                System.out.println("Некорректный ввод. введите правильное значение!");
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println("Некорректный ввод.");
+        }
+
+    }
+    public static void printContact() {
+        System.out.println(PhoneBook.contacts);
     }
 }

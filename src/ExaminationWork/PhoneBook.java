@@ -68,6 +68,7 @@ public class PhoneBook {
             User user = userOptional.get();
             if (user.getPassword().equals(password)) {
                 System.out.println("Успешный вход!");
+
                 try {
                     loadUserContacts(username);
                 } catch (IOException e) {
@@ -146,8 +147,8 @@ public class PhoneBook {
     static void contactsMenu() {
         while (true) {
             System.out.println("1---> Добавить\n" +
-                    "2---> Удалить\n" +
-                    "3---> Редактировать\n" +
+                    "2---> Редактировать\n" +
+                    "3---> Удалить\n" +
                     "4---> Отобразить\n" +
                     "5---> Назад");
             int select = scanner.nextInt();
