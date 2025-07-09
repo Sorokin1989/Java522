@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import static ExaminationWork.Contact.*;
 import static ExaminationWork.FileManager.saveContactsToFile;
+import static ExaminationWork.FileManager.saveUsers;
 
 public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
@@ -108,8 +109,17 @@ public class PhoneBook {
         }
         User newUser = new User(userName, password1);
         users.add(newUser);
-        saveContactsToFile(userName, new ArrayList<>());
-        System.out.println("Пользователь зарегистрирован!");
+        //saveContactsToFile(userName, new ArrayList<>());
+        try {
+            //saveUserContacts(userName);
+            saveUsers( users,userName);
+            //saveContactsToFile(userName, new ArrayList<>());
+            System.out.println("Пользователь зарегистрирован!");
+        } catch (Exception e) {
+            System.out.println("Ошибка при сохранении пользователя " + e.getMessage());
+        }
+
+
 
 
     }
@@ -124,6 +134,7 @@ public class PhoneBook {
                     "6---> Назад");
 
             int select = scanner.nextInt();
+            scanner.nextLine();
             switch (select) {
                 case 1:
                     contactsMenu();
@@ -133,10 +144,13 @@ public class PhoneBook {
                     break;
                 case 3:
                     filterContacts();
+                    break;
                 case 4:
                     sortContacts();
+                    break;
                 case 5:
                     showLogger();
+                    break;
                 case 6:
                     System.out.println("назад");
                     return;
@@ -154,6 +168,7 @@ public class PhoneBook {
                     "4---> Отобразить\n" +
                     "5---> Назад");
             int select = scanner.nextInt();
+            scanner.nextLine();
             switch (select) {
                 case 1:
                     contactAdd(contacts);
@@ -178,21 +193,29 @@ public class PhoneBook {
     }
 
     static void loadUserContacts(String userName) throws IOException {
-        String fileName = "contacts/" + userName + "contacts.txt";
+        String dirName = "contacts/";
+        String fileName = dirName + userName + "_contacts.txt";
+        File dir = new File(dirName);
         File file = new File(fileName);
-
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         if (!file.exists()) {
-            file.getParentFile().mkdirs();
             file.createNewFile();
-            FileManager.saveContactsToFile(fileName, new ArrayList<>());
+            contacts = new ArrayList<>();
+            saveContactsToFile(fileName, contacts);
+        } else {
             contacts = FileManager.loadContact(fileName);
-
+            if (contacts == null) {
+                contacts = new ArrayList<>();
+            }
 
         }
     }
 
+
     static void saveUserContacts(String userName) {
-        // FileManager.saveContactsToFile(contacts,"contacts/" + userName + "contacts.txt");
+        saveContactsToFile("contacts/" + userName + "_contacts.txt", contacts);
     }
 
     static void searchContacts() {
@@ -222,6 +245,7 @@ public class PhoneBook {
                     break;
                 case 5:
                     System.out.println("5---> Спец поиск (_ , %)\n");
+                    break;
                 case 6:
                     System.out.println("Назад");
                     return;
@@ -239,6 +263,7 @@ public class PhoneBook {
                     "4---> возраст меньше n");
 
             int select = scanner.nextInt();
+            scanner.nextLine();
 
             switch (select) {
                 case 1:

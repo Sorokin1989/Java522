@@ -23,13 +23,18 @@ public class FileManager {
         return users;
     }
 
-    public static void saveUsers(List<User> users, String fileName) throws IOException {
-        try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+    public static void saveUsers(List<User> users, String fileName)  {
+        if (users==null||users.isEmpty()) {
+            System.out.println("Список пуст!");
+            return;
+        }
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
+
             for (User user : users) {
                 bufferedWriter.write(user.getUsername() + "," + user.getPassword());
                 bufferedWriter.newLine();
             }
+            System.out.println("Пользователь успешно сохранен в файл: " + fileName);
         } catch (IOException e) {
             System.out.println("Ошибка записи файла пользователей " + e.getMessage());
         }
@@ -41,18 +46,18 @@ public class FileManager {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
             String line;
-            while ((line = bufferedReader.readLine()) != null) ;
-            String[] parts = line.split("\\|");
-            if (parts.length == 6) {
-                int id = Integer.parseInt(parts[0]);
-                String name = parts[1];
-                String surname = parts[2];
-                String phoneNumber = parts[3];
-                int age = Integer.parseInt(parts[4]);
-                String gender = parts[5];
-                Contact contact = new Contact(name, surname, phoneNumber, age, gender);
-                contacts.add(contact);
-
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 6) {
+                    int id = Integer.parseInt(parts[0]);
+                    String name = parts[1];
+                    String surname = parts[2];
+                    String phoneNumber = parts[3];
+                    int age = Integer.parseInt(parts[4]);
+                    String gender = parts[5];
+                    Contact contact = new Contact(name, surname, phoneNumber, age, gender);
+                    contacts.add(contact);
+                }
             }
 
         } catch (Exception e) {
@@ -73,10 +78,11 @@ public class FileManager {
 //            System.out.println("Ошибка записи контактов " + e.getMessage());
 //        }
 //    }
-    public static void saveContactsToFile(String userName,List<Contact> contacts) {
+    public static void saveContactsToFile(String userName, List<Contact> contacts) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(userName + ".txt"))) {
             for (Contact contact : contacts) {
-                writer.write(contact.getName() + "," + contact.getPhoneNumber() + "," + contact.getGender());
+                writer.write(contact.getName() + "," + contact.getSurname() + "," +
+                        contact.getPhoneNumber() + "," + contact.getAge() + "," + contact.getGender());
                 writer.newLine();
             }
             System.out.println("Контакты успешно сохранены в файл " + userName + ".txt");
