@@ -28,13 +28,13 @@ public class FileManager {
             System.out.println("Список пуст!");
             return;
         }
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName + ".txt"))) {
 
             for (User user : users) {
                 bufferedWriter.write(user.getUsername() + "," + user.getPassword());
                 bufferedWriter.newLine();
             }
-            System.out.println("Пользователь успешно сохранен в файл: " + fileName);
+            System.out.println("Пользователь успешно сохранен в файл: " + fileName + ".txt");
         } catch (IOException e) {
             System.out.println("Ошибка записи файла пользователей " + e.getMessage());
         }

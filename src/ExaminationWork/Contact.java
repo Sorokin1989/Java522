@@ -118,9 +118,9 @@ public class Contact {
         System.out.println("Выберите контакт для редактирования: ");
         for (int i = 0; i < PhoneBook.contacts.size(); i++) {
             Contact contact = PhoneBook.contacts.get(i);
-            System.out.println("ID" + (i + 1) + " Имя " + contact.getName() +
-                    " Фамилия " + contact.getSurname() + " Телефон " + contact.getPhoneNumber() +
-                    " Возраст " + contact.getAge() + " Пол " + contact.getGender());
+            System.out.println("ID" + (i + 1) + "| Имя |" + contact.getName() +
+                    "| Фамилия |" + contact.getSurname() + "| Телефон |" + contact.getPhoneNumber() +
+                    "| Возраст |" + contact.getAge() + "| Пол |" + contact.getGender());
         }
         int index = -1;
 
@@ -238,6 +238,6 @@ public class Contact {
             System.out.println("Список пустой!");
             return;
         }
-        System.out.println(PhoneBook.contacts);
+        System.out.println(PhoneBook.contacts + "\n");
     }
 }

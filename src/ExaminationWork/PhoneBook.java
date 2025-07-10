@@ -108,11 +108,14 @@ public class PhoneBook {
             return;
         }
         User newUser = new User(userName, password1);
-        users.add(newUser);
+
         //saveContactsToFile(userName, new ArrayList<>());
         try {
-            //saveUserContacts(userName);
+            users.clear();
+            users.add(newUser);
             saveUsers( users,userName);
+            //saveUserContacts(userName);
+
             //saveContactsToFile(userName, new ArrayList<>());
             System.out.println("Пользователь зарегистрирован!");
         } catch (Exception e) {
