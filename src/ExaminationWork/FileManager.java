@@ -8,8 +8,7 @@ public class FileManager {
 
     public static List<User> loadUsers(String fileName) throws IOException {
         List<User> users = new ArrayList<>();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName + ".txt"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -34,11 +33,21 @@ public class FileManager {
                 bufferedWriter.write(user.getUsername() + "," + user.getPassword());
                 bufferedWriter.newLine();
             }
-            System.out.println("Пользователь успешно сохранен в файл: " + fileName + ".txt");
+            System.out.println("Пользователь успешно сохранен в файл: " + fileName);
         } catch (IOException e) {
             System.out.println("Ошибка записи файла пользователей " + e.getMessage());
         }
 
+    }
+    public static void saveUser(User user, String userName) {
+        String filename = "user_" + userName; // имя файла на основе логина
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename + ".txt"))) {
+            // Сохраняем данные пользователя в виде строки: логин, пароль
+            writer.write(user.getUsername() + "," + user.getPassword());
+            System.out.println("Пользователь успешно сохранен в файл: " + filename);
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении пользователя: " + e.getMessage());
+        }
     }
 
     public static List<Contact> loadContact(String fileName) throws IOException {

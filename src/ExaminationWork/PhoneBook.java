@@ -8,21 +8,20 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import static ExaminationWork.Contact.*;
-import static ExaminationWork.FileManager.saveContactsToFile;
-import static ExaminationWork.FileManager.saveUsers;
+import static ExaminationWork.FileManager.*;
 
 public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
     static List<User> users;
     static List<Contact> contacts;
-    static final String USERS_FILE = "users.txt";
+    static String USERS_FILE;
     private final static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
-    private final static String fileUserName = "username.txt";
+    private final static String fileUsersName = "users.txt";
 
     public static void main(String[] args) throws IOException {
-
-        users = FileManager.loadUsers(USERS_FILE);
+        //USERS_FILE="diman1989";
+        users = FileManager.loadUsers(fileUsersName);
 
 
         while (true) {
@@ -111,14 +110,20 @@ public class PhoneBook {
 
         //saveContactsToFile(userName, new ArrayList<>());
         try {
-            users.clear();
+//            users.clear();
+//            users.add(newUser);
+            //users.clear();
             users.add(newUser);
+
+            saveUsers(users,fileUsersName);
             System.out.println("Текущий список пользователей: ");
             for (User user:users) {
                 System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword());
             }
-            saveUsers( users,userName);
+
+            saveUser(newUser,userName);
             //saveUserContacts(userName);
+            //saveUsers(users,userName);
 
             //saveContactsToFile(userName, new ArrayList<>());
             System.out.println("Пользователь зарегистрирован!");
