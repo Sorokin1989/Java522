@@ -20,7 +20,6 @@ public class PhoneBook {
     private final static String fileUsersName = "users.txt";
 
     public static void main(String[] args) throws IOException {
-        //USERS_FILE="diman1989";
         users = FileManager.loadUsers(fileUsersName);
 
 

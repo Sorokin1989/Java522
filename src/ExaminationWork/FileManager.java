@@ -8,7 +8,7 @@ public class FileManager {
 
     public static List<User> loadUsers(String fileName) throws IOException {
         List<User> users = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName + ".txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -27,7 +27,7 @@ public class FileManager {
             System.out.println("Список пуст!");
             return;
         }
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName + ".txt"))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
 
             for (User user : users) {
                 bufferedWriter.write(user.getUsername() + "," + user.getPassword());
@@ -40,9 +40,8 @@ public class FileManager {
 
     }
     public static void saveUser(User user, String userName) {
-        String filename = "user_" + userName; // имя файла на основе логина
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename + ".txt"))) {
-            // Сохраняем данные пользователя в виде строки: логин, пароль
+        String filename = "user_" + userName+".txt"; // имя файла на основе логина
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             writer.write(user.getUsername() + "," + user.getPassword());
             System.out.println("Пользователь успешно сохранен в файл: " + filename);
         } catch (IOException e) {
