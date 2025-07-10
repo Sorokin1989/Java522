@@ -113,6 +113,10 @@ public class PhoneBook {
         try {
             users.clear();
             users.add(newUser);
+            System.out.println("Текущий список пользователей: ");
+            for (User user:users) {
+                System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword());
+            }
             saveUsers( users,userName);
             //saveUserContacts(userName);
 
