@@ -3,6 +3,9 @@ package ExaminationWork;
 import java.util.List;
 import java.util.Scanner;
 
+import static ExaminationWork.FileManager.loadUsers;
+import static ExaminationWork.FileManager.saveContactsToFile;
+
 public class Contact {
     //Уникальный ID (генерируется автоматически)
     //Имя
@@ -25,6 +28,7 @@ public class Contact {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.age = age;
+
     }
 
     public void setName(String name) {
@@ -106,8 +110,9 @@ public class Contact {
             gender = "Женский";
         }
         Contact contact = new Contact(name, surname, phoneNumber, age, gender);
-        PhoneBook.contacts.add(contact);
+        contacts.add(contact);
         System.out.println("Контакт добавлен!");
+        saveContactsToFile(User.getUsername(),contacts);
     }
 
     public static void editContact() {

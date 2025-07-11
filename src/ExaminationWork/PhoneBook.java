@@ -72,6 +72,7 @@ public class PhoneBook {
 
                 try {
                     loadUserContacts(username);
+                    //loadContact(username);
                 } catch (IOException e) {
                     System.out.println("Контактов нет!");
                 }
@@ -117,7 +118,8 @@ public class PhoneBook {
             saveUsers(users,fileUsersName);
             System.out.println("Текущий список пользователей: ");
             for (User user:users) {
-                System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword());
+                System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword() +
+                        " Имя " + name + " Фамилия " + surname);
             }
 
             saveUser(newUser,userName);
@@ -212,10 +214,11 @@ public class PhoneBook {
             dir.mkdirs();
         }
         if (!file.exists()) {
-            file.createNewFile();
             contacts = new ArrayList<>();
-            saveContactsToFile(fileName, contacts);
+            saveContactsToFile( userName ,  contacts);
+            //
         } else {
+
             contacts = FileManager.loadContact(fileName);
             if (contacts == null) {
                 contacts = new ArrayList<>();
@@ -225,9 +228,9 @@ public class PhoneBook {
     }
 
 
-    static void saveUserContacts(String userName) {
-        saveContactsToFile("contacts/" + userName + "_contacts.txt", contacts);
-    }
+//    static void saveUserContacts(String userName) {
+//        saveContactsToFile("contacts/" + userName + "_contacts.txt", contacts);
+//    }
 
     static void searchContacts() {
         while (true) {
@@ -271,7 +274,8 @@ public class PhoneBook {
             System.out.println("1--->только мужчины\n" +
                     "2--->только женщины\n" +
                     "3---> возраст больше n\n" +
-                    "4---> возраст меньше n");
+                    "4---> возраст меньше n\n" +
+                    "5---> Назад");
 
             int select = scanner.nextInt();
             scanner.nextLine();
@@ -289,6 +293,9 @@ public class PhoneBook {
                 case 4:
                     System.out.println("4---> возраст меньше n");
                     break;
+                case 5:
+                    System.out.println("Назад");
+                    return;
                 default:
                     System.out.println("Некорректное значение!");
             }

@@ -11,7 +11,7 @@ public class FileManager {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                String[] parts = line.split(",");
+                String[] parts = line.split(" : ");
                 if (parts.length >= 2)
                     users.add(new User(parts[0], parts[1]));
             }
@@ -30,7 +30,7 @@ public class FileManager {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
 
             for (User user : users) {
-                bufferedWriter.write(user.getUsername() + "," + user.getPassword());
+                bufferedWriter.write(user.getUsername() + " : " + user.getPassword());
                 bufferedWriter.newLine();
             }
             System.out.println("Пользователь успешно сохранен в файл: " + fileName);
@@ -42,7 +42,7 @@ public class FileManager {
     public static void saveUser(User user, String userName) {
         String filename = "user_" + userName+".txt"; // имя файла на основе логина
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            writer.write(user.getUsername() + "," + user.getPassword());
+            writer.write(user.getUsername() + " : " + user.getPassword());
             System.out.println("Пользователь успешно сохранен в файл: " + filename);
         } catch (IOException e) {
             System.out.println("Ошибка при сохранении пользователя: " + e.getMessage());
@@ -51,18 +51,17 @@ public class FileManager {
 
     public static List<Contact> loadContact(String fileName) throws IOException {
         List<Contact> contacts = new ArrayList<>();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 6) {
-                    int id = Integer.parseInt(parts[0]);
-                    String name = parts[1];
-                    String surname = parts[2];
-                    String phoneNumber = parts[3];
-                    int age = Integer.parseInt(parts[4]);
-                    String gender = parts[5];
+                if (parts.length == 5) {
+                    //int id = Integer.parseInt(parts[0]);
+                    String name = parts[0];
+                    String surname = parts[1];
+                    String phoneNumber = parts[2];
+                    int age = Integer.parseInt(parts[3]);
+                    String gender = parts[4];
                     Contact contact = new Contact(name, surname, phoneNumber, age, gender);
                     contacts.add(contact);
                 }
@@ -87,10 +86,19 @@ public class FileManager {
 //        }
 //    }
     public static void saveContactsToFile(String userName, List<Contact> contacts) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(userName + ".txt"))) {
+        String dirName = "contacts/"; // можно удалить
+        File dir = new File(dirName); // можно удалить
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String fileName = dirName + userName + "_contacts.txt";
+
+
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Contact contact : contacts) {
-                writer.write(contact.getName() + "," + contact.getSurname() + "," +
-                        contact.getPhoneNumber() + "," + contact.getAge() + "," + contact.getGender());
+                writer.write(contact.getName() + "|" + contact.getSurname() + "|" +
+                        contact.getPhoneNumber() + "|" + contact.getAge() + "|" + contact.getGender());
                 writer.newLine();
             }
             System.out.println("Контакты успешно сохранены в файл " + userName + ".txt");
