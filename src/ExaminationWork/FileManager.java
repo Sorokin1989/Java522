@@ -22,8 +22,8 @@ public class FileManager {
         return users;
     }
 
-    public static void saveUsers(List<User> users, String fileName)  {
-        if (users==null||users.isEmpty()) {
+    public static void saveUsers(List<User> users, String fileName) {
+        if (users == null || users.isEmpty()) {
             System.out.println("Список пуст!");
             return;
         }
@@ -39,8 +39,9 @@ public class FileManager {
         }
 
     }
+
     public static void saveUser(User user, String userName) {
-        String filename = "user_" + userName+".txt"; // имя файла на основе логина
+        String filename = "user_" + userName + ".txt"; // имя файла на основе логина
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             writer.write(user.getUsername() + " : " + user.getPassword());
             System.out.println("Пользователь успешно сохранен в файл: " + filename);
@@ -85,14 +86,14 @@ public class FileManager {
 //            System.out.println("Ошибка записи контактов " + e.getMessage());
 //        }
 //    }
-    public static void saveContactsToFile(String userName, List<Contact> contacts) {
+    public static void saveContactsToFile(String userName, List<Contact> contacts) throws IOException {
         String dirName = "contacts/"; // можно удалить
         File dir = new File(dirName); // можно удалить
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        String fileName = dirName + userName + "_contacts.txt";
 
+        String fileName = dirName + userName + "_contacts.txt";
 
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
@@ -102,8 +103,8 @@ public class FileManager {
                 writer.newLine();
             }
             System.out.println("Контакты успешно сохранены в файл " + userName + ".txt");
-        } catch (IOException e) {
-            System.out.println("Ошибка при сохранении файла: " + e.getMessage());
+
+
         }
     }
 }

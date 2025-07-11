@@ -1,13 +1,18 @@
 package ExaminationWork;
 
 public class User {
-    private static String username;
+    private String username;
     private String password;
 
     public User(String username, String password) {
-        User.username = username;
+        this.username = username;
         this.password = password;
     }
+
+//    public User() {
+//        // Можно задать имя по умолчанию или оставить пустым
+//        this.username = "DefaultUser";
+//    }
 
     public String getPassword() {
         return password;
@@ -17,11 +22,11 @@ public class User {
         this.password = password;
     }
 
-    public static String getUsername() {
+    public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
-        User.username = username;
+        this.username = username;
     }
 }

@@ -1,9 +1,9 @@
 package ExaminationWork;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import static ExaminationWork.FileManager.loadUsers;
 import static ExaminationWork.FileManager.saveContactsToFile;
 
 public class Contact {
@@ -20,6 +20,8 @@ public class Contact {
     private String phoneNumber;
     private int age;
     private String gender;
+    private String username;
+    // private User user;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
         this.gender = gender;
@@ -28,8 +30,15 @@ public class Contact {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.age = age;
+        // this.user=user;
 
     }
+
+
+//    public static void setUser(User user) {
+//        Contact.user = user;
+//    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -80,7 +89,12 @@ public class Contact {
         return "id= " + id + ", " + name + ", " + surname + ", " + phoneNumber + ", " + age + ", " + gender;
     }
 
-    public static void contactAdd(List<Contact> contacts) {
+
+//    public String getUsername() {
+//        return user.getUsername();
+//    }
+
+    public static void contactAdd(List<Contact> contacts, String username) {
         System.out.println("Введите имя контакта: ");
         String name = scanner.nextLine();
         System.out.println("Введите фамилию контакта");
@@ -109,10 +123,19 @@ public class Contact {
         } else if (gender.equalsIgnoreCase("Женский")) {
             gender = "Женский";
         }
+
         Contact contact = new Contact(name, surname, phoneNumber, age, gender);
         contacts.add(contact);
         System.out.println("Контакт добавлен!");
-        saveContactsToFile(User.getUsername(),contacts);
+//saveContactsToFile(user.getUsername(), contacts);
+        try {
+            saveContactsToFile(username, contacts);
+        } catch (IOException e) {
+            System.out.println("Ошибка" + e.getMessage());
+        }
+        //saveContactsToFile(contacts,user.getUsername());
+
+
     }
 
     public static void editContact() {
@@ -205,6 +228,8 @@ public class Contact {
                 return;
         }
         System.out.println("Контакт обновлен!");
+
+
     }
 
 

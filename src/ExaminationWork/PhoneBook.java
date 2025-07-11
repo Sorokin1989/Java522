@@ -18,6 +18,7 @@ public class PhoneBook {
     private final static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
     private final static String fileUsersName = "users.txt";
+    static User currentUser = null;
 
     public static void main(String[] args) throws IOException {
         users = FileManager.loadUsers(fileUsersName);
@@ -50,7 +51,7 @@ public class PhoneBook {
 
 
             } catch (Exception e) {
-                System.out.println("Ошибка ввода! Введите число!  ");
+                System.out.println("Ошибка ввода! Введите число!  " + e.getMessage());
                 scanner.next();
             }
         }
@@ -69,6 +70,7 @@ public class PhoneBook {
             User user = userOptional.get();
             if (user.getPassword().equals(password)) {
                 System.out.println("Успешный вход!");
+                currentUser = user;
 
                 try {
                     loadUserContacts(username);
@@ -115,14 +117,14 @@ public class PhoneBook {
             //users.clear();
             users.add(newUser);
 
-            saveUsers(users,fileUsersName);
+            saveUsers(users, fileUsersName);
             System.out.println("Текущий список пользователей: ");
-            for (User user:users) {
-                System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword() +
-                        " Имя " + name + " Фамилия " + surname);
+            for (User user : users) {
+                System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword());
             }
 
-            saveUser(newUser,userName);
+
+            saveUser(newUser, userName);
             //saveUserContacts(userName);
             //saveUsers(users,userName);
 
@@ -131,8 +133,6 @@ public class PhoneBook {
         } catch (Exception e) {
             System.out.println("Ошибка при сохранении пользователя " + e.getMessage());
         }
-
-
 
 
     }
@@ -184,7 +184,7 @@ public class PhoneBook {
             scanner.nextLine();
             switch (select) {
                 case 1:
-                    contactAdd(contacts);
+                    contactAdd(contacts, currentUser.getUsername());
                     break;
                 case 2:
                     editContact();
@@ -215,7 +215,12 @@ public class PhoneBook {
         }
         if (!file.exists()) {
             contacts = new ArrayList<>();
-            saveContactsToFile( userName ,  contacts);
+            try {
+                saveContactsToFile(userName, contacts);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
             //
         } else {
 
