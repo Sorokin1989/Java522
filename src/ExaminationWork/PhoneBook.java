@@ -14,6 +14,7 @@ public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
     static List<User> users;
     static List<Contact> contacts;
+    static Contact contact=null;
     static String USERS_FILE;
     static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
@@ -276,11 +277,16 @@ public class PhoneBook {
             int select = scanner.nextInt();
 
             switch (select) {
-                case 1:
+                case 0:
                     System.out.println("0---> Регистр OFF\n");
+                    notRegistr();
+                    break;
+                case 1:
+                    System.out.println("1---> По имени\n");
+                    Contact.findContactToName(contacts,contact.getName());
                     break;
                 case 2:
-                    System.out.println("1---> По имени\n");
+                    System.out.println("2---> По фамилии\n");
                     break;
                 case 3:
                     System.out.println("3---> По номеру\n");

@@ -1,6 +1,7 @@
 package ExaminationWork;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -22,6 +23,7 @@ public class Contact {
     private int age;
     private String gender;
     private String username;
+    private static boolean ignoreCase;
     // private User user;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
@@ -308,4 +310,57 @@ public class Contact {
         System.out.println(PhoneBook.contacts + "\n");
         System.out.println();
     }
+
+    public static void notRegistr() {
+        System.out.println("Введите 0 для отключения учета регистра!\n" +
+                "Или 1 для включения!");
+        int num = scanner.nextInt();
+        ignoreCase=false;
+
+        switch (num) {
+            case 0:
+                ignoreCase=true;
+                System.out.println("Режим поиска без учета регистра включен.");
+                break;
+            case 1:
+                ignoreCase=false;
+                System.out.println("Режим с учетом регистра включен.");
+                break;
+            default:
+                System.out.println("Введите корректное значение!");
+
+        }
+
+
+//        if (num.equals("0")) {
+//            ignoreCase=true;
+//            System.out.println("Режим поиска без учета регистра включен.");
+//        } else if (num.equals("1"))
+//            ignoreCase=false;
+//            System.out.println("Режим с учетом регистра включен.");
+//        }
+    }
+
+
+
+
+
+
+
+    public static String findContactToName(List<Contact> contacts, String name) {
+        for (Contact contact : contacts) {
+            String contactName=contact.getName();
+            if (ignoreCase) {
+                if (contactName.equalsIgnoreCase(name)) {
+                    return "Контакт найден: " + contactName;
+                }
+            } else {
+                if (contactName.equals(name)) {
+                    return "Контакт найден: " + contactName;
+                }
+            }
+        }
+        return "Контакт не найден.";
+    }
+
 }
