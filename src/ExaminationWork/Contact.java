@@ -234,7 +234,7 @@ public class Contact {
     }
 
 
-    public static void deleteContactToID() {
+    public static void deleteContactToID() throws IOException {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список контактов пустой");
             return;
@@ -261,10 +261,10 @@ public class Contact {
         }
         Contact removedContact = PhoneBook.contacts.remove(index);
         System.out.println("Контакт " + removedContact.getName() + removedContact.getSurname() + "успешно удален!");
-
+        saveContactsToFile( PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
     }
 
-    public static void deleteContactToName() {
+    public static void deleteContactToName() throws IOException {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список контактов пустой");
             return;
@@ -294,6 +294,7 @@ public class Contact {
         if (!found) {
             System.out.println("Контакт с именем '" + nameToDelete + "' не найден.");
         }
+        saveContactsToFile( PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
 
     }
 

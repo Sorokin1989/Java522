@@ -61,7 +61,7 @@ public class PhoneBook {
 
     }
 
-    static void singIn() {
+    static void singIn() throws IOException {
         System.out.println("Введите логин пользователя: ");
         String username = scanner.nextLine();
         System.out.println("Введите пароль: ");
@@ -139,7 +139,7 @@ public class PhoneBook {
 
     }
 
-    static void userMenu() {
+    static void userMenu() throws IOException {
         while (true) {
             System.out.println("1---> Контакты\n" +
                     "2---> Поиск\n" +
@@ -175,7 +175,7 @@ public class PhoneBook {
         }
     }
 
-    static void contactsMenu() {
+    static void contactsMenu() throws IOException {
         while (true) {
             System.out.println("1---> Добавить\n" +
                     "2---> Редактировать\n" +
@@ -203,15 +203,19 @@ public class PhoneBook {
                                 deleteContactToID();
                                 break;
                             case 2:
-                                System.out.println("по имени  удаление");
+                                deleteContactToName();
                                 break;
                             case 3:
                                 System.out.println("Назад");
-                                return;
+                              break;
                             default:
                                 System.out.println("Введите правильное значение!");
                         }
+                       if (num==3)
+                            break;
                     }
+                    break;
+
 
                 case 4:
                     printContact();
