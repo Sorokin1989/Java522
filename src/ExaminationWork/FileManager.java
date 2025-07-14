@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ExaminationWork.PhoneBook.getFileContact;
+
 public class FileManager {
 
     public static List<User> loadUsers(String fileName) throws IOException {
@@ -93,7 +95,7 @@ public class FileManager {
             dir.mkdirs();
         }
 
-        String fileName = dirName + userName + "_contacts.txt";
+        String fileName = dirName + userName + "_" + getFileContact();
 
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
@@ -106,5 +108,16 @@ public class FileManager {
 
 
         }
+    }
+
+    public static void createFileContact(String userName) throws IOException {
+        String dirName = "contacts/";
+        File dir = new File(dirName);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String fileName = dirName + userName + "_" + getFileContact();
+        new BufferedWriter(new FileWriter(fileName));
+        System.out.println("Создан файл для контактов " + userName + ".txt");
     }
 }

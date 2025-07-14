@@ -15,10 +15,12 @@ public class PhoneBook {
     static List<User> users;
     static List<Contact> contacts;
     static String USERS_FILE;
-    private final static String fileContact = "contacts.txt";
+    static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
     private final static String fileUsersName = "users.txt";
     static User currentUser = null;
+
+
 
     public static void main(String[] args) throws IOException {
         users = FileManager.loadUsers(fileUsersName);
@@ -76,7 +78,7 @@ public class PhoneBook {
                     loadUserContacts(username);
                     //loadContact(username);
                 } catch (IOException e) {
-                    System.out.println("Контактов нет!");
+                   System.out.println("Контактов нет!");
                 }
                 userMenu();
 
@@ -190,8 +192,27 @@ public class PhoneBook {
                     editContact();
                     break;
                 case 3:
-                    deleteContact();
-                    break;
+                    while (true) {
+                        System.out.println("1---> Удаление по ID\n" +
+                                "2---> Удаление по имени\n" +
+                                "3---> Назад");
+                        int num = scanner.nextInt();
+                        scanner.nextLine();
+                        switch (num) {
+                            case 1:
+                                deleteContactToID();
+                                break;
+                            case 2:
+                                System.out.println("по имени  удаление");
+                                break;
+                            case 3:
+                                System.out.println("Назад");
+                                return;
+                            default:
+                                System.out.println("Введите правильное значение!");
+                        }
+                    }
+
                 case 4:
                     printContact();
                     break;
@@ -207,7 +228,7 @@ public class PhoneBook {
 
     static void loadUserContacts(String userName) throws IOException {
         String dirName = "contacts/";
-        String fileName = dirName + userName + "_contacts.txt";
+        String fileName = dirName + userName + "_" + fileContact;
         File dir = new File(dirName);
         File file = new File(fileName);
         if (!dir.exists()) {
@@ -216,7 +237,8 @@ public class PhoneBook {
         if (!file.exists()) {
             contacts = new ArrayList<>();
             try {
-                saveContactsToFile(userName, contacts);
+               // saveContactsToFile(userName, contacts);
+                createFileContact(userName);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -316,6 +338,14 @@ public class PhoneBook {
 
     static void showLogger() {
 
+    }
+
+    public static String getFileContact() {
+        return fileContact;
+    }
+
+    public static void setFileContact(String fileContact) {
+        PhoneBook.fileContact = fileContact;
     }
 
 

@@ -9,11 +9,6 @@ public class User {
         this.password = password;
     }
 
-//    public User() {
-//        // Можно задать имя по умолчанию или оставить пустым
-//        this.username = "DefaultUser";
-//    }
-
     public String getPassword() {
         return password;
     }

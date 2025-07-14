@@ -1,6 +1,7 @@
 package ExaminationWork;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -86,7 +87,7 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "id= " + id + ", " + name + ", " + surname + ", " + phoneNumber + ", " + age + ", " + gender;
+        return id + ". " + name + "|" + surname + "|" + phoneNumber + "|" + age + "|" + gender + "\n";
     }
 
 
@@ -233,7 +234,7 @@ public class Contact {
     }
 
 
-    public static void deleteContact() {
+    public static void deleteContactToID() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список контактов пустой");
             return;
@@ -263,11 +264,47 @@ public class Contact {
 
     }
 
+    public static void deleteContactToName() {
+        if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
+            System.out.println("Список контактов пустой");
+            return;
+        }
+        System.out.println("Выберите имя контакта для удаления: ");
+        for (int i = 0; i < PhoneBook.contacts.size(); i++) {
+            Contact contact = PhoneBook.contacts.get(i);
+            System.out.println("ID " + (i + 1) + " Имя " + contact.getName() + " Фамилия " + contact.getSurname() +
+                    " Телефон " + contact.getPhoneNumber() +
+                    " Возраст " + contact.getAge() + " Пол " + contact.getGender());
+        }
+        System.out.println("Введите имя контакта для удаления: ");
+        String nameToDelete = scanner.nextLine();
+        boolean found = false;
+        Iterator<Contact> iterator = PhoneBook.contacts.iterator();
+
+        while (iterator.hasNext()) {
+            Contact contact = iterator.next();
+            if (contact.getName().equalsIgnoreCase(nameToDelete)) {
+                iterator.remove();
+                System.out.println("Контакт " + contact.getName() + " " + contact.getSurname() + " успешно удален!");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Контакт с именем '" + nameToDelete + "' не найден.");
+        }
+
+    }
+
+
     public static void printContact() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список пустой!");
             return;
         }
+
         System.out.println(PhoneBook.contacts + "\n");
+        System.out.println();
     }
 }
