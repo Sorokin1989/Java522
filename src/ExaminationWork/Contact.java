@@ -263,7 +263,7 @@ public class Contact {
         }
         Contact removedContact = PhoneBook.contacts.remove(index);
         System.out.println("Контакт " + removedContact.getName() + removedContact.getSurname() + "успешно удален!");
-        saveContactsToFile( PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+        saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
     }
 
     public static void deleteContactToName() throws IOException {
@@ -296,7 +296,7 @@ public class Contact {
         if (!found) {
             System.out.println("Контакт с именем '" + nameToDelete + "' не найден.");
         }
-        saveContactsToFile( PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+        saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
 
     }
 
@@ -316,15 +316,15 @@ public class Contact {
                 "Или 1 для включения!");
         int num = scanner.nextInt();
         scanner.nextLine();
-        ignoreCase=false;
+        ignoreCase = false;
 
         switch (num) {
             case 0:
-                ignoreCase=true;
+                ignoreCase = true;
                 System.out.println("Режим поиска без учета регистра включен.");
                 break;
             case 1:
-                ignoreCase=false;
+                ignoreCase = false;
                 System.out.println("Режим с учетом регистра включен.");
                 break;
             default:
@@ -343,33 +343,28 @@ public class Contact {
     }
 
 
-
-
-
-
-
     public static void findContactToName(List<Contact> contacts) {
         System.out.println("Введите имя контакта: ");
         String name = scanner.nextLine();
-        found=false;
+        found = false;
         for (Contact contact : contacts) {
-            String contactName=contact.getName();
+            String contactName = contact.getName();
             if (ignoreCase) {
                 if (contactName.equalsIgnoreCase(name)) {
-                    System.out.println("Контакт найден: \n" + contact.getId()+ "|" + contact.getName()+ "|" +
-                            contact.getSurname()+ "|" + contact.getPhoneNumber()+ "|" + contact.getAge()+ "|" +
+                    System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                            contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
                             contact.getGender());
-                    found=true;
-               break;
+                    found = true;
+                    break;
 
                 }
             } else {
                 if (contactName.equals(name)) {
-                    System.out.println("Контакт найден: \n" + contact.getId()+ "|" + contact.getName()+ "|" +
-                            contact.getSurname()+ "|" + contact.getPhoneNumber()+ "|" + contact.getAge()+ "|" +
+                    System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                            contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
                             contact.getGender());
-                    found=true;
-                 break;
+                    found = true;
+                    break;
                 }
 
             }
@@ -378,20 +373,91 @@ public class Contact {
             System.out.println("Такого контакта нет!");
         }
     }
+
     public static void findContactToSurname(List<Contact> contacts) {
         System.out.println("Введите фамилию контакта: ");
-        String surname=scanner.nextLine();
-        found=false;
-        for (Contact contact:contacts) {
-            String contactSurname= contact.getSurname();
+        String surname = scanner.nextLine();
+        found = false;
+        for (Contact contact : contacts) {
+            String contactSurname = contact.getSurname();
             if (ignoreCase) {
                 if (contactSurname.equalsIgnoreCase(surname)) {
-
-
+                    System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                            contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
+                            contact.getGender());
+                    found = true;
+                    break;
+                }
+            } else {
+                if (contactSurname.equals(surname)) {
+                    System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                            contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
+                            contact.getGender());
+                    found = true;
+                    break;
                 }
             }
-
+        }
+        if (!found) {
+            System.out.println("Такого контакта нет!");
         }
     }
 
+    public static void findContactToPhoneNumber(List<Contact> contacts) {
+        System.out.println("Введите номер телефона (Например: 9191234567): \n");
+        String phoneNumber = scanner.nextLine();
+        found = false;
+        for (Contact contact : contacts) {
+            String contactPhoneNumber = contact.getPhoneNumber();
+            if (contactPhoneNumber.equals(phoneNumber)) {
+                System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                        contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
+                        contact.getGender());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Такого контакта нет!");
+        }
+    }
+
+    public static void findContact_Name_Surname_Number(List<Contact> contacts) {
+        System.out.println("Введите имя контакта: ");
+        String name = scanner.nextLine();
+        System.out.println("Введите фамилию контакта: ");
+        String surname = scanner.nextLine();
+        System.out.println("Введите номер телефона (Например: 9191234567): \n");
+        String phoneNumber = scanner.nextLine();
+        found = false;
+        for (Contact contact : contacts) {
+            String contactName = contact.getName();
+            String contactSurname = contact.getSurname();
+            String contactPhoneNumber = contact.getPhoneNumber();
+
+            if (ignoreCase) {
+                if (contactName.equalsIgnoreCase(name) && contactSurname.equalsIgnoreCase(surname) && contactPhoneNumber.equals(phoneNumber)) {
+                    System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                            contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
+                            contact.getGender());
+                    found = true;
+                    break;
+                }
+            } else {
+                if (contactName.equals(name) && contactSurname.equals(surname) && contactPhoneNumber.equals(phoneNumber)) {
+                    System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
+                            contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
+                            contact.getGender());
+                    found = true;
+                    break;
+                }
+
+            }
+        }
+        if (!found) {
+            System.out.println("Такого контакта нет!");
+        }
+    }
 }
+
+

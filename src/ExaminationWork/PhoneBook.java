@@ -288,12 +288,15 @@ public class PhoneBook {
                     break;
                 case 2:
                     System.out.println("2---> По фамилии\n");
+                    findContactToSurname(contacts);
                     break;
                 case 3:
                     System.out.println("3---> По номеру\n");
+                    findContactToPhoneNumber(contacts);
                     break;
                 case 4:
                     System.out.println("4--->По всем параметрам\n");
+                    findContact_Name_Surname_Number(contacts);
                     break;
                 case 5:
                     System.out.println("5---> Спец поиск (_ , %)\n");
