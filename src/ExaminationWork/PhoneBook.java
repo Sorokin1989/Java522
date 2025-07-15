@@ -14,7 +14,7 @@ public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
     static List<User> users;
     static List<Contact> contacts;
-    static Contact contact=null;
+    static Contact contact;
     static String USERS_FILE;
     static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
@@ -275,6 +275,7 @@ public class PhoneBook {
                     "6---> Назад");
 
             int select = scanner.nextInt();
+            scanner.nextLine();
 
             switch (select) {
                 case 0:
@@ -283,7 +284,7 @@ public class PhoneBook {
                     break;
                 case 1:
                     System.out.println("1---> По имени\n");
-                    Contact.findContactToName(contacts,contact.getName());
+                    findContactToName(contacts);
                     break;
                 case 2:
                     System.out.println("2---> По фамилии\n");

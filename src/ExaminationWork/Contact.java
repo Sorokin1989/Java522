@@ -1,7 +1,6 @@
 package ExaminationWork;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -315,6 +314,7 @@ public class Contact {
         System.out.println("Введите 0 для отключения учета регистра!\n" +
                 "Или 1 для включения!");
         int num = scanner.nextInt();
+        scanner.nextLine();
         ignoreCase=false;
 
         switch (num) {
@@ -347,20 +347,31 @@ public class Contact {
 
 
 
-    public static String findContactToName(List<Contact> contacts, String name) {
+    public static void findContactToName(List<Contact> contacts) {
+        System.out.println("Введите имя контакта: ");
+        String name = scanner.nextLine();
         for (Contact contact : contacts) {
             String contactName=contact.getName();
             if (ignoreCase) {
                 if (contactName.equalsIgnoreCase(name)) {
-                    return "Контакт найден: " + contactName;
+                    System.out.println("Контакт найден: \n" + contact.getId()+ "|" + contact.getName()+ "|" +
+                            contact.getSurname()+ "|" + contact.getPhoneNumber()+ "|" + contact.getAge()+ "|" +
+                            contact.getGender());
+                    return;
+
                 }
             } else {
                 if (contactName.equals(name)) {
-                    return "Контакт найден: " + contactName;
+                    System.out.println("Контакт найден: \n" + contact.getId()+ "|" + contact.getName()+ "|" +
+                            contact.getSurname()+ "|" + contact.getPhoneNumber()+ "|" + contact.getAge()+ "|" +
+                            contact.getGender());
+                    return;
                 }
+                else System.out.println("Такого контакта нет!");
+                return;
+
             }
         }
-        return "Контакт не найден.";
     }
 
 }
