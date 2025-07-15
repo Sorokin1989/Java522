@@ -378,5 +378,20 @@ public class Contact {
             System.out.println("Такого контакта нет!");
         }
     }
+    public static void findContactToSurname(List<Contact> contacts) {
+        System.out.println("Введите фамилию контакта: ");
+        String surname=scanner.nextLine();
+        found=false;
+        for (Contact contact:contacts) {
+            String contactSurname= contact.getSurname();
+            if (ignoreCase) {
+                if (contactSurname.equalsIgnoreCase(surname)) {
+
+
+                }
+            }
+
+        }
+    }
 
 }
