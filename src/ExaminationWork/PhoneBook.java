@@ -168,7 +168,7 @@ public class PhoneBook {
                     filterContacts();
                     break;
                 case 4:
-                    sortContacts();
+                   sortContacts();
                     break;
                 case 5:
                     showLogger();
@@ -356,8 +356,30 @@ public class PhoneBook {
     }
 
     static void sortContacts() {
-
-
+        while (true) {
+            System.out.println("1---> Сортировка по имени: \n" +
+                    "2---> Сортировка по фамилии: \n" +
+                    "3---> Сортировка по номеру телефона: \n" +
+                    "4---> Назад");
+            int select= scanner.nextInt();
+            scanner.nextLine();
+            switch (select) {
+                case 1:
+                    System.out.println(" Сортировка по имени");
+                    break;
+                case 2:
+                    System.out.println("Сортировка по фамилии:");
+                    break;
+                case 3:
+                    System.out.println("Сортировка по номеру телефона:");
+                    break;
+                case 4:
+                    System.out.println("назад");
+                    return;
+                default:
+                    System.out.println("Введите правильное значение!");
+            }
+        }
     }
 
     static void showLogger() {
@@ -371,19 +393,4 @@ public class PhoneBook {
     public static void setFileContact(String fileContact) {
         PhoneBook.fileContact = fileContact;
     }
-
-
-//   private void contactAdd() {
-//       System.out.println("Введите имя контакта: ");
-//       String name= scanner.nextLine();
-//       System.out.println("Введите фамилию контакта");
-//       String surname= scanner.nextLine();
-//       System.out.println("Введите номер телефона: ");
-//       String phoneNumber= scanner.nextLine();
-//       System.out.println("Введите возраст");
-//       int age= scanner.nextInt();
-//       System.out.println("Введите пол (Мужской/Женский");
-//       Contact contact=new Contact(name,surname,phoneNumber,age,gender);
-//
-//    }
 }
