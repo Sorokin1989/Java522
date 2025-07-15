@@ -342,6 +342,7 @@ public class PhoneBook {
                     break;
                 case 4:
                     System.out.println("4---> возраст меньше n");
+                    filterAgeLess();
                     break;
                 case 5:
                     System.out.println("Назад");

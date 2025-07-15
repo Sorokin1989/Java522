@@ -504,6 +504,24 @@ public class Contact {
     }
 
     public static void filterAgeLess() {
+        System.out.println("Введите определенный возраст: ");
+        try {
+            int ageNum = scanner.nextInt();
+            scanner.nextLine();
+            if (ageNum>0&&ageNum<100) {
+                contacts=getContacts().stream().filter(x->x.getAge()<ageNum).collect(Collectors.toList());
+                if (contacts.isEmpty()) {
+                    System.out.println("Нет контактов младше " + ageNum);
+                }
+                else System.out.println("Контакты найдены: \n" + contacts);
+            }
+            else {
+                System.out.println("Введите корректный возраст от 0 до 99!");
+            }
+        } catch (Exception e) {
+            System.out.println("Введите корректное значение!");
+            scanner.nextLine();
+        }
 
     }
 }
