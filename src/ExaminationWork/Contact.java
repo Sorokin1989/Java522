@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static ExaminationWork.FileManager.saveContactsToFile;
+import static ExaminationWork.PhoneBook.getContacts;
 
 public class Contact {
     //Уникальный ID (генерируется автоматически)
@@ -24,6 +26,7 @@ public class Contact {
     private String username;
     private static boolean ignoreCase;
     private static boolean found;
+    private static List<Contact>contacts;
     // private User user;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
@@ -36,7 +39,6 @@ public class Contact {
         // this.user=user;
 
     }
-
 
 //    public static void setUser(User user) {
 //        Contact.user = user;
@@ -456,6 +458,15 @@ public class Contact {
         }
         if (!found) {
             System.out.println("Такого контакта нет!");
+        }
+    }
+    public static void filterGenderMan() {
+        contacts = getContacts().stream().filter(x -> x.getGender().equalsIgnoreCase("мужской")).
+                collect(Collectors.toList());
+        if (contacts.isEmpty()) {
+            System.out.println("Таких контактов нет!");
+        } else {
+            System.out.println(contacts);
         }
     }
 }

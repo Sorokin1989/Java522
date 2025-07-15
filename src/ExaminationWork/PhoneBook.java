@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static ExaminationWork.Contact.*;
 import static ExaminationWork.FileManager.*;
@@ -22,8 +23,13 @@ public class PhoneBook {
     static User currentUser = null;
 
 
+    public static List<Contact> getContacts() {
+        return contacts;
+    }
 
     public static void main(String[] args) throws IOException {
+
+
         users = FileManager.loadUsers(fileUsersName);
 
 
@@ -79,7 +85,7 @@ public class PhoneBook {
                     loadUserContacts(username);
                     //loadContact(username);
                 } catch (IOException e) {
-                   System.out.println("Контактов нет!");
+                    System.out.println("Контактов нет!");
                 }
                 userMenu();
 
@@ -208,11 +214,11 @@ public class PhoneBook {
                                 break;
                             case 3:
                                 System.out.println("Назад");
-                              break;
+                                break;
                             default:
                                 System.out.println("Введите правильное значение!");
                         }
-                       if (num==3)
+                        if (num == 3)
                             break;
                     }
                     break;
@@ -242,7 +248,7 @@ public class PhoneBook {
         if (!file.exists()) {
             contacts = new ArrayList<>();
             try {
-               // saveContactsToFile(userName, contacts);
+                // saveContactsToFile(userName, contacts);
                 createFileContact(userName);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -299,7 +305,7 @@ public class PhoneBook {
                     findContact_Name_Surname_Number(contacts);
                     break;
                 case 5:
-                    System.out.println("5---> Спец поиск (_ , %)\n");
+                    System.out.println("5---> Спец поиск (_ , %)\n"); //надо релизовать!
                     break;
                 case 6:
                     System.out.println("Назад");
@@ -324,6 +330,14 @@ public class PhoneBook {
             switch (select) {
                 case 1:
                     System.out.println("1--->только мужчины\n");
+                    filterGenderMan();
+//                    contacts = contacts.stream().filter(x -> x.getGender().equalsIgnoreCase("мужской")).
+//                            collect(Collectors.toList());
+//                    if (contacts.isEmpty()) {
+//                        System.out.println("Таких контактов нет!");
+//                    } else {
+//                        System.out.println(contacts);
+//                    }
                     break;
                 case 2:
                     System.out.println("2--->только женщины\n");
