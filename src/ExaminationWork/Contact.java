@@ -23,6 +23,7 @@ public class Contact {
     private String gender;
     private String username;
     private static boolean ignoreCase;
+    private static boolean found;
     // private User user;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
@@ -350,6 +351,7 @@ public class Contact {
     public static void findContactToName(List<Contact> contacts) {
         System.out.println("Введите имя контакта: ");
         String name = scanner.nextLine();
+        found=false;
         for (Contact contact : contacts) {
             String contactName=contact.getName();
             if (ignoreCase) {
@@ -357,7 +359,8 @@ public class Contact {
                     System.out.println("Контакт найден: \n" + contact.getId()+ "|" + contact.getName()+ "|" +
                             contact.getSurname()+ "|" + contact.getPhoneNumber()+ "|" + contact.getAge()+ "|" +
                             contact.getGender());
-                    return;
+                    found=true;
+               break;
 
                 }
             } else {
@@ -365,12 +368,14 @@ public class Contact {
                     System.out.println("Контакт найден: \n" + contact.getId()+ "|" + contact.getName()+ "|" +
                             contact.getSurname()+ "|" + contact.getPhoneNumber()+ "|" + contact.getAge()+ "|" +
                             contact.getGender());
-                    return;
+                    found=true;
+                 break;
                 }
-                else System.out.println("Такого контакта нет!");
-                return;
 
             }
+        }
+        if (!found) {
+            System.out.println("Такого контакта нет!");
         }
     }
 
