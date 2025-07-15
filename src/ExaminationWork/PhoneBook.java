@@ -331,19 +331,14 @@ public class PhoneBook {
                 case 1:
                     System.out.println("1--->только мужчины\n");
                     filterGenderMan();
-//                    contacts = contacts.stream().filter(x -> x.getGender().equalsIgnoreCase("мужской")).
-//                            collect(Collectors.toList());
-//                    if (contacts.isEmpty()) {
-//                        System.out.println("Таких контактов нет!");
-//                    } else {
-//                        System.out.println(contacts);
-//                    }
                     break;
                 case 2:
                     System.out.println("2--->только женщины\n");
+                    filterGenderWomen();
                     break;
                 case 3:
                     System.out.println("3--->возраст больше n");
+                    filterAgeMore();
                     break;
                 case 4:
                     System.out.println("4---> возраст меньше n");

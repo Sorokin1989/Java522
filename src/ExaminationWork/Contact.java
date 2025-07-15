@@ -26,7 +26,7 @@ public class Contact {
     private String username;
     private static boolean ignoreCase;
     private static boolean found;
-    private static List<Contact>contacts;
+    private static List<Contact> contacts;
     // private User user;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
@@ -460,6 +460,7 @@ public class Contact {
             System.out.println("Такого контакта нет!");
         }
     }
+
     public static void filterGenderMan() {
         contacts = getContacts().stream().filter(x -> x.getGender().equalsIgnoreCase("мужской")).
                 collect(Collectors.toList());
@@ -468,6 +469,42 @@ public class Contact {
         } else {
             System.out.println(contacts);
         }
+    }
+
+    public static void filterGenderWomen() {
+        contacts = getContacts().stream().filter(x -> x.getGender().equalsIgnoreCase("женский")).
+                collect(Collectors.toList());
+        if (contacts.isEmpty()) {
+            System.out.println("Таких контактов нет!");
+        } else {
+            System.out.println(contacts);
+        }
+    }
+
+    public static void filterAgeMore() {
+        System.out.println("Введите определенный возраст: ");
+        try {
+            int ageNum = scanner.nextInt();
+            scanner.nextLine();
+            if (ageNum > 0 && ageNum < 100) {
+                contacts = getContacts().stream().filter(x -> x.getAge() > ageNum).collect(Collectors.toList());
+                if (contacts.isEmpty()) {
+                    System.out.println("Нет контактов старше " + ageNum);
+                } else {
+                    System.out.println("Контакты найдены:\n" + contacts);
+                }
+            }  else {
+                System.out.println("Введите корректный возраст от 0 до 99!");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Вы ввели некорректное значение!");
+            scanner.nextLine();
+        }
+    }
+
+    public static void filterAgeLess() {
+
     }
 }
 
