@@ -2,6 +2,7 @@ package ExaminationWork;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import static ExaminationWork.FileManager.*;
 
 public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
-    static List<User> users;
+    public static List<User> users;
     static List<Contact> contacts;
     static Contact contact;
     static String USERS_FILE;
@@ -138,7 +139,7 @@ public class PhoneBook {
             //saveUsers(users,userName);
 
             //saveContactsToFile(userName, new ArrayList<>());
-            System.out.println("Пользователь зарегистрирован!");
+            System.out.println("Пользователь зарегистрирован! Время регистрации " + User.getCreationUser().withSecond(0).withNano(0));
         } catch (Exception e) {
             System.out.println("Ошибка при сохранении пользователя " + e.getMessage());
         }
