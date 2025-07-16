@@ -46,7 +46,7 @@ public class FileManager {
     public static void saveUser(User user, String userName) {
         String filename = "user_" + userName + ".txt"; // имя файла на основе логина
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            writer.write(user.getUsername() + " : " + user.getPassword());
+            writer.write(user.getUsername() + " : " + user.getPassword() + " : " + User.getCreationUser().withSecond(0).withNano(0));
             System.out.println("Пользователь успешно сохранен в файл: " + filename);
         } catch (IOException e) {
             System.out.println("Ошибка при сохранении пользователя: " + e.getMessage());

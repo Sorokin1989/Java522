@@ -39,7 +39,6 @@ public class User {
 
     @Override
     public String toString() {
-        return
-                "Пользователь " + username  + " пароль " + password + " Время регистрации " + creationUser;
+        return username;
     }
 }

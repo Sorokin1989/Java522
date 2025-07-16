@@ -1,13 +1,15 @@
 package ExaminationWork;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import static ExaminationWork.Contact.*;
 import static ExaminationWork.FileManager.*;
@@ -22,6 +24,7 @@ public class PhoneBook {
     private final static String fileLogger = "logger.txt";
     private final static String fileUsersName = "users.txt";
     static User currentUser = null;
+    User user = new User("username", "password");
 
 
     public static List<Contact> getContacts() {
@@ -81,6 +84,7 @@ public class PhoneBook {
             if (user.getPassword().equals(password)) {
                 System.out.println("Успешный вход!");
                 currentUser = user;
+                showLogger(currentUser, "user");
 
                 try {
                     loadUserContacts(username);
@@ -169,10 +173,10 @@ public class PhoneBook {
                     filterContacts();
                     break;
                 case 4:
-                   sortContacts();
+                    sortContacts();
                     break;
                 case 5:
-                    showLogger();
+                    showLogger(currentUser, "user");
                     break;
                 case 6:
                     System.out.println("назад");
@@ -195,6 +199,7 @@ public class PhoneBook {
             switch (select) {
                 case 1:
                     contactAdd(contacts, currentUser.getUsername());
+                    showLogger(currentUser, "add");
                     break;
                 case 2:
                     editContact();
@@ -209,9 +214,11 @@ public class PhoneBook {
                         switch (num) {
                             case 1:
                                 deleteContactToID();
+                                showLogger(currentUser, "delete");
                                 break;
                             case 2:
                                 deleteContactToName();
+                                showLogger(currentUser, "delete");
                                 break;
                             case 3:
                                 System.out.println("Назад");
@@ -362,7 +369,7 @@ public class PhoneBook {
                     "2---> Сортировка по фамилии: \n" +
                     "3---> Сортировка по номеру телефона: \n" +
                     "4---> Назад");
-            int select= scanner.nextInt();
+            int select = scanner.nextInt();
             scanner.nextLine();
             switch (select) {
                 case 1:
@@ -383,7 +390,31 @@ public class PhoneBook {
         }
     }
 
-    static void showLogger() {
+    static void showLogger(User user, String messageType) {
+        String filename = user.toString() + "_" + fileLogger;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+
+            String message;
+            LocalDate now = LocalDate.now();
+            LocalTime time = User.getCreationUser().withSecond(0).withNano(0);
+            if ("user".equals(messageType)) {
+                message = "Пользователь вошел в систему!";
+            } else if ("delete".equals(messageType)) {
+                message = "Пользователь удалил контакт!";
+            } else if ("add".equals(messageType)) {
+                message = "Пользователь добавил контакт";
+            } else if ("edit".equals(messageType)) {
+                message = "Пользователь отредактировал контакт";
+            } else if ("sort".equals(messageType)) {
+                message = "Пользователь сделал сортировку";
+            } else
+                message = "Неизвестное сообщение!";
+
+
+            writer.write("\n" + now + " " + time + " " + currentUser + " " + message);
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении логирования!" + e.getMessage());
+        }
 
     }
 

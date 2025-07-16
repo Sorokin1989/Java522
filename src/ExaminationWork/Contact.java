@@ -17,7 +17,7 @@ public class Contact {
     //Возраст
     static Scanner scanner = new Scanner(System.in);
     private static int idCounter = 1;
-    private int id;
+    private final int id;
     private String name;
     private String surname;
     private String phoneNumber;
@@ -27,7 +27,6 @@ public class Contact {
     private static boolean ignoreCase;
     private static boolean found;
     private static List<Contact> contacts;
-    // private User user;
 
     public Contact(String name, String surname, String phoneNumber, int age, String gender) {
         this.gender = gender;
