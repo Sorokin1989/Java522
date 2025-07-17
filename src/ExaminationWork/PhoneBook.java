@@ -1,9 +1,6 @@
 package ExaminationWork;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -176,7 +173,7 @@ public class PhoneBook {
                     sortContacts();
                     break;
                 case 5:
-                    showLogger(currentUser, "user");
+                    printLoggerFile(currentUser + "_" + fileLogger);
                     break;
                 case 6:
                     System.out.println("назад");
@@ -423,6 +420,24 @@ public class PhoneBook {
             System.out.println("Ошибка при сохранении логирования!" + e.getMessage());
         }
 
+    }
+
+    public static void printLoggerFile(String filename) {
+
+//        System.out.println("Введите имя пользователя: ");
+//        String username=scanner.nextLine();
+       // String filename = username + "_" + fileLogger;
+       try(BufferedReader bufferedReader=new BufferedReader(new FileReader(filename))) {
+           String line;
+           System.out.println("Содержимое файла логирования: ");
+           while ((line=bufferedReader.readLine())!=null){
+               System.out.println(line);
+           }
+
+
+       } catch (IOException e) {
+           System.out.println("Ошибка чтения файла логирования " + e.getMessage());
+       }
     }
 
     public static String getFileContact() {
