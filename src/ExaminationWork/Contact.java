@@ -527,7 +527,7 @@ public class Contact {
     }
     public static void sortToNameAlphabeticalOrder() throws IOException {
 
-        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(contact -> contact.getName())).collect(Collectors.toList());
+        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getName)).collect(Collectors.toList());
         System.out.println("Отсортировано по имени в алфавитном порядке: ");
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
@@ -535,11 +535,18 @@ public class Contact {
 
     public static void sortToNameReverseOrder() throws IOException {
 
-        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(contact -> contact.getName())).collect(Collectors.toList());
+        contacts = PhoneBook.getContacts().stream()
+                .sorted(Comparator.comparing(Contact::getName).reversed())
+                .collect(Collectors.toList());
         System.out.println("Отсортировано по имени в обратном порядке: ");
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
+
+
+
+
+
     public static  void sortToSurname() {
 
     }

@@ -15,13 +15,13 @@ public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
     public static List<User> users;
     static List<Contact> contacts;
-   // static Contact contact;
-   // static String USERS_FILE;
+    // static Contact contact;
+    // static String USERS_FILE;
     static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
     private final static String fileUsersName = "users.txt";
     static User currentUser = null;
-   // User user = new User("username", "password");
+    // User user = new User("username", "password");
 
 
     public static List<Contact> getContacts() {
@@ -337,22 +337,22 @@ public class PhoneBook {
                 case 1:
                     System.out.println("1--->только мужчины\n");
                     filterGenderMan();
-                    showLogger(currentUser,"filter");
+                    showLogger(currentUser, "filter");
                     break;
                 case 2:
                     System.out.println("2--->только женщины\n");
                     filterGenderWomen();
-                    showLogger(currentUser,"filter");
+                    showLogger(currentUser, "filter");
                     break;
                 case 3:
                     System.out.println("3--->возраст больше n");
                     filterAgeMore();
-                    showLogger(currentUser,"filter");
+                    showLogger(currentUser, "filter");
                     break;
                 case 4:
                     System.out.println("4---> возраст меньше n");
                     filterAgeLess();
-                    showLogger(currentUser,"filter");
+                    showLogger(currentUser, "filter");
                     break;
                 case 5:
                     System.out.println("Назад");
@@ -375,8 +375,25 @@ public class PhoneBook {
             scanner.nextLine();
             switch (select) {
                 case 1:
-                    System.out.println(" Сортировка по имени");
-                    sortToNameAlphabeticalOrder();
+                    System.out.println("Выберите сортировку: ");
+                    System.out.println("1---> Сортировка по имени в алфавитном порядке:\n" +
+                            "2---> Сортировка по имени в обратном порядке:\n" +
+                            "3---> Назад");
+                    int selectNum = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (selectNum) {
+                        case 1:
+                            sortToNameAlphabeticalOrder();
+                            break;
+                        case 2:
+                            sortToNameReverseOrder();
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            System.out.println("Выберите корректное значение!");
+                    }
                     break;
                 case 2:
                     System.out.println("Сортировка по фамилии:");
@@ -410,8 +427,8 @@ public class PhoneBook {
                 message = "Пользователь отредактировал контакт";
             } else if ("sort".equals(messageType)) {
                 message = "Пользователь сделал сортировку";
-            }else if ("filter".equals(messageType)) {
-                message="Пользователь сделал фильтрацию";
+            } else if ("filter".equals(messageType)) {
+                message = "Пользователь сделал фильтрацию";
             } else
                 message = "Неизвестное сообщение!";
 
@@ -425,17 +442,17 @@ public class PhoneBook {
 
     public static void printLoggerFile(String filename) {
 
-       try(BufferedReader bufferedReader=new BufferedReader(new FileReader(filename))) {
-           String line;
-           System.out.println("Содержимое файла логирования: ");
-           while ((line=bufferedReader.readLine())!=null){
-               System.out.println(line);
-           }
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            System.out.println("Содержимое файла логирования: ");
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
 
 
-       } catch (IOException e) {
-           System.out.println("Ошибка чтения файла логирования " + e.getMessage());
-       }
+        } catch (IOException e) {
+            System.out.println("Ошибка чтения файла логирования " + e.getMessage());
+        }
     }
 
     public static String getFileContact() {
