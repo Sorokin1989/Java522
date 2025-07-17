@@ -396,10 +396,30 @@ public class PhoneBook {
                     }
                     break;
                 case 2:
-                    System.out.println("Сортировка по фамилии:");
+                    System.out.println("Выберите сортировку: ");
+                    System.out.println("1---> Сортировка по фамилии в алфавитном порядке:\n" +
+                            "2---> Сортировка по фамилии в обратном порядке:\n" +
+                            "3---> Назад");
+                     selectNum = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (selectNum) {
+                        case 1:
+                            sortToSurnameAlphabeticalOrder();
+                            break;
+                        case 2:
+                            sortToSurnameReverseOrder();
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            System.out.println("Выберите корректное значение!");
+                    }
+
                     break;
                 case 3:
                     System.out.println("Сортировка по номеру телефона:");
+
                     break;
                 case 4:
                     System.out.println("назад");

@@ -547,9 +547,23 @@ public class Contact {
 
 
 
-    public static  void sortToSurname() {
-
+    public static  void sortToSurnameAlphabeticalOrder() throws IOException {
+        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
+        System.out.println("Отсортировано по фамилии в алфавитном порядке: ");
+        System.out.println(contacts);
+        saveContactsToFile(currentUser.getUsername(), contacts);
     }
+
+    public static  void sortToSurnameReverseOrder() throws IOException {
+        contacts = PhoneBook.getContacts().stream()
+                .sorted(Comparator.comparing(Contact::getSurname).reversed())
+                .collect(Collectors.toList());
+        System.out.println("Отсортировано по фамилии в обратном порядке: ");
+        System.out.println(contacts);
+        saveContactsToFile(currentUser.getUsername(), contacts);
+    }
+
+
     public static void sortToNumber() {
 
     }
