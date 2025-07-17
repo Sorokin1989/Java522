@@ -203,6 +203,7 @@ public class PhoneBook {
                     break;
                 case 2:
                     editContact();
+                    showLogger(currentUser, "edit");
                     break;
                 case 3:
                     while (true) {
@@ -339,18 +340,22 @@ public class PhoneBook {
                 case 1:
                     System.out.println("1--->только мужчины\n");
                     filterGenderMan();
+                    showLogger(currentUser,"filter");
                     break;
                 case 2:
                     System.out.println("2--->только женщины\n");
                     filterGenderWomen();
+                    showLogger(currentUser,"filter");
                     break;
                 case 3:
                     System.out.println("3--->возраст больше n");
                     filterAgeMore();
+                    showLogger(currentUser,"filter");
                     break;
                 case 4:
                     System.out.println("4---> возраст меньше n");
                     filterAgeLess();
+                    showLogger(currentUser,"filter");
                     break;
                 case 5:
                     System.out.println("Назад");
@@ -407,6 +412,8 @@ public class PhoneBook {
                 message = "Пользователь отредактировал контакт";
             } else if ("sort".equals(messageType)) {
                 message = "Пользователь сделал сортировку";
+            }else if ("filter".equals(messageType)) {
+                message="Пользователь сделал фильтрацию";
             } else
                 message = "Неизвестное сообщение!";
 
