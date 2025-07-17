@@ -1,12 +1,14 @@
 package ExaminationWork;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import static ExaminationWork.FileManager.saveContactsToFile;
+import static ExaminationWork.PhoneBook.currentUser;
 import static ExaminationWork.PhoneBook.getContacts;
 
 public class Contact {
@@ -521,6 +523,27 @@ public class Contact {
             System.out.println("Введите корректное значение!");
             scanner.nextLine();
         }
+
+    }
+    public static void sortToNameAlphabeticalOrder() throws IOException {
+
+        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(contact -> contact.getName())).collect(Collectors.toList());
+        System.out.println("Отсортировано по имени в алфавитном порядке: ");
+        System.out.println(contacts);
+        saveContactsToFile(currentUser.getUsername(), contacts);
+    }
+
+    public static void sortToNameReverseOrder() throws IOException {
+
+        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(contact -> contact.getName())).collect(Collectors.toList());
+        System.out.println("Отсортировано по имени в обратном порядке: ");
+        System.out.println(contacts);
+        saveContactsToFile(currentUser.getUsername(), contacts);
+    }
+    public static  void sortToSurname() {
+
+    }
+    public static void sortToNumber() {
 
     }
 }

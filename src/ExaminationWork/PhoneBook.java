@@ -15,13 +15,13 @@ public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
     public static List<User> users;
     static List<Contact> contacts;
-    static Contact contact;
-    static String USERS_FILE;
+   // static Contact contact;
+   // static String USERS_FILE;
     static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
     private final static String fileUsersName = "users.txt";
     static User currentUser = null;
-    User user = new User("username", "password");
+   // User user = new User("username", "password");
 
 
     public static List<Contact> getContacts() {
@@ -365,7 +365,7 @@ public class PhoneBook {
 
     }
 
-    static void sortContacts() {
+    static void sortContacts() throws IOException {
         while (true) {
             System.out.println("1---> Сортировка по имени: \n" +
                     "2---> Сортировка по фамилии: \n" +
@@ -376,6 +376,7 @@ public class PhoneBook {
             switch (select) {
                 case 1:
                     System.out.println(" Сортировка по имени");
+                    sortToNameAlphabeticalOrder();
                     break;
                 case 2:
                     System.out.println("Сортировка по фамилии:");
@@ -424,9 +425,6 @@ public class PhoneBook {
 
     public static void printLoggerFile(String filename) {
 
-//        System.out.println("Введите имя пользователя: ");
-//        String username=scanner.nextLine();
-       // String filename = username + "_" + fileLogger;
        try(BufferedReader bufferedReader=new BufferedReader(new FileReader(filename))) {
            String line;
            System.out.println("Содержимое файла логирования: ");
