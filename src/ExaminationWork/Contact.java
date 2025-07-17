@@ -309,9 +309,9 @@ public class Contact {
             System.out.println("Список пустой!");
             return;
         }
-
-        System.out.println(PhoneBook.contacts + "\n");
-        System.out.println();
+        for (Contact contact:PhoneBook.contacts) {
+            System.out.print(contact);
+        }
     }
 
     public static void notRegistr() {
@@ -564,7 +564,12 @@ public class Contact {
     }
 
 
-    public static void sortToNumber() {
+    public static void sortToNumber() throws IOException {
+        contacts=PhoneBook.getContacts().stream()
+                .sorted(Comparator.comparing(Contact::getPhoneNumber)).collect(Collectors.toList());
+        System.out.println("Отсортировано по номеру телефона по возрастанию: ");
+        System.out.println(contacts);
+        saveContactsToFile(currentUser.getUsername(),contacts);
 
     }
 }
