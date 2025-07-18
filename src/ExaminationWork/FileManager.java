@@ -101,7 +101,7 @@ public class FileManager {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Contact contact : contacts) {
-                writer.write(contact.getName() + "|" + contact.getSurname() + "|" +
+                writer.write(contact.getId() + "|" + contact.getName() + "|" + contact.getSurname() + "|" +
                         contact.getPhoneNumber() + "|" + contact.getAge() + "|" + contact.getGender());
                 writer.newLine();
             }

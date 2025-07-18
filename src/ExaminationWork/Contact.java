@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static ExaminationWork.FileManager.saveContactsToFile;
@@ -92,11 +94,11 @@ public class Contact {
 
     @Override
     public String toString() {
-        return id + ". " + name + "|" + surname + "|" + phoneNumber + "|" + age + "|" + gender + "\n";
+        return id + "|" + name + "|" + surname + "|" + phoneNumber + "|" + age + "|" + gender + "\n";
     }
 
 
-//    public String getUsername() {
+    //    public String getUsername() {
 //        return user.getUsername();
 //    }
 
@@ -309,7 +311,7 @@ public class Contact {
             System.out.println("Список пустой!");
             return;
         }
-        for (Contact contact:PhoneBook.contacts) {
+        for (Contact contact : PhoneBook.contacts) {
             System.out.print(contact);
         }
     }
@@ -494,7 +496,7 @@ public class Contact {
                 } else {
                     System.out.println("Контакты найдены:\n" + contacts);
                 }
-            }  else {
+            } else {
                 System.out.println("Введите корректный возраст от 0 до 99!");
             }
 
@@ -509,14 +511,12 @@ public class Contact {
         try {
             int ageNum = scanner.nextInt();
             scanner.nextLine();
-            if (ageNum>0&&ageNum<100) {
-                contacts=getContacts().stream().filter(x->x.getAge()<ageNum).collect(Collectors.toList());
+            if (ageNum > 0 && ageNum < 100) {
+                contacts = getContacts().stream().filter(x -> x.getAge() < ageNum).collect(Collectors.toList());
                 if (contacts.isEmpty()) {
                     System.out.println("Нет контактов младше " + ageNum);
-                }
-                else System.out.println("Контакты найдены: \n" + contacts);
-            }
-            else {
+                } else System.out.println("Контакты найдены: \n" + contacts);
+            } else {
                 System.out.println("Введите корректный возраст от 0 до 99!");
             }
         } catch (Exception e) {
@@ -525,9 +525,10 @@ public class Contact {
         }
 
     }
+
     public static void sortToNameAlphabeticalOrder() throws IOException {
 
-        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getName)).collect(Collectors.toList());
+        contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getName)).collect(Collectors.toList());
         System.out.println("Отсортировано по имени в алфавитном порядке: ");
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
@@ -544,17 +545,14 @@ public class Contact {
     }
 
 
-
-
-
-    public static  void sortToSurnameAlphabeticalOrder() throws IOException {
-        contacts=PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
+    public static void sortToSurnameAlphabeticalOrder() throws IOException {
+        contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в алфавитном порядке: ");
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
-    public static  void sortToSurnameReverseOrder() throws IOException {
+    public static void sortToSurnameReverseOrder() throws IOException {
         contacts = PhoneBook.getContacts().stream()
                 .sorted(Comparator.comparing(Contact::getSurname).reversed())
                 .collect(Collectors.toList());
@@ -565,13 +563,53 @@ public class Contact {
 
 
     public static void sortToNumber() throws IOException {
-        contacts=PhoneBook.getContacts().stream()
+        contacts = PhoneBook.getContacts().stream()
                 .sorted(Comparator.comparing(Contact::getPhoneNumber)).collect(Collectors.toList());
         System.out.println("Отсортировано по номеру телефона по возрастанию: ");
         System.out.println(contacts);
-        saveContactsToFile(currentUser.getUsername(),contacts);
-
+        saveContactsToFile(currentUser.getUsername(), contacts);
     }
-}
 
+    static void specialSearchContacts() {
+       contacts = PhoneBook.getContacts();
+        System.out.println("_ -> 1 символ\n" +
+                "% -> 0 или N количество символов\n");
+        System.out.println("Введите слово для поиска в формате (Ива%) или (Ива_):");
+       String word = scanner.nextLine();
+       String regex = convertTemplateToRegex(word);
+       Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        System.out.println("Результаты поиска: ");
+       for (Contact contact : PhoneBook.contacts) {
+           String searchStr=contact.getSearchString();
+           Matcher matcher = pattern.matcher(searchStr);
+           if (matcher.find()) {
+                System.out.println("Контакт найден:\n " + contact);
+                return;
+            }
+        }
+        System.out.println("Совпадений не найдено!");
+    }
+
+    public static String convertTemplateToRegex(String template) {
+        StringBuilder regex = new StringBuilder();
+        for (int i = 0; i < template.length(); i++) {
+            char c = template.charAt(i);
+            if (c == '%') {
+                regex.append(".*");
+            } else if (c == '_') {
+                regex.append(".");
+            } else {
+                if ("[](){}.*+?$^|#\\".indexOf(c) != -1) {
+                    regex.append("\\");
+                }
+                regex.append(c);
+            }
+        }
+        return regex.toString();
+    }
+    public String getSearchString() {
+        return name + "|" + surname + "|" + phoneNumber;
+    }
+
+}
 
