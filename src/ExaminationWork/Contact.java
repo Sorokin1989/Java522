@@ -575,12 +575,12 @@ public class Contact {
         System.out.println("_ -> 1 символ\n" +
                 "% -> 0 или N количество символов\n");
         System.out.println("Введите слово для поиска в формате (Ива%) или (Ива_):");
-       String word = scanner.nextLine();
+       String word = scanner.nextLine().toLowerCase();
        String regex = convertTemplateToRegex(word);
-       Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+       Pattern pattern = Pattern.compile(regex);
         System.out.println("Результаты поиска: ");
        for (Contact contact : PhoneBook.contacts) {
-           String searchStr=contact.getSearchString();
+           String searchStr=contact.getSearchString().toLowerCase();
            Matcher matcher = pattern.matcher(searchStr);
            if (matcher.find()) {
                 System.out.println("Контакт найден:\n " + contact);
@@ -609,6 +609,14 @@ public class Contact {
     }
     public String getSearchString() {
         return name + "|" + surname + "|" + phoneNumber;
+    }
+
+    public boolean matchesPattern(String pattern) {
+        Pattern p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+        if (p.matcher(name).find()) return true;
+        if (p.matcher(surname).find()) return true;
+        if (p.matcher(phoneNumber).find()) return true;
+        return false;
     }
 
 }

@@ -1,7 +1,6 @@
 package ExaminationWork;
 
 import java.io.*;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,13 +58,13 @@ public class FileManager {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 5) {
-                    //int id = Integer.parseInt(parts[0]);
-                    String name = parts[0];
-                    String surname = parts[1];
-                    String phoneNumber = parts[2];
-                    int age = Integer.parseInt(parts[3]);
-                    String gender = parts[4];
+                if (parts.length == 6) {
+                   // int id = Integer.parseInt(parts[0]);
+                    String name = parts[1];
+                    String surname = parts[2];
+                    String phoneNumber = parts[3];
+                    int age = Integer.parseInt(parts[4]);
+                    String gender = parts[5];
                     Contact contact = new Contact(name, surname, phoneNumber, age, gender);
                     contacts.add(contact);
                 }
@@ -101,7 +100,7 @@ public class FileManager {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Contact contact : contacts) {
-                writer.write(contact.getId() + "|" + contact.getName() + "|" + contact.getSurname() + "|" +
+                writer.write(contact.getId() + "|" + contact.getName() + "|" + contact.getSurname() + "|" + //contact.getId()+ "|" +  добавить!
                         contact.getPhoneNumber() + "|" + contact.getAge() + "|" + contact.getGender());
                 writer.newLine();
             }

@@ -12,6 +12,16 @@ import static ExaminationWork.Contact.*;
 import static ExaminationWork.FileManager.*;
 
 public class PhoneBook {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
     static Scanner scanner = new Scanner(System.in);
     public static List<User> users;
     static List<Contact> contacts;
@@ -22,7 +32,15 @@ public class PhoneBook {
     private final static String fileUsersName = "users.txt";
     static User currentUser = null;
     // User user = new User("username", "password");
+   private final Contact contact;
 
+    public PhoneBook(Contact contact) {
+        this.contact = contact;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
 
     public static List<Contact> getContacts() {
         return contacts;
@@ -36,12 +54,12 @@ public class PhoneBook {
 
         while (true) {
             try {
-                System.out.println("------------------------");
-                System.out.println("|Телефонная книга      |\n" +
-                        "|1 - Войти             |\n" +
-                        "|2 - Зарегистрироваться|\n" +
-                        "|3 - Выход             |");
-                System.out.println("------------------------");
+                System.out.println(ANSI_BLUE + "------------------------" + ANSI_RESET);
+                System.out.println(ANSI_BLUE + "|" + ANSI_RESET + ANSI_GREEN + "   Телефонная книга  " + ANSI_RESET + ANSI_BLUE + " |\n" + ANSI_RESET +
+                        ANSI_BLUE + "|" + ANSI_RESET + "1 - Войти             " + ANSI_BLUE + "|\n" + ANSI_RESET +
+                        ANSI_BLUE + "|" + ANSI_RESET + "2 - Зарегистрироваться" + ANSI_BLUE + "|\n" + ANSI_RESET +
+                        ANSI_BLUE + "|" + ANSI_RESET + "3 - Выход             " + ANSI_BLUE + "|" + ANSI_RESET);
+                System.out.println(ANSI_BLUE + "------------------------" + ANSI_RESET);
 
                 int select = scanner.nextInt();
                 scanner.nextLine();
@@ -228,10 +246,9 @@ public class PhoneBook {
                             break;
                     }
                     break;
-
-
                 case 4:
                     printContact();
+                    System.out.println();
                     break;
                 case 5:
                     System.out.println("назад");
@@ -312,6 +329,7 @@ public class PhoneBook {
                     break;
                 case 5:
                     System.out.println("5---> Спец поиск (_ , %)\n"); //надо релизовать!
+                    specialSearchContacts();
                     break;
                 case 6:
                     System.out.println("Назад");
@@ -385,9 +403,11 @@ public class PhoneBook {
                     switch (selectNum) {
                         case 1:
                             sortToNameAlphabeticalOrder();
+                            showLogger(currentUser, "sort");
                             break;
                         case 2:
                             sortToNameReverseOrder();
+                            showLogger(currentUser, "sort");
                             break;
                         case 3:
                             break;
@@ -400,15 +420,17 @@ public class PhoneBook {
                     System.out.println("1---> Сортировка по фамилии в алфавитном порядке:\n" +
                             "2---> Сортировка по фамилии в обратном порядке:\n" +
                             "3---> Назад");
-                     selectNum = scanner.nextInt();
+                    selectNum = scanner.nextInt();
                     scanner.nextLine();
 
                     switch (selectNum) {
                         case 1:
                             sortToSurnameAlphabeticalOrder();
+                            showLogger(currentUser, "sort");
                             break;
                         case 2:
                             sortToSurnameReverseOrder();
+                            showLogger(currentUser, "sort");
                             break;
                         case 3:
                             break;
@@ -419,7 +441,8 @@ public class PhoneBook {
                     break;
                 case 3:
                     System.out.println("Сортировка по номеру телефона:");
-
+                    sortToNumber();
+                    showLogger(currentUser, "sort");
                     break;
                 case 4:
                     System.out.println("назад");
@@ -431,7 +454,12 @@ public class PhoneBook {
     }
 
     static void showLogger(User user, String messageType) {
-        String filename = user.toString() + "_" + fileLogger;
+        String dirName = "loggers/";
+        File dir = new File(dirName);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String filename = dirName + user.toString() + "_" + fileLogger;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
 
             String message;
@@ -442,7 +470,7 @@ public class PhoneBook {
             } else if ("delete".equals(messageType)) {
                 message = "Пользователь удалил контакт!";
             } else if ("add".equals(messageType)) {
-                message = "Пользователь добавил контакт";
+                message = "Пользователь добавил контакт " ;//  + контакт
             } else if ("edit".equals(messageType)) {
                 message = "Пользователь отредактировал контакт";
             } else if ("sort".equals(messageType)) {
