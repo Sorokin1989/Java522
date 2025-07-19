@@ -69,6 +69,7 @@ public class PhoneBook {
                         break;
                     case 3:
                         System.out.println("Выход");
+                       // showLogger(currentUser, "exit",);
                         return;
                     default:
                         System.out.println("Введите правильное значение!");
@@ -96,20 +97,18 @@ public class PhoneBook {
             if (user.getPassword().equals(password)) {
                 System.out.println("Успешный вход!");
                 currentUser = user;
-                showLogger(currentUser, "user");
+
+               // showLogger(currentUser, "user",Contact contact);
 
                 try {
                     loadUserContacts(username);
-                    //loadContact(username);
                 } catch (IOException e) {
                     System.out.println("Контактов нет!");
                 }
                 userMenu();
 
-            }
+            } else System.out.println("Пароль неверный!");
         } else System.out.println("Такого пользователя не существует!");
-
-
     }
 
     static void signUp() {
@@ -117,7 +116,6 @@ public class PhoneBook {
         String name = scanner.nextLine();
         System.out.println("Введите фамилию пользователя: ");
         String surname = scanner.nextLine();
-        //scanner.nextLine();
         System.out.println("Введите логин пользователя: ");
         String userName = scanner.nextLine();
 
@@ -196,11 +194,12 @@ public class PhoneBook {
             switch (select) {
                 case 1:
                     contactAdd(contacts, currentUser.getUsername());
-                    showLogger(currentUser, "add");
+
+                  //  showLogger(currentUser, "add");
                     break;
                 case 2:
-                    editContact();
-                    showLogger(currentUser, "edit");
+                    editContact(currentUser.getUsername());
+                  //  showLogger(currentUser, "edit");
                     break;
                 case 3:
                     while (true) {
@@ -212,11 +211,11 @@ public class PhoneBook {
                         switch (num) {
                             case 1:
                                 deleteContactToID();
-                                showLogger(currentUser, "delete");
+                            //    showLogger(currentUser, "delete");
                                 break;
                             case 2:
                                 deleteContactToName();
-                                showLogger(currentUser, "delete");
+                             //   showLogger(currentUser, "delete");
                                 break;
                             case 3:
                                 System.out.println("Назад");
@@ -322,22 +321,22 @@ public class PhoneBook {
                 case 1:
                     System.out.println("1--->только мужчины\n");
                     filterGenderMan();
-                    showLogger(currentUser, "filter");
+                  //  showLogger(currentUser, "filter");
                     break;
                 case 2:
                     System.out.println("2--->только женщины\n");
                     filterGenderWomen();
-                    showLogger(currentUser, "filter");
+                 //   showLogger(currentUser, "filter");
                     break;
                 case 3:
                     System.out.println("3--->возраст больше n");
                     filterAgeMore();
-                    showLogger(currentUser, "filter");
+                 //   showLogger(currentUser, "filter");
                     break;
                 case 4:
                     System.out.println("4---> возраст меньше n");
                     filterAgeLess();
-                    showLogger(currentUser, "filter");
+                  //  showLogger(currentUser, "filter");
                     break;
                 case 5:
                     System.out.println("Назад");
@@ -368,11 +367,11 @@ public class PhoneBook {
                     switch (selectNum) {
                         case 1:
                             sortToNameAlphabeticalOrder();
-                            showLogger(currentUser, "sort");
+                        //    showLogger(currentUser, "sort");
                             break;
                         case 2:
                             sortToNameReverseOrder();
-                            showLogger(currentUser, "sort");
+                         //   showLogger(currentUser, "sort");
                             break;
                         case 3:
                             break;
@@ -391,11 +390,11 @@ public class PhoneBook {
                     switch (selectNum) {
                         case 1:
                             sortToSurnameAlphabeticalOrder();
-                            showLogger(currentUser, "sort");
+                          //  showLogger(currentUser, "sort");
                             break;
                         case 2:
                             sortToSurnameReverseOrder();
-                            showLogger(currentUser, "sort");
+                          //  showLogger(currentUser, "sort");
                             break;
                         case 3:
                             break;
@@ -406,7 +405,7 @@ public class PhoneBook {
                 case 3:
                     System.out.println("Сортировка по номеру телефона:");
                     sortToNumber();
-                    showLogger(currentUser, "sort");
+                   // showLogger(currentUser, "sort");
                     break;
                 case 4:
                     System.out.println("назад");
@@ -417,7 +416,7 @@ public class PhoneBook {
         }
     }
 
-    static void showLogger(User user, String messageType) {
+    static void showLogger(User user, String messageType, Contact contact) {
         String dirName = "loggers/";
         File dir = new File(dirName);
         if (!dir.exists()) {
@@ -431,15 +430,22 @@ public class PhoneBook {
             if ("user".equals(messageType)) {
                 message = "Пользователь вошел в систему!";
             } else if ("delete".equals(messageType)) {
-                message = "Пользователь удалил контакт!";
+                message = "Пользователь удалил контакт! "  + contact.getName() + " " + contact.getSurname() + " " +
+                        contact.getPhoneNumber();;
             } else if ("add".equals(messageType)) {
-                message = "Пользователь добавил контакт ";//  + контакт
+                message = "Пользователь добавил контакт " + contact.getName() + " " + contact.getSurname() + " " +
+                contact.getPhoneNumber();
             } else if ("edit".equals(messageType)) {
-                message = "Пользователь отредактировал контакт";
+                message = "Пользователь отредактировал контакт " + contact.getName() + " " + contact.getSurname() + " " +
+                        contact.getPhoneNumber();;
             } else if ("sort".equals(messageType)) {
                 message = "Пользователь сделал сортировку";
             } else if ("filter".equals(messageType)) {
                 message = "Пользователь сделал фильтрацию";
+            } else if ("exit".equals(messageType)) {
+                message = "Пользователь вышел из системы!";
+            } else if ("Error".equals(messageType)) {
+                message = "Ошибка! Неверный пароль или логин!";
             } else
                 message = "Неизвестное сообщение!";
             writer.write("\n" + now + " " + time + " " + currentUser + " " + message);
@@ -450,7 +456,7 @@ public class PhoneBook {
 
     public static void printLoggerFile(String filename) {
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("loggers/" + filename))) {
             String line;
             System.out.println("Содержимое файла логирования: ");
             while ((line = bufferedReader.readLine()) != null) {

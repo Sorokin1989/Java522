@@ -10,8 +10,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static ExaminationWork.FileManager.saveContactsToFile;
-import static ExaminationWork.PhoneBook.currentUser;
-import static ExaminationWork.PhoneBook.getContacts;
+import static ExaminationWork.PhoneBook.*;
 
 public class Contact {
     static Scanner scanner = new Scanner(System.in);
@@ -117,6 +116,7 @@ public class Contact {
         Contact contact = new Contact(name, surname, phoneNumber, age, gender);
         contacts.add(contact);
         System.out.println("Контакт добавлен!");
+        showLogger(currentUser, "add", contact);
         try {
             saveContactsToFile(username, contacts);
         } catch (IOException e) {
@@ -124,7 +124,7 @@ public class Contact {
         }
     }
 
-    public static void editContact() {
+    public static void editContact(String username) {
         if (PhoneBook.contacts.isEmpty()) {
             System.out.println("Нет контактов для редактирования");
             return;
@@ -208,6 +208,12 @@ public class Contact {
                 return;
         }
         System.out.println("Контакт обновлен!");
+        showLogger(currentUser, "edit", contactToEdit);
+        try {
+            saveContactsToFile(username,PhoneBook.contacts);
+        } catch (IOException e) {
+            System.out.println("Ошибка" + e.getMessage());
+        }
     }
 
     public static void deleteContactToID() throws IOException {
@@ -236,7 +242,13 @@ public class Contact {
         }
         Contact removedContact = PhoneBook.contacts.remove(index);
         System.out.println("Контакт " + removedContact.getName() + removedContact.getSurname() + "успешно удален!");
-        saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+        showLogger(currentUser, "delete", removedContact);
+
+        try {
+            saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении контактов: " + e.getMessage());
+        }
     }
 
     public static void deleteContactToName() throws IOException {
@@ -260,6 +272,7 @@ public class Contact {
             if (contact.getName().equalsIgnoreCase(nameToDelete)) {
                 iterator.remove();
                 System.out.println("Контакт " + contact.getName() + " " + contact.getSurname() + " успешно удален!");
+                showLogger(currentUser, "delete", contact);
                 found = true;
                 break;
             }
@@ -268,7 +281,11 @@ public class Contact {
         if (!found) {
             System.out.println("Контакт с именем '" + nameToDelete + "' не найден.");
         }
-        saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+        try {
+            saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении контактов: " + e.getMessage());
+        }
 
     }
 
