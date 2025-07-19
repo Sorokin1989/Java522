@@ -7,7 +7,6 @@ import java.util.List;
 import static ExaminationWork.PhoneBook.getFileContact;
 
 public class FileManager {
-
     public static List<User> loadUsers(String fileName) throws IOException {
         List<User> users = new ArrayList<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
@@ -19,7 +18,6 @@ public class FileManager {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Ошибка чтения файла пользователей " + e.getMessage());
-
         }
         return users;
     }
@@ -30,7 +28,6 @@ public class FileManager {
             return;
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
-
             for (User user : users) {
                 bufferedWriter.write(user.getUsername() + " : " + user.getPassword());
                 bufferedWriter.newLine();
@@ -39,7 +36,6 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Ошибка записи файла пользователей " + e.getMessage());
         }
-
     }
 
     public static void saveUser(User user, String userName) {
@@ -59,7 +55,6 @@ public class FileManager {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 if (parts.length == 6) {
-                   // int id = Integer.parseInt(parts[0]);
                     String name = parts[1];
                     String surname = parts[2];
                     String phoneNumber = parts[3];
@@ -69,35 +64,20 @@ public class FileManager {
                     contacts.add(contact);
                 }
             }
-
         } catch (Exception e) {
             System.out.println("Ошибка чтения контактов! " + e.getMessage());
         }
         return contacts;
     }
 
-    //    public static void saveContact(List<Contact> contacts,String fileName) throws IOException {
-//        try {
-//            BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(fileName));
-//            for (Contact contact:contacts) {
-//                bufferedWriter.write(contact.getId() + "|" + contact.getName()+ "|" + contact.getSurname()
-//                + "|" + contact.getPhoneNumber() + "|" + contact.getAge());
-//                bufferedWriter.newLine();
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Ошибка записи контактов " + e.getMessage());
-//        }
-//    }
+
     public static void saveContactsToFile(String userName, List<Contact> contacts) throws IOException {
-        String dirName = "contacts/"; // можно удалить
-        File dir = new File(dirName); // можно удалить
+        String dirName = "contacts/";
+        File dir = new File(dirName);
         if (!dir.exists()) {
             dir.mkdirs();
         }
-
         String fileName = dirName + userName + "_" + getFileContact();
-
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Contact contact : contacts) {
                 writer.write(contact.getId() + "|" + contact.getName() + "|" + contact.getSurname() + "|" + //contact.getId()+ "|" +  добавить!
@@ -105,8 +85,6 @@ public class FileManager {
                 writer.newLine();
             }
             System.out.println("Контакты успешно сохранены в файл " + userName + ".txt");
-
-
         }
     }
 

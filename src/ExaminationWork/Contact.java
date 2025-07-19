@@ -14,11 +14,6 @@ import static ExaminationWork.PhoneBook.currentUser;
 import static ExaminationWork.PhoneBook.getContacts;
 
 public class Contact {
-    //Уникальный ID (генерируется автоматически)
-    //Имя
-    //Фамилия
-    //Номер телефона
-    //Возраст
     static Scanner scanner = new Scanner(System.in);
     private static int idCounter = 1;
     private final int id;
@@ -27,7 +22,6 @@ public class Contact {
     private String phoneNumber;
     private int age;
     private String gender;
-    private String username;
     private static boolean ignoreCase;
     private static boolean found;
     private static List<Contact> contacts;
@@ -39,14 +33,7 @@ public class Contact {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.age = age;
-        // this.user=user;
-
     }
-
-//    public static void setUser(User user) {
-//        Contact.user = user;
-//    }
-
 
     public void setName(String name) {
         this.name = name;
@@ -97,11 +84,6 @@ public class Contact {
         return id + "|" + name + "|" + surname + "|" + phoneNumber + "|" + age + "|" + gender + "\n";
     }
 
-
-    //    public String getUsername() {
-//        return user.getUsername();
-//    }
-
     public static void contactAdd(List<Contact> contacts, String username) {
         System.out.println("Введите имя контакта: ");
         String name = scanner.nextLine();
@@ -135,15 +117,11 @@ public class Contact {
         Contact contact = new Contact(name, surname, phoneNumber, age, gender);
         contacts.add(contact);
         System.out.println("Контакт добавлен!");
-//saveContactsToFile(user.getUsername(), contacts);
         try {
             saveContactsToFile(username, contacts);
         } catch (IOException e) {
             System.out.println("Ошибка" + e.getMessage());
         }
-        //saveContactsToFile(contacts,user.getUsername());
-
-
     }
 
     public static void editContact() {
@@ -159,7 +137,6 @@ public class Contact {
                     "| Возраст |" + contact.getAge() + "| Пол |" + contact.getGender());
         }
         int index = -1;
-
         try {
             System.out.println("Введите номер контакта: ");
             index = Integer.parseInt(scanner.nextLine()) - 1;
@@ -167,13 +144,11 @@ public class Contact {
                 System.out.println("Неправильный индекс!");
                 return;
             }
-
         } catch (Exception e) {
             System.out.println("Некорректный ввод!");
             return;
         }
         Contact contactToEdit = PhoneBook.contacts.get(index);
-
         System.out.println("Выберите элемент для редактирования: ");
         System.out.println("1 ---> Имя\n" +
                 "2 ---> Фамилия\n" +
@@ -182,7 +157,6 @@ public class Contact {
                 "5 ---> Пол\n" +
                 "6 ---> Назад");
         System.out.print("Введите номер пункта для редактирования: ");
-
         int select;
         try {
             select = Integer.parseInt(scanner.nextLine());
@@ -220,10 +194,8 @@ public class Contact {
                     System.out.println("Некорректный возраст!");
                     return;
                 }
-
                 break;
             case 5:
-                // scanner.nextLine();
                 System.out.println("Введите пол (Мужской/Женский): ");
                 String newGender = scanner.nextLine();
                 contactToEdit.setGender(newGender);
@@ -236,10 +208,7 @@ public class Contact {
                 return;
         }
         System.out.println("Контакт обновлен!");
-
-
     }
-
 
     public static void deleteContactToID() throws IOException {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
@@ -252,7 +221,6 @@ public class Contact {
             System.out.println("ID " + (i + 1) + " Имя " + contact.getName() + " Фамилия " + contact.getSurname() +
                     " Телефон " + contact.getPhoneNumber() +
                     " Возраст " + contact.getAge() + " Пол " + contact.getGender());
-
         }
         int index = -1;
         try {
@@ -287,7 +255,6 @@ public class Contact {
         String nameToDelete = scanner.nextLine();
         boolean found = false;
         Iterator<Contact> iterator = PhoneBook.contacts.iterator();
-
         while (iterator.hasNext()) {
             Contact contact = iterator.next();
             if (contact.getName().equalsIgnoreCase(nameToDelete)) {
@@ -305,7 +272,6 @@ public class Contact {
 
     }
 
-
     public static void printContact() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список пустой!");
@@ -322,7 +288,6 @@ public class Contact {
         int num = scanner.nextInt();
         scanner.nextLine();
         ignoreCase = false;
-
         switch (num) {
             case 0:
                 ignoreCase = true;
@@ -334,19 +299,8 @@ public class Contact {
                 break;
             default:
                 System.out.println("Введите корректное значение!");
-
         }
-
-
-//        if (num.equals("0")) {
-//            ignoreCase=true;
-//            System.out.println("Режим поиска без учета регистра включен.");
-//        } else if (num.equals("1"))
-//            ignoreCase=false;
-//            System.out.println("Режим с учетом регистра включен.");
-//        }
     }
-
 
     public static void findContactToName(List<Contact> contacts) {
         System.out.println("Введите имя контакта: ");
@@ -361,7 +315,6 @@ public class Contact {
                             contact.getGender());
                     found = true;
                     break;
-
                 }
             } else {
                 if (contactName.equals(name)) {
@@ -439,7 +392,6 @@ public class Contact {
             String contactName = contact.getName();
             String contactSurname = contact.getSurname();
             String contactPhoneNumber = contact.getPhoneNumber();
-
             if (ignoreCase) {
                 if (contactName.equalsIgnoreCase(name) && contactSurname.equalsIgnoreCase(surname) && contactPhoneNumber.equals(phoneNumber)) {
                     System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
@@ -456,7 +408,6 @@ public class Contact {
                     found = true;
                     break;
                 }
-
             }
         }
         if (!found) {
@@ -523,7 +474,6 @@ public class Contact {
             System.out.println("Введите корректное значение!");
             scanner.nextLine();
         }
-
     }
 
     public static void sortToNameAlphabeticalOrder() throws IOException {
@@ -544,7 +494,6 @@ public class Contact {
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
-
     public static void sortToSurnameAlphabeticalOrder() throws IOException {
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в алфавитном порядке: ");
@@ -561,7 +510,6 @@ public class Contact {
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
-
     public static void sortToNumber() throws IOException {
         contacts = PhoneBook.getContacts().stream()
                 .sorted(Comparator.comparing(Contact::getPhoneNumber)).collect(Collectors.toList());
@@ -571,18 +519,18 @@ public class Contact {
     }
 
     static void specialSearchContacts() {
-       contacts = PhoneBook.getContacts();
+        contacts = PhoneBook.getContacts();
         System.out.println("_ -> 1 символ\n" +
                 "% -> 0 или N количество символов\n");
         System.out.println("Введите слово для поиска в формате (Ива%) или (Ива_):");
-       String word = scanner.nextLine().toLowerCase();
-       String regex = convertTemplateToRegex(word);
-       Pattern pattern = Pattern.compile(regex);
+        String word = scanner.nextLine().toLowerCase();
+        String regex = convertTemplateToRegex(word);
+        Pattern pattern = Pattern.compile(regex);
         System.out.println("Результаты поиска: ");
-       for (Contact contact : PhoneBook.contacts) {
-           String searchStr=contact.getSearchString().toLowerCase();
-           Matcher matcher = pattern.matcher(searchStr);
-           if (matcher.find()) {
+        for (Contact contact : PhoneBook.contacts) {
+            String searchStr = contact.getSearchString().toLowerCase();
+            Matcher matcher = pattern.matcher(searchStr);
+            if (matcher.find()) {
                 System.out.println("Контакт найден:\n " + contact);
                 return;
             }
@@ -607,17 +555,9 @@ public class Contact {
         }
         return regex.toString();
     }
+
     public String getSearchString() {
         return name + "|" + surname + "|" + phoneNumber;
     }
-
-    public boolean matchesPattern(String pattern) {
-        Pattern p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-        if (p.matcher(name).find()) return true;
-        if (p.matcher(surname).find()) return true;
-        if (p.matcher(phoneNumber).find()) return true;
-        return false;
-    }
-
 }
 

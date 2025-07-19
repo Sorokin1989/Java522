@@ -25,14 +25,11 @@ public class PhoneBook {
     static Scanner scanner = new Scanner(System.in);
     public static List<User> users;
     static List<Contact> contacts;
-    // static Contact contact;
-    // static String USERS_FILE;
     static String fileContact = "contacts.txt";
     private final static String fileLogger = "logger.txt";
     private final static String fileUsersName = "users.txt";
     static User currentUser = null;
-    // User user = new User("username", "password");
-   private final Contact contact;
+    private final Contact contact;
 
     public PhoneBook(Contact contact) {
         this.contact = contact;
@@ -56,9 +53,9 @@ public class PhoneBook {
             try {
                 System.out.println(ANSI_BLUE + "------------------------" + ANSI_RESET);
                 System.out.println(ANSI_BLUE + "|" + ANSI_RESET + ANSI_GREEN + "   Телефонная книга  " + ANSI_RESET + ANSI_BLUE + " |\n" + ANSI_RESET +
-                        ANSI_BLUE + "|" + ANSI_RESET + "1 - Войти             " + ANSI_BLUE + "|\n" + ANSI_RESET +
-                        ANSI_BLUE + "|" + ANSI_RESET + "2 - Зарегистрироваться" + ANSI_BLUE + "|\n" + ANSI_RESET +
-                        ANSI_BLUE + "|" + ANSI_RESET + "3 - Выход             " + ANSI_BLUE + "|" + ANSI_RESET);
+                        ANSI_BLUE + "|" + ANSI_RESET + "1 -" + ANSI_BLUE + " Войти             " + ANSI_RESET + ANSI_BLUE + "|\n" + ANSI_RESET +
+                        ANSI_BLUE + "|" + ANSI_RESET + "2 -" + ANSI_RED + " Зарегистрироваться" + ANSI_RESET + ANSI_BLUE + "|\n" + ANSI_RESET +
+                        ANSI_BLUE + "|" + ANSI_RESET + "3 -" + ANSI_CYAN + " Выход             " + ANSI_RESET + ANSI_BLUE + "|" + ANSI_RESET);
                 System.out.println(ANSI_BLUE + "------------------------" + ANSI_RESET);
 
                 int select = scanner.nextInt();
@@ -110,7 +107,7 @@ public class PhoneBook {
                 userMenu();
 
             }
-        }
+        } else System.out.println("Такого пользователя не существует!");
 
 
     }
@@ -138,32 +135,18 @@ public class PhoneBook {
             return;
         }
         User newUser = new User(userName, password1);
-
-        //saveContactsToFile(userName, new ArrayList<>());
         try {
-//            users.clear();
-//            users.add(newUser);
-            //users.clear();
             users.add(newUser);
-
             saveUsers(users, fileUsersName);
             System.out.println("Текущий список пользователей: ");
             for (User user : users) {
                 System.out.println("Login " + user.getUsername() + " : " + " Password " + user.getPassword());
             }
-
-
             saveUser(newUser, userName);
-            //saveUserContacts(userName);
-            //saveUsers(users,userName);
-
-            //saveContactsToFile(userName, new ArrayList<>());
             System.out.println("Пользователь зарегистрирован! Время регистрации " + User.getCreationUser().withSecond(0).withNano(0));
         } catch (Exception e) {
             System.out.println("Ошибка при сохранении пользователя " + e.getMessage());
         }
-
-
     }
 
     static void userMenu() throws IOException {
@@ -174,7 +157,6 @@ public class PhoneBook {
                     "4---> Сортировка\n" +
                     "5---> Логирование\n" +
                     "6---> Назад");
-
             int select = scanner.nextInt();
             scanner.nextLine();
             switch (select) {
@@ -256,7 +238,6 @@ public class PhoneBook {
                 default:
                     System.out.println("Некорректное значение");
             }
-
         }
     }
 
@@ -271,27 +252,17 @@ public class PhoneBook {
         if (!file.exists()) {
             contacts = new ArrayList<>();
             try {
-                // saveContactsToFile(userName, contacts);
                 createFileContact(userName);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-            //
         } else {
-
             contacts = FileManager.loadContact(fileName);
             if (contacts == null) {
                 contacts = new ArrayList<>();
             }
-
         }
     }
-
-
-//    static void saveUserContacts(String userName) {
-//        saveContactsToFile("contacts/" + userName + "_contacts.txt", contacts);
-//    }
 
     static void searchContacts() {
         while (true) {
@@ -302,10 +273,8 @@ public class PhoneBook {
                     "4--->По всем параметрам\n" +
                     "5---> Спец поиск (_ , %)\n" +
                     "6---> Назад");
-
             int select = scanner.nextInt();
             scanner.nextLine();
-
             switch (select) {
                 case 0:
                     System.out.println("0---> Регистр OFF\n");
@@ -347,10 +316,8 @@ public class PhoneBook {
                     "3---> возраст больше n\n" +
                     "4---> возраст меньше n\n" +
                     "5---> Назад");
-
             int select = scanner.nextInt();
             scanner.nextLine();
-
             switch (select) {
                 case 1:
                     System.out.println("1--->только мужчины\n");
@@ -378,9 +345,7 @@ public class PhoneBook {
                 default:
                     System.out.println("Некорректное значение!");
             }
-
         }
-
     }
 
     static void sortContacts() throws IOException {
@@ -437,7 +402,6 @@ public class PhoneBook {
                         default:
                             System.out.println("Выберите корректное значение!");
                     }
-
                     break;
                 case 3:
                     System.out.println("Сортировка по номеру телефона:");
@@ -461,7 +425,6 @@ public class PhoneBook {
         }
         String filename = dirName + user.toString() + "_" + fileLogger;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
-
             String message;
             LocalDate now = LocalDate.now();
             LocalTime time = User.getCreationUser().withSecond(0).withNano(0);
@@ -470,7 +433,7 @@ public class PhoneBook {
             } else if ("delete".equals(messageType)) {
                 message = "Пользователь удалил контакт!";
             } else if ("add".equals(messageType)) {
-                message = "Пользователь добавил контакт " ;//  + контакт
+                message = "Пользователь добавил контакт ";//  + контакт
             } else if ("edit".equals(messageType)) {
                 message = "Пользователь отредактировал контакт";
             } else if ("sort".equals(messageType)) {
@@ -479,13 +442,10 @@ public class PhoneBook {
                 message = "Пользователь сделал фильтрацию";
             } else
                 message = "Неизвестное сообщение!";
-
-
             writer.write("\n" + now + " " + time + " " + currentUser + " " + message);
         } catch (IOException e) {
             System.out.println("Ошибка при сохранении логирования!" + e.getMessage());
         }
-
     }
 
     public static void printLoggerFile(String filename) {
@@ -496,8 +456,6 @@ public class PhoneBook {
             while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
-
-
         } catch (IOException e) {
             System.out.println("Ошибка чтения файла логирования " + e.getMessage());
         }
