@@ -367,7 +367,7 @@ public class PhoneBook {
                     switch (selectNum) {
                         case 1:
                             sortToNameAlphabeticalOrder();
-                        //    showLogger(currentUser, "sort");
+                            //showLogger(currentUser, "sort");
                             break;
                         case 2:
                             sortToNameReverseOrder();

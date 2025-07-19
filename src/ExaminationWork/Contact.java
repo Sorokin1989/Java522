@@ -497,6 +497,7 @@ public class Contact {
 
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getName)).collect(Collectors.toList());
         System.out.println("Отсортировано по имени в алфавитном порядке: ");
+        showLogger(currentUser, "sort", contacts.getFirst());
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
@@ -507,6 +508,7 @@ public class Contact {
                 .sorted(Comparator.comparing(Contact::getName).reversed())
                 .collect(Collectors.toList());
         System.out.println("Отсортировано по имени в обратном порядке: ");
+        showLogger(currentUser, "sort", contacts.getFirst());
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
@@ -514,6 +516,7 @@ public class Contact {
     public static void sortToSurnameAlphabeticalOrder() throws IOException {
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в алфавитном порядке: ");
+        showLogger(currentUser, "sort", contacts.getFirst());
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
@@ -523,6 +526,7 @@ public class Contact {
                 .sorted(Comparator.comparing(Contact::getSurname).reversed())
                 .collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в обратном порядке: ");
+        showLogger(currentUser, "sort", contacts.getFirst());
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
@@ -531,6 +535,7 @@ public class Contact {
         contacts = PhoneBook.getContacts().stream()
                 .sorted(Comparator.comparing(Contact::getPhoneNumber)).collect(Collectors.toList());
         System.out.println("Отсортировано по номеру телефона по возрастанию: ");
+        showLogger(currentUser, "sort", contacts.getFirst());
         System.out.println(contacts);
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
