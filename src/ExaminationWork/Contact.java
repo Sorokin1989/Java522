@@ -438,7 +438,10 @@ public class Contact {
         if (contacts.isEmpty()) {
             System.out.println("Таких контактов нет!");
         } else {
-            System.out.println(contacts);
+            for (Contact contact:contacts) {
+                System.out.print(contact);
+            }
+            System.out.println();
         }
     }
 
@@ -448,7 +451,10 @@ public class Contact {
         if (contacts.isEmpty()) {
             System.out.println("Таких контактов нет!");
         } else {
-            System.out.println(contacts);
+            for (Contact contact:contacts) {
+                System.out.print(contact);
+            }
+            System.out.println();
         }
     }
 
@@ -462,7 +468,11 @@ public class Contact {
                 if (contacts.isEmpty()) {
                     System.out.println("Нет контактов старше " + ageNum);
                 } else {
-                    System.out.println("Контакты найдены:\n" + contacts);
+                    System.out.println("Контакты найдены: ");
+                    for (Contact contact:contacts) {
+                        System.out.print(contact);
+                    }
+                    System.out.println();
                 }
             } else {
                 System.out.println("Введите корректный возраст от 0 до 99!");
@@ -483,7 +493,13 @@ public class Contact {
                 contacts = getContacts().stream().filter(x -> x.getAge() < ageNum).collect(Collectors.toList());
                 if (contacts.isEmpty()) {
                     System.out.println("Нет контактов младше " + ageNum);
-                } else System.out.println("Контакты найдены: \n" + contacts);
+                } else
+                    System.out.println("Контакты найдены: ");
+                for (Contact contact:contacts) {
+                    System.out.print(contact);
+                }
+                System.out.println();
+
             } else {
                 System.out.println("Введите корректный возраст от 0 до 99!");
             }
@@ -497,8 +513,11 @@ public class Contact {
 
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getName)).collect(Collectors.toList());
         System.out.println("Отсортировано по имени в алфавитном порядке: ");
-        showLogger(currentUser, "sort", contacts.getFirst());
-        System.out.println(contacts);
+        System.out.println("Контакты найдены: ");
+        for (Contact contact:contacts) {
+            System.out.print(contact);
+        }
+        System.out.println();
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
@@ -508,16 +527,22 @@ public class Contact {
                 .sorted(Comparator.comparing(Contact::getName).reversed())
                 .collect(Collectors.toList());
         System.out.println("Отсортировано по имени в обратном порядке: ");
-        showLogger(currentUser, "sort", contacts.getFirst());
-        System.out.println(contacts);
+        System.out.println("Контакты найдены: ");
+        for (Contact contact:contacts) {
+            System.out.print(contact);
+        }
+        System.out.println();
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
     public static void sortToSurnameAlphabeticalOrder() throws IOException {
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в алфавитном порядке: ");
-        showLogger(currentUser, "sort", contacts.getFirst());
-        System.out.println(contacts);
+        System.out.println("Контакты найдены: ");
+        for (Contact contact:contacts) {
+            System.out.print(contact);
+        }
+        System.out.println();
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
@@ -526,8 +551,11 @@ public class Contact {
                 .sorted(Comparator.comparing(Contact::getSurname).reversed())
                 .collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в обратном порядке: ");
-        showLogger(currentUser, "sort", contacts.getFirst());
-        System.out.println(contacts);
+        System.out.println("Контакты найдены: ");
+        for (Contact contact:contacts) {
+            System.out.print(contact);
+        }
+        System.out.println();
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 
@@ -535,8 +563,11 @@ public class Contact {
         contacts = PhoneBook.getContacts().stream()
                 .sorted(Comparator.comparing(Contact::getPhoneNumber)).collect(Collectors.toList());
         System.out.println("Отсортировано по номеру телефона по возрастанию: ");
-        showLogger(currentUser, "sort", contacts.getFirst());
-        System.out.println(contacts);
+        System.out.println("Контакты найдены: ");
+        for (Contact contact:contacts) {
+            System.out.print(contact);
+        }
+        System.out.println();
         saveContactsToFile(currentUser.getUsername(), contacts);
     }
 

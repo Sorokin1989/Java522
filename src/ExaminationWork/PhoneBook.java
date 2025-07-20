@@ -45,9 +45,7 @@ public class PhoneBook {
 
     public static void main(String[] args) throws IOException {
 
-
         users = FileManager.loadUsers(fileUsersName);
-
 
         while (true) {
             try {
@@ -69,20 +67,21 @@ public class PhoneBook {
                         break;
                     case 3:
                         System.out.println("Выход");
-                       // showLogger(currentUser, "exit",);
+                        try {
+                            showLogger(currentUser, "exit", contacts.getFirst());
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+
                         return;
                     default:
                         System.out.println("Введите правильное значение!");
                 }
-
-
             } catch (Exception e) {
                 System.out.println("Ошибка ввода! Введите число!  " + e.getMessage());
                 scanner.next();
             }
         }
-
-
     }
 
     static void singIn() throws IOException {
@@ -95,15 +94,20 @@ public class PhoneBook {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             if (user.getPassword().equals(password)) {
-                System.out.println("Успешный вход!");
                 currentUser = user;
-
-               // showLogger(currentUser, "user",Contact contact);
+                System.out.println("Успешный вход!");
 
                 try {
                     loadUserContacts(username);
                 } catch (IOException e) {
-                    System.out.println("Контактов нет!");
+                    System.out.println("Контактов нет или ошибка при загрузке!");
+                }
+
+                if (contacts != null && !contacts.isEmpty()) {
+                    showLogger(currentUser, "user", contacts.getFirst());
+                }else {
+                    showLoggerFirstSignIn(currentUser,"Пользователь вошел в систему!");
+                    System.out.println("Контакты отсутствуют!");
                 }
                 userMenu();
 
@@ -114,8 +118,10 @@ public class PhoneBook {
     static void signUp() {
         System.out.println("Введите имя пользователя: ");
         String name = scanner.nextLine();
+        System.out.println("Имя пользователя: " + name);
         System.out.println("Введите фамилию пользователя: ");
         String surname = scanner.nextLine();
+        System.out.println("Фамилия пользователя " + surname);
         System.out.println("Введите логин пользователя: ");
         String userName = scanner.nextLine();
 
@@ -194,12 +200,9 @@ public class PhoneBook {
             switch (select) {
                 case 1:
                     contactAdd(contacts, currentUser.getUsername());
-
-                  //  showLogger(currentUser, "add");
                     break;
                 case 2:
                     editContact(currentUser.getUsername());
-                  //  showLogger(currentUser, "edit");
                     break;
                 case 3:
                     while (true) {
@@ -211,11 +214,9 @@ public class PhoneBook {
                         switch (num) {
                             case 1:
                                 deleteContactToID();
-                            //    showLogger(currentUser, "delete");
                                 break;
                             case 2:
                                 deleteContactToName();
-                             //   showLogger(currentUser, "delete");
                                 break;
                             case 3:
                                 System.out.println("Назад");
@@ -321,22 +322,22 @@ public class PhoneBook {
                 case 1:
                     System.out.println("1--->только мужчины\n");
                     filterGenderMan();
-                  //  showLogger(currentUser, "filter");
+                      showLogger(currentUser, "filter",contacts.getFirst());
                     break;
                 case 2:
                     System.out.println("2--->только женщины\n");
                     filterGenderWomen();
-                 //   showLogger(currentUser, "filter");
+                       showLogger(currentUser, "filter",contacts.getFirst());
                     break;
                 case 3:
                     System.out.println("3--->возраст больше n");
                     filterAgeMore();
-                 //   showLogger(currentUser, "filter");
+                    showLogger(currentUser, "filter",contacts.getFirst());
                     break;
                 case 4:
                     System.out.println("4---> возраст меньше n");
                     filterAgeLess();
-                  //  showLogger(currentUser, "filter");
+                      showLogger(currentUser, "filter",contacts.getFirst());
                     break;
                 case 5:
                     System.out.println("Назад");
@@ -367,11 +368,11 @@ public class PhoneBook {
                     switch (selectNum) {
                         case 1:
                             sortToNameAlphabeticalOrder();
-                            //showLogger(currentUser, "sort");
+                            showLogger(currentUser, "sort",contacts.getFirst());
                             break;
                         case 2:
                             sortToNameReverseOrder();
-                         //   showLogger(currentUser, "sort");
+                               showLogger(currentUser, "sort",contacts.getFirst());
                             break;
                         case 3:
                             break;
@@ -390,11 +391,11 @@ public class PhoneBook {
                     switch (selectNum) {
                         case 1:
                             sortToSurnameAlphabeticalOrder();
-                          //  showLogger(currentUser, "sort");
+                            showLogger(currentUser, "sort",contacts.getFirst());
                             break;
                         case 2:
                             sortToSurnameReverseOrder();
-                          //  showLogger(currentUser, "sort");
+                              showLogger(currentUser, "sort",contacts.getFirst());
                             break;
                         case 3:
                             break;
@@ -405,7 +406,7 @@ public class PhoneBook {
                 case 3:
                     System.out.println("Сортировка по номеру телефона:");
                     sortToNumber();
-                   // showLogger(currentUser, "sort");
+                     showLogger(currentUser, "sort",contacts.getFirst());
                     break;
                 case 4:
                     System.out.println("назад");
@@ -415,7 +416,23 @@ public class PhoneBook {
             }
         }
     }
+    static void showLoggerFirstSignIn(User user,String message) throws IOException {
+        String dirName = "loggers/";
+        File dir = new File(dirName);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String filename = dirName + user.toString() + "_" + fileLogger;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+            String messageFirst;
+            LocalDate now = LocalDate.now();
+            LocalTime time = User.getCreationUser().withSecond(0).withNano(0);
+            writer.write("\n" + now + " " + time + " " + currentUser + " " + message);
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении логирования!" + e.getMessage());
 
+        }
+    }
     static void showLogger(User user, String messageType, Contact contact) {
         String dirName = "loggers/";
         File dir = new File(dirName);
@@ -430,14 +447,16 @@ public class PhoneBook {
             if ("user".equals(messageType)) {
                 message = "Пользователь вошел в систему!";
             } else if ("delete".equals(messageType)) {
-                message = "Пользователь удалил контакт! "  + contact.getName() + " " + contact.getSurname() + " " +
-                        contact.getPhoneNumber();;
+                message = "Пользователь удалил контакт! " + contact.getName() + " " + contact.getSurname() + " " +
+                        contact.getPhoneNumber();
+                ;
             } else if ("add".equals(messageType)) {
                 message = "Пользователь добавил контакт " + contact.getName() + " " + contact.getSurname() + " " +
-                contact.getPhoneNumber();
+                        contact.getPhoneNumber();
             } else if ("edit".equals(messageType)) {
                 message = "Пользователь отредактировал контакт " + contact.getName() + " " + contact.getSurname() + " " +
-                        contact.getPhoneNumber();;
+                        contact.getPhoneNumber();
+                ;
             } else if ("sort".equals(messageType)) {
                 message = "Пользователь сделал сортировку";
             } else if ("filter".equals(messageType)) {
