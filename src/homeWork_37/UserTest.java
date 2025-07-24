@@ -93,6 +93,8 @@ public class UserTest {
         System.out.println(userList);
 
         //Проверить, есть ли пользователь с именем "Anna".
+        boolean name=userList.stream().anyMatch(x->x.getFirstName().equals("Anna"));
+        System.out.println(name);
 
     }
 }
