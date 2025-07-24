@@ -3,6 +3,7 @@ package homeWork_37;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class UserTest {
@@ -117,8 +118,23 @@ public class UserTest {
         }
 
 //Получить пользователя с максимальным возрастом среди "EN".
+        List<UserTest> userAgeMax = userList.stream().filter(x -> x.getNationality().equals("EN")).
+                max(Comparator.comparing(x -> x.getAge())).stream().toList();
+        System.out.println(userAgeMax);
 //Найти все уникальные имена среди пользователей.
+        System.out.println();
+        List<String> namesUn=userList.stream().map(UserTest::getFirstName).distinct().toList();
+        System.out.println(namesUn);
 //Сгруппировать пользователей по национальности.
+        System.out.println();
+       Map<String,List<UserTest>> usersNationality= userList.stream().collect(Collectors.groupingBy(UserTest::getNationality));
+   for (Map.Entry<String,List<UserTest>> entry:usersNationality.entrySet()) {
+       System.out.println("Национальность :" +entry.getKey());
+       for (UserTest userTest: entry.getValue()){
+           System.out.println(userTest);
+       }
+   }
+
 //Подсчитать, сколько пользователей в каждой национальности.
 //Найти средний возраст всех пользователей.
 //Получить список пользователей с возрастом, кратным 5.
