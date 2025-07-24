@@ -1,6 +1,7 @@
 package homeWork_37;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,18 +64,29 @@ public class UserTest {
         }
 
         //Получить список всех уникальных национальностей.
-        List<String> nationality = userList.stream().map(x -> x.getNationality()).distinct().toList();
+        List<String> nationality = userList.stream().map(x -> x.getNationality()).collect(Collectors.toList());
         System.out.println(nationality);
 
         //Получить список имён всех пользователей.
-        List
-
+        List<String> names = userList.stream().map(x -> x.getFirstName()).collect(Collectors.toList());
+        System.out.println(names);
 
         //Посчитать количество пользователей старше 18 лет.
+        long counter = userList.stream().filter(x -> x.getAge() > 18).count();
+        System.out.println(counter);
         //Найти самого младшего пользователя.
+        List<UserTest> userMin = userList.stream().min(Comparator.comparing(x -> x.getAge())).stream().toList();
+        System.out.println(userMin);
         //Найти самого старшего пользователя.
+        List<UserTest> userMax = userList.stream().max(Comparator.comparing(x -> x.getAge())).stream().toList();
+        System.out.println(userMax);
         //Есть ли в списке пользователь с национальностью "FR"?
+        List<UserTest> user=userList.stream().filter(x->x.getNationality().equals("FR")).toList();
+        System.out.println("\n" + user);
         //Получить список фамилий пользователей с именем "Michael".
+        List<String>usersName=userList.stream().filter(x->x.firstName.equals("Michael")).
+                map(UserTest::getLastName).toList();
+        System.out.println("\n" + usersName);
         //Найти пользователя с id = 3.
         //Проверить, есть ли пользователь с именем "Anna".
 
