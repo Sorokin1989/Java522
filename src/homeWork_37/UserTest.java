@@ -158,11 +158,12 @@ public class UserTest {
                 x.getLastName()+ " (" + x.getAge() + ")").toList();
         usersString.stream().forEach(System.out::println);
 
-
-
-
 //Преобразовать список пользователей в Map<Long, String>, где ключ — id, значение — имя.
+
+       Map<Long,String> users2= userList.stream().collect(Collectors.toMap(x-> x.getId(),x->x.getFirstName()));
+        System.out.println(users2);
 //Найти пользователей, у которых возраст совпадает с другим пользователем.
+
 //Сгруппировать пользователей по возрасту и отсортировать по ключу.
 //Найти возрастную категорию (до 18, 18–40, 40+) для каждого пользователя.
 //Получить список первых 3 пользователей по возрасту.
