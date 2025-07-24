@@ -81,13 +81,17 @@ public class UserTest {
         List<UserTest> userMax = userList.stream().max(Comparator.comparing(x -> x.getAge())).stream().toList();
         System.out.println(userMax);
         //Есть ли в списке пользователь с национальностью "FR"?
-        List<UserTest> user=userList.stream().filter(x->x.getNationality().equals("FR")).toList();
+        boolean user = userList.stream().anyMatch(x -> x.getNationality().equals("FR"));
         System.out.println("\n" + user);
         //Получить список фамилий пользователей с именем "Michael".
-        List<String>usersName=userList.stream().filter(x->x.firstName.equals("Michael")).
+        List<String> usersName = userList.stream().filter(x -> x.firstName.equals("Michael")).
                 map(UserTest::getLastName).toList();
         System.out.println("\n" + usersName);
         //Найти пользователя с id = 3.
+
+        userList = userList.stream().filter(x -> x.getId() == 3).toList();
+        System.out.println(userList);
+
         //Проверить, есть ли пользователь с именем "Anna".
 
     }
