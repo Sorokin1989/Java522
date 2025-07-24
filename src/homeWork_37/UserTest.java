@@ -49,7 +49,7 @@ public class UserTest {
     public static void main(String[] args) {
         List<UserTest> userList = Arrays.asList(
                 new UserTest(1, "Michael", "Robert", 37, "TR"),
-                new UserTest(2, "Mary", "Patricia", 11, "EN"),
+                new UserTest(2, "Mary", "Matricia", 11, "EN"),
                 new UserTest(3, "John", "Michael", 7, "FR"),
                 new UserTest(4, "Jennifer", "Linda", 77, "TR"),
                 new UserTest(5, "William", "Elizabeth", 23, "US"),
@@ -89,13 +89,50 @@ public class UserTest {
         System.out.println("\n" + usersName);
         //Найти пользователя с id = 3.
 
-        userList = userList.stream().filter(x -> x.getId() == 3).toList();
-        System.out.println(userList);
+        List<UserTest> userLists = userList.stream().filter(x -> x.getId() == 3).toList();
+        System.out.println(userLists);
 
         //Проверить, есть ли пользователь с именем "Anna".
-        boolean name=userList.stream().anyMatch(x->x.getFirstName().equals("Anna"));
+        boolean name = userList.stream().anyMatch(x -> x.getFirstName().equals("Anna"));
         System.out.println(name);
 
+//Среднего уровня сложности
+
+//Получить список пользователей, у которых имя и фамилия начинаются с одной и той же буквы
+        List<UserTest> usersNames = userList.stream().filter(x -> x.getFirstName().charAt(0) == x.getLastName().charAt(0)).toList();
+        System.out.println(usersNames);
+//Отсортировать пользователей по возрасту по возрастанию.
+        List<UserTest> usersAge = userList.stream().sorted(Comparator.comparing(UserTest::getAge)).toList();
+        System.out.println();
+        for (UserTest userTest : usersAge) {
+            System.out.println(userTest);
+        }
+
+//Отсортировать пользователей по фамилии по убыванию.
+        System.out.println();
+        List<UserTest> usersSurname = userList.stream().sorted(Comparator.comparing(UserTest::getLastName).reversed()
+        ).toList();
+        for (UserTest userTest : usersSurname) {
+            System.out.println(userTest);
+        }
+
+//Получить пользователя с максимальным возрастом среди "EN".
+//Найти все уникальные имена среди пользователей.
+//Сгруппировать пользователей по национальности.
+//Подсчитать, сколько пользователей в каждой национальности.
+//Найти средний возраст всех пользователей.
+//Получить список пользователей с возрастом, кратным 5.
+//Сформировать строку из всех имён, разделённых запятой.
+//Преобразовать список пользователей в список строк вида "Имя Фамилия (возраст)".
+//Преобразовать список пользователей в Map<Long, String>, где ключ — id, значение — имя.
+//Найти пользователей, у которых возраст совпадает с другим пользователем.
+//Сгруппировать пользователей по возрасту и отсортировать по ключу.
+//Найти возрастную категорию (до 18, 18–40, 40+) для каждого пользователя.
+//Получить список первых 3 пользователей по возрасту.
+//Пропустить первых 2 пользователя и вернуть остальных.
+//Получить список пользователей, имя которых длиннее 5 символов.
+//Проверить, все ли пользователи старше 10 лет.
+//Есть ли хотя бы один пользователь с фамилией длиной более 7 символов?
     }
 }
 
