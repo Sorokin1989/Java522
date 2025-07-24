@@ -123,23 +123,44 @@ public class UserTest {
         System.out.println(userAgeMax);
 //Найти все уникальные имена среди пользователей.
         System.out.println();
-        List<String> namesUn=userList.stream().map(UserTest::getFirstName).distinct().toList();
+        List<String> namesUn = userList.stream().map(UserTest::getFirstName).distinct().toList();
         System.out.println(namesUn);
 //Сгруппировать пользователей по национальности.
         System.out.println();
-       Map<String,List<UserTest>> usersNationality= userList.stream().collect(Collectors.groupingBy(UserTest::getNationality));
-   for (Map.Entry<String,List<UserTest>> entry:usersNationality.entrySet()) {
-       System.out.println("Национальность :" +entry.getKey());
-       for (UserTest userTest: entry.getValue()){
-           System.out.println(userTest);
-       }
-   }
+        Map<String, List<UserTest>> usersNationality = userList.stream().collect(Collectors.groupingBy(UserTest::getNationality));
+        for (Map.Entry<String, List<UserTest>> entry : usersNationality.entrySet()) {
+            System.out.println("Национальность :" + entry.getKey());
+            for (UserTest userTest : entry.getValue()) {
+                System.out.println(userTest);
+            }
+        }
 
 //Подсчитать, сколько пользователей в каждой национальности.
+        // userList.stream().collect(Collectors.groupingBy(UserTest::getNationality)).forEach;
 //Найти средний возраст всех пользователей.
+        int sum = userList.stream().mapToInt(UserTest::getAge).sum();
+        double ageAverage = (double) sum / userList.size();
+        System.out.println("Средний возраст всех пользователей: " + ageAverage);
 //Получить список пользователей с возрастом, кратным 5.
+        List<UserTest> listAgeFive = userList.stream().filter(x -> x.getAge() % 5 == 0).toList();
+        if (listAgeFive.isEmpty()) {
+            System.out.println("Таких пользователей нет!");
+        } else {
+            System.out.println(listAgeFive);
+        }
 //Сформировать строку из всех имён, разделённых запятой.
+     String userNames= userList.stream().map(UserTest::getFirstName).collect(Collectors.joining(","));
+        System.out.println(userNames);
+
 //Преобразовать список пользователей в список строк вида "Имя Фамилия (возраст)".
+        System.out.println();
+        List<String>usersString= userList.stream().map(x->x.getFirstName()+ " " +
+                x.getLastName()+ " (" + x.getAge() + ")").toList();
+        usersString.stream().forEach(System.out::println);
+
+
+
+
 //Преобразовать список пользователей в Map<Long, String>, где ключ — id, значение — имя.
 //Найти пользователей, у которых возраст совпадает с другим пользователем.
 //Сгруппировать пользователей по возрасту и отсортировать по ключу.
