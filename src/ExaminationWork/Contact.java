@@ -14,24 +14,42 @@ import static ExaminationWork.PhoneBook.*;
 
 public class Contact {
     static Scanner scanner = new Scanner(System.in);
-    private static int idCounter = 1;
+    static int idCounter = 0;
     private final int id;
     private String name;
     private String surname;
-    private String phoneNumber;
+    private long phoneNumber;
     private int age;
     private String gender;
     private static boolean ignoreCase;
     private static boolean found;
     private static List<Contact> contacts;
 
-    public Contact(String name, String surname, String phoneNumber, int age, String gender) {
+    public static void resetCounter() {
+        idCounter=0;
+    }
+
+    public Contact(String name, String surname, long phoneNumber, int age, String gender) {
         this.gender = gender;
-        this.id = idCounter++;
+        this.id = ++idCounter;
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.age = age;
+    }
+
+
+    public Contact(int id, String name, String surname, long phoneNumber, int age, String gender) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.gender = gender;
+
+        if (id > idCounter) {
+            idCounter = id;
+        }
     }
 
     public void setName(String name) {
@@ -42,7 +60,7 @@ public class Contact {
         this.surname = surname;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -66,7 +84,7 @@ public class Contact {
         return surname;
     }
 
-    public String getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -89,12 +107,22 @@ public class Contact {
         System.out.println("Введите фамилию контакта");
         String surname = scanner.nextLine();
         System.out.println("Введите номер телефона: ");
-        String phoneNumber = scanner.nextLine();
+        long phoneNumber;
+        try {
+             phoneNumber = Long.parseLong(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Номер некорректен!" );
+            phoneNumber=0;
+            System.out.println("По умолчанию установлен 0");
+
+        }
+
+
         System.out.println("Введите возраст");
         int age = 0;
         try {
             age = Integer.parseInt(scanner.nextLine());
-            if (age < 0 || age > 100) {
+            if (age < 0 || age > 105) {
                 System.out.println("Некорректный возраст. Установка значения по умолчанию 0.");
                 age = 0;
             }
@@ -102,7 +130,7 @@ public class Contact {
             System.out.println("Некорректный ввод возраста. Установка значения по умолчанию 0.");
             age = 0;
         }
-        System.out.println("Введите пол (Мужской/Женский");
+        System.out.println("Введите пол (Мужской/Женский)");
         String gender = scanner.nextLine();
         if ((!gender.equalsIgnoreCase("Мужской") && !gender.equalsIgnoreCase("Женский"))) {
             System.out.println("Пол некорректен! По умолчанию-- не указан");
@@ -129,26 +157,32 @@ public class Contact {
             System.out.println("Нет контактов для редактирования");
             return;
         }
-        System.out.println("Выберите контакт для редактирования: ");
+        System.out.println("Выберите номер контакта для редактирования: ");
         for (int i = 0; i < PhoneBook.contacts.size(); i++) {
             Contact contact = PhoneBook.contacts.get(i);
-            System.out.println("ID" + (i + 1) + "| Имя |" + contact.getName() +
+            System.out.println(contact.getId() + "| Имя |" + contact.getName() +
                     "| Фамилия |" + contact.getSurname() + "| Телефон |" + contact.getPhoneNumber() +
                     "| Возраст |" + contact.getAge() + "| Пол |" + contact.getGender());
         }
-        int index = -1;
+        int targetId;
         try {
-            System.out.println("Введите номер контакта: ");
-            index = Integer.parseInt(scanner.nextLine()) - 1;
-            if (index < 0 || index >= PhoneBook.contacts.size()) {
-                System.out.println("Неправильный индекс!");
-                return;
-            }
+            System.out.println("Введите ID контакта для редактирования: ");
+            targetId = Integer.parseInt(scanner.nextLine());
         } catch (Exception e) {
             System.out.println("Некорректный ввод!");
             return;
         }
-        Contact contactToEdit = PhoneBook.contacts.get(index);
+        Contact contactToEdit = null;
+        for (Contact contact:PhoneBook.contacts) {
+            if (contact.getId()==targetId) {
+                contactToEdit=contact;
+                break;
+            }
+        }
+        if (contactToEdit==null) {
+            System.out.println("Контакт с таким ID не найден!");
+            return;
+        }
         System.out.println("Выберите элемент для редактирования: ");
         System.out.println("1 ---> Имя\n" +
                 "2 ---> Фамилия\n" +
@@ -164,6 +198,7 @@ public class Contact {
             System.out.println("Некорректный ввод!");
             return;
         }
+
         switch (select) {
             case 1:
                 System.out.println("Введите новое имя: ");
@@ -178,7 +213,7 @@ public class Contact {
             case 3:
                 System.out.println("Введите новый номер телефона: ");
                 String newPhoneNumber = scanner.nextLine();
-                contactToEdit.setPhoneNumber(newPhoneNumber);
+                contactToEdit.setPhoneNumber(Long.parseLong(newPhoneNumber));
                 break;
             case 4:
                 System.out.println("Введите новый возраст: ");
@@ -186,7 +221,7 @@ public class Contact {
                 try {
                     int newAge = Integer.parseInt(scanner.nextLine());
 
-                    if (newAge < 0 || newAge > 100) {
+                    if (newAge < 0 || newAge > 105) {
                         System.out.println("Введите корректный возраст!");
                         return;
                     } else contactToEdit.setAge(newAge);
@@ -210,13 +245,13 @@ public class Contact {
         System.out.println("Контакт обновлен!");
         showLogger(currentUser, "edit", contactToEdit);
         try {
-            saveContactsToFile(username,PhoneBook.contacts);
+            saveContactsToFile(username, PhoneBook.contacts);
         } catch (IOException e) {
             System.out.println("Ошибка" + e.getMessage());
         }
     }
 
-    public static void deleteContactToID() throws IOException {
+    public static void deleteContactToID() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список контактов пустой");
             return;
@@ -224,34 +259,68 @@ public class Contact {
         System.out.println("Выберите контакт для удаления: ");
         for (int i = 0; i < PhoneBook.contacts.size(); i++) {
             Contact contact = PhoneBook.contacts.get(i);
-            System.out.println("ID " + (i + 1) + " Имя " + contact.getName() + " Фамилия " + contact.getSurname() +
-                    " Телефон " + contact.getPhoneNumber() +
-                    " Возраст " + contact.getAge() + " Пол " + contact.getGender());
+            System.out.println(contact.getId() + "| Имя |" + contact.getName() +
+                    "| Фамилия |" + contact.getSurname() + "| Телефон |" + contact.getPhoneNumber() +
+                    "| Возраст |" + contact.getAge() + "| Пол |" + contact.getGender());
         }
-        int index = -1;
+        int targetId;
         try {
-            System.out.println("Введите номер для удаления контакта: ");
-            index = Integer.parseInt(scanner.nextLine()) - 1;
-            if (index < 0 || index >= PhoneBook.contacts.size()) {
-                System.out.println("Некорректный номер. введите правильное значение!");
-                return;
-            }
+            System.out.println("Введите ID для удаления контакта: ");
+            targetId = Integer.parseInt(scanner.nextLine());
+
         } catch (Exception e) {
             System.out.println("Некорректный ввод. Введите правильное значение!");
             return;
         }
-        Contact removedContact = PhoneBook.contacts.remove(index);
-        System.out.println("Контакт " + removedContact.getName() + removedContact.getSurname() + "успешно удален!");
-        showLogger(currentUser, "delete", removedContact);
+        while (true) {
+            System.out.println("Вы уверены?\n" +
+                    "1---> Да\n" +
+                    "2---> Нет");
+            int num;
+            try {
+                num = scanner.nextInt();
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("Введите 1 или 2!!!");
+                scanner.nextLine();
+                continue;
+            }
+            switch (num) {
+                case 1:
+                    Contact removedContact = null;
+                    for (Contact contact:PhoneBook.contacts) {
+                        if (contact.getId()==targetId) {
+                            removedContact=contact;
+                            break;
+                        }
+                    }
+                    if (removedContact == null) {
+                        System.out.println("Контакт с таким ID не найден!");
+                        return;
+                    }
+                    PhoneBook.contacts.remove(removedContact);
+                    System.out.println("Контакт " + removedContact.getName() + " " + removedContact.getSurname() + " успешно удален!");
+                    showLogger(currentUser, "delete", removedContact);
 
-        try {
-            saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
-        } catch (IOException e) {
-            System.out.println("Ошибка при сохранении контактов: " + e.getMessage());
+                    try {
+                        saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+                    } catch (IOException e) {
+                        System.out.println("Ошибка при сохранении контактов: " + e.getMessage());
+                    }
+                    if (PhoneBook.contacts.isEmpty()) {
+                        resetCounter();
+                        System.out.println("Все контакты удалены!");
+                    }
+                    return;
+                case 2:
+                    return;
+                default:
+                    System.out.println("Введите корректное значение!");
+            }
         }
     }
 
-    public static void deleteContactToName() throws IOException {
+    public static void deleteContactToName() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
             System.out.println("Список контактов пустой");
             return;
@@ -259,9 +328,9 @@ public class Contact {
         System.out.println("Выберите имя контакта для удаления: ");
         for (int i = 0; i < PhoneBook.contacts.size(); i++) {
             Contact contact = PhoneBook.contacts.get(i);
-            System.out.println("ID " + (i + 1) + " Имя " + contact.getName() + " Фамилия " + contact.getSurname() +
-                    " Телефон " + contact.getPhoneNumber() +
-                    " Возраст " + contact.getAge() + " Пол " + contact.getGender());
+            System.out.println(contact.getId() + "| Имя |" + contact.getName() +
+                    "| Фамилия |" + contact.getSurname() + "| Телефон |" + contact.getPhoneNumber() +
+                    "| Возраст |" + contact.getAge() + "| Пол |" + contact.getGender());
         }
         System.out.println("Введите имя контакта для удаления: ");
         String nameToDelete = scanner.nextLine();
@@ -270,24 +339,48 @@ public class Contact {
         while (iterator.hasNext()) {
             Contact contact = iterator.next();
             if (contact.getName().equalsIgnoreCase(nameToDelete)) {
-                iterator.remove();
-                System.out.println("Контакт " + contact.getName() + " " + contact.getSurname() + " успешно удален!");
-                showLogger(currentUser, "delete", contact);
-                found = true;
-                break;
+
+                while (true) {
+                    System.out.println("Вы уверены?\n" +
+                            "1---> Да\n" +
+                            "2---> Нет");
+                    int num;
+                    try {
+                        num = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Введите 1 или 2!!!");
+                        scanner.nextLine();
+                        continue;
+                    }
+                    switch (num) {
+                        case 1:
+                            iterator.remove();
+                            System.out.println("Контакт " + contact.getName() + " " + contact.getSurname() + " успешно удален!");
+                            showLogger(currentUser, "delete", contact);
+                            try {
+                                saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
+                            } catch (IOException e) {
+                                System.out.println("Ошибка при сохранении контактов: " + e.getMessage());
+                            }
+                            if (PhoneBook.contacts.isEmpty()) {
+                                resetCounter();
+                                System.out.println("Все контакты удалены!");
+                            }
+                            return;
+                        case 2:
+                            return;
+                        default:
+                            System.out.println("Введите корректное значение!");
+                    }
+                }
             }
         }
-
         if (!found) {
             System.out.println("Контакт с именем '" + nameToDelete + "' не найден.");
         }
-        try {
-            saveContactsToFile(PhoneBook.currentUser.getUsername(), PhoneBook.contacts);
-        } catch (IOException e) {
-            System.out.println("Ошибка при сохранении контактов: " + e.getMessage());
-        }
-
     }
+
 
     public static void printContact() {
         if (PhoneBook.contacts == null || PhoneBook.contacts.isEmpty()) {
@@ -383,7 +476,7 @@ public class Contact {
         String phoneNumber = scanner.nextLine();
         found = false;
         for (Contact contact : contacts) {
-            String contactPhoneNumber = contact.getPhoneNumber();
+            String contactPhoneNumber = String.valueOf(contact.getPhoneNumber());
             if (contactPhoneNumber.equals(phoneNumber)) {
                 System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
                         contact.getSurname() + "|" + contact.getPhoneNumber() + "|" + contact.getAge() + "|" +
@@ -408,7 +501,7 @@ public class Contact {
         for (Contact contact : contacts) {
             String contactName = contact.getName();
             String contactSurname = contact.getSurname();
-            String contactPhoneNumber = contact.getPhoneNumber();
+            String contactPhoneNumber = String.valueOf(contact.getPhoneNumber());
             if (ignoreCase) {
                 if (contactName.equalsIgnoreCase(name) && contactSurname.equalsIgnoreCase(surname) && contactPhoneNumber.equals(phoneNumber)) {
                     System.out.println("Контакт найден: \n" + contact.getId() + "|" + contact.getName() + "|" +
@@ -438,7 +531,7 @@ public class Contact {
         if (contacts.isEmpty()) {
             System.out.println("Таких контактов нет!");
         } else {
-            for (Contact contact:contacts) {
+            for (Contact contact : contacts) {
                 System.out.print(contact);
             }
             System.out.println();
@@ -451,7 +544,7 @@ public class Contact {
         if (contacts.isEmpty()) {
             System.out.println("Таких контактов нет!");
         } else {
-            for (Contact contact:contacts) {
+            for (Contact contact : contacts) {
                 System.out.print(contact);
             }
             System.out.println();
@@ -469,13 +562,13 @@ public class Contact {
                     System.out.println("Нет контактов старше " + ageNum);
                 } else {
                     System.out.println("Контакты найдены: ");
-                    for (Contact contact:contacts) {
+                    for (Contact contact : contacts) {
                         System.out.print(contact);
                     }
                     System.out.println();
                 }
             } else {
-                System.out.println("Введите корректный возраст от 0 до 99!");
+                System.out.println("Введите корректный возраст от 0 до 105!");
             }
 
         } catch (Exception e) {
@@ -495,7 +588,7 @@ public class Contact {
                     System.out.println("Нет контактов младше " + ageNum);
                 } else
                     System.out.println("Контакты найдены: ");
-                for (Contact contact:contacts) {
+                for (Contact contact : contacts) {
                     System.out.print(contact);
                 }
                 System.out.println();
@@ -514,7 +607,7 @@ public class Contact {
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getName)).collect(Collectors.toList());
         System.out.println("Отсортировано по имени в алфавитном порядке: ");
         System.out.println("Контакты найдены: ");
-        for (Contact contact:contacts) {
+        for (Contact contact : contacts) {
             System.out.print(contact);
         }
         System.out.println();
@@ -528,7 +621,7 @@ public class Contact {
                 .collect(Collectors.toList());
         System.out.println("Отсортировано по имени в обратном порядке: ");
         System.out.println("Контакты найдены: ");
-        for (Contact contact:contacts) {
+        for (Contact contact : contacts) {
             System.out.print(contact);
         }
         System.out.println();
@@ -539,7 +632,7 @@ public class Contact {
         contacts = PhoneBook.getContacts().stream().sorted(Comparator.comparing(Contact::getSurname)).collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в алфавитном порядке: ");
         System.out.println("Контакты найдены: ");
-        for (Contact contact:contacts) {
+        for (Contact contact : contacts) {
             System.out.print(contact);
         }
         System.out.println();
@@ -552,7 +645,7 @@ public class Contact {
                 .collect(Collectors.toList());
         System.out.println("Отсортировано по фамилии в обратном порядке: ");
         System.out.println("Контакты найдены: ");
-        for (Contact contact:contacts) {
+        for (Contact contact : contacts) {
             System.out.print(contact);
         }
         System.out.println();
@@ -564,7 +657,7 @@ public class Contact {
                 .sorted(Comparator.comparing(Contact::getPhoneNumber)).collect(Collectors.toList());
         System.out.println("Отсортировано по номеру телефона по возрастанию: ");
         System.out.println("Контакты найдены: ");
-        for (Contact contact:contacts) {
+        for (Contact contact : contacts) {
             System.out.print(contact);
         }
         System.out.println();
@@ -580,15 +673,18 @@ public class Contact {
         String regex = convertTemplateToRegex(word);
         Pattern pattern = Pattern.compile(regex);
         System.out.println("Результаты поиска: ");
-        for (Contact contact : PhoneBook.contacts) {
+        boolean find = false;
+        for (Contact contact : PhoneBook.getContacts()) {
             String searchStr = contact.getSearchString().toLowerCase();
             Matcher matcher = pattern.matcher(searchStr);
             if (matcher.find()) {
                 System.out.println("Контакт найден:\n " + contact);
-                return;
+                find = true;
             }
         }
-        System.out.println("Совпадений не найдено!");
+        if (!find) {
+            System.out.println("Совпадений не найдено!");
+        }
     }
 
     public static String convertTemplateToRegex(String template) {

@@ -8,8 +8,13 @@ import static ExaminationWork.PhoneBook.getFileContact;
 
 public class FileManager {
     public static List<User> loadUsers(String fileName) throws IOException {
+        String dirName = "users/";
+        File dir = new File(dirName);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         List<User> users = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(dirName + fileName))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split(" : ");
@@ -23,23 +28,33 @@ public class FileManager {
     }
 
     public static void saveUsers(List<User> users, String fileName) {
+        String dirName = "users/";
+        File dir = new File(dirName);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         if (users == null || users.isEmpty()) {
             System.out.println("Список пуст!");
             return;
         }
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(dirName + fileName))) {
             for (User user : users) {
                 bufferedWriter.write(user.getUsername() + " : " + user.getPassword());
                 bufferedWriter.newLine();
             }
-            System.out.println("Пользователь успешно сохранен в файл: " + fileName);
+            System.out.println("Пользователь успешно сохранен в файл: " + dirName + fileName);
         } catch (IOException e) {
             System.out.println("Ошибка записи файла пользователей " + e.getMessage());
         }
     }
 
     public static void saveUser(User user, String userName) {
-        String filename = "user_" + userName + ".txt"; // имя файла на основе логина
+        String dirName = "users/";
+        File dir = new File(dirName);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String filename = dirName + "user_" + userName + ".txt"; // имя файла на основе логина
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             writer.write(user.getUsername() + " : " + user.getPassword() + " : " + User.getCreationUser().withSecond(0).withNano(0));
             System.out.println("Пользователь успешно сохранен в файл: " + filename);
@@ -54,18 +69,22 @@ public class FileManager {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 6) {
-                    String name = parts[1];
-                    String surname = parts[2];
-                    String phoneNumber = parts[3];
-                    int age = Integer.parseInt(parts[4]);
-                    String gender = parts[5];
-                    Contact contact = new Contact(name, surname, phoneNumber, age, gender);
-                    contacts.add(contact);
-                }
+                int id = Integer.parseInt(parts[0]);
+                String name = parts[1];
+                String surname = parts[2];
+                long phoneNumber = Long.parseLong(parts[3]);
+                int age = Integer.parseInt(parts[4]);
+                String gender = parts[5];
+                Contact contact = new Contact(id, name, surname, phoneNumber, age, gender);
+                contacts.add(contact);
             }
         } catch (Exception e) {
             System.out.println("Ошибка чтения контактов! " + e.getMessage());
+        }
+        for (Contact contact : contacts) {
+            if (contact.getId() > Contact.idCounter) {
+                Contact.idCounter = contact.getId();
+            }
         }
         return contacts;
     }
@@ -80,7 +99,7 @@ public class FileManager {
         String fileName = dirName + userName + "_" + getFileContact();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Contact contact : contacts) {
-                writer.write(contact.getId() + "|" + contact.getName() + "|" + contact.getSurname() + "|" + //contact.getId()+ "|" +  добавить!
+                writer.write(contact.getId() + "|" + contact.getName() + "|" + contact.getSurname() + "|" +
                         contact.getPhoneNumber() + "|" + contact.getAge() + "|" + contact.getGender());
                 writer.newLine();
             }
