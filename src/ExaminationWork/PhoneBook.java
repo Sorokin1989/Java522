@@ -457,7 +457,7 @@ public class PhoneBook {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        String filename = dirName + "_" + fileLogger;//
+        String filename = dirName + "_" + fileLogger;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
             String message;
             LocalDate now = LocalDate.now();
@@ -490,8 +490,9 @@ public class PhoneBook {
     }
 
     public static void printLoggerFile(String filename) {
+        String dirName = "loggers/";
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("loggers/" + filename))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(dirName + "_" + fileLogger))) {
             String line;
             System.out.println("Содержимое файла логирования: ");
             while ((line = bufferedReader.readLine()) != null) {
