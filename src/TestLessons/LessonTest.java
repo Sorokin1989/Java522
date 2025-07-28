@@ -67,6 +67,53 @@ class Piano implements Playable{
 
     }
 }
+class Employee2 {
+    private String name;
+   private int salary;
+
+    public Employee2(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + salary;
+    }
+}
+class Company{
+  private   List<Employee2> list;
+
+    public Company(List<Employee2> list) {
+        this.list = list;
+    }
+
+    public List<Employee2> getList() {
+        return list;
+    }
+
+    public void setList(List<Employee2> list) {
+        this.list = list;
+    }
+}
+
+
 
 
 public class LessonTest {
@@ -121,6 +168,22 @@ public class LessonTest {
         //Задача 4: Создай класс Employee с полями name, salary.
         //Создай класс Company, который содержит список сотрудников.
         //Добавь сотрудников и выведи их имена и зарплаты.
+
+        List<Employee2>list=new ArrayList<>();
+        list.add(new Employee2("Дима",100000));
+        list.add(new Employee2("hима",10000));
+        list.add(new Employee2("hhима",1000));
+        list.add(new Employee2("Дllима",150000));
+        list.add(new Employee2("Дl;има",160000));
+
+        Company company=new Company(list);
+        for (Employee2 employee2:company.getList()){
+            System.out.println(employee2);
+        }
+
+
+
+
         //
         //Задача 5: Создай класс Product с полями name, price.
         //Создай класс Store, который содержит список товаров.
