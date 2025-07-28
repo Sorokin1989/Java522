@@ -113,6 +113,53 @@ class Company{
     }
 }
 
+class Product{
+    private String name;
+    private int price;
+
+    public Product(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + price;
+    }
+}
+
+class Store{
+   private List<Product>list;
+
+    public Store(List<Product> list) {
+        this.list = list;
+    }
+
+    public List<Product> getList() {
+        return list;
+    }
+
+    public void setList(List<Product> list) {
+        this.list = list;
+    }
+}
+
 
 
 
@@ -181,13 +228,29 @@ public class LessonTest {
             System.out.println(employee2);
         }
 
-
-
-
         //
         //Задача 5: Создай класс Product с полями name, price.
         //Создай класс Store, который содержит список товаров.
         //Добавь товары и выведи их список с ценами.
+
+        List<Product>list1=new ArrayList<>();
+        list1.add(new Product("Морковь",10));
+        list1.add(new Product("свекла",100));
+        list1.add(new Product("яблоко",100));
+        list1.add(new Product("слива",107));
+        list1.add(new Product("арбуз",1000));
+
+        Store store=new Store(list1);
+
+        for (Product product:store.getList()) {
+            System.out.println(product);
+        }
+
+
+
+
+
+
 
     }
 }
