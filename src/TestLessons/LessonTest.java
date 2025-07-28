@@ -1,95 +1,131 @@
 package TestLessons;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LessonTest {
-    public static void main(String[] args) {
+class Book {
+    String title;
+    String author;
+    int year;
 
+    public Book(String title, String author, int year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
 
-        //Фильтрация по начальной букве
-        //Дан список List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Anna");
-        //Отфильтровать имена, начинающиеся на букву 'A'.
-        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Anna");
+    @Override
+    public String toString() {
+        return title + " " + author + " " + year;
+    }
+}
+class Library {
+    List<Book>bookList;
 
-        System.out.println(names.stream().filter(x->x.startsWith("A")).toList());
+    public Library(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+}
+class Student{
+    String name;
+    int grade;
 
-        //
-        //Преобразование строк в верхний регистр
-        //Дан список List<String> fruits = Arrays.asList("apple", "banana", "cherry");
-        //Создать новый список, где все слова будут в верхнем регистре.
+    public Student(String name, int grade) {
+        this.name = name;
+        this.grade = grade;
+    }
 
-        List<String> fruits = Arrays.asList("apple", "banana", "cherry");
+    @Override
+    public String toString() {
+        return name + " " + grade;
+    }
+}
+class Classroom{
+    List<Student>studentList;
 
-        System.out.println(fruits.stream().map(x->x.toUpperCase()).toList());
+    public Classroom(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+}
+interface Playable{
+    void play();
 
-        //Обратная сортировка по алфавиту
-        //Отсортировать список names по убыванию алфавита.
-        System.out.println(names.stream().sorted(Comparator.reverseOrder()).toList());
+}
+class Guitar implements Playable{
 
-        //
-        //Фильтрация и преобразование чисел
-        //Дан список List<Integer> nums = Arrays.asList(3, 7, 2, 9, 4);
-        //Оставить только четные числа и умножить их на 10.
-
-        List<Integer> nums = Arrays.asList(3, 7, 2, 9, 4);
-
-        System.out.println(nums.stream().filter(x->x%2==0).map(x->x*10).toList());
-
-
-        //
-        //Объединение строк с разделителем
-        //Дан список List<String> words = Arrays.asList("Java", "is", "awesome");
-        //Объединить все слова в одну строку через пробел.
-
-        List<String> words = Arrays.asList("stream", "Java", "is", "awesome","Java", "is", "awesome");
-
-        System.out.println(words.stream().collect(Collectors.joining(" ")));
-
-
-        //
-        //Задания на терминальные методы
-        //Проверка отсутствия отрицательных чисел
-        //Дан список numbers. Использовать noneMatch, чтобы проверить, что отрицательных чисел нет.
-
-
-        List<Integer> numbers=new ArrayList<>();
-
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(10);
-        numbers.add(14);
-        numbers.add(134);
-
-        System.out.println(numbers.stream().noneMatch(x->x<0));
-
-        //
-        //Поиск максимальной длины слова
-        //Дан список слов. Найти длину самого длинного слова.
-
-        System.out.println(words.stream().max((x,y)->x.length()-y.length()).orElse(String.valueOf(0)));
-
-        //
-        //Подсчет суммы всех чисел
-        //Дан список чисел. Посчитать сумму всех элементов с помощью reduce.
-
-        System.out.println(numbers.stream().reduce(Integer::sum).orElse(0));
-
-
-
-        //
-        //Подсчет количества уникальных слов
-        //Дан список слов с возможными повторениями. Посчитать количество уникальных слов.
-        System.out.println(words.stream().distinct().count());
-
-        //
-        //Поиск строки, содержащей подстроку "stream"
-        //Использовать filter и findFirst, чтобы найти первую строку, содержащую слово "stream".
-
-
-        System.out.println(words.stream().filter(x->x.contains("stream")).findFirst().orElse(null));
-
-
+    @Override
+    public void play() {
+        System.out.println("Играть на гитаре");
 
     }
 }
+class Piano implements Playable{
+
+    @Override
+    public void play() {
+        System.out.println("Играть на пианино");
+
+    }
+}
+
+
+public class LessonTest {
+    public static void main(String[] args) {
+        //Задачи для практики
+        //Задача 1: Создай класс Book с полями title, author, year.
+        //Создай класс Library, который содержит список книг.
+        //Добавь несколько книг в библиотеку и выведи их список.
+
+        List<Book>bookList=new ArrayList<>();
+        bookList.add(new Book("Карлсон","Дима",2005));
+        bookList.add(new Book("мушкетер","коляДима",1905));
+        bookList.add(new Book("ляляля","николДима",1995));
+
+        for (Book book:bookList) {
+            System.out.println(book);
+        }
+
+        Library library=new Library(bookList);
+        for (Book library1:library.bookList) {
+            System.out.println(library1);
+        }
+
+        //
+        //Задача 2: Создай класс Student с полями name, grade.
+        //Создай класс Classroom, который содержит список студентов.
+        //Добавь студентов и выведи их имена и оценки.
+        List<Student> studentList=new ArrayList<>();
+        studentList.add(new Student("Дима",5));
+        studentList.add(new Student("Дима",5));
+        studentList.add(new Student("Дима",5));
+        studentList.add(new Student("Дима",5));
+        studentList.add(new Student("Дима",5));
+
+        Classroom classroom=new Classroom(studentList);
+        for (Student student:classroom.studentList) {
+            System.out.println(student);
+        }
+        //
+        //Задача 3: Создай интерфейс Playable с методом play().
+        //Реализуй классы Guitar и Piano, которые реализуют этот интерфейс.
+        //Создай объекты и вызови метод play() для каждого.
+
+        Guitar guitar=new Guitar();
+        guitar.play();
+        Piano piano=new Piano();
+        piano.play();
+
+
+
+        //
+        //Задача 4: Создай класс Employee с полями name, salary.
+        //Создай класс Company, который содержит список сотрудников.
+        //Добавь сотрудников и выведи их имена и зарплаты.
+        //
+        //Задача 5: Создай класс Product с полями name, price.
+        //Создай класс Store, который содержит список товаров.
+        //Добавь товары и выведи их список с ценами.
+
+    }
+}
+
