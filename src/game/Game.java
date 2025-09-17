@@ -9,7 +9,7 @@ public class Game {
     private static final char X = 'X';
     private static final char O = 'O';
 
-    private final char[] board = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
+    private final char[] board = new char[9];
     private char currentPlayer = X;
 
     public Game() {
@@ -149,15 +149,13 @@ public class Game {
 
     private boolean checkWin(char player) {
         int[][] winPositions = {
-                {0,1,2}, {3,4,5}, {6,7,8}, // строки
-                {0,3,6}, {1,4,7}, {2,5,8}, // столбцы
-                {0,4,8}, {2,4,6}           // диагонали
+                {0,1,2}, {3,4,5}, {6,7,8},
+                {0,3,6}, {1,4,7}, {2,5,8},
+                {0,4,8}, {2,4,6}
         };
 
         for (int[] positions : winPositions) {
-            if (board[positions[0]] == player &&
-                    board[positions[1]] == player &&
-                    board[positions[2]] == player) {
+            if (board[positions[0]] == player && board[positions[1]] == player && board[positions[2]] == player) {
                 return true;
             }
         }
