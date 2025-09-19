@@ -11,74 +11,106 @@ public class Game {
 
     private final char[] board = new char[9];
     private char currentPlayer = X;
+    private static final Scanner scanner = new Scanner(System.in);
 
     public Game() {
         for (int i = 0; i < 9; i++) {
-            board[i]=EMPTY;
+            board[i] = EMPTY;
         }
     }
 
-//    public void play2() {
-//        int min=1;
-//        int max=3;
-//        Scanner scanner2=new Scanner(System.in);
-//        Random random=new Random();
-//        random.nextInt()
-//        boolean gameEnded2 = false;
-//        while (!gameEnded2) {
-//            printBoard();
-//            System.out.println("Ход игрока " + currentPlayer + ". Введите строку и столбец (от 1 до 3):");
-//
-//            int x = 0, y = 0;
-//
-//            while (true) {
-//                if (scanner2.hasNextInt()) {
-//                    x = scanner2.nextInt() - 1;
-//                } else {
-//                    System.out.println("Введите число от 1 до 3!");
-//                    scanner2.next();
-//                    continue;
-//                }
-//                if (scanner2.hasNextInt()) {
-//                    y = scanner2.nextInt() - 1;
-//                } else {
-//                    System.out.println("Введите число от 1 до 3!");
-//                    scanner2.next();
-//                    continue;
-//                }
-//
-//                if (x < 0 || x > 2 || y < 0 || y > 2) {
-//                    System.out.println("Значения должны быть от 1 до 3. Попробуйте еще раз.");
-//                } else if (board[x][y] != EMPTY) {
-//                    System.out.println("Клетка уже занята. Выберите другую.");
-//                } else {
-//                    break;
-//                }
-//            }
-//
-//            board[x][y] = currentPlayer;
-//
-//            if (checkWin(currentPlayer)) {
-//                printBoard();
-//                System.out.println("Игрок " + currentPlayer + " выиграл!");
-//                gameEnded2 = true;
-//            } else if (isBoardFull()) {
-//                printBoard();
-//                System.out.println("Ничья!");
-//                gameEnded2 = true;
-//            } else if (currentPlayer == X) {
-//                currentPlayer = O;
-//            } else {
-//                currentPlayer = X;
-//
-//            }
-//        }
-//        scanner2.close();
-//    }
-//
+    public void startGame() {
+        while (true) {
+            System.out.println("Игра Крестики-Нолики");
+            System.out.println("Выберите уровень");
+            System.out.println("1--> Игра с человеком");
+            System.out.println("2--> Игра с компьютером");
+            System.out.println("3--> Игра с умным компьютером");
+            System.out.println("4--> Выход");
+
+            int num = scanner.nextInt();
+            switch (num) {
+                case 1:
+                    play();
+                    break;
+                case 2:
+                    try {
+                        play2();
+                    } catch (InterruptedException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 3:
+                    //game.play3();
+                    return;
+                case 4:
+                    System.out.println("Выход!");
+                    return;
+                default:
+                    System.out.println("Введите корректное значение !");
+            }
+        }
+    }
+
+    public void play2() throws InterruptedException {
+        Random random = new Random();
+        boolean gameEnded2 = false;
+        while (!gameEnded2) {
+            printBoard();
+            System.out.println("Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
+
+            int pos = -1;
+            if (currentPlayer == X) {
+                while (true) {
+                    if (scanner.hasNextInt()) {
+                        pos = scanner.nextInt() - 1;
+                    } else {
+                        System.out.println("Введите число от 1 до 9!");
+                        scanner.next();
+                        continue;
+                    }
+
+                    if (pos < 0 || pos > 8) {
+                        System.out.println("Значения должны быть от 1 до 9. Попробуйте еще раз.");
+                    } else if (board[pos] != (EMPTY)) {
+                        System.out.println("Клетка уже занята. Выберите другую.");
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            if (currentPlayer != X) {
+                Thread.sleep(3000);
+                do {
+                    pos = random.nextInt(9);
+                }
+                while (board[pos] != EMPTY);
+                System.out.println("Компьютер выбрал клетку " + (pos + 1));
+
+            }
+
+            board[pos] = currentPlayer;
+
+            if (checkWin(currentPlayer)) {
+                printBoard();
+                System.out.println("Игрок " + currentPlayer + " выиграл!");
+                gameEnded2 = true;
+            } else if (isBoardFull()) {
+                printBoard();
+                System.out.println("Ничья!");
+                gameEnded2 = true;
+            } else if (currentPlayer == X) {
+                currentPlayer = O;
+            } else {
+                currentPlayer = X;
+
+            }
+        }
+    }
+
 
     public void play() {
-        Scanner scanner = new Scanner(System.in);
         boolean gameEnded = false;
 
         while (!gameEnded) {
@@ -95,17 +127,10 @@ public class Game {
                     scanner.next();
                     continue;
                 }
-//                if (scanner.hasNextInt()) {
-//                    y = scanner.nextInt() - 1;
-//                } else {
-//                    System.out.println("Введите число от 1 до 3!");
-//                    scanner.next();
-//                    continue;
-//                }
 
-                if (pos<0||pos>8) {
+                if (pos < 0 || pos > 8) {
                     System.out.println("Значения должны быть от 1 до 9. Попробуйте еще раз.");
-                } else if (board[pos]!=(EMPTY)) {
+                } else if (board[pos] != (EMPTY)) {
                     System.out.println("Клетка уже занята. Выберите другую.");
                 } else {
                     break;
@@ -129,7 +154,6 @@ public class Game {
 
             }
         }
-        scanner.close();
     }
 
     private void printBoard() {
@@ -137,7 +161,7 @@ public class Game {
         for (int i = 0; i < 3; i++) {
             System.out.print((i + 1) + " ");
             for (int j = 0; j < 3; j++) {
-                int index=i*3+j;
+                int index = i * 3 + j;
                 System.out.print(board[index]);
                 if (j < 2) System.out.print("|");
             }
@@ -149,9 +173,9 @@ public class Game {
 
     private boolean checkWin(char player) {
         int[][] winPositions = {
-                {0,1,2}, {3,4,5}, {6,7,8},
-                {0,3,6}, {1,4,7}, {2,5,8},
-                {0,4,8}, {2,4,6}
+                {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+                {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+                {0, 4, 8}, {2, 4, 6}
         };
 
         for (int[] positions : winPositions) {
@@ -164,14 +188,22 @@ public class Game {
 
     private boolean isBoardFull() {
         for (int i = 0; i < 9; i++) {
-                if (board[i] == EMPTY) return false;
-            }
+            if (board[i] == EMPTY) return false;
+        }
         return true;
     }
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.play();
+        try{
+            game.startGame();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+
     }
 }
 
