@@ -28,27 +28,40 @@ public class Game {
             System.out.println("3--> Игра с умным компьютером");
             System.out.println("4--> Выход");
 
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("Введите корректное числовое значение!");
+                scanner.next();
+                continue;
+            }
+
             int num = scanner.nextInt();
             switch (num) {
                 case 1:
                     play();
-                    break;
+//                    if (checkWin(currentPlayer)) {
+//                             printBoard();
+//                             System.out.println("Игрок " + currentPlayer + " выиграл!");
+//                             return;
+//                         }
+                    return;
                 case 2:
                     try {
                         play2();
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }
-                    break;
+                   return;
                 case 3:
                     //game.play3();
-                    return;
+                   break;
                 case 4:
                     System.out.println("Выход!");
                     return;
                 default:
                     System.out.println("Введите корректное значение !");
             }
+            //return;
         }
     }
 
@@ -142,7 +155,9 @@ public class Game {
             if (checkWin(currentPlayer)) {
                 printBoard();
                 System.out.println("Игрок " + currentPlayer + " выиграл!");
-                gameEnded = true;
+               // gameEnded = true;
+                return;
+
             } else if (isBoardFull()) {
                 printBoard();
                 System.out.println("Ничья!");
