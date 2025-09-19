@@ -5,6 +5,17 @@ import java.util.Scanner;
 
 
 public class Game {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
+
     private static final char EMPTY = ' ';
     private static final char X = 'X';
     private static final char O = 'O';
@@ -38,21 +49,19 @@ public class Game {
             int num = scanner.nextInt();
             switch (num) {
                 case 1:
+                    resetGame();
                     play();
-//                    if (checkWin(currentPlayer)) {
-//                             printBoard();
-//                             System.out.println("Игрок " + currentPlayer + " выиграл!");
-//                             return;
-//                         }
-                    return;
+                    break;
                 case 2:
                     try {
+                        resetGame();
                         play2();
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }
-                   return;
+                   break;
                 case 3:
+                    resetGame();
                     //game.play3();
                    break;
                 case 4:
@@ -61,7 +70,6 @@ public class Game {
                 default:
                     System.out.println("Введите корректное значение !");
             }
-            //return;
         }
     }
 
@@ -107,7 +115,7 @@ public class Game {
 
             if (checkWin(currentPlayer)) {
                 printBoard();
-                System.out.println("Игрок " + currentPlayer + " выиграл!");
+                System.out.println( ANSI_BLUE + "Игрок " + currentPlayer + " выиграл!" + ANSI_RESET);
                 gameEnded2 = true;
             } else if (isBoardFull()) {
                 printBoard();
@@ -122,13 +130,19 @@ public class Game {
         }
     }
 
+    public void resetGame() {
+        for (int i = 0; i < 9; i++) {
+            board[i]=EMPTY;
+        }
+    }
+
 
     public void play() {
         boolean gameEnded = false;
 
         while (!gameEnded) {
             printBoard();
-            System.out.println("Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
+            System.out.println( "Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
 
             int pos = -1;
 
@@ -154,9 +168,8 @@ public class Game {
 
             if (checkWin(currentPlayer)) {
                 printBoard();
-                System.out.println("Игрок " + currentPlayer + " выиграл!");
-               // gameEnded = true;
-                return;
+                System.out.println(ANSI_BLUE + "Игрок " + currentPlayer + " выиграл!" + ANSI_RESET);
+                gameEnded = true;
 
             } else if (isBoardFull()) {
                 printBoard();
