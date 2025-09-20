@@ -59,11 +59,15 @@ public class Game {
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }
-                   break;
+                    break;
                 case 3:
                     resetGame();
-                    //game.play3();
-                   break;
+                    try {
+                        play3();
+                    } catch (InterruptedException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
                 case 4:
                     System.out.println("Выход!");
                     return;
@@ -71,6 +75,66 @@ public class Game {
                     System.out.println("Введите корректное значение !");
             }
         }
+    }
+
+    public void play3() throws InterruptedException {
+        Random random = new Random();
+        boolean gameEnded3 = false;
+
+        while (!gameEnded3) {
+            printBoard();
+            System.out.println("Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
+
+            int pos = -1;
+            if (currentPlayer == X) {
+                while (true) {
+                    if (scanner.hasNextInt()) {
+                        pos = scanner.nextInt() - 1;
+                    } else {
+                        System.out.println("Введите число от 1 до 9!");
+                        scanner.next();
+                        continue;
+                    }
+
+                    if (pos < 0 || pos > 8) {
+                        System.out.println("Значения должны быть от 1 до 9. Попробуйте еще раз.");
+                    } else if (board[pos] != (EMPTY)) {
+                        System.out.println("Клетка уже занята. Выберите другую.");
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            if (currentPlayer != X) {
+                Thread.sleep(3000);
+                do {
+                    pos = random.nextInt(9);
+                }
+                while (board[pos] != EMPTY);
+                System.out.println("Компьютер выбрал клетку " + (pos + 1));
+
+            }
+
+            board[pos] = currentPlayer;
+
+            if (checkWin(currentPlayer)) {
+                printBoard();
+                System.out.println(ANSI_BLUE + "Игрок " + currentPlayer + " выиграл!" + ANSI_RESET);
+                gameEnded3 = true;
+            } else if (isBoardFull()) {
+                printBoard();
+                System.out.println("Ничья!");
+                gameEnded3 = true;
+            } else if (currentPlayer == X) {
+                currentPlayer = O;
+            } else {
+                currentPlayer = X;
+
+            }
+        }
+
+
     }
 
     public void play2() throws InterruptedException {
@@ -115,7 +179,7 @@ public class Game {
 
             if (checkWin(currentPlayer)) {
                 printBoard();
-                System.out.println( ANSI_BLUE + "Игрок " + currentPlayer + " выиграл!" + ANSI_RESET);
+                System.out.println(ANSI_BLUE + "Игрок " + currentPlayer + " выиграл!" + ANSI_RESET);
                 gameEnded2 = true;
             } else if (isBoardFull()) {
                 printBoard();
@@ -132,7 +196,7 @@ public class Game {
 
     public void resetGame() {
         for (int i = 0; i < 9; i++) {
-            board[i]=EMPTY;
+            board[i] = EMPTY;
         }
     }
 
@@ -142,7 +206,7 @@ public class Game {
 
         while (!gameEnded) {
             printBoard();
-            System.out.println( "Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
+            System.out.println("Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
 
             int pos = -1;
 
@@ -223,13 +287,11 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
-        try{
+        try {
             game.startGame();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
 
 
     }
