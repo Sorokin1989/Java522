@@ -155,20 +155,24 @@ public class Main2 {
         //Задача: Напишите игру, где пользователь выбирает «камень», «ножницы» или «бумага», а программа случайным образом выбирает свой вариант и объявляет победителя.
         Random random = new Random();
 
-        System.out.println("Введите число\n" +
-                "1--> Камень\n" +
-                "2--> Ножницы\n" +
-                "3--> Бумага");
+
 
         while (true) {
+            System.out.println("Введите число\n" +
+                    "1--> Камень\n" +
+                    "2--> Ножницы\n" +
+                    "3--> Бумага\n" +
+                    "0--> Выход");
 
-
-            int num = random.nextInt(3);
+            int num = random.nextInt(3)+1;
             int word = scanner.nextInt();
 
 
 
             switch (word) {
+                case 0:
+                    System.out.println("Выход");
+                    return;
                 case 1:
                     System.out.println("Камень");
                     try {
@@ -180,58 +184,70 @@ public class Main2 {
 
                         System.out.println("Ножницы");
                         System.out.println("Ты выиграл!");
-                        return;
+                      break;
                     }
                     if (num == 3) {
                         System.out.println("Бумага");
                         System.out.println("Ты проиграл!");
-                        return;
+                       break;
                     }
                     if (num == 1) {
                         System.out.println("Камень");
                         System.out.println("Ничья!");
-                        return;
+                       break;
                     }
                     break;
                 case 2:
                     System.out.println("Ножницы");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        System.out.println(e.getMessage());
+                    }
                     if (num == 2) {
                         System.out.println("Ножницы");
                         System.out.println("Ничья");
-                        return;
+                      break;
                     }
                     if (num == 3) {
                         System.out.println("Бумага");
                         System.out.println("Ты выиграл!");
-                        return;
+                      break;
                     }
                     if (num == 1) {
                         System.out.println("Камень");
                         System.out.println("Ты проиграл");
-                        return;
+                       break;
                     }
                     break;
                 case 3:
                     System.out.println("Бумага");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        System.out.println(e.getMessage());
+                    }
                     if (num == 2) {
                         System.out.println("Ножницы");
                         System.out.println("Ты проиграл");
-                        return;
+                      break;
                     }
                     if (num == 3) {
                         System.out.println("Бумага");
                         System.out.println("Ничья");
-                        return;
+                      break;
                     }
                     if (num == 1) {
                         System.out.println("Камень");
                         System.out.println("Ты выиграл");
-                        return;
+                      break;
                     }
                     break;
+                default:
+                    System.out.println("Введите корректное значение!");
             }
-        }
 
+        }
 
     }
 }
