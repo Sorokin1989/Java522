@@ -1,8 +1,3 @@
-import com.sun.jdi.connect.Transport;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main2 {
@@ -12,7 +7,7 @@ public class Main2 {
         //Описание:
         //Напишите программу, которая спрашивает имя пользователя и выводит приветствие, например:
         //Привет, Алексей!
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 //        System.out.println("Введите имя: ");
 //        String name=scanner.nextLine();
 //
@@ -30,7 +25,6 @@ public class Main2 {
 //
 //        int sum=a+b;
 //        System.out.println("Сумма " + sum);
-
 
 
         //Задача 3. Проверка четности числа
@@ -64,12 +58,11 @@ public class Main2 {
         //Задача 5. Таблица умножения
         //Описание:
         //Запросите число и выведите таблицу умножения на это число от 1 до 10.
-        System.out.println("Введите число: ");
-        int num= scanner.nextInt();;
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(i + " * " + num + " = " + i*num);
-
-        }
+//        System.out.println("Введите число: ");
+//        int num= scanner.nextInt();;
+//        for (int i = 1; i <= 10; i++) {
+//            System.out.println(i + " * " + num + " = " + i*num);
+//        }
         //
         //Задача 6. Подсчет гласных в строке
         //Описание:
@@ -87,6 +80,13 @@ public class Main2 {
         //4. Определить больший из двух чисел
         //Задача: Введите два числа, программа должна вывести большее из них.
         //
+//        System.out.println("Введите 2 числа: ");
+//        int num=scanner.nextInt();
+//        int num2=scanner.nextInt();
+//        if (num>num2) System.out.println(num);
+//        else System.out.println(num2);
+
+
         //5. Посчитать факториал числа
         //Задача: Пользователь вводит число N, программа должна посчитать и вывести факториал этого числа (например, 5! = 5×4×3×2×1).
         //
@@ -95,5 +95,63 @@ public class Main2 {
         //
         //7. Игровая угадайка
         //Задача: Загадывается число от 1 до 10 (можно выбрать случайное число). Пользователь вводит свою догадку. Программа сообщает, угадал он или нет.
+
+
+        //1. Обратный порядок слова
+        //Задача: Пользователь вводит слово, программа выводит его наоборот.
+//        String word = scanner.nextLine();
+//        char[] w = word.toCharArray();
+//        for (int i = w.length - 1; i >= 0; i--) {
+//
+//            System.out.print(w[i]);
+//        }
+        //
+        //Пример: Ввод: программа → Вывод: аммаргорп
+        //
+        //2. Подсчет гласных и согласных
+        //Задача: Введите строку, программа должна подсчитать и вывести количество гласных и согласных букв.
+        String wordNew = scanner.nextLine().toLowerCase();
+        char[] letters = wordNew.toCharArray();
+        char[] glass = {'a', 'e', 'i', 'o', 'u', 'y'};
+        char[] neglass = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p',
+                'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+        int countGlass = 0;
+        int countNeglass = 0;
+
+
+        for (int i = 0; i < letters.length; i++) {
+            for (int j = 0; j < glass.length; j++) {
+                if (letters[i] == glass[j]) {
+                    countGlass++;
+                }
+            }
+            for (int k = 0; k < neglass.length; k++) {
+                if (letters[i] == neglass[k]) {
+                    countNeglass++;
+                }
+            }
+
+
+        }
+        System.out.println("Гласные " + countGlass);
+        System.out.println("Согласные " + countNeglass);
+
+
+        //
+        //3. Таблица умножения
+        //Задача: Выведите таблицу умножения на число, введённое пользователем (от 1 до 10).
+        //
+        //4. Проверка палиндрома
+        //Задача: Пользователь вводит строку; программа проверяет, является ли она палиндромом (читается одинаково слева направо и справа налево).
+        //
+        //5. Сортировка массива
+        //Задача: Пользователь вводит несколько чисел (например, 5 чисел). Отсортируйте эти числа по возрастанию и выведите отсортированный массив.
+        //
+        //6. Найти наибольший общий делитель (НОД)
+        //Задача: Введите два числа, найдите и выведите их НОД.
+        //
+        //7. Игра "Камень, ножницы, бумага"
+        //Задача: Напишите игру, где пользователь выбирает «камень», «ножницы» или «бумага», а программа случайным образом выбирает свой вариант и объявляет победителя.
+
     }
 }
