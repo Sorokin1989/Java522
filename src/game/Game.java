@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -61,8 +63,9 @@ public class Game {
                     }
                     break;
                 case 3:
-                    resetGame();
+
                     try {
+                        resetGame();
                         play3();
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
@@ -78,15 +81,12 @@ public class Game {
     }
 
     public void play3() throws InterruptedException {
-        Random random = new Random();
         boolean gameEnded3 = false;
-
         while (!gameEnded3) {
             printBoard();
-            System.out.println("Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
-
             int pos = -1;
             if (currentPlayer == X) {
+                System.out.println("Ход игрока " + currentPlayer + ". Введите число от 1 до 9");
                 while (true) {
                     if (scanner.hasNextInt()) {
                         pos = scanner.nextInt() - 1;
@@ -100,43 +100,45 @@ public class Game {
                         System.out.println("Значения должны быть от 1 до 9. Попробуйте еще раз.");
                     } else if (board[pos] != (EMPTY)) {
                         System.out.println("Клетка уже занята. Выберите другую.");
-                    } else {
+                    } else
                         break;
-                    }
                 }
-            }
 
-            if (currentPlayer != X) {
-                Thread.sleep(3000);
-                do {
-                    pos = random.nextInt(9);
-                }
-                while (board[pos] != EMPTY);
-                System.out.println("Компьютер выбрал клетку " + (pos + 1));
-
-            }
-
-            board[pos] = currentPlayer;
-
-            if (checkWin(currentPlayer)) {
-                printBoard();
-                System.out.println(ANSI_BLUE + "Игрок " + currentPlayer + " выиграл!" + ANSI_RESET);
-                gameEnded3 = true;
-            } else if (isBoardFull()) {
-                printBoard();
-                System.out.println("Ничья!");
-                gameEnded3 = true;
-            } else if (currentPlayer == X) {
-                currentPlayer = O;
             } else {
-                currentPlayer = X;
+                System.out.println("Ход компьютера (O):");
 
+                pos = canWinOrBlock(O);
+                if (pos == -1) {
+                    Thread.sleep(3000);
+                    pos = canWinOrBlock(X);
+                }
+                if (pos == -1) {
+                    // Иначе выбираем рандомную свободную клетку
+                    List<Integer> freeCells = new ArrayList<>();
+                    for (int i = 0; i < 9; i++) {
+                        if (board[i] == EMPTY) freeCells.add(i);
+                }
+                pos = freeCells.get(new Random().nextInt(freeCells.size()));
             }
+            System.out.println("Компьютер выбрал клетку " + (pos + 1));
         }
 
+        board[pos] = currentPlayer;
 
+        if (checkWin(currentPlayer)) {
+            printBoard();
+            if (currentPlayer == X) System.out.println("Вы выиграли!");
+            else System.out.println("Компьютер выиграл!");
+            gameEnded3 = true;
+        } else if (isBoardFull()) {
+            printBoard();
+            System.out.println("Ничья!");
+            gameEnded3 = true;
+        } else {
+            currentPlayer = (currentPlayer == X) ? O : X;
+        }
     }
-
+}
     public void play2() throws InterruptedException {
         Random random = new Random();
         boolean gameEnded2 = false;
@@ -276,6 +278,25 @@ public class Game {
             }
         }
         return false;
+    }
+
+    private int canWinOrBlock(char player) {
+        for (int i = 0; i < 9; i++) { // Проходим по всем 9 ячейкам доски
+            if (board[i] == EMPTY) { // Если ячейка пустая (т.е. туда можно сделать ход)
+                board[i] = player; // Пробуем в неё поставить символ игрока
+
+                if (checkWin(player)) {
+                    // Проверяем: если после такого хода игрок выигрывает,
+                    // значит, это выигрышный ход или ход, чтобы блокировать соперника
+
+                    board[i] = EMPTY; // Отменяем ход — возвращаем доску в исходное состояние
+                    return i; // Возвращаем индекс клетки, куда нужно сходить
+                }
+
+                board[i] = EMPTY; // Если выигрыш не наступил, отменяем ход и пробуем следующую клетку
+            }
+        }
+        return -1; // Если ни один ход не приводит к выигрышу игрока — возвращаем -1
     }
 
     private boolean isBoardFull() {
