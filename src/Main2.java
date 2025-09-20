@@ -2,6 +2,7 @@ import com.sun.jdi.connect.Transport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main2 {
@@ -12,10 +13,10 @@ public class Main2 {
         //Напишите программу, которая спрашивает имя пользователя и выводит приветствие, например:
         //Привет, Алексей!
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Введите имя: ");
-        String name=scanner.nextLine();
-
-        System.out.println("Привет, " + name);
+//        System.out.println("Введите имя: ");
+//        String name=scanner.nextLine();
+//
+//        System.out.println("Привет, " + name);
 
 
         //
@@ -23,17 +24,52 @@ public class Main2 {
         //Описание:
         //Попросите пользователя ввести два числа, затем выведите их сумму.
         //
+//        System.out.println("Введите 2 числа: ");
+//        int a= scanner.nextInt();
+//        int b= scanner.nextInt();;
+//
+//        int sum=a+b;
+//        System.out.println("Сумма " + sum);
+
+
+
         //Задача 3. Проверка четности числа
         //Описание:
         //Попросите пользователя ввести число. Программа должна вывести, является ли число четным или нечетным.
         //
+//        System.out.println("Введите число: ");
+//        int num=scanner.nextInt();
+//
+//        if (num%2==0) {
+//            System.out.println("Число четное");
+//        } else System.out.println("Число нечетное");
+
         //Задача 4. Угадай число
         //Описание:
         //Программа "загадывает" число от 1 до 10 (например, случайным образом), а пользователь пытается угадать. Программа говорит, угадал или нет.
         //
+//        int min=1;
+//        int max=10;
+//        Random random=new Random();
+//        int num= random.nextInt(max-min+1)+min;
+//        System.out.println("Угадайте число:");
+//
+//while (true) {
+//    int number= scanner.nextInt();
+//    if (num == number) {
+//        System.out.println("Вы угадали число: ");
+//        return;
+//    } else System.out.println("Число неверное, попробуйте еще раз");
+//}
         //Задача 5. Таблица умножения
         //Описание:
         //Запросите число и выведите таблицу умножения на это число от 1 до 10.
+        System.out.println("Введите число: ");
+        int num= scanner.nextInt();;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i + " * " + num + " = " + i*num);
+
+        }
         //
         //Задача 6. Подсчет гласных в строке
         //Описание:
