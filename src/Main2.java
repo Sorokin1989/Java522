@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main2 {
@@ -110,31 +111,31 @@ public class Main2 {
         //
         //2. Подсчет гласных и согласных
         //Задача: Введите строку, программа должна подсчитать и вывести количество гласных и согласных букв.
-        String wordNew = scanner.nextLine().toLowerCase();
-        char[] letters = wordNew.toCharArray();
-        char[] glass = {'a', 'e', 'i', 'o', 'u', 'y'};
-        char[] neglass = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p',
-                'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
-        int countGlass = 0;
-        int countNeglass = 0;
-
-
-        for (int i = 0; i < letters.length; i++) {
-            for (int j = 0; j < glass.length; j++) {
-                if (letters[i] == glass[j]) {
-                    countGlass++;
-                }
-            }
-            for (int k = 0; k < neglass.length; k++) {
-                if (letters[i] == neglass[k]) {
-                    countNeglass++;
-                }
-            }
-
-
-        }
-        System.out.println("Гласные " + countGlass);
-        System.out.println("Согласные " + countNeglass);
+//        String wordNew = scanner.nextLine().toLowerCase();
+//        char[] letters = wordNew.toCharArray();
+//        char[] glass = {'a', 'e', 'i', 'o', 'u', 'y'};
+//        char[] neglass = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p',
+//                'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+//        int countGlass = 0;
+//        int countNeglass = 0;
+//
+//
+//        for (int i = 0; i < letters.length; i++) {
+//            for (int j = 0; j < glass.length; j++) {
+//                if (letters[i] == glass[j]) {
+//                    countGlass++;
+//                }
+//            }
+//            for (int k = 0; k < neglass.length; k++) {
+//                if (letters[i] == neglass[k]) {
+//                    countNeglass++;
+//                }
+//            }
+//
+//
+//        }
+//        System.out.println("Гласные " + countGlass);
+//        System.out.println("Согласные " + countNeglass);
 
 
         //
@@ -152,6 +153,85 @@ public class Main2 {
         //
         //7. Игра "Камень, ножницы, бумага"
         //Задача: Напишите игру, где пользователь выбирает «камень», «ножницы» или «бумага», а программа случайным образом выбирает свой вариант и объявляет победителя.
+        Random random = new Random();
+
+        System.out.println("Введите число\n" +
+                "1--> Камень\n" +
+                "2--> Ножницы\n" +
+                "3--> Бумага");
+
+        while (true) {
+
+
+            int num = random.nextInt(3);
+            int word = scanner.nextInt();
+
+
+
+            switch (word) {
+                case 1:
+                    System.out.println("Камень");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    if (num == 2) {
+
+                        System.out.println("Ножницы");
+                        System.out.println("Ты выиграл!");
+                        return;
+                    }
+                    if (num == 3) {
+                        System.out.println("Бумага");
+                        System.out.println("Ты проиграл!");
+                        return;
+                    }
+                    if (num == 1) {
+                        System.out.println("Камень");
+                        System.out.println("Ничья!");
+                        return;
+                    }
+                    break;
+                case 2:
+                    System.out.println("Ножницы");
+                    if (num == 2) {
+                        System.out.println("Ножницы");
+                        System.out.println("Ничья");
+                        return;
+                    }
+                    if (num == 3) {
+                        System.out.println("Бумага");
+                        System.out.println("Ты выиграл!");
+                        return;
+                    }
+                    if (num == 1) {
+                        System.out.println("Камень");
+                        System.out.println("Ты проиграл");
+                        return;
+                    }
+                    break;
+                case 3:
+                    System.out.println("Бумага");
+                    if (num == 2) {
+                        System.out.println("Ножницы");
+                        System.out.println("Ты проиграл");
+                        return;
+                    }
+                    if (num == 3) {
+                        System.out.println("Бумага");
+                        System.out.println("Ничья");
+                        return;
+                    }
+                    if (num == 1) {
+                        System.out.println("Камень");
+                        System.out.println("Ты выиграл");
+                        return;
+                    }
+                    break;
+            }
+        }
+
 
     }
 }
