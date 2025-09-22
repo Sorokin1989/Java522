@@ -285,16 +285,32 @@ public class Main2 {
         //Напишите программу, которая проверяет и выводит, делится ли число на 3,
         // на 5 или на оба числа без остатка.
         //
-        System.out.println("Введите число: ");
-        int num=scanner.nextInt();
-        if (num%3==0&&num%5==0) {
-            System.out.println("Число делится без остатка!");
-        }
-        else System.out.println("Число не делится без остатка!");
+//        System.out.println("Введите число: ");
+//        int num=scanner.nextInt();
+//        if (num%3==0&&num%5==0) {
+//            System.out.println("Число делится без остатка!");
+//        }
+//        else System.out.println("Число не делится без остатка!");
         //3. Поиск суммы положительных чисел в массиве
         //Задача:
         //Создайте массив из 15 чисел, заполните его случайными значениями (можете задать вручную).
         //Подсчитайте сумму всех положительных элементов массива.
+        Random random=new Random();
+        int[] arr =new int[15];
+        int min=-100;
+        int max=100;
+        int sum=0;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]= random.nextInt(max-min+1)+min;
+            System.out.print(arr[i] + " ");
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]>0) {
+                sum+=arr[i];
+            }
+        }
+        System.out.println();
+        System.out.println("Сумма " + sum);
         //
         //4. Поворот массива
         //Задача:
