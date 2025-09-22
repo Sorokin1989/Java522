@@ -295,22 +295,22 @@ public class Main2 {
         //Задача:
         //Создайте массив из 15 чисел, заполните его случайными значениями (можете задать вручную).
         //Подсчитайте сумму всех положительных элементов массива.
-        Random random=new Random();
-        int[] arr =new int[15];
-        int min=-100;
-        int max=100;
-        int sum=0;
-        for (int i = 0; i < arr.length; i++) {
-            arr[i]= random.nextInt(max-min+1)+min;
-            System.out.print(arr[i] + " ");
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]>0) {
-                sum+=arr[i];
-            }
-        }
-        System.out.println();
-        System.out.println("Сумма " + sum);
+//        Random random=new Random();
+//        int[] arr =new int[15];
+//        int min=-100;
+//        int max=100;
+//        int sum=0;
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i]= random.nextInt(max-min+1)+min;
+//            System.out.print(arr[i] + " ");
+//        }
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i]>0) {
+//                sum+=arr[i];
+//            }
+//        }
+//        System.out.println();
+//        System.out.println("Сумма " + sum);
         //
         //4. Поворот массива
         //Задача:
@@ -320,7 +320,26 @@ public class Main2 {
         //Задача:
         //Сгенерируйте случайное число от 1 до 50.
         //Пользователь вводит число, а программа говорит "меньше", "больше" или "угадал", и продолжается, пока пользователь не угадает число.
+        Random random = new Random();
+        int min = 1;
+        int max = 50;
 
+
+        int number = random.nextInt(max - min + 1) + min;
+
+        while (true) {
+            System.out.println("Введите число!");
+            int num = scanner.nextInt();
+            if (num > number) {
+                System.out.println("Меньше!");
+            } else if (num < number) {
+                System.out.println("Больше!");
+            } else {
+                System.out.println("Угадал!");
+                return;
+
+            }
+        }
 
     }
 }
