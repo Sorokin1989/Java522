@@ -153,101 +153,151 @@ public class Main2 {
         //
         //7. Игра "Камень, ножницы, бумага"
         //Задача: Напишите игру, где пользователь выбирает «камень», «ножницы» или «бумага», а программа случайным образом выбирает свой вариант и объявляет победителя.
-        Random random = new Random();
+//        Random random = new Random();
+//
+//
+//
+//        while (true) {
+//            System.out.println("Введите число\n" +
+//                    "1--> Камень\n" +
+//                    "2--> Ножницы\n" +
+//                    "3--> Бумага\n" +
+//                    "0--> Выход");
+//
+//            int num = random.nextInt(3)+1;
+//            int word = scanner.nextInt();
+//
+//
+//
+//            switch (word) {
+//                case 0:
+//                    System.out.println("Выход");
+//                    return;
+//                case 1:
+//                    System.out.println("Камень");
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        System.out.println(e.getMessage());
+//                    }
+//                    if (num == 2) {
+//
+//                        System.out.println("Ножницы");
+//                        System.out.println("Ты выиграл!");
+//                      break;
+//                    }
+//                    if (num == 3) {
+//                        System.out.println("Бумага");
+//                        System.out.println("Ты проиграл!");
+//                       break;
+//                    }
+//                    if (num == 1) {
+//                        System.out.println("Камень");
+//                        System.out.println("Ничья!");
+//                       break;
+//                    }
+//                    break;
+//                case 2:
+//                    System.out.println("Ножницы");
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        System.out.println(e.getMessage());
+//                    }
+//                    if (num == 2) {
+//                        System.out.println("Ножницы");
+//                        System.out.println("Ничья");
+//                      break;
+//                    }
+//                    if (num == 3) {
+//                        System.out.println("Бумага");
+//                        System.out.println("Ты выиграл!");
+//                      break;
+//                    }
+//                    if (num == 1) {
+//                        System.out.println("Камень");
+//                        System.out.println("Ты проиграл");
+//                       break;
+//                    }
+//                    break;
+//                case 3:
+//                    System.out.println("Бумага");
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        System.out.println(e.getMessage());
+//                    }
+//                    if (num == 2) {
+//                        System.out.println("Ножницы");
+//                        System.out.println("Ты проиграл");
+//                      break;
+//                    }
+//                    if (num == 3) {
+//                        System.out.println("Бумага");
+//                        System.out.println("Ничья");
+//                      break;
+//                    }
+//                    if (num == 1) {
+//                        System.out.println("Камень");
+//                        System.out.println("Ты выиграл");
+//                      break;
+//                    }
+//                    break;
+//                default:
+//                    System.out.println("Введите корректное значение!");
+//            }
+//
+//        }
+
+        //1. Нахождение минимального и максимального элементов в массиве
+        //Задача:
+        //Создайте массив из 10 случайных чисел. Напишите программу, которая находит и выводит
+        // минимальный и максимальный элемент этого массива.
+        //
+        Random random=new Random();
+        int [] arr=new int[10];
 
 
-
-        while (true) {
-            System.out.println("Введите число\n" +
-                    "1--> Камень\n" +
-                    "2--> Ножницы\n" +
-                    "3--> Бумага\n" +
-                    "0--> Выход");
-
-            int num = random.nextInt(3)+1;
-            int word = scanner.nextInt();
-
-
-
-            switch (word) {
-                case 0:
-                    System.out.println("Выход");
-                    return;
-                case 1:
-                    System.out.println("Камень");
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    if (num == 2) {
-
-                        System.out.println("Ножницы");
-                        System.out.println("Ты выиграл!");
-                      break;
-                    }
-                    if (num == 3) {
-                        System.out.println("Бумага");
-                        System.out.println("Ты проиграл!");
-                       break;
-                    }
-                    if (num == 1) {
-                        System.out.println("Камень");
-                        System.out.println("Ничья!");
-                       break;
-                    }
-                    break;
-                case 2:
-                    System.out.println("Ножницы");
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    if (num == 2) {
-                        System.out.println("Ножницы");
-                        System.out.println("Ничья");
-                      break;
-                    }
-                    if (num == 3) {
-                        System.out.println("Бумага");
-                        System.out.println("Ты выиграл!");
-                      break;
-                    }
-                    if (num == 1) {
-                        System.out.println("Камень");
-                        System.out.println("Ты проиграл");
-                       break;
-                    }
-                    break;
-                case 3:
-                    System.out.println("Бумага");
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    if (num == 2) {
-                        System.out.println("Ножницы");
-                        System.out.println("Ты проиграл");
-                      break;
-                    }
-                    if (num == 3) {
-                        System.out.println("Бумага");
-                        System.out.println("Ничья");
-                      break;
-                    }
-                    if (num == 1) {
-                        System.out.println("Камень");
-                        System.out.println("Ты выиграл");
-                      break;
-                    }
-                    break;
-                default:
-                    System.out.println("Введите корректное значение!");
-            }
-
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]= random.nextInt(10);
         }
+        int min=arr[0];
+        int max=arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]<min)
+                min=arr[i];
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]>max)
+                max=arr[i];
+        }
+        System.out.println();
+        System.out.println("Минимальное значение " + min);
+        System.out.println("Минимальное значение " + max);
+
+
+        //2. Проверка чисел на делимость
+        //Задача:
+        //Пользователь вводит число.
+        //Напишите программу, которая проверяет и выводит, делится ли число на 3, на 5 или на оба числа без остатка.
+        //
+        //3. Поиск суммы положительных чисел в массиве
+        //Задача:
+        //Создайте массив из 15 чисел, заполните его случайными значениями (можете задать вручную).
+        //Подсчитайте сумму всех положительных элементов массива.
+        //
+        //4. Поворот массива
+        //Задача:
+        //Напишите программу, которая принимает массив из 8 элементов и "поворачивает" его на k позиций вправо (пример: при k=3, последний элемент становится 1-м, и так далее).
+        //
+        //5. Простая игра: угадай число
+        //Задача:
+        //Сгенерируйте случайное число от 1 до 50.
+        //Пользователь вводит число, а программа говорит "меньше", "больше" или "угадал", и продолжается, пока пользователь не угадает число.
+
 
     }
 }
