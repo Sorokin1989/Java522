@@ -323,23 +323,49 @@ public class Main2 {
         Random random = new Random();
         int min = 1;
         int max = 50;
+//
+//
+//        int number = random.nextInt(max - min + 1) + min;
+//
+//        while (true) {
+//            System.out.println("Введите число!");
+//            int num = scanner.nextInt();
+//            if (num > number) {
+//                System.out.println("Меньше!");
+//            } else if (num < number) {
+//                System.out.println("Больше!");
+//            } else {
+//                System.out.println("Угадал!");
+//                return;
+//
+//            }
+//        }
+//        2. Массив с уникальными элементами
+//        Задача:
+//        Создайте массив из 10 случайных чисел от 1 до 20.
+//        Обеспечьте, чтобы в массиве не было повторяющихся элементов. Выведите полученный массив.
+        //4. Шахматная доска
+        //Задача:
+        //Создайте двумерный массив размером 8х8.
+        //Заполните его так, чтобы элементы чередовались "B" (черный) и "W" (белый), наподобие шахматной доски.
+        //Выведите полученную доску.
 
 
-        int number = random.nextInt(max - min + 1) + min;
-
-        while (true) {
-            System.out.println("Введите число!");
-            int num = scanner.nextInt();
-            if (num > number) {
-                System.out.println("Меньше!");
-            } else if (num < number) {
-                System.out.println("Больше!");
-            } else {
-                System.out.println("Угадал!");
-                return;
-
+        char[][] arr = new char[8][8];
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println();
+            for (int j = 0; j < arr[i].length; j++) {
+                if ((i + j) % 2 == 0) {
+                    arr[i][j] = 'W';
+                }
+                if ((i + j) % 2 != 0) {
+                    arr[i][j] = 'B';
+                }
+                System.out.print(arr[i][j] + "   ");
             }
+
         }
+
 
     }
 }
