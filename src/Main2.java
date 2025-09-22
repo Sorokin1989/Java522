@@ -254,36 +254,43 @@ public class Main2 {
         //Создайте массив из 10 случайных чисел. Напишите программу, которая находит и выводит
         // минимальный и максимальный элемент этого массива.
         //
-        Random random=new Random();
-        int [] arr=new int[10];
-
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i]= random.nextInt(10);
-        }
-        int min=arr[0];
-        int max=arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]<min)
-                min=arr[i];
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]>max)
-                max=arr[i];
-        }
-        System.out.println();
-        System.out.println("Минимальное значение " + min);
-        System.out.println("Минимальное значение " + max);
+//        Random random=new Random();
+//        int [] arr=new int[10];
+//
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i]= random.nextInt(10);
+//        }
+//        int min=arr[0];
+//        int max=arr[0];
+//        for (int i = 0; i < arr.length; i++) {
+//            System.out.print(arr[i] + " ");
+//        }
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i]<min)
+//                min=arr[i];
+//        }
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i]>max)
+//                max=arr[i];
+//        }
+//        System.out.println();
+//        System.out.println("Минимальное значение " + min);
+//        System.out.println("Минимальное значение " + max);
 
 
         //2. Проверка чисел на делимость
         //Задача:
         //Пользователь вводит число.
-        //Напишите программу, которая проверяет и выводит, делится ли число на 3, на 5 или на оба числа без остатка.
+        //Напишите программу, которая проверяет и выводит, делится ли число на 3,
+        // на 5 или на оба числа без остатка.
         //
+        System.out.println("Введите число: ");
+        int num=scanner.nextInt();
+        if (num%3==0&&num%5==0) {
+            System.out.println("Число делится без остатка!");
+        }
+        else System.out.println("Число не делится без остатка!");
         //3. Поиск суммы положительных чисел в массиве
         //Задача:
         //Создайте массив из 15 чисел, заполните его случайными значениями (можете задать вручную).
