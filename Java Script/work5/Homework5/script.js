@@ -1,5 +1,9 @@
+
+
+
 let countBox=prompt('Welcome my game\nHow many boxes do you want? (min = 3, max = 999)');
 countBox=parseInt(countBox);
+
 let time=prompt('How much time do you need? (default 30 min)\n1 - 1 min\n2 - 2 min\n3 - 5 min\n4 - 10min\n5 - 20 min');
 time=parseInt(time);
 
@@ -7,7 +11,18 @@ let conteiner=document.querySelector('.conteiner');
 
 
 
-function addBox() {    
+
+
+
+function addBox() {
+     const DEFAULT_BOX_COUNT=10; 
+   let conteiner= document.querySelector('.conteiner');  
+if(countBox<=0||countBox==null||countBox==''||countBox==undefined||!countBox) {
+    countBox=DEFAULT_BOX_COUNT;
+}
+
+
+
 let box='';
 for (let i = 0; i < countBox; i++) {
     const r=Math.floor(Math.random()*256);
@@ -41,8 +56,8 @@ function driveBox() {
         box.style.left = Math.random() * maxX + 'px';
         // box.style.top = (Math.random() * 85) + navHeight + 'px';
          box.style.top = Math.random() * maxY  + 'px';
-        box.vx = (Math.random() - 0.5) * 2;
-        box.vy = (Math.random() - 0.5) * 2;
+        box.vx = (Math.random() - 0.5) * 100;
+        box.vy = (Math.random() - 0.5) * 100;
     });
     
     (function move() {
@@ -74,17 +89,45 @@ function driveBox() {
 
 
 function deleteBox() {
+       document.querySelectorAll('.box');
 document.querySelector('.conteiner').addEventListener('click',function(event){
     if(event.target.className=='box'){
         event.target.remove()
+      let boxes=document.querySelectorAll('.box');
+        if (boxes.length == 0) {
+           console.log('элементов нет');
+       }
     }
+
 })   
 }
 
 
+function startGame() {
+    // document.querySelector('.conteiner');
+   let boxes= document.querySelectorAll('.box');
+   
+  
+      addBox();
+        // boxes = document.querySelectorAll('.box');
+    
+    driveBox();
+    deleteBox();
+}
+// function checkBox() {
+//     let boxes = document.querySelectorAll('.box')
+//     if (boxes.length == 0) {
+//         console.log('элементов нет');
+//     } else {
+//         console.log('элементов:', boxes.length);
+//     }
+// }
 
 
+startGame();
+// addBox();
+// driveBox();
+// deleteBox();
+// checkBox();
 
-addBox();
-driveBox();
-deleteBox()
+
