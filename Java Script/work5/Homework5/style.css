@@ -6,6 +6,43 @@ body {
   height: 100px;
   width: 100%;
   background-color: rgb(13, 50, 201);
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 50px;
+  position: relative;
+}
+
+#timer {
+  font-size: 50px;
+  padding-right: 50px;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+#message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  z-index: 1;
+}
+
+#message2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  z-index: 1;
 }
 
 .conteiner {
@@ -13,6 +50,7 @@ body {
   width: 100%;
   position: relative;
 }
+
 .conteiner .box {
   height: 100px;
   width: 100px;
