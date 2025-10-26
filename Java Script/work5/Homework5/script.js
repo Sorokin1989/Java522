@@ -4,10 +4,10 @@ countBox = parseInt(countBox);
 let timeNumber = prompt('How much time do you need? (default 30 min)\n1 - 1 min\n2 - 2 min\n3 - 5 min\n4 - 10min\n5 - 20 min');
 timeNumber = parseInt(timeNumber);
 
- let level=prompt('Выберите уровень сложности(default: medium)\n1 - super Lite\n2 - Lite\n3 - Medium\n4 - Hard\n5 - super Hard');
-level=parseInt(level);
+let level = prompt('Выберите уровень сложности(default: medium)\n1 - super Lite\n2 - Lite\n3 - Medium\n4 - Hard\n5 - super Hard');
+level = parseInt(level);
 let conteiner = document.querySelector('.conteiner');
-let  gameActive = true;
+let gameActive = true;
 let boxes = [];
 let speed;
 let timer;
@@ -39,37 +39,37 @@ function addBox() {
 
 function driveBox() {
 
-  
 
 
-   boxes = document.querySelectorAll('.box');
+
+    boxes = document.querySelectorAll('.box');
     let conteiner = document.querySelector('.conteiner');
 
 
     switch (level) {
         case 1:
-            speed=2;
+            speed = 2;
             break;
 
         case 2:
-            speed=5;
+            speed = 5;
             break;
         case 3:
-            speed=8;
+            speed = 8;
             break;
         case 4:
-            speed=12;
+            speed = 12;
             break;
         case 5:
-            speed=17;
-            break        
+            speed = 17;
+            break
         default:
-            speed=8;
+            speed = 8;
             break;
     }
-//   console.log('=== driveBox вызван ===');
-//     console.log('level:', level);
-//     console.log('speed до:', speed);
+    //   console.log('=== driveBox вызван ===');
+    //     console.log('level:', level);
+    //     console.log('speed до:', speed);
 
 
     boxes.forEach(box => {
@@ -86,29 +86,29 @@ function driveBox() {
 
     (function move() {
 
-      if (gameActive) {
-           boxes = document.querySelectorAll('.box');
-        boxes.forEach(box => {
-            let x = parseFloat(box.style.left);
-            let y = parseFloat(box.style.top);
+        if (gameActive) {
+            boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                let x = parseFloat(box.style.left);
+                let y = parseFloat(box.style.top);
 
-            x += box.vx;
-            y += box.vy;
+                x += box.vx;
+                y += box.vy;
 
-            const maxX = conteiner.offsetWidth - box.offsetWidth;
-            const maxY = conteiner.offsetHeight - box.offsetHeight;
+                const maxX = conteiner.offsetWidth - box.offsetWidth;
+                const maxY = conteiner.offsetHeight - box.offsetHeight;
 
-            x = Math.max(0, Math.min(x, maxX));
-            y = Math.max(0, Math.min(y, maxY));
+                x = Math.max(0, Math.min(x, maxX));
+                y = Math.max(0, Math.min(y, maxY));
 
-            if (x <= 0 || x >= maxX) box.vx = -box.vx;
-            if (y <= 0 || y >= maxY) box.vy = -box.vy;
+                if (x <= 0 || x >= maxX) box.vx = -box.vx;
+                if (y <= 0 || y >= maxY) box.vy = -box.vy;
 
-            box.style.left = x + 'px';
-            box.style.top = y + 'px';
-        });
-        
-      }
+                box.style.left = x + 'px';
+                box.style.top = y + 'px';
+            });
+
+        }
         requestAnimationFrame(move);
     })();
 
@@ -144,10 +144,10 @@ function deleteBox() {
 
 
 function updateCounterBox() {
-     boxes=document.querySelectorAll('.box');
-    let count=document.querySelector('#count');
+    boxes = document.querySelectorAll('.box');
+    let count = document.querySelector('#count');
     if (count) {
-        count.textContent=boxes.length
+        count.textContent = boxes.length
     }
 }
 
@@ -176,46 +176,47 @@ function startTimer() {
             time = 2;
             break;
         case 3:
-            time=5;
+            time = 5;
             break;
         case 4:
-            time=10;
+            time = 10;
             break;
         case 5:
-            time=20;
-            break;    
-                
+            time = 20;
+            break;
 
 
-        default: time=30;
+
+        default:
+            time = 30;
             break;
     }
 
     let seconds = time * 60;
-        gameActive = true;
-         timer = setInterval(() => {
-            
-            if (gameActive) {
-                seconds--;
-                let min = Math.floor(seconds / 60);
-                let sec = seconds % 60;
-                document.querySelector('#timer').textContent = `Time: ${ min<10 ? '0': ''}${min}:${sec<10 ? '0' : ''}${sec}`;
-                
-                if (seconds <= 0) {
-                    clearInterval(timer);
-                    let message=document.querySelector('#message');
-                    message.style.display='block';
-                    message.textContent='Вы проиграли!';
-                    message.style.fontWeight='bold';
-                    gameActive=false;
-                    
-                }
+    gameActive = true;
+    timer = setInterval(() => {
+
+        if (gameActive) {
+            seconds--;
+            let min = Math.floor(seconds / 60);
+            let sec = seconds % 60;
+            document.querySelector('#timer').textContent = `Time: ${ min<10 ? '0': ''}${min}:${sec<10 ? '0' : ''}${sec}`;
+
+            if (seconds <= 0) {
+                clearInterval(timer);
+                let message = document.querySelector('#message');
+                message.style.display = 'block';
+                message.textContent = 'Вы проиграли!';
+                message.style.fontWeight = 'bold';
+                gameActive = false;
+
             }
-            
-            
-        }, 1000)
-        
-        updateCounterBox();
+        }
+
+
+    }, 1000)
+
+    updateCounterBox();
 }
 
 
