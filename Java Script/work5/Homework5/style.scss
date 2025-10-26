@@ -73,7 +73,7 @@ body{
     width: 100%;
     background-color: rgb(13, 50, 201);
     display: flex;
-    justify-content: right;
+    justify-content:space-between;
     align-items: center;
     font-size: 50px;
     position: relative;
@@ -81,10 +81,23 @@ body{
 
 #timer{
     font-size: 50px;
-    padding-right: 50px;
+    padding-right: 400px;
     color: white;
     z-index: 2;
     position: relative;
+}
+
+#counter{
+       font-size: 50px;
+    padding-left: 400px;
+    color: white;
+    z-index: 2;
+    position: relative; 
+}
+
+#count{
+     font-size: 50px; 
+      color: yellow;
 }
 
 #message{   //Вы проиграли
@@ -95,6 +108,7 @@ body{
     font-size: 40px;
     font-weight: bold;
     text-align: center;
+    color: chartreuse;
     margin: 0;
     z-index: 1;
 }

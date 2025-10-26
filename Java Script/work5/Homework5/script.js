@@ -4,12 +4,13 @@ countBox = parseInt(countBox);
 let timeNumber = prompt('How much time do you need? (default 30 min)\n1 - 1 min\n2 - 2 min\n3 - 5 min\n4 - 10min\n5 - 20 min');
 timeNumber = parseInt(timeNumber);
 
+ let level=prompt('Выберите уровень сложности(default: medium)\n1 - super Lite\n2 - Lite\n3 - Medium\n4 - Hard\n5 - super Hard');
+level=parseInt(level);
 let conteiner = document.querySelector('.conteiner');
 let  gameActive = true;
-
-
-
-
+let boxes = [];
+let speed;
+let timer;
 
 
 function addBox() {
@@ -37,34 +38,57 @@ function addBox() {
 
 
 function driveBox() {
-    let boxes = document.querySelectorAll('.box');
-    // let box=document.querySelector('.box');
+
+  
+
+
+   boxes = document.querySelectorAll('.box');
     let conteiner = document.querySelector('.conteiner');
-    // let nav=document.querySelector('.nav');
-    //   const navHeight = nav ? nav.offsetHeight : 0;
 
 
-    // const maxY=85;
-    // const maxX=92;
+    switch (level) {
+        case 1:
+            speed=2;
+            break;
+
+        case 2:
+            speed=5;
+            break;
+        case 3:
+            speed=8;
+            break;
+        case 4:
+            speed=12;
+            break;
+        case 5:
+            speed=17;
+            break        
+        default:
+            speed=8;
+            break;
+    }
+//   console.log('=== driveBox вызван ===');
+//     console.log('level:', level);
+//     console.log('speed до:', speed);
+
+
     boxes.forEach(box => {
         box.style.position = 'absolute';
         const maxX = conteiner.offsetWidth - box.offsetWidth;
         const maxY = conteiner.offsetHeight - box.offsetHeight;
 
         box.style.left = Math.random() * maxX + 'px';
-        // box.style.top = (Math.random() * 85) + navHeight + 'px';
         box.style.top = Math.random() * maxY + 'px';
-        box.vx = (Math.random() - 0.5) * 5;
-        box.vy = (Math.random() - 0.5) * 5;
+
+        box.vx = (Math.random() - 0.5) * speed;
+        box.vy = (Math.random() - 0.5) * speed;
     });
 
     (function move() {
 
       if (gameActive) {
-          
+           boxes = document.querySelectorAll('.box');
         boxes.forEach(box => {
-            // let x = parseFloat(box.style.left) + box.vx;
-            // let y = parseFloat(box.style.top) + box.vy;
             let x = parseFloat(box.style.left);
             let y = parseFloat(box.style.top);
 
@@ -87,18 +111,21 @@ function driveBox() {
       }
         requestAnimationFrame(move);
     })();
+
+
+    //  console.log('speed после:', speed);
 }
 
 
 
 
 function deleteBox() {
-    document.querySelectorAll('.box');
     let span = document.querySelector('#message2');
     document.querySelector('.conteiner').addEventListener('click', function (event) {
         if (event.target.className == 'box' && gameActive) {
             event.target.remove()
             let boxes = document.querySelectorAll('.box');
+            updateCounterBox();
 
             if (boxes.length > 0) {
                 span.style.display = 'none';
@@ -113,6 +140,15 @@ function deleteBox() {
         }
 
     })
+}
+
+
+function updateCounterBox() {
+     boxes=document.querySelectorAll('.box');
+    let count=document.querySelector('#count');
+    if (count) {
+        count.textContent=boxes.length
+    }
 }
 
 
@@ -157,30 +193,29 @@ function startTimer() {
 
     let seconds = time * 60;
         gameActive = true;
-    let timer = setInterval(() => {
-
-        if (gameActive) {
+         timer = setInterval(() => {
             
-            seconds--;
-            let min = Math.floor(seconds / 60);
-            let sec = seconds % 60;
-            document.querySelector('#timer').textContent = `${min<10 ? '0': ''}${min}:${sec<10 ? '0' : ''}${sec}`;
-    
-            if (seconds <= 0) {
-                clearInterval(timer);
-                let message=document.querySelector('#message');
-                message.style.display='block';
-                message.textContent='Время вышло! Вы проиграли!';
-                message.style.color='yellow';
-                message.style.fontWeight='bold';
-                gameActive=false;
-        
+            if (gameActive) {
+                seconds--;
+                let min = Math.floor(seconds / 60);
+                let sec = seconds % 60;
+                document.querySelector('#timer').textContent = `Time: ${ min<10 ? '0': ''}${min}:${sec<10 ? '0' : ''}${sec}`;
+                
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    let message=document.querySelector('#message');
+                    message.style.display='block';
+                    message.textContent='Вы проиграли!';
+                    message.style.fontWeight='bold';
+                    gameActive=false;
+                    
+                }
             }
-        }
-
-
-    }, 1000)
-
+            
+            
+        }, 1000)
+        
+        updateCounterBox();
 }
 
 
@@ -192,29 +227,12 @@ function startTimer() {
 
 
 function startGame() {
-    // let boxes= document.querySelectorAll('.box');
-    // document.querySelector('.conteiner');
     addBox();
     startTimer();
-    // boxes = document.querySelectorAll('.box');
-
     driveBox();
     deleteBox();
-
-
 }
-// function checkBox() {
-//     let boxes = document.querySelectorAll('.box')
-//     if (boxes.length == 0) {
-//         console.log('элементов нет');
-//     } else {
-//         console.log('элементов:', boxes.length);
-//     }
-// }
+
 
 
 startGame();
-// addBox();
-// driveBox();
-// deleteBox();
-// checkBox();
