@@ -1,7 +1,7 @@
-let countBox = prompt('Welcome my game\nHow many boxes do you want? (min = 3, max = 999)');
+let countBox = prompt('Добро пожаловать в игру!\nСколько коробок вы хотите?? (min = 3, max = 999)');
 countBox = parseInt(countBox);
 
-let timeNumber = prompt('How much time do you need? (default 30 min)\n1 - 1 min\n2 - 2 min\n3 - 5 min\n4 - 10min\n5 - 20 min');
+let timeNumber = prompt('Выберите количество минут: (default 30 min)\n1 - 1 min\n2 - 2 min\n3 - 5 min\n4 - 10min\n5 - 20 min');
 timeNumber = parseInt(timeNumber);
 
 let level = prompt('Выберите уровень сложности(default: medium)\n1 - super Lite\n2 - Lite\n3 - Medium\n4 - Hard\n5 - super Hard');
@@ -153,16 +153,10 @@ function updateCounterBox() {
 
 
 
-function stopTimerOnWin() {
-    gameActive = false; // Останавливаем игру
-    clearInterval(timer); // Останавливаем таймер
-}
-
-
-
-
-
-
+// function stopTimerOnWin() {
+//     gameActive = false; // Останавливаем игру
+//     clearInterval(timer); // Останавливаем таймер
+// }
 
 
 
