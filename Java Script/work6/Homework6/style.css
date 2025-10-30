@@ -1,0 +1,31 @@
+.list {
+  margin: 10px;
+  list-style-type: none;
+}
+
+.title {
+  margin-top: 20px;
+}
+
+button, .removeButton {
+  cursor: pointer;
+}
+
+.message2 {
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+.message {
+  cursor: pointer;
+}
+
+.removeButton {
+  margin-left: 10px;
+}
+
+.text-icon {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,12 @@
+.container {
+  background-color: rgb(198, 225, 19);
+}
+
+.list {
+  margin: 0px 50px;
+}
+
+.item {
+  background-color: yellow;
+  border: 5px solid orange;
+}/*# sourceMappingURL=style.css.map */
