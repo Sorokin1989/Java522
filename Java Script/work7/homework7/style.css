@@ -44,4 +44,9 @@
 .button-zoom {
   display: flex;
   justify-content: end;
+}
+
+.message3 {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */
