@@ -6,15 +6,32 @@ button:hover {
   background-color: chartreuse !important;
 }
 
-img {
-  width: 30%;
+.card {
+  margin: 50px;
+}
+.card .imgCard {
+  width: 50%;
   -o-object-fit: contain;
      object-fit: contain;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
 }
+.card .card-body {
+  width: 50%;
+}
 
-.card-body {
-  width: 70%;
+.cardPoster {
+  margin: 50px;
+}
+.cardPoster .imgPoster {
+  margin: 10px;
+  width: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: 100px;
+}
+.cardPoster .card-body-poster {
+  width: 50%;
+  margin: 100px;
 }/*# sourceMappingURL=style.css.map */
