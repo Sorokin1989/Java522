@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(206, 236, 236);
+}
+
 .form-text {
   width: 50%;
 }
@@ -8,6 +12,7 @@ button:hover {
 
 .card {
   margin: 50px;
+  background-color: rgb(244, 236, 227);
 }
 .card .imgCard {
   width: 50%;
@@ -22,16 +27,30 @@ button:hover {
 }
 
 .cardPoster {
+  background-color: rgb(244, 236, 227);
   margin: 50px;
 }
+.cardPoster .buttonClose {
+  background-color: rgb(172, 240, 240);
+}
 .cardPoster .imgPoster {
-  margin: 10px;
   width: 50%;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: 100px;
+  margin: 50px;
 }
 .cardPoster .card-body-poster {
   width: 50%;
-  margin: 100px;
+  margin: 50px;
+}
+
+.card-title {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+span {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }/*# sourceMappingURL=style.css.map */
