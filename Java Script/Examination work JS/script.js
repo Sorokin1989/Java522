@@ -126,25 +126,25 @@ console.log('кнопка нажата');
              <img src="${datail.Poster}"
                         class="card-img-top  imgPoster " alt="pic">
                         
-                    <div class="card-body-poster d-flex flex-column justify-content-between">
+                    <div class="card-body-poster d-flex justify-content-center">
                        
-                        <div class="content-text">
-                           <div class="d-flex align-items-center"> <p class="card-title">Title:</p>
-                            <span> название</span></div>
-                           <div class="d-flex  align-items-center mt-5"> <p class="card-title">Released:</p>
-                            <span> название</span></div>
-                            <div class="d-flex  align-items-center mt-5"> <p class="card-title">Genre:</p>
-                             <span> название</span></div>
-                           <div class="d-flex  align-items-center mt-5"> <p class="card-title">Country:</p>
-                            <span> название</span></div>
-                           <div class="d-flex  align-items-center mt-5"> <p class="card-title">Director:</p>
-                            <span> название</span></div>
-                           <div class="d-flex  align-items-center mt-5"> <p class="card-title">Writer:</p>
-                            <span> название</span></div>
-                           <div class="d-flex  align-items-center mt-5"> <p class="card-title">Actors:</p>
-                            <span> название</span></div>
-                           <div class="d-flex  align-items-center mt-5"> <p class="card-title">Awards:</p>
-                            <span> название</span></div>
+                        <div class="content-text  mt-5 d-flex flex-column  ">
+                           <div class="d-flex  flex-row justify-content-start "> <p class="data-title me-5" style="min-width: 150px;">Title:</p>
+                            <p class="info-text">${datail.Title}</p></div>
+                           <div class="d-flex flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Released:</p>
+                            <p class="info-text">${datail.Released}</p></div>
+                            <div class="d-flex flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Genre:</p>
+                             <p class="info-text">${datail.Genre}</p></div>
+                           <div class="d-flex  flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Country:</p>
+                            <p class="info-text">${datail.Country}</p></div>
+                           <div class="d-flex  flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Director:</p>
+                            <p class="info-text">${datail.Director}</p></div>
+                           <div class="d-flex  flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Writer:</p>
+                            <p class="info-text">${datail.Writer}</p></div>
+                           <div class="d-flex flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Actors:</p>
+                            <p class="info-text">${datail.Actors}</p></div>
+                           <div class="d-flex  flex-row justify-content-start  mt-5"> <p class="data-title me-5" style="min-width: 150px;">Awards:</p>
+                            <p class="info-text">${datail.Awards}</p></div>
                     
                            
                         </div>

@@ -52,9 +52,10 @@ button:hover {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-span {
-  font-size: 20px;
+.info-text {
+  font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
 }
 
 .card-text {
@@ -66,4 +67,11 @@ span {
 .year-text {
   font-size: 20px;
   font-weight: 400;
+}
+
+.data-title {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0px;
 }/*# sourceMappingURL=style.css.map */
