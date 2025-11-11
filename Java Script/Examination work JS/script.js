@@ -87,9 +87,17 @@
 
      if (title.trim()) {
          console.log(title);
+
          try {
+            allCards.innerHTML = '';
              let data = await search(title, type);
              console.log(data);
+             
+
+
+
+
+
 
              if (!data.Search || data.Search.length === 0) {
                  message.innerHTML = 'Movie not found!';
@@ -134,7 +142,8 @@
              }
              pagenation.style.display = 'flex';
          } catch (error) {
-             message.HTML = ' Ошибка при поиске. Попробуйте позже';
+            //  message.innerHTML = ' Ошибка при поиске. Попробуйте позже';
+            // pagenation.style.display = 'none';
              console.error('Search error:', error);
 
          }
@@ -145,8 +154,20 @@
 
 
 
-         searchForm.movieName.value = '';;
+         searchForm.movieName.value = '';
+     } else{
+
+            message.innerHTML = 'Введите название фильма для поиска';
+        setTimeout(() => {
+    message.innerHTML = '';
+}, 3000);
      }
+
+
+
+
+
+
  })
 
 
