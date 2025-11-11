@@ -58,7 +58,12 @@ let allCards=document.querySelector('.allCards');
  let searchForm=document.forms.searchForm;
  let searchBtn=document.querySelector('#button-addon2');
  let detailsBtn=document.querySelector('.detailsBtn');
- let detalies=document.querySelector('.detalies')
+ let detalies=document.querySelector('.detalies');
+ let pagenation=document.querySelector('.pagenation-text');
+ pagenation.style.display = 'none';
+ let container=document.querySelector('.container-fluid');
+ container.style.display='block';
+ let  buttonClose=document.querySelector('.buttonClose');
 
 
 searchBtn.addEventListener('click', async function () {
@@ -66,8 +71,9 @@ let title=searchForm.movieName.value;
 
 if(title.trim()){
     console.log(title);
- let data= await search(title);
- console.log(data);
+    let data= await search(title);
+    console.log(data);
+  
 
  for (const movie of data.Search) {
     
@@ -87,6 +93,7 @@ if(title.trim()){
              </div>
          </div>`
  }
+   pagenation.style.display = 'flex';
 }
 
     searchForm.reset();
@@ -97,6 +104,7 @@ if(title.trim()){
  document.addEventListener('click', async function(event){    
     if(event.target.classList.contains('detailsBtn')){  
 console.log('кнопка нажата');
+
 
 
   
@@ -118,8 +126,8 @@ console.log('кнопка нажата');
         
                     <div class="d-flex justify-content-center">
                          <h1 class="mt-5">Film info</h1>
-                            <hr>
-                    </div>
+                         </div>
+                         <hr class=" ms-5 me-5 border-3 border-danger">
         
         
                <div class="d-flex justify-content-center align-items-center ">
@@ -155,13 +163,19 @@ console.log('кнопка нажата');
         
                </div>
             </div>`;
- 
+ container.style.display='none';
     }
         })
 
 
 
+document.addEventListener('click',function(event){
+if(event.target.classList.contains('buttonClose')){
+    detalies.innerHTML='';
+      container.style.display='block'
 
+}
+})
 
 
 
