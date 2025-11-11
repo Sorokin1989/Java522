@@ -1,83 +1,122 @@
- 
  //const title = "Матрица";
-// const encodedTitle = encodeURIComponent(title);
-// const url = `https://www.omdbapi.com/?s=${encodedTitle}&apiKey=12b53682`;
- 
-// async function searchMovie(title) {
-//     try {
-//         const encodedTitle = encodeURIComponent(title);
-//         const response = await fetch(`https://www.omdbapi.com/?s=${encodedTitle}&apiKey=12b53682`);
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error('Ошибка:', error);
-//     }
-// }
- 
- 
- 
- 
- async function search(title){
- try{
-        const codedTitle = encodeURIComponent(title);
-    let data=await fetch(`https://www.omdbapi.com/?s=${codedTitle}&apikey=12b53682`)
-    let response= await data.json();
-    console.log(response);
-    
-    return response;
- }catch(error) {
-    console.error(error);
-    
+ // const encodedTitle = encodeURIComponent(title);
+ // const url = `https://www.omdbapi.com/?s=${encodedTitle}&apiKey=12b53682`;
+
+ // async function searchMovie(title) {
+ //     try {
+ //         const encodedTitle = encodeURIComponent(title);
+ //         const response = await fetch(`https://www.omdbapi.com/?s=${encodedTitle}&apiKey=12b53682`);
+ //         const data = await response.json();
+ //         return data;
+ //     } catch (error) {
+ //         console.error('Ошибка:', error);
+ //     }
+ // }
+
+
+
+
+ async function search(title, type = '') {
+     try {
+         const codedTitle = encodeURIComponent(title);
+
+         let url = `https://www.omdbapi.com/?s=${codedTitle}&apikey=12b53682`;
+
+         if (type) {
+             url += `&type=${type}`
+         }
+
+
+         let data = await fetch(url);
+         let response = await data.json();
+         console.log(response);
+
+         return response;
+     } catch (error) {
+         console.error(error);
+         return {
+             Search: []
+         };
+
+     }
  }
-}
 
 
 
-async function searchDetail(id){
-try{
-     console.log('🔄 Запрашиваем детали для ID:',id);
-    let data= await fetch(`https://www.omdbapi.com/?i=${id}&apikey=12b53682`);
-let response= await data.json();
-return response;
+ async function searchDetail(id) {
+     try {
+         console.log('🔄 Запрашиваем детали для ID:', id);
+         let data = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=12b53682`);
+         let response = await data.json();
+         return response;
 
-}catch(error){
-    console.log('error', error);
-    
-    return null;
-}
+     } catch (error) {
+         console.log('error', error);
 
-}
+         return null;
+     }
 
-
-
+ }
 
 
 
 
-let allCards=document.querySelector('.allCards');
- let searchForm=document.forms.searchForm;
- let searchBtn=document.querySelector('#button-addon2');
- let detailsBtn=document.querySelector('.detailsBtn');
- let detalies=document.querySelector('.detalies');
- let pagenation=document.querySelector('.pagenation-text');
+
+
+
+ let allCards = document.querySelector('.allCards');
+ let searchForm = document.forms.searchForm;
+ let searchBtn = document.querySelector('#button-addon2');
+ let detailsBtn = document.querySelector('.detailsBtn');
+ let detalies = document.querySelector('.detalies');
+ let pagenation = document.querySelector('.pagenation-text');
  pagenation.style.display = 'none';
- let container=document.querySelector('.container-fluid');
- container.style.display='block';
- let  buttonClose=document.querySelector('.buttonClose');
+ let container = document.querySelector('.container-fluid');
+ container.style.display = 'block';
+ let buttonClose = document.querySelector('.buttonClose');
+ let message = document.querySelector('.message-text');
 
 
-searchBtn.addEventListener('click', async function () {
-let title=searchForm.movieName.value;
 
-if(title.trim()){
-    console.log(title);
-    let data= await search(title);
-    console.log(data);
-  
+ searchBtn.addEventListener('click', async function () {
+     let title = searchForm.movieName.value;
+     let selectElement = document.querySelector('.form-select');
+     let type = selectElement.value;
+     //  console.log(type);
 
- for (const movie of data.Search) {
-    
-     allCards.innerHTML+=`
+
+     if (title.trim()) {
+         console.log(title);
+         try {
+             let data = await search(title, type);
+             console.log(data);
+
+             if (!data.Search || data.Search.length === 0) {
+                 message.innerHTML = 'Movie not found!';
+
+                 allCards.innerHTML = '';
+
+             } else {
+                 message.innerHTML = `Найдено фильмов: ${data.Search.length}`;
+             }
+
+             let id = setTimeout(() => {
+                 message.innerHTML = '';
+             }, 4000)
+
+
+             // if(title) {
+             //     message.innerHTML='Movie not found!';
+             // }
+
+             for (const movie of data.Search) {
+
+                 // formSelect.addEventListener('click',function(event){
+                 //     if(event.target.children[0])
+
+                 // });
+
+                 allCards.innerHTML += `
              <div class="card flex-row border-3 ">
                  <img src="${movie.Poster}"
                      class="card-img-top imgCard" alt="...">
@@ -92,30 +131,41 @@ if(title.trim()){
                      </div>
              </div>
          </div>`
- }
-   pagenation.style.display = 'flex';
-}
+             }
+             pagenation.style.display = 'flex';
+         } catch (error) {
+             message.HTML = ' Ошибка при поиске. Попробуйте позже';
+             console.error('Search error:', error);
 
-    searchForm.reset();
-})
-
-
-
- document.addEventListener('click', async function(event){    
-    if(event.target.classList.contains('detailsBtn')){  
-console.log('кнопка нажата');
+         }
 
 
 
-  
-       let id= event.target.dataset.imdbid;
-       console.log('IMDb ID:', id);
-        
- let datail= await searchDetail(id);
 
 
 
-        detalies.innerHTML=`
+
+         searchForm.movieName.value = '';;
+     }
+ })
+
+
+
+ document.addEventListener('click', async function (event) {
+     if (event.target.classList.contains('detailsBtn')) {
+         console.log('кнопка нажата');
+
+
+
+
+         let id = event.target.dataset.imdbid;
+         console.log('IMDb ID:', id);
+
+         let datail = await searchDetail(id);
+
+
+
+         detalies.innerHTML = `
           
                 
                   <div class="cardPoster border border-5 rounded-5 w-75 ">
@@ -163,22 +213,16 @@ console.log('кнопка нажата');
         
                </div>
             </div>`;
- container.style.display='none';
-    }
-        })
+         container.style.display = 'none';
+     }
+ })
 
 
 
-document.addEventListener('click',function(event){
-if(event.target.classList.contains('buttonClose')){
-    detalies.innerHTML='';
-      container.style.display='block'
+ document.addEventListener('click', function (event) {
+     if (event.target.classList.contains('buttonClose')) {
+         detalies.innerHTML = '';
+         container.style.display = 'block'
 
-}
-})
-
-
-
-
-
- 
+     }
+ })
