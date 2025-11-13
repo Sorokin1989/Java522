@@ -13,14 +13,27 @@
  //     }
  // }
 
+ let currentPage = 1;
+ let totalPages = 1;
+ let currentSearchTitle = '';
+ let currentSearchType = '';
+ let totalResults = 0;
 
 
 
- async function search(title, type = '') {
+ async function search(title, type = '', page = 1) {
      try {
+
+if(!title || title.trim()===''){
+    console.error('Пустой запрос!');
+    return {Search: [],totalResults: '0'}
+}
+
+
+
          const codedTitle = encodeURIComponent(title);
 
-         let url = `https://www.omdbapi.com/?s=${codedTitle}&apikey=12b53682`;
+         let url = `https://www.omdbapi.com/?s=${codedTitle}&apikey=12b53682&page=${page}`;
 
          if (type) {
              url += `&type=${type}`
@@ -33,9 +46,10 @@
 
          return response;
      } catch (error) {
-         console.error(error);
+         console.error('Ошибка поиска',error);
          return {
-             Search: []
+             Search: [],
+             totalResults: "0"
          };
 
      }
@@ -45,20 +59,48 @@
 
  async function searchDetail(id) {
      try {
-         console.log('🔄 Запрашиваем детали для ID:', id);
          let data = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=12b53682`);
          let response = await data.json();
          return response;
 
      } catch (error) {
-         console.log('error', error);
+         console.log('Ошибка поиска searchDetail', error);
 
          return null;
      }
 
  }
 
+ function createPagination(currentPage, totalPages) {
+     let paginationHTML = '';
+     if (currentPage === 1) {
+         paginationHTML += `<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`;
+     } else {
+         paginationHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+     }
+     const pages = Math.min(totalPages, 10);
+     for (let i = 1; i <= pages; i++) {
+         if (i === currentPage) {
+             paginationHTML += `<li class="page-item active"><a class="page-link" href="#" aria-current="page">${i}</a></li>`;
+         } else {
+             paginationHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+         }
 
+     }
+     if (currentPage === totalPages) {
+         paginationHTML += `<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
+     } else {
+         paginationHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+     }
+     pagenation.innerHTML = `
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                ${paginationHTML}
+            </ul>
+        </nav>
+    `;
+
+ }
 
 
 
@@ -70,11 +112,13 @@
  let detailsBtn = document.querySelector('.detailsBtn');
  let detalies = document.querySelector('.detalies');
  let pagenation = document.querySelector('.pagenation-text');
- pagenation.style.display = 'none';
+ //  pagenation.style.display = 'none';
  let container = document.querySelector('.container-fluid');
  container.style.display = 'block';
  let buttonClose = document.querySelector('.buttonClose');
  let message = document.querySelector('.message-text');
+ //  let pagenationText=document.querySelector('.pagenation-text');
+
 
 
 
@@ -89,28 +133,38 @@
          console.log(title);
 
          try {
-            allCards.innerHTML = '';
+             allCards.innerHTML = '';
              let data = await search(title, type);
              console.log(data);
-             
+
+             currentSearchTitle = title;
+             currentSearchType = type;
 
 
 
+if(data.Error){
+    message.innerHTML=`Ошибка: ${data.Error}`;
+    pagenation.innerHTML='';
+}
 
 
-
-             if (!data.Search || data.Search.length === 0) {
+             else if (!data.Search || data.Search.length === 0) {
                  message.innerHTML = 'Movie not found!';
-
+                 setTimeout(() => {
+                     message.innerHTML = '';
+                 }, 3000);
                  allCards.innerHTML = '';
+                 pagenation.innerHTML = '';
 
              } else {
-                 message.innerHTML = `Найдено фильмов: ${data.Search.length}`;
+                 message.innerHTML = `Найдено фильмов: ${data.totalResults}`;
              }
 
-             let id = setTimeout(() => {
-                 message.innerHTML = '';
-             }, 4000)
+
+
+
+
+
 
 
              // if(title) {
@@ -139,11 +193,47 @@
                      </div>
              </div>
          </div>`
+
+                 // pagenation.innerHTML=` <nav aria-label="Page navigation">
+                 //             <ul class="pagination">
+                 //                 <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">1</a></li>
+                 //                 <li class="page-item">
+                 //                     <a class="page-link" href="#" aria-current="page">2</a>
+                 //                 </li>
+                 //                 <li class="page-item"><a class="page-link" href="#">3</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">4</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">5</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">6</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">7</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">8</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">9</a></li>
+                 //                 <li class="page-item"><a class="page-link" href="#">10</a></li>
+                 //                 <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                 //             </ul>
+                 //         </nav>`
+
+
+
+
+
+
+
              }
-             pagenation.style.display = 'flex';
+
+             totalResults = parseInt(data.totalResults) || 0;
+             totalPages = Math.ceil(totalResults / 10);
+             createPagination(1, totalPages);
+
+             let id = setTimeout(() => {
+                 message.innerHTML = '';
+             }, 4000)
+             searchForm.movieName.value = '';
+
+             //  pagenation.style.display = 'flex';
          } catch (error) {
-            //  message.innerHTML = ' Ошибка при поиске. Попробуйте позже';
-            // pagenation.style.display = 'none';
+             //  message.innerHTML = ' Ошибка при поиске. Попробуйте позже';
+             // pagenation.style.display = 'none';
              console.error('Search error:', error);
 
          }
@@ -154,13 +244,14 @@
 
 
 
-         searchForm.movieName.value = '';
-     } else{
 
-            message.innerHTML = 'Введите название фильма для поиска';
-        setTimeout(() => {
-    message.innerHTML = '';
-}, 3000);
+
+     } else {
+
+         message.innerHTML = 'Введите название фильма для поиска';
+         setTimeout(() => {
+             message.innerHTML = '';
+         }, 3000);
      }
 
 
@@ -247,3 +338,61 @@
 
      }
  })
+
+
+ document.addEventListener('click', async function (event) {
+     if (event.target.classList.contains('page-link') &&
+         !event.target.parentElement.classList.contains('disabled')) {
+
+         event.preventDefault();
+         const page = parseInt(event.target.dataset.page);
+         if (page) {
+             console.log('Загрузка страницы:', page);
+
+             try {
+                 allCards.innerHTML = '<div class="col-12 text-center"><p>Загрузка...</p></div>';
+                 let data = await search(currentSearchTitle, currentSearchType, page);
+                 console.log(data);
+
+                 if (!data.Search || data.Search.length === 0) {
+                     message.innerHTML = 'Фильмы не найдены!';
+                     allCards.innerHTML = '';
+                     pagenation.innerHTML = '';
+                 } else {
+                     message.innerHTML = `Найдено фильмов: ${data.totalResults}. Страница ${page}`;
+
+                     allCards.innerHTML = '';
+                     for (const movie of data.Search) {
+                         allCards.innerHTML += `
+                            <div class="card flex-row border-3 ">
+                                <img src="${movie.Poster}" class="card-img-top imgCard" alt="...">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="content-text">
+                                        <h5 class="card-title">${movie.Type}</h5>
+                                        <p class="card-text">${movie.Title}</p>
+                                        <p class="year-text">${movie.Year}</p>
+                                    </div>
+                                    <div class="button-text ">
+                                        <button type="button" class="btn btn-primary w-100 detailsBtn" data-imdbid="${movie.imdbID}">Details</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                     }
+
+
+                     totalResults = parseInt(data.totalResults) || 0;
+                     totalPages = Math.ceil(totalResults / 10);
+                     createPagination(page, totalPages);
+                 }
+
+                 setTimeout(() => {
+                     message.innerHTML = '';
+                 }, 4000);
+
+             } catch (error) {
+                 message.innerHTML = 'Ошибка при загрузке страницы';
+                 console.error('Pagination error:', error);
+             }
+         }
+     }
+ });
