@@ -140,6 +140,9 @@ if(endPage<totalPages){
 
 if(data.Error){
     message.innerHTML=`Ошибка: ${data.Error}`;
+       setTimeout(() => {
+             message.innerHTML = '';
+         }, 5000);
     pagenation.innerHTML='';
 }
 
@@ -228,10 +231,10 @@ if(data.Error){
 
      } else {
 
-         message.innerHTML = 'Введите название фильма для поиска';
+         message.innerHTML = 'Введите название фильма для поиска!';
          setTimeout(() => {
              message.innerHTML = '';
-         }, 3000);
+         }, 5000);
      }
 
 
