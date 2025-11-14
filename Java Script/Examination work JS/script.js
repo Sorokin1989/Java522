@@ -52,6 +52,12 @@ if(!title || title.trim()===''){
  }
 
  function createPagination(currentPage, totalPages) {
+
+if(totalPages<=1){
+    pagination.innerHTML='';
+    return;
+}
+
      let paginationHTML = '';
      if (currentPage === 1) {
          paginationHTML += `<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`;
@@ -91,7 +97,7 @@ if(endPage<totalPages){
      } else {
          paginationHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
      }
-     pagenation.innerHTML = `
+     pagination.innerHTML = `
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 ${paginationHTML}
@@ -107,7 +113,7 @@ if(endPage<totalPages){
  let searchBtn = document.querySelector('#button-addon2');
  let detailsBtn = document.querySelector('.detailsBtn');
  let detalies = document.querySelector('.detalies');
- let pagenation = document.querySelector('.pagenation-text');
+ let pagination = document.querySelector('.pagination-text');
  //  pagenation.style.display = 'none';
  let container = document.querySelector('.container-fluid');
  container.style.display = 'block';
@@ -143,7 +149,7 @@ if(data.Error){
        setTimeout(() => {
              message.innerHTML = '';
          }, 5000);
-    pagenation.innerHTML='';
+    pagination.innerHTML='';
 }
 
              else if (!data.Search || data.Search.length === 0) {
@@ -152,7 +158,7 @@ if(data.Error){
                      message.innerHTML = '';
                  }, 5000);
                  allCards.innerHTML = '';
-                 pagenation.innerHTML = '';
+                 pagination.innerHTML = '';
 
              } else {
                  message.innerHTML = `Найдено фильмов: ${data.totalResults}`;
@@ -179,7 +185,7 @@ if(data.Error){
              </div>
          </div>`
 
-                 // pagenation.innerHTML=` <nav aria-label="Page navigation">
+                 // pagination.innerHTML=` <nav aria-label="Page navigation">
                  //             <ul class="pagination">
                  //                 <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
                  //                 <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -336,7 +342,7 @@ if(data.Error){
                  if (!data.Search || data.Search.length === 0) {
                      message.innerHTML = 'Фильмы не найдены!';
                      allCards.innerHTML = '';
-                     pagenation.innerHTML = '';
+                     pagination.innerHTML = '';
                  } else {
                      message.innerHTML = `Найдено фильмов: ${data.totalResults}. Страница ${page}`;
                      
