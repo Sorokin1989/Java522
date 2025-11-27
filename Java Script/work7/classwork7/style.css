@@ -1,0 +1,19 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.removeBtn, .check {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+* {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.checkBtn {
+  background-color: aqua;
+}/*# sourceMappingURL=style.css.map */

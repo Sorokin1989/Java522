@@ -5,20 +5,126 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e935e26-4ec2-4a8d-9b1f-b6ac47ca4497" name="Changes" comment="classwork5 1.1">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Builder.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ClassWork2/Prototype.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HomeWork1/AbstactFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HomeWork1/FactoryMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HomeWork2/Flyweight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HomeWork2/Proxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/Examination work JS/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/Examination work JS/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/Examination work JS/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/Examination work JS/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/Examination work JS/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Classwork5/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Classwork5/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Classwork5/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Classwork5/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Homework5/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Homework5/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Homework5/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Homework5/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work5/Homework5/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Classwork6/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Classwork6/index2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Classwork6/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Classwork6/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Classwork6/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Classwork6/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Homework6.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Homework6/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Homework6/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Homework6/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Homework6/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work6/Homework6/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/classwork7/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/classwork7/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/classwork7/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/classwork7/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/classwork7/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/homework7/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/homework7/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/homework7/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/homework7/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work7/homework7/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/classwork8/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/classwork8/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/classwork8/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/classwork8/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/classwork8/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/homework8/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/homework8/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/homework8/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/homework8/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work8/homework8/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work9/classwork9/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work9/classwork9/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work9/classwork9/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work9/classwork9/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Script/work9/classwork9/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClassWork/ClassWork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClassWork/ClassWorkCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClassWork/Classwork2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClassWork_32/ClassWork_32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ExaminationWork/Contact.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ExaminationWork/FileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ExaminationWork/PhoneBook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ExaminationWork/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/First/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/First/src/homework_1/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LessonsTest/LessonTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LessonsTest/LessonTest3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LessonsTest/LessonsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LessonsTest/LessonsTest4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestLessons/LessonTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestLessons/TestLessons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_1/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_10/HomeWork_10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_10/HomeWork_10_Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_11/HomeWork_11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_12/HomeWork_12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_13/HomeWork_13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_14/HomeWork_14.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_14/HomeWork_14_1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_15/HomeWork_15.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_15/HomeWork_15_1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_16/HomeWork_16.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_16/HomeWork_16_test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_17/HomeWork_17.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_18/HomeWork_18.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_2/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_2/Main.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_21/HomeWork_21.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_22/HomeWork_22.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_22/Lesson22.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_23/HomeWork_23.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_24/HomeWork_24.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_25/HomeWork_25.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_26/HomeWork_26.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_26/LessonTest10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_27/HomeWork_27.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_28/HomeWork_28.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_29/HomeWork_29.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_3/HomeWork_3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_30/HomeWork_30.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_30/lesson_30/Lesson_30.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_32/HomeWork_32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_32/Lesson_32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_36/HomeWork_36.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_37/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_4/HomeWork_4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_5/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_5/homeWork_5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_5/homeWork_5_1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_6/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_6/homeWork_6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_7/HomeWork_7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_8/HomeWork_8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_9/HomeWork_9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_9/HomeWork_9_1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homeWork_9/TestHomeWork_9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lessonTest3/LessonTest_4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson_2/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson_2/Cat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson_2/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson_2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +278,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763125735764</updated>
       <workItem from="1763125736800" duration="72146000" />
-      <workItem from="1764156975694" duration="10206000" />
+      <workItem from="1764156975694" duration="10847000" />
     </task>
     <task id="LOCAL-00001" summary="classwork5 1.0">
       <option name="closed" value="true" />

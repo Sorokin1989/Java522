@@ -1,0 +1,77 @@
+body {
+  background-color: rgb(206, 236, 236);
+}
+
+.form-text {
+  width: 50%;
+}
+
+button:hover {
+  background-color: chartreuse !important;
+}
+
+.card {
+  margin: 50px;
+  background-color: rgb(244, 236, 227);
+  width: 400px;
+  height: 350px;
+}
+.card .imgCard {
+  width: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.card .card-body {
+  width: 50%;
+}
+
+.cardPoster {
+  background-color: rgb(244, 236, 227);
+  margin: 50px;
+}
+.cardPoster .buttonClose {
+  background-color: rgb(172, 240, 240);
+}
+.cardPoster .imgPoster {
+  width: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: 50px;
+}
+.cardPoster .card-body-poster {
+  width: 50%;
+  margin: 50px;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-text {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.card-text {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.year-text {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.data-title {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0px;
+}/*# sourceMappingURL=style.css.map */

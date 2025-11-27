@@ -1,0 +1,62 @@
+.item{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+}
+
+.item2{
+    display: flex;
+    justify-content: space-between;
+    background-color: yellow;
+
+}
+
+
+
+
+.removeBtn, .check{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+*{
+    user-select: none;
+}
+
+.checkBtn{
+    background-color: aqua;
+}
+
+
+
+.message{
+    font-size: 16px;
+    cursor:pointer;
+}
+
+.message2{
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: line-through;
+}
+
+.zoom-text, .zoom-text2{
+   margin-top: 20px;
+   margin-left: 10px;
+}
+
+
+
+.button-zoom{
+display: flex;
+justify-content: end;
+
+
+}
+
+.message3{
+    display: flex;
+    justify-content: center;
+
+}

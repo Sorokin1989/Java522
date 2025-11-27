@@ -1,0 +1,270 @@
+package homeWork_23;
+
+import java.util.Arrays;
+
+public class HomeWork_23 {
+    public static void main(String[] args) {
+
+     //   System.out.println(sortArr(arr[i]));
+        //1. Финальный класс
+        //Задание:
+        //Создай финальный класс MathConstants, в котором будут финальные переменные PI и E.
+        //Попробуй создать от него наследника. Объясни, что произошло и почему.
+//Ответ:
+        // выходит ошибка (Cannot inherit from final 'homeWork_23.MathConstants')
+        //нельзя наследоваться от класса с ключевым словом final.
+        //final значит последний класс, у которого не может быть наследников.
+        //
+
+        //2. Переопределение метода (Overriding)
+        //Задание:
+        //Создай класс Animal с методом speak(), который выводит "Животное издает звук".
+        //Создай класс Dog, который наследует Animal и переопределяет метод speak() — пусть выводит "Собака лает".
+        //Создай объект Animal и Dog и вызови метод speak() у каждого.
+        //
+
+        Animal animal = new Animal();
+        Dog dog = new Dog();
+        animal.speak();
+        dog.speak();
+
+        //3. Наследование
+        //Задание:
+        //Создай класс Person с полями name и age.
+        //Создай подкласс Student, добавь поле university.
+        //Создай конструкторы и методы для вывода полной информации.
+        //Создай объект Student и выведи данные.
+
+        Student student = new Student("Дмитрий", 20, "Московский Государственный Университет");
+        student.printInfo();
+
+        //
+        //4. Абстрактный класс
+        //Задание:
+        //Создай абстрактный класс Shape с абстрактным методом getArea() и обычным методом printInfo().
+        //Создай класс Circle, который наследует Shape и реализует метод getArea().
+        //Создай объект Circle и выведи площадь круга.
+
+        Circle circle = new Circle(10);
+        circle.printInfo();
+
+        //
+        //
+        //5. Абстрактный метод + массив объектов
+        //Задание:
+        //Создай абстрактный класс Employee с методом calculateSalary().
+        //Создай два подкласса: FullTimeEmployee и PartTimeEmployee, каждый со своей реализацией зарплаты.
+        //Создай массив Employee[] и заполни его объектами разных классов. Выведи зарплату каждого.
+        //
+        Employee[] employees = new Employee[6];
+        employees[0] = new FullTimeEmployee("Дмитрий", 8, 500);
+        employees[1] = new FullTimeEmployee("Владимир", 8, 400);
+        employees[2] = new FullTimeEmployee("Николай", 8, 450);
+        employees[3] = new PartTimeEmployee("Владислав", 8, 450);
+        employees[4] = new PartTimeEmployee("Мария", 8, 550);
+        employees[5] = new PartTimeEmployee("Екатерина", 8, 350);
+        System.out.println();
+        //employees[0].calculateSalary();
+        //employees[1].calculateSalary();
+        //employees[2].calculateSalary();
+        //employees[3].calculateSalary();
+        //employees[4].calculateSalary();
+        //employees[5].calculateSalary();
+        for (int i = 0; i < employees.length; i++) {
+            employees[i].calculateSalary();
+
+        }
+
+
+        //
+        //6. int[] arr = {9,1,7,2,8,4,5,0,2};
+        //
+        //Отсортировать массив
+        //Нельзя использовать готовое решение
+
+      int[] arr = {9, 1, 7, 2, 8, 4, 5, 0, 2};
+
+     for (int i = 0; i < arr.length-1 ; i++) {
+         for (int j = 0; j < arr.length-1; j++) {
+             if (arr[j] > arr[j + 1]) {
+                 int temp = arr[j];
+                 arr[j] = arr[j + 1];
+                 arr[j + 1] = temp;
+             }
+         }
+     }
+     for (int i = 0; i < arr.length; i++) {
+         System.out.print(arr[i] + " ");
+     }
+     System.out.println();
+
+
+   //   System.out.println(Arrays.toString(arr)); //(альтернативный вариант вывода)
+
+
+    }
+}
+
+final class MathConstants {
+    final double PI;
+    final double E;
+
+    MathConstants(double pi, double e) {
+        this.PI = pi;
+        this.E = e;
+    }
+}
+
+//class A extends MathConstants {
+//}
+
+class Animal {
+    public void speak() {
+        System.out.println("Животное издаёт звук");
+    }
+
+}
+
+class Dog extends Animal {
+    @Override
+    public void speak() {
+        System.out.println("Собака лает");
+    }
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+
+
+    }
+}
+
+class Student extends Person {
+    private String university;
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public Student(String name, int age, String university) {
+        super(name, age);
+        this.university = university;
+
+
+    }
+
+    public void printInfo() {
+        System.out.println(getName() + " " + getAge() + " " + getUniversity());
+
+    }
+}
+
+abstract class Shape {
+    abstract double getArea();
+
+    double square;
+
+    abstract void printInfo();
+
+
+}
+
+class Circle extends Shape {
+    double R;
+    final double PI;
+
+    Circle(double R) {
+        this.PI = 3.14;
+        this.R = R;
+    }
+
+    @Override
+    double getArea() {
+        return square = PI * R * R;
+    }
+
+    @Override
+    void printInfo() {
+        System.out.println("Площадь круга: " + getArea());
+
+    }
+}
+
+abstract class Employee {
+    static final int WORK_DAYS_OF_MONTH = 22;
+    double standardHourlyRate;
+    int numberOfWorkingHoursPerDay;
+    double salary;
+    String name;
+
+    public Employee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay) {
+        if (standardHourlyRate > 0) {
+            this.standardHourlyRate = standardHourlyRate;
+        } else System.out.println("Введите корректное значение!");
+        if (numberOfWorkingHoursPerDay > 0) {
+            this.numberOfWorkingHoursPerDay = numberOfWorkingHoursPerDay;
+        } else System.out.println("Введите корректное значение!");
+        if (name != null && !name.isBlank()) {
+            this.name = name;
+        } else this.name = " ";
+    }
+
+    abstract void calculateSalary();
+}
+
+class FullTimeEmployee extends Employee {
+
+
+    public FullTimeEmployee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay) {
+        super(name, standardHourlyRate, numberOfWorkingHoursPerDay);
+    }
+
+    @Override
+    void calculateSalary() {
+        salary = standardHourlyRate * (double) numberOfWorkingHoursPerDay * WORK_DAYS_OF_MONTH;
+        System.out.println(name + " " + "Зарплата: " + salary + " рублей");
+
+    }
+}
+
+class PartTimeEmployee extends Employee {
+
+
+    public PartTimeEmployee(String name, double standardHourlyRate, int numberOfWorkingHoursPerDay) {
+        super(name, standardHourlyRate, numberOfWorkingHoursPerDay);
+    }
+
+    @Override
+    void calculateSalary() {
+        salary = standardHourlyRate * ((double) numberOfWorkingHoursPerDay * WORK_DAYS_OF_MONTH / 2);
+        System.out.println(name + " " + "Зарплата: " + salary + " рублей");
+
+    }
+}
+
+

@@ -1,0 +1,80 @@
+
+body{
+    margin: 0px;
+}
+
+.nav{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(13, 50, 201);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font-size: 50px;
+    position: relative;
+}
+
+#timer{
+    font-size: 50px;
+    padding-right: 20%;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+#counter{
+       font-size: 50px;
+    padding-left: 20%;
+    color: white;
+    z-index: 2;
+    position: relative; 
+}
+
+#count{
+     font-size: 50px; 
+      color: yellow;
+}
+
+#message{   //Вы проиграли
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: chartreuse;
+    margin: 0;
+    z-index: 1;
+}
+
+#message2{  //Вы победили
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    z-index: 1;
+}
+
+.conteiner{
+   height: calc(100vh - 100px);
+   width: 100%;
+   position: relative;
+}
+
+.conteiner .box{
+    height: 100px;
+    width: 100px;
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
