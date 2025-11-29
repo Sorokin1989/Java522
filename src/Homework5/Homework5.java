@@ -3,44 +3,39 @@ package Homework5;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
 
-class DatabaseConnection{
+class DatabaseConnection {
 
-    private static final String URL="jdbc:mysql://localhost:3306/java522";
-    private static final String USER="root";
-    private static final String PASSWORD="12345";
+    private static final String URL = "jdbc:mysql://localhost:3306/java522";
+    private static final String USER = "root";
+    private static final String PASSWORD = "12345";
     private static Connection connection;
 
     public static Connection getConnection() {
         try {
-            if (connection==null || connection.isClosed()) {
+            if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
             }
 
         } catch (SQLException e) {
-            System.out.println("Connection error " + e.getMessage());;
+            System.out.println("Connection error " + e.getMessage());
+            ;
         }
         return connection;
     }
 }
 
 
-
-
-
-
-
-class Student{
+class Student {
     int id;
     String name;
     int age;
     String groupName;
-    DatabaseConnection databaseConnection;
+
 
     public Student(int id, String name, int age, String groupName) {
         this.id = id;
@@ -83,39 +78,65 @@ class Student{
 
     @Override
     public String toString() {
-        return  id + " " + name + " " + age + " " + groupName;
+        return id + " " + name + " " + age + " " + groupName;
     }
 
-    public  void insertStudent(Student student){
+    public static void insertStudent(Student student) {
         String query = "insert into Students(name,age,groupName) values(?,?,?)";
-       Connection connection= databaseConnection.getConnection();
-        try {
-            PreparedStatement statement= connection.prepareStatement(query);
+
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
             statement.setString(1, student.getName());
             statement.setInt(2, student.getAge());
             statement.setString(3, student.getGroupName());
             statement.executeUpdate();
+            System.out.println("Student inserted successfully");
         } catch (SQLException e) {
-            System.out.println("Error " + e.getMessage());;
+            System.out.println("Error " + e.getMessage());
+
         }
 
+    }
+
+
+    public static void insertStudents(List<Student> list) {
+        String query = "insert into Students(name,age,groupName) values(?,?,?)";
+
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            int count = 0;
+            for (Student student : list) {
+                statement.setString(1, student.getName());
+                statement.setInt(2, student.getAge());
+                statement.setString(3, student.getGroupName());
+                statement.executeUpdate();
+                count++;
+            }
+            System.out.println("Student inserted successfully " + count + " students");
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+
+        }
 
     }
+
 
 }
 
 
-
-
 public class Homework5 {
-   public static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        DatabaseConnection databaseConnection=new DatabaseConnection();
-    Connection connection= databaseConnection.getConnection();
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
         try {
-            Statement statement=connection.createStatement();
-            String sql="create table Students(\n" +
+            Statement statement = connection.createStatement();
+            String sql = "create table Students(\n" +
                     "id int AUTO_INCREMENT unique,\n" +
                     "name nvarchar(50),\n" +
                     "age int,\n" +
@@ -124,13 +145,14 @@ public class Homework5 {
             statement.executeUpdate(sql);
             System.out.println("Table created");
         } catch (SQLException e) {
-            System.out.println("Таблица уже существует " + e.getMessage());;
+            System.out.println("Таблица уже существует " + e.getMessage());
+            ;
         }
 
         List<Student> students = new ArrayList<Student>();
 
-Student student=new Student(1,"dima",36,"4r1");
-Student student2=new Student(3,"dima",36,"4r1");
+        Student student = new Student(1, "dima", 36, "4r1");
+        Student student2 = new Student(3, "dima", 36, "4r1");
         student.insertStudent(student);
         student2.insertStudent(student2);
 
@@ -154,7 +176,7 @@ Student student2=new Student(3,"dima",36,"4r1");
         //
         //2. Создать класс Student с геттерами/сеттерами ок
         //
-        //3. Реализовать метод insertStudent(Student s)
+        //3. Реализовать метод insertStudent(Student s) ок
         //
         //4. Реализовать метод insertStudents(List<Student> list)
         //
