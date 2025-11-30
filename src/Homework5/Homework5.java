@@ -123,6 +123,93 @@ class Student {
 
     }
 
+    public static List<Student> getAllStudents() {
+        String query = "select * from Students";
+        try (Connection connection = DatabaseConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query);) {
+
+
+            List<Student> list = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String groupName = resultSet.getString("groupName");
+
+                list.add(new Student(id, name, age, groupName));
+
+            }
+//                for (Student student:list){
+//                    System.out.println(student);
+//                }
+            return list;
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+            return new ArrayList<Student>();
+        }
+
+
+    }
+
+    public static Student getStudentById(int id){
+        String query = "select * from Students where id = ?";
+
+        try(Connection connection=DatabaseConnection.getConnection();
+        PreparedStatement statement=connection.prepareStatement(query)){
+            statement.setInt(1, id);
+            ResultSet resultSet=statement.executeQuery();
+            if(resultSet.next()){
+                return new Student(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("groupName")
+                );
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return null;
+    }
+
+
+    public static Student updateStudent(Student student){
+        String query = "update Students set name = ?, age = ?, groupName = ? where id = ?";
+        try(Connection connection=DatabaseConnection.getConnection();
+        PreparedStatement statement=connection.prepareStatement(query)) {
+            statement.setString(1, student.getName());
+            statement.setInt(2, student.getAge());
+            statement.setString(3, student.getGroupName());
+            statement.setInt(4, student.getId());
+            int count=statement.executeUpdate();
+            System.out.println("Student updated successfully " + count + " students");
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());;
+        }
+        return student;
+    }
+    public static void deleteStudentById(int id){
+       Student deleteStudent= getStudentById(id);
+       if(deleteStudent==null){
+           System.out.println("Student not found");
+           return;
+       }
+
+        String query = "delete from Students where id = ?";
+        try(Connection connection=DatabaseConnection.getConnection();
+        PreparedStatement statement=connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+          statement.executeUpdate();
+            System.out.println("Student deleted successfully " + deleteStudent.getName());
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());;
+        }
+    }
 
 }
 
@@ -169,6 +256,9 @@ public class Homework5 {
         Student.insertStudents(students);
 
 
+        Student.getAllStudents();
+
+        System.out.println(Student.getStudentById(4));
 //        student.insertStudent(student);
 //        student2.insertStudent(student2);
 
@@ -196,14 +286,14 @@ public class Homework5 {
         //
         //4. Реализовать метод insertStudents(List<Student> list) ok
         //
-        //5. Реализовать метод getAllStudents()
+        //5. Реализовать метод getAllStudents() ок
         //Возвращает List<Student>
         //
-        //6. Реализовать метод getStudentById(int id)
+        //6. Реализовать метод getStudentById(int id) ок
         //Делает SELECT с WHERE
         //Если студент не найден — возвращать null.
         //
-        //7. Реализовать метод updateStudent(Student s)
+        //7. Реализовать метод updateStudent(Student s) ок
         //Обновляет поля name, age, group_name по id.
         //
         //8. Реализовать метод deleteStudentById(int id)
