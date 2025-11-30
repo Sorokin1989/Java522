@@ -30,6 +30,7 @@ class DatabaseConnection {
 }
 
 
+
 class Student {
     int id;
     String name;
@@ -37,8 +38,16 @@ class Student {
     String groupName;
 
 
+
     public Student(String name, int age, String groupName) {
-//        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.groupName = groupName;
+    }
+
+
+    public Student(int id, String name, int age, String groupName) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.groupName = groupName;
@@ -133,12 +142,12 @@ class Student {
             List<Student> list = new ArrayList<>();
 
             while (resultSet.next()) {
-//                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int age = resultSet.getInt("age");
                 String groupName = resultSet.getString("groupName");
 
-                list.add(new Student(name, age, groupName));
+                list.add(new Student(id,name, age, groupName));
 
             }
 //                for (Student student:list){
@@ -162,7 +171,7 @@ class Student {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return new Student(
-//                        resultSet.getInt("id"),
+//                       resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("age"),
                         resultSet.getString("groupName")
@@ -363,6 +372,7 @@ public class Homework5 {
                         scanner.nextLine();
                         System.out.println("Введите название группы студента");
                         String groupName = scanner.nextLine();
+
                         Student student = new Student(name, age, groupName);
                         Student.insertStudent(student);
                         break;
