@@ -153,8 +153,24 @@ public class Homework5 {
 
         Student student = new Student(1, "dima", 36, "4r1");
         Student student2 = new Student(3, "dima", 36, "4r1");
-        student.insertStudent(student);
-        student2.insertStudent(student2);
+        Student student3 = new Student(3, "dima", 36, "4r1");
+        Student student4 = new Student(3, "dima", 36, "4r1");
+        Student student5 = new Student(3, "dima", 36, "4r1");
+        Student student6 = new Student(3, "dima", 36, "4r1");
+        Student student7 = new Student(3, "dima", 36, "4r1");
+        students.add(student);
+        students.add(student2);
+        students.add(student3);
+        students.add(student4);
+        students.add(student5);
+        students.add(student6);
+        students.add(student7);
+
+        Student.insertStudents(students);
+
+
+//        student.insertStudent(student);
+//        student2.insertStudent(student2);
 
 
 //        students.add(new Student(1,"Dima",36,"4a1"));
@@ -178,7 +194,7 @@ public class Homework5 {
         //
         //3. Реализовать метод insertStudent(Student s) ок
         //
-        //4. Реализовать метод insertStudents(List<Student> list)
+        //4. Реализовать метод insertStudents(List<Student> list) ok
         //
         //5. Реализовать метод getAllStudents()
         //Возвращает List<Student>
