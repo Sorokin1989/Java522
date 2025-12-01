@@ -30,13 +30,11 @@ class DatabaseConnection {
 }
 
 
-
 class Student {
     int id;
     String name;
     int age;
     String groupName;
-
 
 
     public Student(String name, int age, String groupName) {
@@ -147,7 +145,7 @@ class Student {
                 int age = resultSet.getInt("age");
                 String groupName = resultSet.getString("groupName");
 
-                list.add(new Student(id,name, age, groupName));
+                list.add(new Student(id, name, age, groupName));
 
             }
 //                for (Student student:list){
@@ -171,7 +169,7 @@ class Student {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return new Student(
-//                       resultSet.getInt("id"),
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("age"),
                         resultSet.getString("groupName")
@@ -377,16 +375,31 @@ public class Homework5 {
                         Student.insertStudent(student);
                         break;
                     case 2:
-                        List<Student> list=Student.getAllStudents();
-                        for (Student studentList:list) {
-                        System.out.println(studentList);
+                        List<Student> list = Student.getAllStudents();
+                        for (Student studentList : list) {
+                            System.out.println(studentList);
                         }
                         break;
                     case 3:
-                        System.out.println("3");
+                        System.out.println("Введите id студента: ");
+                        int id = scanner.nextInt();
+                        System.out.println(Student.getStudentById(id));
+                        ;
+
                         break;
                     case 4:
-                        System.out.println("4");
+                        System.out.println("Введите id студента: ");
+                        id= scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Введите имя студента: ");
+                        name=scanner.nextLine();
+                        System.out.println("Введите возраст студента: ");
+                        age= scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Введите название группы: ");
+                        groupName=scanner.nextLine();
+                        student=new Student(id,name,age,groupName);
+                        Student.updateStudent(student);
                         break;
                     case 5:
                         System.out.println("5");
