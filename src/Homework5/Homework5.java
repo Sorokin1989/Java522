@@ -222,7 +222,7 @@ class Student {
     }
 
     public static void deleteAll() {
-//        String query = "delete from Students";
+//        String query = "delete from Students where id>0";
         try (Connection connection = DatabaseConnection.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("TRUNCATE TABLE Students");
@@ -258,44 +258,7 @@ public class Homework5 {
 
         }
 
-//        List<Student> students = new ArrayList<Student>();
 
-//        Student student = new Student(1, "dima", 36, "4r1");
-//        Student student2 = new Student(3, "dima", 36, "4r1");
-//        Student student3 = new Student(3, "dima", 36, "4r1");
-//        Student student4 = new Student(3, "dima", 36, "4r1");
-//        Student student5 = new Student(3, "dima", 36, "4r1");
-//        Student student6 = new Student(3, "dima", 36, "4r1");
-//        Student student7 = new Student(3, "dima", 36, "4r1");
-//        students.add(student);
-//        students.add(student2);
-//        students.add(student3);
-//        students.add(student4);
-//        students.add(student5);
-//        students.add(student6);
-//        students.add(student7);
-
-//        Student.insertStudents(students);
-//
-//
-//        Student.getAllStudents();
-//
-//        System.out.println(Student.getStudentById(4));
-
-//        Student.deleteStudentById(9);
-//        Student.deleteAll();
-
-//        student.insertStudent(student);
-//        student2.insertStudent(student2);
-
-
-//        students.add(new Student(1,"Dima",36,"4a1"));
-//        students.add(new Student(2,"David",35,"4a2"));
-//        students.add(new Student(3,"David",35,"4a3"));
-//        students.add(new Student(4,"David",35,"4a4"));
-//        for (Student student : students) {
-//            System.out.println(student);
-//        }
         //Задание на CRUD c объектом Student
         //
         //Класс Student должен иметь 4 поля:
@@ -329,7 +292,7 @@ public class Homework5 {
         //Удаляет всех студентов из таблицы.
         //
         //
-        //10. Написать меню в main()
+        //10. Написать меню в main() ок
         //
         //1 - Добавить студента
         //2 - Показать всех
@@ -348,6 +311,7 @@ public class Homework5 {
         int num;
 
         while (true) {
+
             System.out.println("1 --> Добавить студента\n" +
                     "2 --> Показать всех\n" +
                     "3 --> Найти по id\n" +
@@ -363,6 +327,9 @@ public class Homework5 {
 
                 switch (num) {
                     case 1:
+
+
+
                         System.out.println(" Введите имя студента: ");
                         String name = scanner.nextLine();
                         System.out.println("Введите возраст студента: ");
@@ -376,6 +343,9 @@ public class Homework5 {
                         break;
                     case 2:
                         List<Student> list = Student.getAllStudents();
+                            if (list.isEmpty()){
+                                System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                            }
                         for (Student studentList : list) {
                             System.out.println(studentList);
                         }
@@ -383,11 +353,21 @@ public class Homework5 {
                     case 3:
                         System.out.println("Введите id студента: ");
                         int id = scanner.nextInt();
+                        scanner.nextLine();
+                        list= Student.getAllStudents();
+                        if (list.isEmpty()){
+                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                        }
                         System.out.println(Student.getStudentById(id));
-                        ;
+
 
                         break;
                     case 4:
+                       list= Student.getAllStudents();
+                        if (list.isEmpty()){
+                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                            break;
+                        }
                         System.out.println("Введите id студента: ");
                         id= scanner.nextInt();
                         scanner.nextLine();
@@ -402,13 +382,46 @@ public class Homework5 {
                         Student.updateStudent(student);
                         break;
                     case 5:
-                        System.out.println("5");
+                        list= Student.getAllStudents();
+                        if (list.isEmpty()){
+                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                            break;
+                        }
+                        System.out.println("Введите id студента: ");
+                        id= scanner.nextInt();
+                        Student.deleteStudentById(id);
                         break;
                     case 6:
-                        System.out.println("6");
+                        list= Student.getAllStudents();
+                        if (list.isEmpty()){
+                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                            break;
+                        }
+                        boolean activeFlag=true;
+                        while (activeFlag) {
+                            System.out.println("Вы уверены?\n" +
+                                    "1 --> Да\n" +
+                                    "2 --> Нет");
+                            int select= scanner.nextInt();
+                            switch (select) {
+                                case 1:
+
+                                    Student.deleteAll();
+                                    System.out.println("Список студентов удален!");
+                                    activeFlag=false;
+                                    break;
+                                case 2:
+                                    activeFlag=false;
+                                    break;
+                                default:
+                                    System.out.println("Введите корректное значение!");
+                                    break;
+                            }
+
+                        }
                         break;
                     case 0:
-                        System.out.println("0");
+                        System.out.println("Выход");
                         return;
                     default:
                         System.out.println("Некорректное значение!");
