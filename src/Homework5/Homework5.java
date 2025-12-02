@@ -12,23 +12,16 @@ class DatabaseConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/java522";
     private static final String USER = "root";
     private static final String PASSWORD = "12345";
-    private static Connection connection;
 
     public static Connection getConnection() {
+
         try {
-            if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
-
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Connection error " + e.getMessage());
-            ;
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException exception) {
+            throw new RuntimeException("Error! не удалось подключится к БД " + exception);
         }
-        return connection;
     }
 }
-
 
 class Student {
     int id;
@@ -42,7 +35,6 @@ class Student {
         this.age = age;
         this.groupName = groupName;
     }
-
 
     public Student(int id, String name, int age, String groupName) {
         this.id = id;
@@ -91,7 +83,6 @@ class Student {
     public static void insertStudent(Student student) {
         String query = "insert into Students(name,age,groupName) values(?,?,?)";
 
-
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
@@ -102,15 +93,11 @@ class Student {
             System.out.println("Student inserted successfully");
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
-
         }
-
     }
-
 
     public static void insertStudents(List<Student> list) {
         String query = "insert into Students(name,age,groupName) values(?,?,?)";
-
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -125,9 +112,7 @@ class Student {
             System.out.println("Student inserted successfully " + count + " students");
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
-
         }
-
     }
 
     public static List<Student> getAllStudents() {
@@ -135,7 +120,6 @@ class Student {
         try (Connection connection = DatabaseConnection.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query);) {
-
 
             List<Student> list = new ArrayList<>();
 
@@ -146,18 +130,12 @@ class Student {
                 String groupName = resultSet.getString("groupName");
 
                 list.add(new Student(id, name, age, groupName));
-
             }
-//                for (Student student:list){
-//                    System.out.println(student);
-//                }
             return list;
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
             return new ArrayList<Student>();
         }
-
-
     }
 
     public static Student getStudentById(int id) {
@@ -174,8 +152,8 @@ class Student {
                         resultSet.getInt("age"),
                         resultSet.getString("groupName")
                 );
-
-            }
+            } else
+                System.out.println("Студент не найден!");
 
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
@@ -183,8 +161,7 @@ class Student {
         return null;
     }
 
-
-    public static Student updateStudent(Student student) {
+    public static boolean updateStudent(Student student) {
         String query = "update Students set name = ?, age = ?, groupName = ? where id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -192,14 +169,20 @@ class Student {
             statement.setInt(2, student.getAge());
             statement.setString(3, student.getGroupName());
             statement.setInt(4, student.getId());
+
             int count = statement.executeUpdate();
+            if (count == 0) {
+                System.out.println("Такого id не существует!");
+                return false;
+            }
             System.out.println("Student updated successfully " + count + " students");
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
-            ;
+
         }
-        return student;
+        return false;
     }
 
     public static void deleteStudentById(int id) {
@@ -222,85 +205,223 @@ class Student {
     }
 
     public static void deleteAll() {
-//        String query = "delete from Students where id>0";
+        String query = "delete from Students ";
         try (Connection connection = DatabaseConnection.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.executeUpdate("TRUNCATE TABLE Students");
-            System.out.println("Students deleted successfully");
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            int count = statement.executeUpdate();
+            System.out.println("Удалены " + count + " студентов!");
+
+            if (count > 0) {
+
+                try (Statement alterStatement = connection.createStatement()) {
+                    alterStatement.executeUpdate("ALTER TABLE students AUTO_INCREMENT = 1");
+                }
+            }
+
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
-            ;
         }
     }
-
 }
 
 
 public class Homework5 {
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void addStudent() {
+        System.out.println(" Введите имя студента: ");
+        String name = scanner.nextLine();
+        System.out.println("Введите возраст студента: ");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Введите название группы студента");
+        String groupName = scanner.nextLine();
 
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        Connection connection = databaseConnection.getConnection();
-        try {
-            Statement statement = connection.createStatement();
-            String sql = "create table Students(\n" +
-                    "id int AUTO_INCREMENT unique,\n" +
-                    "name nvarchar(50),\n" +
-                    "age int,\n" +
-                    "groupName nvarchar(50)\n" +
-                    ")";
-            statement.executeUpdate(sql);
-            System.out.println("Table created");
-        } catch (SQLException e) {
-            System.out.println("Таблица уже существует " + e.getMessage());
+        Student student = new Student(name, age, groupName);
+        Student.insertStudent(student);
+
+
+    }
+
+
+    public static void addStudents() {
+        List<Student> list = new ArrayList<>();
+
+        while (true) {
+//                                        scanner.nextLine();
+            System.out.println(" Введите имя студента: ");
+            String name = scanner.nextLine();
+            System.out.println("Введите возраст студента: ");
+            int age = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Введите название группы студента");
+
+            String groupName = scanner.nextLine();
+
+            Student student = new Student(name, age, groupName);
+
+
+            list.add(student);
+
+            System.out.println("Добавить еще?\n" +
+                    "1 --> Да\n" +
+                    "2 --> Нет");
+            int num = scanner.nextInt();
+            scanner.nextLine();
+            if (num == 2) {
+                Student.insertStudents(list);
+                break;
+            }
 
         }
+    }
+
+    public static void printInfo() {
+        List<Student> list = Student.getAllStudents();
+        if (list.isEmpty()) {
+            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+        }
+        for (Student studentList : list) {
+            System.out.println(studentList);
+        }
+    }
+
+    public static void searchID() {
+        System.out.println("Введите id студента: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        List<Student> list = Student.getAllStudents();
+        if (list.isEmpty()) {
+            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+        }
+        System.out.println(Student.getStudentById(id));
+    }
+
+    public static void updateStudentsID() {
+        List<Student> list = Student.getAllStudents();
+        if (list.isEmpty()) {
+            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+        }
+        System.out.println("Введите id студента: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Введите имя студента: ");
+        String name = scanner.nextLine();
+        System.out.println("Введите возраст студента: ");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Введите название группы: ");
+        String groupName = scanner.nextLine();
+        Student student = new Student(id, name, age, groupName);
+
+        Student.updateStudent(student);
+
+    }
+
+    public static void deleteStudentsID() {
+        List<Student> list = Student.getAllStudents();
+        if (list.isEmpty()) {
+            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+        }
+        System.out.println("Введите id студента: ");
+        int id = scanner.nextInt();
+        Student.deleteStudentById(id);
+    }
+
+    public static void deleteAllStudents() {
+        List<Student> list = Student.getAllStudents();
+        if (list.isEmpty()) {
+            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+        }
+        boolean activeFlag = true;
+        while (activeFlag) {
+            System.out.println("Вы уверены?\n" +
+                    "1 --> Да\n" +
+                    "2 --> Нет");
+            int select = scanner.nextInt();
+            switch (select) {
+                case 1:
+
+                    Student.deleteAll();
+                    System.out.println("Список студентов удален!");
+                    activeFlag = false;
+                    break;
+                case 2:
+                    activeFlag = false;
+                    break;
+                default:
+                    System.out.println("Введите корректное значение!");
+                    break;
+            }
+
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
 
 
-        //Задание на CRUD c объектом Student
-        //
-        //Класс Student должен иметь 4 поля:
-        //int id
-        //String name
-        //int age
-        //String groupName
-        //
-        //1. Создать таблицу Students ок
-        //
-        //2. Создать класс Student с геттерами/сеттерами ок
-        //
-        //3. Реализовать метод insertStudent(Student s) ок
-        //
-        //4. Реализовать метод insertStudents(List<Student> list) ok
-        //
-        //5. Реализовать метод getAllStudents() ок
-        //Возвращает List<Student>
-        //
-        //6. Реализовать метод getStudentById(int id) ок
-        //Делает SELECT с WHERE
-        //Если студент не найден — возвращать null.
-        //
-        //7. Реализовать метод updateStudent(Student s) ок
-        //Обновляет поля name, age, group_name по id.
-        //
-        //8. Реализовать метод deleteStudentById(int id) ok
-        //Удаляет одного студента.
-        //
-        //9. Реализовать метод deleteAll() ок
-        //Удаляет всех студентов из таблицы.
-        //
-        //
-        //10. Написать меню в main() ок
-        //
-        //1 - Добавить студента
-        //2 - Показать всех
-        //3 - Найти по id
-        //4 - Обновить по id
-        //5 - Удалить по id
-        //6 - Удалить всех
-        //0 - Выход
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            try (Connection connection = databaseConnection.getConnection();
+                 Statement statement = connection.createStatement()) {
+
+                String sql = "create table Students(\n" +
+                        "id int AUTO_INCREMENT unique,\n" +
+                        "name nvarchar(50),\n" +
+                        "age int,\n" +
+                        "groupName nvarchar(50)\n" +
+                        ")";
+                statement.executeUpdate(sql);
+                System.out.println("Table created");
+            } catch (SQLException e) {
+                System.out.println("Таблица уже существует " + e.getMessage());
+
+            }
+
+
+            //Задание на CRUD c объектом Student
+            //
+            //Класс Student должен иметь 4 поля:
+            //int id
+            //String name
+            //int age
+            //String groupName
+            //
+            //1. Создать таблицу Students ок
+            //
+            //2. Создать класс Student с геттерами/сеттерами ок
+            //
+            //3. Реализовать метод insertStudent(Student s) ок
+            //
+            //4. Реализовать метод insertStudents(List<Student> list) ok
+            //
+            //5. Реализовать метод getAllStudents() ок
+            //Возвращает List<Student>
+            //
+            //6. Реализовать метод getStudentById(int id) ок
+            //Делает SELECT с WHERE
+            //Если студент не найден — возвращать null.
+            //
+            //7. Реализовать метод updateStudent(Student s) ок
+            //Обновляет поля name, age, group_name по id.
+            //
+            //8. Реализовать метод deleteStudentById(int id) ok
+            //Удаляет одного студента.
+            //
+            //9. Реализовать метод deleteAll() ок
+            //Удаляет всех студентов из таблицы.
+            //
+            //
+            //10. Написать меню в main() ок
+            //
+            //1 - Добавить студента
+            //2 - Показать всех
+            //3 - Найти по id
+            //4 - Обновить по id
+            //5 - Удалить по id
+            //6 - Удалить всех
+            //0 - Выход
 
 //        String name=scanner.nextLine();
 //        int age= scanner.nextInt();
@@ -308,134 +429,89 @@ public class Homework5 {
 //        scanner.nextLine();
 
 //        Student student=new Student(name,age,groupName);
-        int num;
+            int num;
 
-        while (true) {
+            while (true) {
 
-            System.out.println("1 --> Добавить студента\n" +
-                    "2 --> Показать всех\n" +
-                    "3 --> Найти по id\n" +
-                    "4 --> Обновить по id\n" +
-                    "5 --> Удалить по id\n" +
-                    "6 --> Удалить всех\n" +
-                    "0 --> Выход");
-            try {
-                System.out.println("Введите значение от 0 до 6");
-                num = scanner.nextInt();
-                scanner.nextLine();
-
-
-                switch (num) {
-                    case 1:
+                System.out.println("1 --> Добавить студента\n" +
+                        "2 --> Показать всех\n" +
+                        "3 --> Найти по id\n" +
+                        "4 --> Обновить по id\n" +
+                        "5 --> Удалить по id\n" +
+                        "6 --> Удалить всех\n" +
+                        "0 --> Выход");
+                try {
+                    System.out.println("Введите значение от 0 до 6");
+                    num = scanner.nextInt();
+                    scanner.nextLine();
 
 
+                    switch (num) {
+                        case 1:
+                            boolean isFlag = false;
+                            while (!isFlag) {
+                                System.out.println("Выберите:\n" +
+                                        "1 --> Добавить одного студента\n" +
+                                        "2 --> Добавить нескольких студентов\n" +
+                                        "3 --> Назад");
 
-                        System.out.println(" Введите имя студента: ");
-                        String name = scanner.nextLine();
-                        System.out.println("Введите возраст студента: ");
-                        int age = scanner.nextInt();
-                        scanner.nextLine();
-                        System.out.println("Введите название группы студента");
-                        String groupName = scanner.nextLine();
+                                num = scanner.nextInt();
+                                scanner.nextLine();
 
-                        Student student = new Student(name, age, groupName);
-                        Student.insertStudent(student);
-                        break;
-                    case 2:
-                        List<Student> list = Student.getAllStudents();
-                            if (list.isEmpty()){
-                                System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                                switch (num) {
+                                    case 1:
+                                        addStudent();
+                                        break;
+                                    case 2:
+                                        addStudents();
+                                        break;
+                                    case 3:
+                                        System.out.println("Назад");
+                                        isFlag = true;
+                                        break;
+                                    default:
+                                        System.out.println("Введите корректное значение!");
+                                }
+
                             }
-                        for (Student studentList : list) {
-                            System.out.println(studentList);
-                        }
-                        break;
-                    case 3:
-                        System.out.println("Введите id студента: ");
-                        int id = scanner.nextInt();
-                        scanner.nextLine();
-                        list= Student.getAllStudents();
-                        if (list.isEmpty()){
-                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
-                        }
-                        System.out.println(Student.getStudentById(id));
-
-
-                        break;
-                    case 4:
-                       list= Student.getAllStudents();
-                        if (list.isEmpty()){
-                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
                             break;
-                        }
-                        System.out.println("Введите id студента: ");
-                        id= scanner.nextInt();
-                        scanner.nextLine();
-                        System.out.println("Введите имя студента: ");
-                        name=scanner.nextLine();
-                        System.out.println("Введите возраст студента: ");
-                        age= scanner.nextInt();
-                        scanner.nextLine();
-                        System.out.println("Введите название группы: ");
-                        groupName=scanner.nextLine();
-                        student=new Student(id,name,age,groupName);
-                        Student.updateStudent(student);
-                        break;
-                    case 5:
-                        list= Student.getAllStudents();
-                        if (list.isEmpty()){
-                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                        case 2:
+                            printInfo();
                             break;
-                        }
-                        System.out.println("Введите id студента: ");
-                        id= scanner.nextInt();
-                        Student.deleteStudentById(id);
-                        break;
-                    case 6:
-                        list= Student.getAllStudents();
-                        if (list.isEmpty()){
-                            System.out.println("Список студентов пуст! Сначала добавьте студентов!");
+                        case 3:
+                            searchID();
                             break;
-                        }
-                        boolean activeFlag=true;
-                        while (activeFlag) {
-                            System.out.println("Вы уверены?\n" +
-                                    "1 --> Да\n" +
-                                    "2 --> Нет");
-                            int select= scanner.nextInt();
-                            switch (select) {
-                                case 1:
+                        case 4:
+                            updateStudentsID();
+                            break;
+                        case 5:
+                            deleteStudentsID();
+                            break;
+                        case 6:
+                            deleteAllStudents();
+                            break;
+                        case 0:
+                            System.out.println("Выход");
+                            return;
+                        default:
+                            System.out.println("Некорректное значение!");
 
-                                    Student.deleteAll();
-                                    System.out.println("Список студентов удален!");
-                                    activeFlag=false;
-                                    break;
-                                case 2:
-                                    activeFlag=false;
-                                    break;
-                                default:
-                                    System.out.println("Введите корректное значение!");
-                                    break;
-                            }
+                    }
+                } catch (Exception exception) {
+                    System.out.println("Введите числовое значение! " + exception.getMessage());
+                    scanner.nextLine();
 
-                        }
-                        break;
-                    case 0:
-                        System.out.println("Выход");
-                        return;
-                    default:
-                        System.out.println("Некорректное значение!");
 
                 }
-            } catch (Exception exception) {
-                System.out.println("Введите числовое значение! " + exception.getMessage());
-                scanner.nextLine();
-
 
             }
 
+
+        } catch (Exception exception) {
+            System.out.println("Error" + exception.getMessage());
+        } finally {
+            scanner.close();
         }
-
-
     }
+
 }
